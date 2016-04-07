@@ -42,14 +42,6 @@ namespace QStates {
         /// </summary>
         public BaseGameState startGameState;
 
-        public override void Awake () {
-
-            base.Awake();
-
-            if(startGameState != null)
-            StartCoroutine(SetState(startGameState));
-
-        }
     }
 
 }

@@ -18,15 +18,14 @@ namespace QEffect {
             get {
 
                 if (instance == null) {
-
                     instance = FindObjectOfType(typeof(EffectManager)) as EffectManager;
 
                 }
 
                 if (instance == null) {
 
-                    //GameObject go = new GameObject("EffectManager");
-                    //instance = go.AddComponent(typeof(EffectManager)) as EffectManager;
+                    GameObject go = new GameObject("EffectManager");
+                    instance = go.AddComponent(typeof(EffectManager)) as EffectManager;
 
                 }
 
@@ -40,7 +39,7 @@ namespace QEffect {
         /// Reference to the FadeEffect class.
         /// </summary>
         [HideInInspector]
-        public FadeEffect FadeEffect;
+        public FadeEffect fadeEffect;
 
         [HideInInspector]
         public ContrastSetter Contrast;

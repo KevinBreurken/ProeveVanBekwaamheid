@@ -39,11 +39,8 @@ namespace QStates {
 
             }
 
-            if (startState != null)
-                StartCoroutine(SetState(startState));
-
         }
-        
+
         /// <summary>
         /// Gets the state by its name.
         /// </summary>

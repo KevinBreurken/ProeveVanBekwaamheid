@@ -26,19 +26,12 @@ namespace QEffect.Effects {
 
         public CanvasGroup targetCanvasGroup;
 
-        void Awake () {
-
-            targetCanvasGroup = GetComponent<CanvasGroup>();
-
-        }
-
         /// <summary>
         /// Fades the fade layer to the given value.
         /// </summary>
         /// <param name="_endValue">The value it will fade to.</param>
         public IEnumerator Fade (float _endValue) {
-
-            targetCanvasGroup.DOFade(_endValue, fadeTime).OnComplete(FadeCompleted).SetUpdate(true);
+            targetCanvasGroup.DOFade(_endValue, fadeTime).OnComplete(FadeCompleted);
             yield return new WaitForSeconds(fadeTime);
 
         }
@@ -50,7 +43,7 @@ namespace QEffect.Effects {
         /// <param name="_speed">How fast the screen will fade.</param>
         public IEnumerator Fade (float _endValue, float _speed) {
 
-            targetCanvasGroup.DOFade(_endValue, _speed).OnComplete(FadeCompleted).SetUpdate(true);
+            targetCanvasGroup.DOFade(_endValue, _speed).OnComplete(FadeCompleted);
             yield return new WaitForSeconds(_speed);
 
         }
@@ -62,7 +55,6 @@ namespace QEffect.Effects {
         /// <param name="_speed">How fast the screen will fade.</param>
         /// <param name="_startValue">which value the canvasGroup starts in.</param>
         public IEnumerator Fade (float _endValue, float _speed, float _startValue) {
-
             targetCanvasGroup.alpha = _startValue;
             targetCanvasGroup.DOFade(_endValue, _speed).OnComplete(FadeCompleted).SetUpdate(true);
             yield return new WaitForSeconds(_speed);

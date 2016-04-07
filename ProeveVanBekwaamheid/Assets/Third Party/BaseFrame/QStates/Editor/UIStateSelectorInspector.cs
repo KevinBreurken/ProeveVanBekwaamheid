@@ -18,7 +18,7 @@ namespace QStates.Editors {
 
             EditorGUILayout.BeginHorizontal();
             EditorGUILayout.LabelField("Start State");
-            myScript.startState = (BaseGameState)EditorGUILayout.ObjectField(myScript.startState, typeof(BaseUIState), true);
+            myScript.startUIState = (BaseUIState)EditorGUILayout.ObjectField(myScript.startUIState, typeof(BaseUIState), true);
             EditorGUILayout.EndHorizontal();
             if (GUILayout.Button("Add New")) {
 

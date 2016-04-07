@@ -88,6 +88,8 @@ namespace QInput {
         public void SetInputMethod (BaseQInputMethod _inputMethod) {
 
            currentlyUsedInputMethod = _inputMethod;
+
+           if(onInputChanged != null)
            onInputChanged(currentlyUsedInputMethod);
 
         }

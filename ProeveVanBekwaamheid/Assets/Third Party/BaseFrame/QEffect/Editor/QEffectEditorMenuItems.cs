@@ -41,7 +41,7 @@ namespace QEffect.Editors {
             //Create the FadeEffect Object.
             GameObject fadeEffect = EditorCustomUtility.CreateGameObjectInEditor("FadeEffect");
             fadeEffect.AddComponent<FadeEffect>();
-            _manager.FadeEffect = fadeEffect.GetComponent<FadeEffect>();
+            _manager.fadeEffect = fadeEffect.GetComponent<FadeEffect>();
 
             Selection.activeGameObject = _manager.gameObject;
 
