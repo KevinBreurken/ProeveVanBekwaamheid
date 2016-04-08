@@ -7,25 +7,56 @@ namespace Base.UI {
 
     public class SplashScreenUIState : BaseUIState {
 
-        public override void Enter () {
-            base.Enter();
-            
-            StartCoroutine("Test");
-        }
+        private bool forceNextScreen;
+        public float fadeSpeed;
+        public float timeTillFadeOut;
 
-        IEnumerator Test () {
-            EffectManager.Instance.fadeEffect.SetFadeLayerValue(1);
-            EffectManager.Instance.fadeEffect.Fade(0);
-            yield return null;
-           
+        public override void Enter () {
+
+            base.Enter();
+            StartCoroutine(EffectManager.Instance.fadeEffect.Fade(0, fadeSpeed, 1));
+            StartCoroutine(WaitToFadeOut());
+
         }
 
         public override IEnumerator Exit () {
-            return base.Exit();
+            
+            yield return StartCoroutine(EffectManager.Instance.fadeEffect.Fade(1, fadeSpeed));
+            base.Exit();
+
+        }
+
+        private IEnumerator WaitToFadeOut () {
+
+            yield return new WaitForSeconds(timeTillFadeOut);
+            ForceToNextScreen();
+
         }
 
         public override void Update () {
+
             base.Update();
+
+            if (Input.anyKey) {
+
+                if (!forceNextScreen) {
+
+                    ForceToNextScreen();
+
+                }
+
+            }
+
+        }
+
+        private void ForceToNextScreen () {
+
+            StopAllCoroutines();
+            forceNextScreen = true;
+
+            EffectManager.Instance.fadeEffect.StopFade();
+            UIStateSelector.Instance.SetState("MenuUIState");
+
         }
 
     }

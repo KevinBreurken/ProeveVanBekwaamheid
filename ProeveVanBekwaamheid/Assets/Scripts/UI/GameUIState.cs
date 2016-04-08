@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using QStates;
+using QEffect;
 
 namespace Base.UI {
 
@@ -8,6 +9,7 @@ namespace Base.UI {
 
         public override void Enter () {
             base.Enter();
+          
         }
 
         public override IEnumerator Exit () {
