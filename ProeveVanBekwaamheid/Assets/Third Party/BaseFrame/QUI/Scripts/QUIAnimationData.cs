@@ -25,6 +25,7 @@ namespace QUI.Data {
 
         public bool isShownInEditor;
         public bool isAudioShownInEditor;
+
         public Sprite graphic;
 
         public QUIMovementAnimationData movementData;

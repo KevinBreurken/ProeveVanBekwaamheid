@@ -111,7 +111,7 @@ namespace QUI {
             canvasGroup.interactable = false;
             canvasGroup.blocksRaycasts = false;
 
-
+            StopAllCoroutines();
             yield return StartCoroutine(PlayAnimation(hideAnimationData));
 
         }
@@ -119,7 +119,7 @@ namespace QUI {
         /// <summary>
         /// Shows and enables this UIObject.
         /// </summary>
-        public void Show () {
+        public IEnumerator Show () {
 
             isTweening = true;
 
@@ -127,7 +127,7 @@ namespace QUI {
             canvasGroup.blocksRaycasts = true;
 
             StopAllCoroutines();
-            StartCoroutine(PlayAnimation(showAnimationData));
+            yield return StartCoroutine(PlayAnimation(showAnimationData));
 
         }
 
@@ -249,15 +249,18 @@ namespace QUI {
 
         }
 
+        public bool IsAnimating () {
+            return isTweening;
+        }
 		// Used for debugging animations.
 		void Update () {
 
 			#if UNITY_EDITOR
 			if (Input.GetKeyDown(KeyCode.O)) {
 
-				Show();
+                StartCoroutine(Show());
 
-			}
+            }
 
 			if (Input.GetKeyDown(KeyCode.P)) {
 

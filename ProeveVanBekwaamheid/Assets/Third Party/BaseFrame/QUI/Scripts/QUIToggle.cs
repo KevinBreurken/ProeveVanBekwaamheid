@@ -6,15 +6,15 @@ using QUI.Data;
 
 namespace QUI {
 
-    [RequireComponent(typeof(Button),typeof(Image))]
-    public class QUIButton : QUIObject {
+    [RequireComponent(typeof(Toggle), typeof(Image))]
+    public class QUIToggle : QUIObject {
 
-        public delegate void ButtonEvent ();
+        public delegate void ToggleEvent (bool _state,QUIToggle _toggledObject);
 
         /// <summary>
         /// Called when the AudioObject is finished playing.
         /// </summary>
-        public event ButtonEvent onClicked;
+        public event ToggleEvent onToggleClicked;
 
         /// <summary>
         /// AnimationData for the pointer exit animation.
@@ -22,6 +22,7 @@ namespace QUI {
         public QUIAnimationData pointerClickAnimationData;
 
         private Button Button;
+        private Toggle Toggle;
         public Sprite normalSprite;
 
         public override void Awake () {
@@ -30,12 +31,12 @@ namespace QUI {
 
             pointerClickAnimationData.Initialize(transform);
             normalSprite = image.sprite;
-            Button = GetComponent<Button>();
-            Button.onClick.AddListener(() => OnButtonClicked());
+            Toggle = GetComponent<Toggle>();
+            Toggle.onValueChanged.AddListener((value) => OnToggleToggled(value));
 
         }
 
-        private void OnButtonClicked () {
+        private void OnToggleToggled (bool _state) {
 
             if (!isTweening) {
 
@@ -43,9 +44,9 @@ namespace QUI {
                 StopAllCoroutines();
                 StartCoroutine(PlayClickAnimation(pointerClickAnimationData));
 
-                if (onClicked != null) {
+                if (onToggleClicked != null) {
 
-                    onClicked();
+                    onToggleClicked(Toggle.isOn,this);
 
                 }
 
@@ -54,17 +55,29 @@ namespace QUI {
         }
 
         public IEnumerator PlayClickAnimation (QUIAnimationData _data) {
-			
+
             StartCoroutine(PlayAnimation(_data));
             yield return new WaitForSeconds(0.2f);
             ReturnGraphic();
-           
 
+
+        }
+
+        public void SetToggleStateRough(bool _state) {
+
+            Toggle.onValueChanged.RemoveAllListeners();
+            Toggle.isOn = _state;
+            Toggle.onValueChanged.AddListener((value) => OnToggleToggled(value));
+
+        }
+
+        public void SetInteractable(bool _state) {
+            Toggle.interactable = _state;
         }
 
         private void ReturnGraphic () {
 
-            if(pointerState == QAUIObjectPointerState.InsideObject) {
+            if (pointerState == QAUIObjectPointerState.InsideObject) {
 
                 if (pointerEnterAnimationData.graphic != null) {
 
@@ -89,19 +102,13 @@ namespace QUI {
                 }
 
             }
-         
-        }
-
-        public void SetInteractable (bool _state) {
-
-            Button.interactable = _state;
 
         }
 
         // Used for debugging animations.
         void Update () {
 
-            #if UNITY_EDITOR
+#if UNITY_EDITOR
             if (Input.GetKeyDown(KeyCode.O)) {
 
                 StartCoroutine(Show());
@@ -113,7 +120,7 @@ namespace QUI {
                 StartCoroutine(Hide());
 
             }
-            #endif
+#endif
 
         }
 
