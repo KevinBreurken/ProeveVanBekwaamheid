@@ -46,6 +46,20 @@ public class FishBehaviour : MonoBehaviour {
             transform.Translate(-0.005f * speed, 0, 0);
         }
     }
+
+    private void OutOfBound()
+    {
+
+    }
+
+    public void ActivateFish(Vector2 targetSpawnPosition)
+    {
+        caught = false;
+        transform.localPosition = targetSpawnPosition;
+        gameObject.SetActive(true);
+
+
+    }
     private void FlipCharacter()
     {
         if (ownDirection == Direction.LEFT)

@@ -10,9 +10,12 @@ public class HookBehaviour : MonoBehaviour {
     private float seabottom;
     public FishBehaviour ownFish;
 
+    private Vector2 OriginalPos;
+
     public void hookStart()
     {
-        seabottom = VarsController.Instance.seabottom;
+        OriginalPos = transform.localPosition;
+        seabottom = VarsController.Instance.fishField.yBottom;
     }
 
     public void ReleaseHook()
@@ -79,7 +82,7 @@ public class HookBehaviour : MonoBehaviour {
 
     public bool PullHook()
     {
-        if (transform.localPosition.y < -1)
+        if (transform.localPosition.y < OriginalPos.y)
         {
             transform.Translate(0, 0.1f, 0);
             return true;

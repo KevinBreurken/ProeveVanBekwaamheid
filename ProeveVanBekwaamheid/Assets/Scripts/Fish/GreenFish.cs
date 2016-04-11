@@ -5,12 +5,13 @@ public class GreenFish : FishBehaviour {
 
     public void Start()
     {
-        speed = Random.Range(1, 50);
+        speed = Random.Range(1, 20);
+        gameObject.SetActive(false);
     }
 
     void Update()
     {
-        SwimDirection(Direction.RIGHT);
+        SwimDirection(ownDirection);
     }
 
 }
