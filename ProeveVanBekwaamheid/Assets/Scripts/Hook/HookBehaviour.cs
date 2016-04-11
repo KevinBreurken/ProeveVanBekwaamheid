@@ -31,15 +31,16 @@ public class HookBehaviour : MonoBehaviour {
         {
             if (hookPull == true)
             {
-                if (!PullHook())
+                if (PullHook() == false)
                 {
                     hookPull = false;
                     hookReleased = false;
+                    hookInteracted = false;
                 }
             }
             else
             {
-                if (!LooseHook())
+                if (LooseHook() == false | hookInteracted == true)
                 {
                     hookPull = true;
                 }
@@ -95,8 +96,17 @@ public class HookBehaviour : MonoBehaviour {
         {
             if(ownFish == null)
             {
-                hookInteracted = true;
-                ownFish = other.GetComponent<FishBehaviour>();
+                FishBehaviour tempFish = other.GetComponent<FishBehaviour>();
+                if (tempFish.caught == true)
+                {
+
+                }
+                else
+                {
+                    ownFish = tempFish;
+                    ownFish.caught = true;
+                    hookInteracted = true;
+                }
             }
         }
     }
