@@ -11,7 +11,7 @@ public class VarsController : Singleton<VarsController> {
     private void OnDrawGizmos()
     {
         //Square for the FishArea
-        DrawSquare(fishField.xLeft, fishField.yTop, fishField.xRight,fishField.yBottom, Color.green);
+        DrawSquare(fishField.xLeft, fishField.yTop, fishField.xRight, fishField.yBottom, Color.green);
 
         //Square for the FishArea
         DrawSquare(SeaField.xLeft, SeaField.yTop, SeaField.xRight, SeaField.yBottom, Color.blue);
