@@ -9,13 +9,18 @@ public class PlayerBehaviour : MonoBehaviour {
     public HookBehaviour redHook;
     public HookBehaviour greenHook;
     public HookBehaviour blueHook;
-    
+
+    private VarsController varscontroller;
     private Area fishArea;
+
+    private SeaController seaController;
 
     private void Start()
     {
-        originalPos = transform.localPosition;
-        fishArea = VarsController.Instance.fishField;
+        varscontroller  = VarsController.Instance;
+        seaController   = SeaController.Instance;
+        originalPos     = transform.localPosition;
+        fishArea        = varscontroller.fishField;
     }
 
     public void Update ()
@@ -34,6 +39,7 @@ public class PlayerBehaviour : MonoBehaviour {
             else
             {
                 transform.localPosition = new Vector2(fishArea.xLeft, originalPos.y);
+                seaController.MoveSea(speed);
             }
         }
         else if (Input.GetKey(KeyCode.RightArrow))
@@ -45,6 +51,7 @@ public class PlayerBehaviour : MonoBehaviour {
             else
             {
                 transform.localPosition = new Vector2(fishArea.xRight, originalPos.y);
+                seaController.MoveSea(-speed);
             }
         }
 

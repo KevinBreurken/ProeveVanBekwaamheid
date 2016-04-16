@@ -4,12 +4,23 @@ using System.Collections;
 public class VarsController : Singleton<VarsController> {
     public Area fishField;
 
-    void OnDrawGizmos()
+    /// <summary>
+    /// DrawGizmo that shows the fields for the VarsController
+    /// </summary>
+    private void OnDrawGizmos()
     {
         DrawSquare(fishField.xLeft, fishField.yTop, fishField.xRight,fishField.yBottom + fishField.yTop, Color.green);
     }
 
-    void DrawSquare(float left, float top, float right, float bot, Color targetcolor)
+    /// <summary>
+    /// Makes a 2D square for drawGizmo using drawlines
+    /// </summary>
+    /// <param name="left">the left border of the square</param>
+    /// <param name="top">the top border of the square</param>
+    /// <param name="right">the right border of the square</param>
+    /// <param name="bot">the bottom border of the square</param>
+    /// <param name="targetcolor">The requisted color for the square</param>
+    private void DrawSquare(float left, float top, float right, float bot, Color targetcolor)
     {
         Gizmos.color = targetcolor;
         Gizmos.DrawLine(new Vector3(left, top),  new Vector3(right, top));
@@ -18,7 +29,11 @@ public class VarsController : Singleton<VarsController> {
         Gizmos.DrawLine(new Vector3(left, bot),  new Vector3(left, top));
 
     }
+
+
 }
+
+
 
 [System.Serializable]
 public class Area
