@@ -7,6 +7,7 @@ public class FishBehaviour : MonoBehaviour {
     public Direction ownDirection;
     public bool caught;
     public float speed = 5;
+    public Area fishArea;
 
     
 
@@ -47,9 +48,16 @@ public class FishBehaviour : MonoBehaviour {
         }
     }
 
-    private void OutOfBound()
+    public void OutOfBound()
     {
-
+        if(transform.localPosition.x > fishArea.xRight)
+        {
+            gameObject.SetActive(false);
+        }
+        else if(transform.localPosition.x < fishArea.xLeft)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     public void ActivateFish(Vector2 targetSpawnPosition)

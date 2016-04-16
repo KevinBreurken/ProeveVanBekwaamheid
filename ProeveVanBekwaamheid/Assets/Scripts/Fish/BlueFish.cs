@@ -12,5 +12,6 @@ public class BlueFish : FishBehaviour
     void Update()
     {
         SwimDirection(ownDirection);
+        OutOfBound();
     }
 }

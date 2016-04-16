@@ -12,6 +12,7 @@ public class RedFish : FishBehaviour {
     void Update()
     {
         SwimDirection(ownDirection);
+        OutOfBound();
     }
 
 }

@@ -12,6 +12,7 @@ public class GreenFish : FishBehaviour {
     void Update()
     {
         SwimDirection(ownDirection);
+        OutOfBound();
     }
 
 }
