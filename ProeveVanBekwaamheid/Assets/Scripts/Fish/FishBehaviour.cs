@@ -9,7 +9,13 @@ public class FishBehaviour : MonoBehaviour {
     public float speed = 5;
     public Area fishArea;
 
-    
+    private Vector3 originalSize;
+
+    public void ownStart()
+    {
+        originalSize = transform.localScale;
+        gameObject.SetActive(false);
+    }
 
     public FishBehaviour GetFish()
     {
@@ -36,14 +42,13 @@ public class FishBehaviour : MonoBehaviour {
 
     public void SwimDirection(Direction targetDirection)
     {
+        FlipCharacter();
         if (targetDirection == Direction.RIGHT)
         {
-
             transform.Translate(0.005f * speed, 0, 0);
         }
         else if (targetDirection == Direction.LEFT)
         {
-
             transform.Translate(-0.005f * speed, 0, 0);
         }
     }
@@ -72,11 +77,11 @@ public class FishBehaviour : MonoBehaviour {
     {
         if (ownDirection == Direction.LEFT)
         {
-            transform.localScale = new Vector3(1, 1, 1);
+            transform.localScale = originalSize;
         }
         else if (ownDirection == Direction.RIGHT)
         {
-            transform.localScale = new Vector3(-1, 1, 1);
+            transform.localScale = new Vector3(-originalSize.x, originalSize.y, originalSize.z);
         }
     }
 }

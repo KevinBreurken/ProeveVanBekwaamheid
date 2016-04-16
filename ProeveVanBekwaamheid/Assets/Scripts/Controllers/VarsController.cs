@@ -3,13 +3,19 @@ using System.Collections;
 
 public class VarsController : Singleton<VarsController> {
     public Area fishField;
+    public Area SeaField;
 
     /// <summary>
     /// DrawGizmo that shows the fields for the VarsController
     /// </summary>
     private void OnDrawGizmos()
     {
+        //Square for the FishArea
         DrawSquare(fishField.xLeft, fishField.yTop, fishField.xRight,fishField.yBottom + fishField.yTop, Color.green);
+
+        //Square for the FishArea
+        DrawSquare(SeaField.xLeft, SeaField.yTop, SeaField.xRight, SeaField.yBottom + SeaField.yTop, Color.blue);
+
     }
 
     /// <summary>

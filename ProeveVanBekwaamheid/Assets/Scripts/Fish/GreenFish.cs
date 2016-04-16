@@ -6,7 +6,7 @@ public class GreenFish : FishBehaviour {
     public void Start()
     {
         speed = Random.Range(1, 20);
-        gameObject.SetActive(false);
+        ownStart();
     }
 
     void Update()

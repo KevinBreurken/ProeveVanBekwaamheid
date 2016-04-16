@@ -7,12 +7,12 @@ public class FishBundle : MonoBehaviour
     public List<FishBehaviour> availableFish = new List<FishBehaviour>();
 
     private VarsController varsController;
-    private Area fishArea;
+    private Area seaArea;
 
     void Start()
     {
         varsController = VarsController.Instance;
-        fishArea = varsController.fishField;
+        seaArea = varsController.SeaField;
         availableFish.HeavyShuffle();
         StartCoroutine("SpawnFish");
     }
@@ -39,19 +39,19 @@ public class FishBundle : MonoBehaviour
     void ActivateFish(FishBehaviour targetFish)
     {
         int randomNumber = Random.Range(0,2);
-        float randomY = Random.Range(fishArea.yTop, fishArea.yBottom + fishArea.yTop);
-        Debug.Log(fishArea.yTop + " " + (fishArea.yBottom + fishArea.yTop) + " " + randomY);
+        float randomY = Random.Range(seaArea.yTop, seaArea.yBottom + seaArea.yTop);
+        Debug.Log(seaArea.yTop + " " + (seaArea.yBottom + seaArea.yTop) + " " + randomY);
         switch (randomNumber)
         {
             case 0:
                 targetFish.ownDirection = Direction.RIGHT;
-                targetFish.fishArea = fishArea;
-                targetFish.ActivateFish(new Vector2(fishArea.xLeft, randomY));
+                targetFish.fishArea = seaArea;
+                targetFish.ActivateFish(new Vector2(seaArea.xLeft, randomY));
             break;
             case 1:
                 targetFish.ownDirection = Direction.LEFT;
-                targetFish.fishArea = fishArea;
-                targetFish.ActivateFish(new Vector2(fishArea.xRight, randomY));
+                targetFish.fishArea = seaArea;
+                targetFish.ActivateFish(new Vector2(seaArea.xRight, randomY));
             break;
         }
     }
