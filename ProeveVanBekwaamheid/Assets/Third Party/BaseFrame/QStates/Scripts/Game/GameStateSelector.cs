@@ -2,14 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace QStates {
+namespace BaseFrame.QStates {
 
     /// <summary>
     /// Switches Game State.
     /// </summary>
     public class GameStateSelector : QStateSelector {
 
-        protected static GameStateSelector instance = null;
+		private static GameStateSelector instance = null;
 
         /// <summary>
         /// Static reference of the State Selector.
@@ -42,6 +42,14 @@ namespace QStates {
         /// </summary>
         public BaseGameState startGameState;
 
+        public override void Awake () {
+
+            base.Awake();
+
+            if(startGameState != null)
+            StartCoroutine(SetState(startGameState));
+
+        }
     }
 
 }

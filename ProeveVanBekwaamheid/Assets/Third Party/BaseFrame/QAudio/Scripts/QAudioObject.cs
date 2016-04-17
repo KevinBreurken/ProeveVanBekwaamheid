@@ -2,7 +2,10 @@
 using System.Collections;
 using DG.Tweening;
 
-namespace QAudio {
+/// <summary>
+/// QAudio: Part of BaseFrame that handles Audio. 
+/// </summary>
+namespace BaseFrame.QAudio {
 
     /// <summary>
     /// Plays AudioClips.
@@ -16,8 +19,6 @@ namespace QAudio {
         /// </summary>
         public event QAudioEvent onAudioFinished;
 
-        private AudioSource source;
-
         /// <summary>
         /// If the AudioObject uses a random pitch.
         /// </summary>
@@ -28,6 +29,10 @@ namespace QAudio {
         /// </summary>
         public Vector2 randomPitchRange;
 
+        /// <summary>
+        /// Reference to the AudioSource on this QAudioObject.
+        /// </summary>
+        private AudioSource source;
 
         void Awake () {
 
@@ -39,6 +44,7 @@ namespace QAudio {
         /// Used for disabling the AudioObject after its finished.
         /// </summary>
         private IEnumerator WaitForClip () {
+
             yield return new WaitForSeconds(source.clip.length);
 
             if (onAudioFinished != null) {

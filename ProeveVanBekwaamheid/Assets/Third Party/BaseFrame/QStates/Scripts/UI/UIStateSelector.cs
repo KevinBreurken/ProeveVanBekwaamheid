@@ -2,12 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace QStates {
+namespace BaseFrame.QStates {
 
-
+    /// <summary>
+    /// Switches UIStates.
+    /// </summary>
     public class UIStateSelector : QStateSelector {
 
-        protected static UIStateSelector instance = null;
+        private static UIStateSelector instance = null;
 
         /// <summary>
         /// Static reference of the State Selector.
@@ -24,8 +26,8 @@ namespace QStates {
 
                 if (instance == null) {
 
-                    GameObject go = new GameObject("UIStateSelector");
-                    instance = go.AddComponent(typeof(UIStateSelector)) as UIStateSelector;
+                    //GameObject go = new GameObject("UIStateSelector");
+                    //instance = go.AddComponent(typeof(UIStateSelector)) as UIStateSelector;
 
                 }
 
@@ -40,9 +42,36 @@ namespace QStates {
         /// </summary>
         public BaseUIState startUIState;
 
-        public void Start () {
+		/// <summary>
+		/// Called first by Unity3D.
+		/// </summary>
+        public override void Awake () {
 
+            //Disable all UIStates.
+            for (int i = 0; i < States.Count; i++) {
+
+                States[i].SetActive(false);
+
+            }
+
+            if (startUIState != null)
             StartCoroutine(SetState(startUIState));
+
+        }
+
+        /// <summary>
+        /// Called when a new state is entered.
+        /// </summary>
+        public override void OnStateEntered () {
+
+            //If QEffects is included.
+            /*
+            Debug.Log(Effect.EffectManager.Instance.FadeEffect.GetFadeLayerValue());
+            if(Effect.EffectManager.Instance.FadeEffect.GetFadeLayerValue() >= 0.9f) {
+
+                StartCoroutine(Effect.EffectManager.Instance.FadeEffect.Fade(0));
+
+            }*/
 
         }
 

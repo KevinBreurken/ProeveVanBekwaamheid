@@ -5,9 +5,8 @@ using UnityEditor;
 using System.Reflection;
 using System.Collections.Generic;
 using DG.Tweening;
-using QUI;
 
-namespace Base.CustomEditor {
+namespace BaseFrame.CustomEditor {
 
     /// <summary>
     /// Fancier Editor UI functions.

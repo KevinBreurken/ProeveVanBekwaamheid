@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace QStates {
+namespace BaseFrame.QStates {
     
     /// <summary>
     /// Base for a GameState

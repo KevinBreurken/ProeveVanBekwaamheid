@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-using QInput;
+using BaseFrame.QInput;
 
 public class TestScript : MonoBehaviour {
 

@@ -2,46 +2,64 @@
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using QUI.Data;
+using BaseFrame.QUI.Data;
 
-namespace QUI {
+namespace BaseFrame.QUI {
 
+    /// <summary>
+    /// UIButton is a interface based object that can receive player pointer input.
+    /// </summary>
     [RequireComponent(typeof(Button),typeof(Image))]
     public class QUIButton : QUIObject {
 
+		/// <summary>
+		/// Used for button events.
+		/// </summary>
         public delegate void ButtonEvent ();
 
         /// <summary>
-        /// Called when the AudioObject is finished playing.
+        /// Called when the QUIButton is clicked.
         /// </summary>
         public event ButtonEvent onClicked;
 
         /// <summary>
-        /// AnimationData for the pointer exit animation.
+        /// AnimationData for the pointer click animation.
         /// </summary>
         public QUIAnimationData pointerClickAnimationData;
 
-        private Button Button;
+        /// <summary>
+        /// The graphic that will be used as default graphic by this QUIButton.
+        /// </summary>
         public Sprite normalSprite;
 
+        /// <summary>
+        /// Reference to the Button component of this QUIButton.
+        /// </summary>
+        private Button Button;
+
+		/// <summary>
+		/// Called first by Unity3D.
+		/// </summary>
         public override void Awake () {
 
             base.Awake();
 
             pointerClickAnimationData.Initialize(transform);
-            normalSprite = image.sprite;
+
             Button = GetComponent<Button>();
             Button.onClick.AddListener(() => OnButtonClicked());
 
         }
 
+        /// <summary>
+        /// Called when the QUIButton is clicked.
+        /// </summary>
         private void OnButtonClicked () {
 
-            if (!isTweening) {
+            if (!isAnimating) {
 
-                isTweening = true;
                 StopAllCoroutines();
-                StartCoroutine(PlayClickAnimation(pointerClickAnimationData));
+                StartCoroutine(PlayClickAnimation());
 
                 if (onClicked != null) {
 
@@ -53,38 +71,43 @@ namespace QUI {
 
         }
 
-        public IEnumerator PlayClickAnimation (QUIAnimationData _data) {
+        /// <summary>
+        /// Plays the click animation.
+        /// </summary>
+        public IEnumerator PlayClickAnimation () {
 			
-            StartCoroutine(PlayAnimation(_data));
+            StartCoroutine(PlayAnimation(pointerClickAnimationData));
             yield return new WaitForSeconds(0.2f);
-            ReturnGraphic();
-           
+            ReturnGraphic();      
 
         }
 
+        /// <summary>
+        /// Resets the graphic back to its normal graphic.
+        /// </summary>
         private void ReturnGraphic () {
 
-            if(pointerState == QAUIObjectPointerState.InsideObject) {
+            if(currentPointerState == QAUIObjectPointerState.InsideObject) {
 
-                if (pointerEnterAnimationData.graphic != null) {
+                if (pointerEnterAnimationData.defaultGraphic != null) {
 
-                    image.sprite = pointerEnterAnimationData.graphic;
+                    image.sprite = pointerEnterAnimationData.defaultGraphic;
 
                 } else {
 
-                    image.sprite = normalSprite;
+                    //Debug.LogError("[QAUI] Warning: Button's enter state has no graphic selected in its enter state. Set a graphic in the pointer enter animation.");
 
                 }
 
             } else {
 
-                if (pointerExitAnimationData.graphic != null) {
+                if (pointerExitAnimationData.defaultGraphic != null) {
 
-                    image.sprite = pointerExitAnimationData.graphic;
+                    image.sprite = pointerExitAnimationData.defaultGraphic;
 
                 } else {
 
-                    image.sprite = normalSprite;
+                    Debug.LogError("[QAUI] Warning: Button's exit state has no graphic selected in its exit state. Set a graphic in the pointer exit animation.");
 
                 }
 
@@ -92,28 +115,13 @@ namespace QUI {
          
         }
 
-        public void SetInteractable (bool _state) {
+        /// <summary>
+        /// Sets the interactable state of this QUIButton.
+        /// </summary>
+        /// <param name="_state">The interactable state of this QUIButton.</param>
+        public override void SetInteractable (bool _state) {
 
             Button.interactable = _state;
-
-        }
-
-        // Used for debugging animations.
-        void Update () {
-
-            #if UNITY_EDITOR
-            if (Input.GetKeyDown(KeyCode.O)) {
-
-                StartCoroutine(Show());
-
-            }
-
-            if (Input.GetKeyDown(KeyCode.P)) {
-
-                StartCoroutine(Hide());
-
-            }
-            #endif
 
         }
 

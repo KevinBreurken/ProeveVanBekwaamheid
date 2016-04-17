@@ -1,14 +1,23 @@
 ﻿using UnityEngine;
 using UnityEditor;
 using System.Collections;
-using QAudio;
-using Base.CustomEditor;
+using BaseFrame.QAudio;
+using BaseFrame.CustomEditor;
 
-namespace QAudio.Editors {
+/// <summary>
+/// Custom Editors for QAudio related components.
+/// </summary>
+namespace BaseFrame.QAudio.Editors {
 
+    /// <summary>
+    /// Custom inspector for the QAudioObject component.
+    /// </summary>
     [UnityEditor.CustomEditor(typeof(QAudioObject))]
     public class AudioObjectInspector : Editor {
 
+		/// <summary>
+		/// Draws the custom inspector.
+		/// </summary>
         public override void OnInspectorGUI () {
 
             QAudioObject myScript = (QAudioObject)target;

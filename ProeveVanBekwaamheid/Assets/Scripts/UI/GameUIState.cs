@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
-using QStates;
-using QEffect;
+using BaseFrame.QStates;
+using BaseFrame.QEffect;
 
 namespace Base.UI {
 

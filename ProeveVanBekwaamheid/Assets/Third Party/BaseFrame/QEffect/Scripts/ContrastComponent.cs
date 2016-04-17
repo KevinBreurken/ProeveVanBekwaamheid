@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace QEffect.Effects {
+namespace BaseFrame.QEffect.Effects {
 
 
     /// <summary>

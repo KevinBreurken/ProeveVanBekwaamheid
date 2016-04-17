@@ -2,14 +2,20 @@
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using QUI.Data;
+using BaseFrame.QUI.Data;
 
-namespace QUI {
+namespace BaseFrame.QUI {
 
+    /// <summary>
+    /// QUIToggle is a interface based object that can receive player pointer input with a off and on state.
+    /// </summary>
     [RequireComponent(typeof(Toggle), typeof(Image))]
     public class QUIToggle : QUIObject {
 
-        public delegate void ToggleEvent (bool _state,QUIToggle _toggledObject);
+		/// <summary>
+		/// Used for toggle events.
+		/// </summary>
+        public delegate void ToggleEvent (bool _state, QUIToggle _toggledObject);
 
         /// <summary>
         /// Called when the AudioObject is finished playing.
@@ -21,10 +27,19 @@ namespace QUI {
         /// </summary>
         public QUIAnimationData pointerClickAnimationData;
 
-        private Button Button;
-        private Toggle Toggle;
+        /// <summary>
+        /// The graphic that will be used as default graphic by this QUIToggle.
+        /// </summary>
         public Sprite normalSprite;
 
+        /// <summary>
+        /// Reference to the Button component of this QUIButton.
+        /// </summary>
+        private Toggle Toggle;
+
+		/// <summary>
+		/// Called first by Unity3D.
+		/// </summary>
         public override void Awake () {
 
             base.Awake();
@@ -36,17 +51,21 @@ namespace QUI {
 
         }
 
+        /// <summary>
+        /// Called when the QUIToggle is clicked.
+        /// </summary>
+        /// <param name="_state">The state of the toggle</param>
         private void OnToggleToggled (bool _state) {
 
-            if (!isTweening) {
+            if (!isAnimating) {
 
-                isTweening = true;
+                isAnimating = true;
                 StopAllCoroutines();
-                StartCoroutine(PlayClickAnimation(pointerClickAnimationData));
+                StartCoroutine(PlayClickAnimation());
 
                 if (onToggleClicked != null) {
 
-                    onToggleClicked(Toggle.isOn,this);
+                    onToggleClicked(Toggle.isOn, this);
 
                 }
 
@@ -54,16 +73,22 @@ namespace QUI {
 
         }
 
-        public IEnumerator PlayClickAnimation (QUIAnimationData _data) {
+        /// <summary>
+        /// Plays the click animation.
+        /// </summary>
+        public IEnumerator PlayClickAnimation () {
 
-            StartCoroutine(PlayAnimation(_data));
+            StartCoroutine(PlayAnimation(pointerClickAnimationData));
             yield return new WaitForSeconds(0.2f);
             ReturnGraphic();
 
-
         }
 
-        public void SetToggleStateRough(bool _state) {
+        /// <summary>
+        /// Changes the toggle state without playing the click animation.
+        /// </summary>
+        /// <param name="_state">The new state.</param>
+        public void SetToggleStateRough (bool _state) {
 
             Toggle.onValueChanged.RemoveAllListeners();
             Toggle.isOn = _state;
@@ -71,17 +96,26 @@ namespace QUI {
 
         }
 
-        public void SetInteractable(bool _state) {
+        /// <summary>
+        /// Sets the interactable state of this QUIToggle.
+        /// </summary>
+        /// <param name="_state">The interactable state of this QUIToggle.</param>
+        public override void SetInteractable (bool _state) {
+
             Toggle.interactable = _state;
+
         }
 
+        /// <summary>
+        /// Resets the graphic back to its normal graphic.
+        /// </summary>
         private void ReturnGraphic () {
 
-            if (pointerState == QAUIObjectPointerState.InsideObject) {
+            if (currentPointerState == QAUIObjectPointerState.InsideObject) {
 
-                if (pointerEnterAnimationData.graphic != null) {
+                if (pointerEnterAnimationData.defaultGraphic != null) {
 
-                    image.sprite = pointerEnterAnimationData.graphic;
+                    image.sprite = pointerEnterAnimationData.defaultGraphic;
 
                 } else {
 
@@ -91,9 +125,9 @@ namespace QUI {
 
             } else {
 
-                if (pointerExitAnimationData.graphic != null) {
+                if (pointerExitAnimationData.defaultGraphic != null) {
 
-                    image.sprite = pointerExitAnimationData.graphic;
+                    image.sprite = pointerExitAnimationData.defaultGraphic;
 
                 } else {
 
@@ -102,25 +136,6 @@ namespace QUI {
                 }
 
             }
-
-        }
-
-        // Used for debugging animations.
-        void Update () {
-
-#if UNITY_EDITOR
-            if (Input.GetKeyDown(KeyCode.O)) {
-
-                StartCoroutine(Show());
-
-            }
-
-            if (Input.GetKeyDown(KeyCode.P)) {
-
-                StartCoroutine(Hide());
-
-            }
-#endif
 
         }
 

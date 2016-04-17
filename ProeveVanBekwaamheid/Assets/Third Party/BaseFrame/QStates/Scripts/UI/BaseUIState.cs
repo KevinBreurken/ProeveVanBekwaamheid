@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace QStates {
+namespace BaseFrame.QStates {
 
     /// <summary>
     /// BaseClass of UIState. UIStates are opened / closed by the UIStateSelector.

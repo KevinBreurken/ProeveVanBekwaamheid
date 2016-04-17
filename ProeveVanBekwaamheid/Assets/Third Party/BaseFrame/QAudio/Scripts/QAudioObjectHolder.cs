@@ -1,16 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace QAudio {
+namespace BaseFrame.QAudio {
 
     /// <summary>
     /// A holder that contains the prefab and a reference
     /// to the AudioObject.
     /// </summary>
     [System.Serializable]
-    public struct AudioObjectHolder {
+    public struct QAudioObjectHolder {
         /// <summary>
-        /// The prefab that holds the
+        /// The prefab of the QAudioObject.
         /// </summary>
         public GameObject objectPrefab;
 
@@ -37,6 +37,10 @@ namespace QAudio {
 
         }
 
+        /// <summary>
+        /// Returns the AudioObject instance.
+        /// </summary>
+        /// <returns>The AudioObjectInstance.</returns>
         public QAudioObject GetAudioObject () {
 
             if (audioObject != null) {

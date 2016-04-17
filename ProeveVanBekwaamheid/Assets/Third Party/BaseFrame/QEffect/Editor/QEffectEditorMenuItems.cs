@@ -1,12 +1,18 @@
 ﻿using UnityEngine;
 using UnityEditor;
 using System.Collections;
-using Base.CustomEditor;
-using QEffect;
-using QEffect.Effects;
+using BaseFrame.CustomEditor;
+using BaseFrame.QEffect;
+using BaseFrame.QEffect.Effects;
 
-namespace QEffect.Editors {
+/// <summary>
+/// Custom Editors for QEffect related components.
+/// </summary>
+namespace BaseFrame.QEffect.Editors {
 
+	/// <summary>
+	/// Custom menu items for QEffect.
+	/// </summary>
     public class QEffectEditorMenuItems {
 
         [MenuItem("BaseFrame/QEffect/Build EffectManager")]
@@ -41,7 +47,7 @@ namespace QEffect.Editors {
             //Create the FadeEffect Object.
             GameObject fadeEffect = EditorCustomUtility.CreateGameObjectInEditor("FadeEffect");
             fadeEffect.AddComponent<FadeEffect>();
-            _manager.fadeEffect = fadeEffect.GetComponent<FadeEffect>();
+            _manager.FadeEffect = fadeEffect.GetComponent<FadeEffect>();
 
             Selection.activeGameObject = _manager.gameObject;
 

@@ -1,15 +1,21 @@
 ﻿using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
-using Base.CustomEditor;
+using BaseFrame.CustomEditor;
 
-namespace QStates.Editors {
+namespace BaseFrame.QStates.Editors {
 
+    /// <summary>
+    /// Custom inspector for the UIStateSelector component.
+    /// </summary>
     [UnityEditor.CustomEditor(typeof(UIStateSelector))]
     public class UIStateSelectorInspector : Editor {
 
         private UIStateSelector myScript;
 
+		/// <summary>
+		/// Draws the custom inspector.
+		/// </summary>
         public override void OnInspectorGUI () {
 
             myScript = (UIStateSelector)target;
@@ -18,7 +24,7 @@ namespace QStates.Editors {
 
             EditorGUILayout.BeginHorizontal();
             EditorGUILayout.LabelField("Start State");
-            myScript.startUIState = (BaseUIState)EditorGUILayout.ObjectField(myScript.startUIState, typeof(BaseUIState), true);
+            myScript.startState = (BaseGameState)EditorGUILayout.ObjectField(myScript.startState, typeof(BaseUIState), true);
             EditorGUILayout.EndHorizontal();
             if (GUILayout.Button("Add New")) {
 
@@ -84,6 +90,12 @@ namespace QStates.Editors {
 
         }
 
+		/// <summary>
+		/// Swaps a item from a list with another item in the same list.
+		/// </summary>
+		/// <param name="list">The used List.</param>
+		/// <param name="indexA">Index of item a.</param>
+		/// <param name="indexB">Index of item b.</param>
         public static void SwapItems (List<GameObject> list, int indexA, int indexB) {
 
             GameObject tmp = list[indexA];

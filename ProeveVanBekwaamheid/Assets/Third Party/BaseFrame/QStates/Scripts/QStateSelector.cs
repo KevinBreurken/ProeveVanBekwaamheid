@@ -2,8 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace QStates {
+namespace BaseFrame.QStates {
 
+	/// <summary>
+	/// Switches between QStates. Acts as BaseClass for UIStates and GameStates.
+	/// </summary>
     public class QStateSelector : MonoBehaviour {
 
         /// <summary>
@@ -31,6 +34,9 @@ namespace QStates {
         /// </summary>
         public QState startState;
 
+		/// <summary>
+		/// Called first by Unity3D.
+		/// </summary>
         public virtual void Awake () {
             //Disable all UIStates.
             for (int i = 0; i < States.Count; i++) {
@@ -39,8 +45,11 @@ namespace QStates {
 
             }
 
-        }
+            if (startState != null)
+                StartCoroutine(SetState(startState));
 
+        }
+        
         /// <summary>
         /// Gets the state by its name.
         /// </summary>
@@ -92,6 +101,10 @@ namespace QStates {
             
         }
         
+		/// <summary>
+		/// Adds a state to the state list.
+		/// </summary>
+		/// <param name="_state">The state.</param>
         public void AddState(GameObject _state) {
 
             States.Add(_state);

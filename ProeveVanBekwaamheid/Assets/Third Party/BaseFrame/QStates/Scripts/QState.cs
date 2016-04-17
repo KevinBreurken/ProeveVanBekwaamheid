@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace QStates {
+/// <summary>
+/// QStates: Part of BaseFrame that handles state switching for UI and Game states.
+/// </summary>
+namespace BaseFrame.QStates {
 
     /// <summary>
     /// BaseClass of QState. QStates are used for UIStates and GameStates.

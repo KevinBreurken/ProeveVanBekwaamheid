@@ -2,7 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace QInput {
+/// <summary>
+/// QInput: Part of BaseFrame that handles Input.
+/// </summary>
+namespace BaseFrame.QInput {
 
     /// <summary>
     /// Handles everything input related.
@@ -24,19 +27,15 @@ namespace QInput {
 
                 }
 
-                if (instance == null) {
-
-                    //GameObject go = new GameObject("InputManager");
-                    //instance = go.AddComponent(typeof(InputManager)) as InputManager;
-
-                }
-
                 return instance;
 
             }
 
         }
 
+		/// <summary>
+		/// Input change event.
+		/// </summary>
 		public delegate void InputChangeEvent (BaseQInputMethod _changedMethod);
 
         /// <summary>
@@ -65,7 +64,7 @@ namespace QInput {
         /// <summary>
         /// Sets the input method.
         /// </summary>
-        /// <param name="_inputName">The name of the input method. (by its GameObject name)</param>
+        /// <param name="_inputName">Name of the InputMethod.</param>
         public void SetInputMethod (string _inputName) {
 
             for (int i = 0; i < inputMethods.Count; i++) {
@@ -84,12 +83,12 @@ namespace QInput {
         /// <summary>
         /// Sets the input method.
         /// </summary>
-        /// <param name="_inputName">The name of the input method. (by its GameObject name)</param>
+		/// <param name="_inputMethod">The input method.</param>
         public void SetInputMethod (BaseQInputMethod _inputMethod) {
 
            currentlyUsedInputMethod = _inputMethod;
 
-           if(onInputChanged != null)
+           if (onInputChanged != null)
            onInputChanged(currentlyUsedInputMethod);
 
         }

@@ -1,15 +1,21 @@
 ﻿using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
-using Base.CustomEditor;
+using BaseFrame.CustomEditor;
 
-namespace QStates.Editors {
+namespace BaseFrame.QStates.Editors {
 
+    /// <summary>
+    /// Custom inspector for the GameStateSelector component.
+    /// </summary>
     [UnityEditor.CustomEditor(typeof(GameStateSelector))]
     public class GameStateSelectorInspector : Editor {
 
         private GameStateSelector myScript;
 
+		/// <summary>
+		/// Draws the custom inspector.
+		/// </summary>
         public override void OnInspectorGUI () {
 
             myScript = (GameStateSelector)target;
@@ -83,6 +89,12 @@ namespace QStates.Editors {
 
         }
 
+		/// <summary>
+		/// Swaps a item from a list with another item in the same list.
+		/// </summary>
+		/// <param name="list">The used List.</param>
+		/// <param name="indexA">Index of item a.</param>
+		/// <param name="indexB">Index of item b.</param>
         public void SwapItems (List<GameObject> list, int indexA, int indexB) {
 
             GameObject tmp = list[indexA];
@@ -92,7 +104,5 @@ namespace QStates.Editors {
         }
 
     }
-
-
-
+		
 }

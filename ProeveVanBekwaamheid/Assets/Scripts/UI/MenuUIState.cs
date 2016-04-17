@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
-using QStates;
-using QEffect;
-using QInput;
-using QUI;
+using BaseFrame.QEffect;
+using BaseFrame.QInput;
+using BaseFrame.QUI;
+using BaseFrame.QStates;
 using Base.Game;
 
 namespace Base.UI {
@@ -135,7 +135,7 @@ namespace Base.UI {
             creditsLayer.GetComponent<CanvasGroup>().alpha = 0;
             instructionsLayer.GetComponent<CanvasGroup>().alpha = 0;
 
-            StartCoroutine(EffectManager.Instance.fadeEffect.TryToFade(0, -1, 1));
+            StartCoroutine(EffectManager.Instance.FadeEffect.Fade(0, -1, 1));
 
         }
 
@@ -163,8 +163,8 @@ namespace Base.UI {
         private void OnQuitClicked () {
 
             SetButtonState(false);
-            EffectManager.Instance.fadeEffect.onFadeFinished += QuitGame;
-            StartCoroutine(EffectManager.Instance.fadeEffect.Fade(1, -1, 0));
+            EffectManager.Instance.FadeEffect.onFadeFinished += QuitGame;
+            StartCoroutine(EffectManager.Instance.FadeEffect.Fade(0, -1, 1));
 
         }
 

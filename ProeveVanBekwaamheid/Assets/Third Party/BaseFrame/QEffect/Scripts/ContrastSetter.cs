@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace QEffect.Effects {
+namespace BaseFrame.QEffect.Effects {
 
+	/// <summary>
+	/// Applies a ContrastComponent to the targeted camera.
+	/// </summary>
     public class ContrastSetter : MonoBehaviour {
 
         public Camera targetCamera;

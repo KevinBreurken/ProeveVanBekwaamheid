@@ -2,10 +2,19 @@
 using System.Collections;
 using DG.Tweening;
 
-namespace QEffect.Effects {
+/// <summary>
+/// Namespace for effects used by QEffect.
+/// </summary>
+namespace BaseFrame.QEffect.Effects {
 
+	/// <summary>
+	/// Uses a UI layer for fading in and out. layer requires a canvasgroup component.
+	/// </summary>
     public class FadeEffect : MonoBehaviour {
 
+		/// <summary>
+		/// Fade event.
+		/// </summary>
         public delegate void FadeEvent ();
 
         /// <summary>
@@ -32,7 +41,7 @@ namespace QEffect.Effects {
         /// <param name="_endValue">The value it will fade to.</param>
         public IEnumerator Fade (float _endValue) {
 
-            targetCanvasGroup.DOFade(_endValue, fadeTime).OnComplete(FadeCompleted);
+            targetCanvasGroup.DOFade(_endValue, fadeTime).OnComplete(FadeCompleted).SetUpdate(true);
             yield return new WaitForSeconds(fadeTime);
 
         }
@@ -44,10 +53,7 @@ namespace QEffect.Effects {
         /// <param name="_speed">How fast the screen will fade.</param>
         public IEnumerator Fade (float _endValue, float _speed) {
 
-            if (_speed == -1)
-                _speed = fadeTime;
-
-            targetCanvasGroup.DOFade(_endValue, _speed).OnComplete(FadeCompleted);
+            targetCanvasGroup.DOFade(_endValue, _speed).OnComplete(FadeCompleted).SetUpdate(true);
             yield return new WaitForSeconds(_speed);
 
         }
@@ -59,27 +65,10 @@ namespace QEffect.Effects {
         /// <param name="_speed">How fast the screen will fade.</param>
         /// <param name="_startValue">which value the canvasGroup starts in.</param>
         public IEnumerator Fade (float _endValue, float _speed, float _startValue) {
-            if (_speed == -1)
-                _speed = fadeTime;
 
             targetCanvasGroup.alpha = _startValue;
             targetCanvasGroup.DOFade(_endValue, _speed).OnComplete(FadeCompleted).SetUpdate(true);
             yield return new WaitForSeconds(_speed);
-
-        }
-
-        public IEnumerator TryToFade (float _endValue, float _speed, float _startValue) {
-
-            if(targetCanvasGroup.alpha == _startValue) {
-
-                yield return StartCoroutine(Fade(_endValue, _speed, _startValue));
-
-            } else {
-
-                yield return null;
-
-            }
-           
 
         }
 

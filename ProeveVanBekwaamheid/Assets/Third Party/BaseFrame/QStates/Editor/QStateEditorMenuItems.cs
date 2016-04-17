@@ -1,11 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEditor;
-using Base.CustomEditor;
-using QStates;
+using BaseFrame.CustomEditor;
+using BaseFrame.QStates;
 
-namespace QStates.Editors {
+/// <summary>
+/// Custom Editors for QStates related components.
+/// </summary>
+namespace BaseFrame.QStates.Editors {
 
+	/// <summary>
+	/// Custom menu items for QStates.
+	/// </summary>
     public class QStateEditorMenuItems {
 
         [MenuItem("BaseFrame/QState/Create GameState")]

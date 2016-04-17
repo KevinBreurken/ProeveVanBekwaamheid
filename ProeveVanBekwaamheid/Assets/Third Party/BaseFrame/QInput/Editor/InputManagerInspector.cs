@@ -1,17 +1,26 @@
 ﻿using UnityEngine;
 using UnityEditor;
 using System.Collections;
-using QInput;
+using BaseFrame.QInput;
 using System.Collections.Generic;
-using Base.CustomEditor;
+using BaseFrame.CustomEditor;
 
-namespace QInput.Editors {
+/// <summary>
+/// Custom Editors for QInput related components.
+/// </summary>
+namespace BaseFrame.QInput.Editors {
 
-    [CustomEditor(typeof(QInputManager))]
+    /// <summary>
+    /// Custom inspector for the InputManager component.
+    /// </summary>
+    [UnityEditor.CustomEditor(typeof(QInputManager))]
     public class InputManagerInspector : Editor {
 
         private QInputManager myScript;
 
+		/// <summary>
+		/// Draws the custom inspector.
+		/// </summary>
         public override void OnInspectorGUI () {
 
             myScript = (QInputManager)target;
@@ -105,6 +114,12 @@ namespace QInput.Editors {
 
         }
 
+		/// <summary>
+		/// Swaps a item from a list with another item in the same list.
+		/// </summary>
+		/// <param name="list">The used List.</param>
+		/// <param name="indexA">Index of item a.</param>
+		/// <param name="indexB">Index of item b.</param>
         public void SwapItems (List<BaseQInputMethod> list, int indexA, int indexB) {
 
             BaseQInputMethod tmp = list[indexA];

@@ -1,13 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace QInput {
+namespace BaseFrame.QInput {
 
     /// <summary>
     /// BaseClass for InputMethod. InputMethod is used by the InputManager.
     /// </summary>
     public class BaseQInputMethod : MonoBehaviour {
 
+		/// <summary>
+		/// Event for handling input.
+		/// </summary>
         public delegate void InputEvent ();
 
         /// <summary>
@@ -24,6 +27,9 @@ namespace QInput {
 
         }
 
+		/// <summary>
+		/// Called each frame.
+		/// </summary>
         public virtual void Update () { }
 
         /// <summary>

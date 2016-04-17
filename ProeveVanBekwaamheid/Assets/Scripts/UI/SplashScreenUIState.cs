@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
-using QStates;
-using QEffect;
+using BaseFrame.QStates;
+using BaseFrame.QEffect;
 
 namespace Base.UI {
 
@@ -14,14 +14,14 @@ namespace Base.UI {
         public override void Enter () {
 
             base.Enter();
-            StartCoroutine(EffectManager.Instance.fadeEffect.Fade(0, fadeSpeed, 1));
+            StartCoroutine(EffectManager.Instance.FadeEffect.Fade(0, fadeSpeed, 1));
             StartCoroutine(WaitToFadeOut());
 
         }
 
         public override IEnumerator Exit () {
             
-            yield return StartCoroutine(EffectManager.Instance.fadeEffect.Fade(1, fadeSpeed));
+            yield return StartCoroutine(EffectManager.Instance.FadeEffect.Fade(1, fadeSpeed));
             base.Exit();
 
         }
@@ -54,7 +54,7 @@ namespace Base.UI {
             StopAllCoroutines();
             forceNextScreen = true;
 
-            EffectManager.Instance.fadeEffect.StopFade();
+            EffectManager.Instance.FadeEffect.StopFade();
             UIStateSelector.Instance.SetState("MenuUIState");
 
         }

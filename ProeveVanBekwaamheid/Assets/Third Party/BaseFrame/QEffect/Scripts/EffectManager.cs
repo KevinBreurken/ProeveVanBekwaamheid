@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
-using QEffect.Effects;
+using BaseFrame.QEffect.Effects;
 
-namespace QEffect {
+/// <summary>
+/// QEffect: Part of BaseFrame that handles Effects.
+/// </summary>
+namespace BaseFrame.QEffect {
 
     /// <summary>
     /// A singleton that handles all effects.
@@ -18,14 +21,8 @@ namespace QEffect {
             get {
 
                 if (instance == null) {
+
                     instance = FindObjectOfType(typeof(EffectManager)) as EffectManager;
-
-                }
-
-                if (instance == null) {
-
-                    GameObject go = new GameObject("EffectManager");
-                    instance = go.AddComponent(typeof(EffectManager)) as EffectManager;
 
                 }
 
@@ -38,10 +35,11 @@ namespace QEffect {
         /// <summary>
         /// Reference to the FadeEffect class.
         /// </summary>
-        [HideInInspector]
-        public FadeEffect fadeEffect;
+        public FadeEffect FadeEffect;
 
-        [HideInInspector]
+        /// <summary>
+        /// Reference to the ContrastSetter class.
+        /// </summary>
         public ContrastSetter Contrast;
 
     }

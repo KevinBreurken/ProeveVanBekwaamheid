@@ -1,14 +1,23 @@
 ﻿using UnityEngine;
 using UnityEditor;
 using System.Collections;
-using QUI;
-using QUI.Data;
-using Base.CustomEditor;
+using BaseFrame.QUI;
+using BaseFrame.QUI.Data;
+using BaseFrame.CustomEditor;
 
-namespace QUI.Editors {
+namespace BaseFrame.QUI.Editors {
 
+	/// <summary>
+	/// Draws QUI related editor windows or panels.
+	/// </summary>
     public class QUIDraw {
 
+		/// <summary>
+		/// Draws the QUIAnimationData panel.
+		/// </summary>
+		/// <returns>The animation data.</returns>
+		/// <param name="_data">The animation data.</param>
+		/// <param name="_titleName">The name of the animation data.</param>
         public static QUIAnimationData DrawAnimationDataPanel (QUIAnimationData _data, string _titleName) {
 
             QUIAnimationData data = _data;
@@ -22,7 +31,7 @@ namespace QUI.Editors {
                 EditorGUILayout.BeginVertical("Box");
 
                 data.delay = Draw.FloatField(data.delay, "Start Delay");
-                data.graphic = Draw.DrawSpriteField(data.graphic, "Graphic", false);
+                data.defaultGraphic = Draw.DrawSpriteField(data.defaultGraphic, "Graphic", false);
 
                 EditorGUILayout.EndVertical();
 
@@ -47,8 +56,8 @@ namespace QUI.Editors {
                 EditorGUILayout.LabelField("Others");
 
 
-                data.isAudioShownInEditor = Draw.TitleWithToggle(data.isAudioShownInEditor, "Sound Effect");
-                if (data.isAudioShownInEditor) {
+                data.isAudioVisibleInEditor = Draw.TitleWithToggle(data.isAudioVisibleInEditor, "Sound Effect");
+                if (data.isAudioVisibleInEditor) {
 
                     data.startAudioEffect = DrawAudioAnimationDataPanel(data.startAudioEffect, "Start Sound");
                     data.completeAudioEffect = DrawAudioAnimationDataPanel(data.completeAudioEffect, "Complete Sound");
@@ -65,6 +74,11 @@ namespace QUI.Editors {
 
         }
 
+		/// <summary>
+		/// Draws the movement data panel.
+		/// </summary>
+		/// <returns>The movement data.</returns>
+		/// <param name="_data">The movement data.</param>
         public static QUIMovementAnimationData DrawMovementDataPanel (QUIMovementAnimationData _data) {
 
             QUIMovementAnimationData data = _data;
@@ -94,6 +108,11 @@ namespace QUI.Editors {
 
         }
 
+		/// <summary>
+		/// Draws the rotation data panel.
+		/// </summary>
+		/// <returns>The rotation data.</returns>
+		/// <param name="_data">The rotation data.</param>
         public static QUIRotationAnimationData DrawRotationDataPanel (QUIRotationAnimationData _data) {
 
             QUIRotationAnimationData data = _data;
@@ -123,6 +142,11 @@ namespace QUI.Editors {
 
         }
 
+		/// <summary>
+		/// Draws the scale data panel.
+		/// </summary>
+		/// <returns>The scale data.</returns>
+		/// <param name="_data">The scale data.</param>
         public static QUIScaleAnimationData DrawScaleDataPanel (QUIScaleAnimationData _data) {
 
             QUIScaleAnimationData data = _data;
@@ -152,6 +176,11 @@ namespace QUI.Editors {
 
         }
 
+		/// <summary>
+		/// Draws the fade data panel.
+		/// </summary>
+		/// <returns>The fade data.</returns>
+		/// <param name="_data">The fade data.</param>
         public static QUIFadeAnimationData DrawFadeDataPanel (QUIFadeAnimationData _data) {
 
             QUIFadeAnimationData data = _data;
@@ -181,6 +210,11 @@ namespace QUI.Editors {
 
         }
 
+		/// <summary>
+		/// Draws the color data panel.
+		/// </summary>
+		/// <returns>The color data.</returns>
+		/// <param name="_data">The color data.</param>
         public static QUIColorAnimationData DrawColorDataPanel (QUIColorAnimationData _data) {
 
             QUIColorAnimationData data = _data;
@@ -210,6 +244,12 @@ namespace QUI.Editors {
 
         }
 
+		/// <summary>
+		/// Draws the audio animation data panel.
+		/// </summary>
+		/// <returns>The audio animation data.</returns>
+		/// <param name="_data">The audio animation data.</param>
+		/// <param name="_title">Title of the audio Animation.</param>
         public static QUIAudioAnimationData DrawAudioAnimationDataPanel (QUIAudioAnimationData _data, string _title) {
 
             QUIAudioAnimationData data = _data;

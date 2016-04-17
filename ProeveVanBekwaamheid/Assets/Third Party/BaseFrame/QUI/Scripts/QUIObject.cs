@@ -4,16 +4,35 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using QUI.Data;
+using BaseFrame.QUI.Data;
 
-namespace QUI {
+/// <summary>
+/// QUI: Part of BaseFrame that handles UI animations.
+/// </summary>
+namespace BaseFrame.QUI {
 
     /// <summary>
     /// UIObject is a interface based object that can be animated by using UIAnimationData.
     /// </summary>
-    [AddComponentMenu("BaseFrame")]
     [RequireComponent(typeof(CanvasGroup),typeof(RectTransform),typeof(Image))]
     public class QUIObject : MonoBehaviour , IPointerEnterHandler , IPointerExitHandler {
+
+        /// <summary>
+        /// The pointer state this QUIObject is in.
+        /// </summary>
+        public enum QAUIObjectPointerState {
+
+            /// <summary>
+            /// If the pointer is inside the QUIObject.
+            /// </summary>
+            InsideObject,
+
+            /// <summary>
+            /// If the pointer is outside the QUIObject.
+            /// </summary>
+            OutsideObject
+
+        }
 
         /// <summary>
         /// Animation data for the show animation.
@@ -35,25 +54,34 @@ namespace QUI {
         /// </summary>
         public QUIAnimationData pointerExitAnimationData;
 
-        public enum QAUIObjectPointerState {
-            InsideObject,
-            OutsideObject
-        }
+        /// <summary>
+        /// The current pointer state of this QUIObject.
+        /// </summary>
+        public QAUIObjectPointerState currentPointerState;
 
-        public QAUIObjectPointerState pointerState;
+        /// <summary>
+        /// If this QUIObject is currently animating.
+        /// </summary>
+        protected bool isAnimating;
 
-        private CanvasGroup canvasGroup;
-        private RectTransform rectTransform;
+        /// <summary>
+        /// Reference to the Image(graphic) of this QUIObject.
+        /// </summary>
         protected Image image;
 
-        protected bool isTweening;
+        /// <summary>
+        /// Reference to the CanvasGroup of this QUIObject.
+        /// </summary>
+        private CanvasGroup canvasGroup;
 
-        public CanvasGroup GetCanvasGroup () {
+        /// <summary>
+        /// Reference to the rectTransform of this QUIObject.
+        /// </summary>
+        private RectTransform rectTransform;
 
-            return canvasGroup;
-
-        }
-
+		/// <summary>
+		/// Called first by Unity3D.
+		/// </summary>
         public virtual void Awake () {
 
             //Initialize the animation data.
@@ -74,9 +102,9 @@ namespace QUI {
         /// </summary>
         public void OnPointerEnter (PointerEventData eventData) {
 
-            pointerState = QAUIObjectPointerState.InsideObject;
+            currentPointerState = QAUIObjectPointerState.InsideObject;
 
-            if (!isTweening) {
+            if (!isAnimating) {
 
                 StopAllCoroutines();
                 StartCoroutine(PlayAnimation(pointerEnterAnimationData));
@@ -90,9 +118,9 @@ namespace QUI {
         /// </summary>
         public void OnPointerExit (PointerEventData eventData) {
 
-            pointerState = QAUIObjectPointerState.OutsideObject;
+            currentPointerState = QAUIObjectPointerState.OutsideObject;
 
-            if (!isTweening) {
+            if (!isAnimating) {
 
                 StopAllCoroutines();
                 StartCoroutine(PlayAnimation(pointerExitAnimationData));
@@ -106,7 +134,7 @@ namespace QUI {
         /// </summary>
         public IEnumerator Hide () {
 
-            isTweening = true;
+            isAnimating = true;
 
             canvasGroup.interactable = false;
             canvasGroup.blocksRaycasts = false;
@@ -121,7 +149,7 @@ namespace QUI {
         /// </summary>
         public IEnumerator Show () {
 
-            isTweening = true;
+            isAnimating = true;
 
             canvasGroup.interactable = true;
             canvasGroup.blocksRaycasts = true;
@@ -142,11 +170,7 @@ namespace QUI {
             rectTransform.DOKill();
 
             //Change graphic if its set.
-            if(_data.graphic != null) {
-
-                image.sprite = _data.graphic;
-
-            }
+            if(_data.defaultGraphic != null) { image.sprite = _data.defaultGraphic; }
 
             //Set starting values if they're used.
             if (_data.movementData.usesAnimation && _data.movementData.useStartValue)
@@ -163,28 +187,41 @@ namespace QUI {
             yield return new WaitForSeconds(_data.delay);
 
             //Tween it.
-            if (_data.fadeData.usesAnimation)
-                StartCoroutine(Fade(_data.fadeData));
-            if (_data.movementData.usesAnimation) 
-                StartCoroutine(Move(_data.movementData));
-            if (_data.rotationData.usesAnimation) 
-                StartCoroutine(Rotate(_data.rotationData));
-			if (_data.startAudioEffect.usesSoundEffect)
-				StartCoroutine(Sound(_data.startAudioEffect));
-            if (_data.colorData.usesAnimation)
-                StartCoroutine(Color(_data.colorData));
-            if(_data.scaleData.usesAnimation)
-                StartCoroutine(Scale(_data.scaleData));
-
+            if (_data.fadeData.usesAnimation)           StartCoroutine(Fade(_data.fadeData));
+            if (_data.movementData.usesAnimation)       StartCoroutine(Move(_data.movementData));
+            if (_data.rotationData.usesAnimation)       StartCoroutine(Rotate(_data.rotationData));
+			if (_data.startAudioEffect.usesSoundEffect) StartCoroutine(Sound(_data.startAudioEffect));
+            if (_data.colorData.usesAnimation)          StartCoroutine(Color(_data.colorData));
+            if(_data.scaleData.usesAnimation)           StartCoroutine(Scale(_data.scaleData));
 
             //Wait until the tween is finished.
             yield return new WaitForSeconds(_data.TotalLength);
 
-		
-			if (_data.completeAudioEffect.usesSoundEffect)
-				StartCoroutine(Sound(_data.completeAudioEffect));
+			if (_data.completeAudioEffect.usesSoundEffect) StartCoroutine(Sound(_data.completeAudioEffect));
 
-            isTweening = false;
+            isAnimating = false;
+
+        }
+
+        /// <summary>
+        /// Sets the interactable state of this QUIObject.
+        /// QUIObject itself isn't interactable. but other components that inherit QUIObject does.
+        /// ex. QUIButton.
+        /// </summary>
+        /// <param name="_state">The interactable state of this QUIObject.</param>
+        public virtual void SetInteractable (bool _state) {
+
+            Debug.LogError("A QUIObject is not interact-able by itself. use a QUIButton instead.");
+
+        }
+        
+        /// <summary>
+        /// Returns the CanvasGroup of this QUIObject.
+        /// </summary>
+        /// <returns>The CanvasGroup component.</returns>
+        public CanvasGroup GetCanvasGroup () {
+
+            return canvasGroup;
 
         }
 
@@ -207,7 +244,6 @@ namespace QUI {
             image.DOColor(_data.endColorValue, _data.animationTime).SetEase(_data.easeType);
 
         }
-
 
         /// <summary>
         /// Tweens the position of this UIObjet.
@@ -248,28 +284,6 @@ namespace QUI {
 			_data.soundEffect.GetAudioObject().Play();
 
         }
-
-        public bool IsAnimating () {
-            return isTweening;
-        }
-		// Used for debugging animations.
-		void Update () {
-
-			#if UNITY_EDITOR
-			if (Input.GetKeyDown(KeyCode.O)) {
-
-                StartCoroutine(Show());
-
-            }
-
-			if (Input.GetKeyDown(KeyCode.P)) {
-
-				StartCoroutine(Hide());
-
-			}
-			#endif
-
-		}
 
     }
 

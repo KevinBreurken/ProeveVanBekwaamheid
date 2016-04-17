@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-using QStates;
+using BaseFrame.QStates;
 
 namespace Base.Game {
 

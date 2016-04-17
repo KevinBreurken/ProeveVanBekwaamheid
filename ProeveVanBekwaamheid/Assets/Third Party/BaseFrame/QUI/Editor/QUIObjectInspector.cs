@@ -1,17 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEditor;
-using QUI;
-using QUI.Editors;
-using Base.CustomEditor;
+using BaseFrame.QUI;
+using BaseFrame.QUI.Editors;
+using BaseFrame.CustomEditor;
 
-namespace QUI.Editors {
+namespace BaseFrame.QUI.Editors {
 
+    /// <summary>
+    /// Custom inspector for the QUIObject component.
+    /// </summary>
     [UnityEditor.CustomEditor(typeof(QUIObject))]
     public class QUIObjectInspector : Editor {
 
         private QUIObject myScript;
 
+		/// <summary>
+		/// Draws the custom inspector.
+		/// </summary>
         public override void OnInspectorGUI () {
 
             myScript = (QUIObject)target;
