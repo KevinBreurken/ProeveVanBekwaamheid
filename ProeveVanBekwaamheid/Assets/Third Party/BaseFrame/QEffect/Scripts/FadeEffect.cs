@@ -67,7 +67,7 @@ namespace BaseFrame.QEffect.Effects {
         public IEnumerator Fade (float _endValue, float _speed, float _startValue) {
 
             targetCanvasGroup.alpha = _startValue;
-            targetCanvasGroup.DOFade(_endValue, _speed).OnComplete(FadeCompleted).SetUpdate(true);
+            targetCanvasGroup.DOFade(_endValue, _speed).OnComplete(FadeCompleted);
             yield return new WaitForSeconds(_speed);
 
         }

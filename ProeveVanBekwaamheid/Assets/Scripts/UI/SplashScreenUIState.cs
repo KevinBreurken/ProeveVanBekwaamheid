@@ -2,26 +2,43 @@
 using System.Collections;
 using BaseFrame.QStates;
 using BaseFrame.QEffect;
+using DG.Tweening;
 
 namespace Base.UI {
 
     public class SplashScreenUIState : BaseUIState {
 
-        private bool forceNextScreen;
+        public Camera mainCamera;
+        public float cameraStartingPosition;
         public float fadeSpeed;
         public float timeTillFadeOut;
+
+        private bool forceNextScreen;
+        private CanvasGroup stateCanvasGroup;
+
+        void Awake () {
+
+            stateCanvasGroup = GetComponent<CanvasGroup>();
+
+        }
 
         public override void Enter () {
 
             base.Enter();
+
+            mainCamera.transform.position = new Vector3(0, cameraStartingPosition, -10);
+            mainCamera.transform.DOMoveY(mainCamera.transform.position.y + 2, 10);
             StartCoroutine(EffectManager.Instance.FadeEffect.Fade(0, fadeSpeed, 1));
             StartCoroutine(WaitToFadeOut());
 
         }
 
         public override IEnumerator Exit () {
-            
-            yield return StartCoroutine(EffectManager.Instance.FadeEffect.Fade(1, fadeSpeed));
+
+            stateCanvasGroup.DOFade(0, 2);
+            mainCamera.transform.DOKill();
+            mainCamera.transform.DOMoveY(0, 4).SetEase(Ease.InOutBack);
+            yield return new WaitForSeconds(1.5f);
             base.Exit();
 
         }

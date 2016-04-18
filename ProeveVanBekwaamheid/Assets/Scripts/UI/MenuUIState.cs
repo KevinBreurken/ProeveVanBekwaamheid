@@ -5,12 +5,14 @@ using BaseFrame.QInput;
 using BaseFrame.QUI;
 using BaseFrame.QStates;
 using Base.Game;
+using DG.Tweening;
 
 namespace Base.UI {
 
     public class MenuUIState : BaseUIState {
 
-        public BaseGameState gameState;
+        public BaseGameState offGameState;
+        public BaseUIState gameUIState;
 
         [Header("Button")]
         public QUIButton startButton;
@@ -27,12 +29,13 @@ namespace Base.UI {
         private QUIObject currentOpenLayer;
 
         private BaseQInputMethod inputMethod;
-
+        private CanvasGroup stateCanvasGroup;
        
 
         void Awake () {
 
-            QInputManager.Instance.onInputChanged += Instance_onInputChanged;
+            //Get references
+            stateCanvasGroup = GetComponent<CanvasGroup>();
             inputMethod = QInputManager.Instance.GetCurrentInputMethod();
 
             //Removes the quit button if its a WebGL game (may need a android/IOS check as well.
@@ -45,6 +48,14 @@ namespace Base.UI {
             creditsButton.onToggleClicked += OnToggleButtonClicked;
             instructionsButton.onToggleClicked += OnToggleButtonClicked;
             quitButton.onClicked += OnQuitClicked;
+            startButton.onClicked += OnPlayClicked;
+            QInputManager.Instance.onInputChanged += Instance_onInputChanged;
+
+        }
+
+        private void OnPlayClicked () {
+
+            StartCoroutine(UIStateSelector.Instance.SetState(gameUIState));
 
         }
 
@@ -69,18 +80,24 @@ namespace Base.UI {
             instructionsButton.SetToggleStateRough(false);
 
             if(_toggledObject == creditsButton) {
+
                 creditsButton.SetToggleStateRough(true);
                 StartCoroutine(OpenLayer(creditsLayer));
+
             }
 
             if (_toggledObject == optionsButton) {
+
                 optionsButton.SetToggleStateRough(true);
                 StartCoroutine(OpenLayer(optionsLayer));
+
             }
 
             if (_toggledObject == instructionsButton) {
+
                 instructionsButton.SetToggleStateRough(true);
                 StartCoroutine(OpenLayer(instructionsLayer));
+
             }
 
             currentActiveToggle = _toggledObject;
@@ -119,15 +136,14 @@ namespace Base.UI {
 
         }
 
-        
-
+       
         public override void Enter () {
 
             base.Enter();
 
-            if(GameStateSelector.Instance.currentState != gameState) {
+            if(GameStateSelector.Instance.currentState != offGameState) {
 
-                StartCoroutine(GameStateSelector.Instance.SetState(gameState));
+                StartCoroutine(GameStateSelector.Instance.SetState(offGameState));
 
             }
 
@@ -135,13 +151,25 @@ namespace Base.UI {
             creditsLayer.GetComponent<CanvasGroup>().alpha = 0;
             instructionsLayer.GetComponent<CanvasGroup>().alpha = 0;
 
-            StartCoroutine(EffectManager.Instance.FadeEffect.Fade(0, -1, 1));
+           
+            stateCanvasGroup.alpha = 0;
+            stateCanvasGroup.interactable = true;
+            stateCanvasGroup.blocksRaycasts = true;
+            stateCanvasGroup.DOFade(1, 1.5f);
 
         }
 
         public override IEnumerator Exit () {
 
-            return base.Exit();
+            stateCanvasGroup.alpha = 1;
+            stateCanvasGroup.interactable = false;
+            stateCanvasGroup.blocksRaycasts = false;
+            stateCanvasGroup.DOFade(0, 1.5f);
+
+            GameStateSelector.Instance.SetState("InGameState");
+
+            yield return new WaitForSeconds(3);
+            base.Exit();
 
         }
 
