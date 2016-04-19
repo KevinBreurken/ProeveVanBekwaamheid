@@ -10,6 +10,7 @@ namespace Base.UI {
     public class GameUIState : BaseUIState {
 
 		public QUIButton pauseButton;
+        public PauseOverlay pauseOverlay;
 
 		void Awake () {
 
@@ -25,12 +26,14 @@ namespace Base.UI {
 
         void PauseButton_onClicked ()
         {
-			
+            pauseOverlay.OpenOverlay();
         }
 
         public override IEnumerator Exit () {
 
+            StartCoroutine(GameStateSelector.Instance.SetState("OffGameState"));
             return base.Exit();
+
         }
 
         public override void Update () {

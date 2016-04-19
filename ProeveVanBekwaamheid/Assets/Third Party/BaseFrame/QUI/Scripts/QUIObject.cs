@@ -60,6 +60,11 @@ namespace BaseFrame.QUI {
         public QAUIObjectPointerState currentPointerState;
 
         /// <summary>
+        /// If the animations are played with the Unity timescale.
+        /// </summary>
+        public bool usesTimeScale = true;
+
+        /// <summary>
         /// If this QUIObject is currently animating.
         /// </summary>
         protected bool isAnimating;
@@ -231,7 +236,7 @@ namespace BaseFrame.QUI {
         private IEnumerator Fade (QUIFadeAnimationData _data) {
 
             yield return new WaitForSeconds(_data.delay);
-            canvasGroup.DOFade(_data.endFadeValue, _data.animationTime).SetEase(_data.easeType);
+            canvasGroup.DOFade(_data.endFadeValue, _data.animationTime).SetEase(_data.easeType).SetUpdate(!usesTimeScale);
 
         }
 
@@ -241,7 +246,7 @@ namespace BaseFrame.QUI {
         private IEnumerator Color (QUIColorAnimationData _data) {
 
             yield return new WaitForSeconds(_data.delay);
-            image.DOColor(_data.endColorValue, _data.animationTime).SetEase(_data.easeType);
+            image.DOColor(_data.endColorValue, _data.animationTime).SetEase(_data.easeType).SetUpdate(!usesTimeScale);
 
         }
 
@@ -251,7 +256,7 @@ namespace BaseFrame.QUI {
         private IEnumerator Move (QUIMovementAnimationData _data) {
 
             yield return new WaitForSeconds(_data.delay);
-            rectTransform.DOLocalMove(_data.endPosition, _data.animationTime).SetEase(_data.easeType);
+            rectTransform.DOLocalMove(_data.endPosition, _data.animationTime).SetEase(_data.easeType).SetUpdate(!usesTimeScale);
 
         }
 
@@ -261,7 +266,7 @@ namespace BaseFrame.QUI {
         private IEnumerator Scale (QUIScaleAnimationData _data) {
 
             yield return new WaitForSeconds(_data.delay);
-            rectTransform.DOScale(_data.endScale, _data.animationTime).SetEase(_data.easeType);
+            rectTransform.DOScale(_data.endScale, _data.animationTime).SetEase(_data.easeType).SetUpdate(!usesTimeScale);
 
         }
 
@@ -271,7 +276,7 @@ namespace BaseFrame.QUI {
         private IEnumerator Rotate (QUIRotationAnimationData _data) {
 
             yield return new WaitForSeconds(_data.delay);
-            rectTransform.DORotate(_data.endRotation, _data.animationTime).SetEase(_data.easeType);
+            rectTransform.DORotate(_data.endRotation, _data.animationTime).SetEase(_data.easeType).SetUpdate(!usesTimeScale);
 
         }
 

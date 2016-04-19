@@ -36,10 +36,8 @@ namespace Base.UI {
         public override IEnumerator Exit () {
 
             stateCanvasGroup.DOFade(0, 2);
-            mainCamera.transform.DOKill();
-            mainCamera.transform.DOMoveY(0, 4).SetEase(Ease.InOutBack);
-            yield return new WaitForSeconds(1.5f);
-            base.Exit();
+
+            return base.Exit();
 
         }
 
@@ -72,7 +70,7 @@ namespace Base.UI {
             forceNextScreen = true;
 
             EffectManager.Instance.FadeEffect.StopFade();
-            UIStateSelector.Instance.SetState("MenuUIState");
+            StartCoroutine(UIStateSelector.Instance.SetState("MenuUIState"));
 
         }
 

@@ -29,10 +29,13 @@ namespace Base.Game {
 
             frontWaterLayer.DOColor(new Color(frontWaterLayer.color.r, frontWaterLayer.color.g, frontWaterLayer.color.b, 1), 1);
             return base.Exit();
+
         }
 
         public override void Update () {
+
             base.Update();
+
         }
 
     }

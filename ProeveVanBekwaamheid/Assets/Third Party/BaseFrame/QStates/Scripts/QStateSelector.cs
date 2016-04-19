@@ -77,7 +77,7 @@ namespace BaseFrame.QStates {
         /// Changes the State by its name.
         /// </summary>
         /// <param name="_nextState">the name of the state.</param>
-        public void SetState (string _nextState) {
+        public IEnumerator SetState (string _nextState) {
 
             QState foundState = null;
             //Get the next state.
@@ -97,7 +97,7 @@ namespace BaseFrame.QStates {
 
             }
 
-            StartCoroutine(SetState(foundState));
+            yield return StartCoroutine(SetState(foundState));
             
         }
         

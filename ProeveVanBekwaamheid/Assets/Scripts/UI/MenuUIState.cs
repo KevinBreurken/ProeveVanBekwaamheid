@@ -13,6 +13,7 @@ namespace Base.UI {
 
         public BaseGameState offGameState;
         public BaseUIState gameUIState;
+        public Camera mainCamera;
 
         [Header("Button")]
         public QUIButton startButton;
@@ -141,7 +142,10 @@ namespace Base.UI {
 
             base.Enter();
 
-            if(GameStateSelector.Instance.currentState != offGameState) {
+            mainCamera.transform.DOKill();
+            mainCamera.transform.DOMoveY(0, 4).SetEase(Ease.InOutBack);
+
+            if (GameStateSelector.Instance.currentState != offGameState) {
 
                 StartCoroutine(GameStateSelector.Instance.SetState(offGameState));
 
@@ -151,10 +155,20 @@ namespace Base.UI {
             creditsLayer.GetComponent<CanvasGroup>().alpha = 0;
             instructionsLayer.GetComponent<CanvasGroup>().alpha = 0;
 
-           
+
             stateCanvasGroup.alpha = 0;
             stateCanvasGroup.interactable = true;
             stateCanvasGroup.blocksRaycasts = true;
+
+            StartCoroutine(WaitDelay());
+
+        }
+
+        private IEnumerator WaitDelay () {
+
+            yield return new WaitForSeconds(1.5f);
+
+           
             stateCanvasGroup.DOFade(1, 1.5f);
 
         }
@@ -166,7 +180,7 @@ namespace Base.UI {
             stateCanvasGroup.blocksRaycasts = false;
             stateCanvasGroup.DOFade(0, 1.5f);
 
-            GameStateSelector.Instance.SetState("InGameState");
+            StartCoroutine(GameStateSelector.Instance.SetState("InGameState"));
 
             yield return new WaitForSeconds(3);
             base.Exit();
