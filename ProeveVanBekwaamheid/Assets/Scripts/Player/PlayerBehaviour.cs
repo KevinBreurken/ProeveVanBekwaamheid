@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Chanisco;
 
 public class PlayerBehaviour : MonoBehaviour {
 
@@ -14,6 +15,7 @@ public class PlayerBehaviour : MonoBehaviour {
     private Area fishArea;
 
     private SeaController seaController;
+    private float Xpos;
 
     private void Start()
     {
@@ -25,6 +27,7 @@ public class PlayerBehaviour : MonoBehaviour {
 
     public void Update ()
     {
+        Debug.Log(Xpos);
         Controlls();
     }
 
@@ -34,7 +37,7 @@ public class PlayerBehaviour : MonoBehaviour {
         {
             if(transform.localPosition.x > fishArea.xLeft)
             {
-                transform.Translate(-speed, 0, 0);
+                Xpos = ChaniscoLib.AddWithMax(-Xpos,speed,1,0);
             }
             else
             {
@@ -46,7 +49,7 @@ public class PlayerBehaviour : MonoBehaviour {
         {
             if (transform.localPosition.x < fishArea.xRight)
             {
-                transform.Translate(speed, 0, 0);
+                   Xpos = ChaniscoLib.AddWithMax(Xpos, speed, 1, 0);
             }
             else
             {
@@ -67,5 +70,10 @@ public class PlayerBehaviour : MonoBehaviour {
         {
             blueHook.ReleaseHook();
         }
+    }
+
+    private void BoatMovement()
+    {
+
     }
 }
