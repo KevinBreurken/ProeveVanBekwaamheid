@@ -114,6 +114,24 @@ namespace Chanisco
             }
         }
 
+        public static float AddWithMax(float target, float addingValue, float maxValue, float minValue)
+        {
+            float solution = (float)target + addingValue;
+            if (solution > maxValue)
+            {
+                return maxValue;
+            }
+            else if (solution < minValue)
+            {
+                return minValue;
+            }
+            else
+            {
+                return solution;
+            }
+        }
+
+
         public static Vector3 SmoothVector3Step(Vector3 target, Vector3 targetVector, float speed)
         {
             Vector3 solution;
