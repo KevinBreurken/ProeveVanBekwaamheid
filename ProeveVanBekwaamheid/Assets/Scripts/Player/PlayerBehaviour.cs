@@ -4,8 +4,8 @@ using Chanisco;
 
 public class PlayerBehaviour : MonoBehaviour {
 
-    private float speed     = 0.01f;
-    private float maxSpeed  = 0.5f;
+    private float speed     = 0.03f;
+    private float maxSpeed  = 0.7f;
     private float minSpeed  = -0.5f;
     
     private Vector2 originalPos;
