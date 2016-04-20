@@ -9,8 +9,10 @@ public class FishBehaviour : MonoBehaviour {
     public float speed = 5;
     public float pullPressure;
     public Area fishArea;
+    public fishPulls pullInformation;
 
     private Vector3 originalSize;
+    public HookColors requiredHookColor;
 
 
     public void ownStart()
@@ -86,8 +88,10 @@ public class FishBehaviour : MonoBehaviour {
             transform.localScale = new Vector3(-originalSize.x, originalSize.y, originalSize.z);
         }
     }
+
 }
 
+[System.Serializable]
 public class fishPulls
 {
     public float rightPressure;
@@ -98,3 +102,5 @@ public class fishPulls
         this.wrongPressure = wrong;
     }
 }
+
+

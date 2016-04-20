@@ -15,6 +15,8 @@ public class HookBehaviour : MonoBehaviour {
 
     private Vector2 OriginalPos;
 
+
+    public HookColors ownHookColor;
     public void hookStart()
     {
         OriginalPos = transform.position;
@@ -111,7 +113,14 @@ public class HookBehaviour : MonoBehaviour {
                 }
                 else
                 {
-                    pullSpeed = tempFish.pullPressure;
+                    if (isColorIdentical(tempFish.requiredHookColor))
+                    {
+                        pullSpeed = tempFish.pullInformation.rightPressure;
+                    }
+                    else
+                    {
+                        pullSpeed = tempFish.pullInformation.wrongPressure;
+                    }
                     ownFish = tempFish;
                     ownFish.caught = true;
                     hookInteracted = true;
@@ -119,4 +128,28 @@ public class HookBehaviour : MonoBehaviour {
             }
         }
     }
+
+    private bool isColorIdentical(HookColors requiredColor)
+    {
+        if(ownHookColor == requiredColor)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public virtual void SetType()
+    {
+
+    }
+}
+
+public enum HookColors
+{
+    RED,
+    BLUE,
+    GREEN
 }
