@@ -7,9 +7,11 @@ public class FishBehaviour : MonoBehaviour {
     public Direction ownDirection;
     public bool caught;
     public float speed = 5;
+    public float pullPressure;
     public Area fishArea;
 
     private Vector3 originalSize;
+
 
     public void ownStart()
     {
@@ -83,5 +85,16 @@ public class FishBehaviour : MonoBehaviour {
         {
             transform.localScale = new Vector3(-originalSize.x, originalSize.y, originalSize.z);
         }
+    }
+}
+
+public class fishPulls
+{
+    public float rightPressure;
+    public float wrongPressure;
+    public fishPulls(float right, float wrong)
+    {
+        this.rightPressure = right;
+        this.wrongPressure = wrong;
     }
 }

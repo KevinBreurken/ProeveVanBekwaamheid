@@ -7,6 +7,9 @@ public class HookBehaviour : MonoBehaviour {
     public bool hookPull;
     public bool hookInteracted;
 
+    public float releaseSpeed;
+    public float pullSpeed;
+
     private float seabottom;
     public FishBehaviour ownFish;
 
@@ -58,6 +61,7 @@ public class HookBehaviour : MonoBehaviour {
             OnHookReturned();
         }
     }
+
     private void OnHookReturned()
     {
         if (ownFish != null)
@@ -71,11 +75,12 @@ public class HookBehaviour : MonoBehaviour {
     {
         if (transform.position.y > seabottom)
         {
-            transform.Translate(0, -0.1f, 0);
+            transform.Translate(0, -releaseSpeed, 0);
             return true;
         }
         else
         {
+            pullSpeed = releaseSpeed;
             return false;
         }
     }
@@ -84,7 +89,7 @@ public class HookBehaviour : MonoBehaviour {
     {
         if (transform.position.y < OriginalPos.y)
         {
-            transform.Translate(0, 0.1f, 0);
+            transform.Translate(0, pullSpeed, 0);
             return true;
         }
         else
@@ -106,6 +111,7 @@ public class HookBehaviour : MonoBehaviour {
                 }
                 else
                 {
+                    pullSpeed = tempFish.pullPressure;
                     ownFish = tempFish;
                     ownFish.caught = true;
                     hookInteracted = true;

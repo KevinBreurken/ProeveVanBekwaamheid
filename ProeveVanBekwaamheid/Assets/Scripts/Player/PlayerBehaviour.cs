@@ -14,6 +14,9 @@ public class PlayerBehaviour : MonoBehaviour {
     public HookBehaviour greenHook;
     public HookBehaviour blueHook;
 
+    public float ownHookSpeed;
+
+
     private VarsController varscontroller;
     private SeaController seaController;
     private Area fishArea;
@@ -27,6 +30,10 @@ public class PlayerBehaviour : MonoBehaviour {
         seaController   = SeaController.Instance;
         originalPos     = transform.localPosition;
         fishArea        = varscontroller.fishField;
+
+        redHook.releaseSpeed   = ownHookSpeed;
+        greenHook.releaseSpeed = ownHookSpeed;
+        blueHook.releaseSpeed  = ownHookSpeed;
     }
 
     public void Update ()

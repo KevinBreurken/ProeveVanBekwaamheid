@@ -40,7 +40,6 @@ public class FishBundle : MonoBehaviour
     {
         int randomNumber = Random.Range(0,2);
         float randomY = Random.Range(seaArea.yTop, seaArea.yBottom + seaArea.yTop);
-        Debug.Log(seaArea.yTop + " " + (seaArea.yBottom + seaArea.yTop) + " " + randomY);
         switch (randomNumber)
         {
             case 0:
