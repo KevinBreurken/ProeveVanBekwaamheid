@@ -1,11 +1,11 @@
 fileFormatVersion: 2
 guid: 209e78a9b97e0594481ef1707fa7d512
-timeCreated: 1461072009
+timeCreated: 1461248360
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: kevinisalittlebitch_2 (1)_0
-    21300002: kevinisalittlebitch_2 (1)_1
+    21300000: UI_General_Map_01_0
+    21300002: UI_General_Map_01_1
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -52,16 +52,40 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: kevinisalittlebitch_2 (1)_0
+    - name: UI_General_Map_01_0
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 872
+        width: 366
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 55, y: 40, z: 55, w: 63}
+      outline:
+      - - {x: 168, y: 46}
+        - {x: 149, y: 52}
+        - {x: -151, y: 52}
+        - {x: -154, y: 51}
+        - {x: -175, y: 36}
+        - {x: -183, y: 17}
+        - {x: -183, y: -23}
+        - {x: -163, y: -50}
+        - {x: -153, y: -52}
+        - {x: 152, y: -52}
+        - {x: 164, y: -50}
+        - {x: 183, y: -25}
+        - {x: 183, y: 23}
+    - name: UI_General_Map_01_1
       rect:
         serializedVersion: 2
         x: 32
-        y: 872
+        y: 744
         width: 365
         height: 104
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 56, y: 51, z: 56, w: 51}
+      border: {x: 55, y: 40, z: 55, w: 63}
       outline:
       - - {x: 182.5, y: 23}
         - {x: 167.5, y: 46}
@@ -77,31 +101,6 @@ TextureImporter:
         - {x: 153.5, y: -50}
         - {x: 163.5, y: -50}
         - {x: 182.5, y: -25}
-    - name: kevinisalittlebitch_2 (1)_1
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 744
-        width: 366
-        height: 104
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 56, y: 51, z: 56, w: 51}
-      outline:
-      - - {x: 183, y: 28}
-        - {x: 165, y: 44}
-        - {x: 148, y: 52}
-        - {x: -152, y: 52}
-        - {x: -155, y: 51}
-        - {x: -176, y: 36}
-        - {x: -183, y: 19}
-        - {x: -183, y: -23}
-        - {x: -169, y: -47}
-        - {x: -152, y: -52}
-        - {x: 150, y: -52}
-        - {x: 154, y: -51}
-        - {x: 175, y: -36}
-        - {x: 183, y: -24}
     outline: []
   spritePackingTag: 
   userData: 
