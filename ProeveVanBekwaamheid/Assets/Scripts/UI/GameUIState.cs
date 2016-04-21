@@ -31,7 +31,7 @@ namespace Base.UI {
 
         public override IEnumerator Exit () {
 
-            StartCoroutine(GameStateSelector.Instance.SetState("OffGameState"));
+            StartCoroutine(GameStateSelector.Instance.SetState("MenuGameState"));
             return base.Exit();
 
         }

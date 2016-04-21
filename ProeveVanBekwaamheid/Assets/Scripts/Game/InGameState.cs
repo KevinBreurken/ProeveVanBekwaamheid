@@ -9,12 +9,14 @@ namespace Base.Game {
 
         public SpriteRenderer frontWaterLayer;
         public Camera mainCamera;
+        public AnimationCurve cameraEase;
+        public float cameraTransitionTime;
 
         public override void Enter () {
 
             base.Enter();
             StartCoroutine(WaitForFadeIn());
-            mainCamera.transform.DOMoveY(-8, 4).SetEase(Ease.InOutBack);
+            mainCamera.transform.DOMoveY(-8, cameraTransitionTime).SetEase(cameraEase);
 
         }
 

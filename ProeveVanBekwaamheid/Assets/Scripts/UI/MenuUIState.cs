@@ -13,7 +13,11 @@ namespace Base.UI {
 
         public BaseGameState offGameState;
         public BaseUIState gameUIState;
+
+        [Header("Camera")]
         public Camera mainCamera;
+        public AnimationCurve cameraEase;
+        public float cameraTransitionTime;
 
         [Header("Button")]
         public QUIButton startButton;
@@ -143,7 +147,7 @@ namespace Base.UI {
             base.Enter();
 
             mainCamera.transform.DOKill();
-            mainCamera.transform.DOMoveY(0, 4).SetEase(Ease.InOutBack);
+            mainCamera.transform.DOMoveY(0, cameraTransitionTime).SetEase(cameraEase);
 
             if (GameStateSelector.Instance.currentState != offGameState) {
 
