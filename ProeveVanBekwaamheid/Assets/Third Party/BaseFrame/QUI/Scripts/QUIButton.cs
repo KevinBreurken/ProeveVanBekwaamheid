@@ -9,7 +9,7 @@ namespace BaseFrame.QUI {
     /// <summary>
     /// UIButton is a interface based object that can receive player pointer input.
     /// </summary>
-    [RequireComponent(typeof(Button),typeof(Image))]
+    [RequireComponent(typeof(Button),typeof(Graphic))]
     public class QUIButton : QUIObject {
 
 		/// <summary>
@@ -91,7 +91,7 @@ namespace BaseFrame.QUI {
 
                 if (pointerEnterAnimationData.defaultGraphic != null) {
 
-                    image.sprite = pointerEnterAnimationData.defaultGraphic;
+                    graphic.GetComponent<Image>().sprite = pointerEnterAnimationData.defaultGraphic;
 
                 } else {
 
@@ -103,7 +103,7 @@ namespace BaseFrame.QUI {
 
                 if (pointerExitAnimationData.defaultGraphic != null) {
 
-                    image.sprite = pointerExitAnimationData.defaultGraphic;
+                    graphic.GetComponent<Image>().sprite = pointerExitAnimationData.defaultGraphic;
 
                 } else {
 

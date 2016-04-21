@@ -14,7 +14,7 @@ namespace BaseFrame.QUI {
     /// <summary>
     /// UIObject is a interface based object that can be animated by using UIAnimationData.
     /// </summary>
-    [RequireComponent(typeof(CanvasGroup),typeof(RectTransform),typeof(Image))]
+    [RequireComponent(typeof(CanvasGroup),typeof(RectTransform),typeof(Graphic))]
     public class QUIObject : MonoBehaviour , IPointerEnterHandler , IPointerExitHandler {
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace BaseFrame.QUI {
         /// <summary>
         /// Reference to the Image(graphic) of this QUIObject.
         /// </summary>
-        protected Image image;
+        protected Graphic graphic;
 
         /// <summary>
         /// Reference to the CanvasGroup of this QUIObject.
@@ -98,7 +98,7 @@ namespace BaseFrame.QUI {
             //Get references
             canvasGroup = GetComponent<CanvasGroup>();
             rectTransform = GetComponent<RectTransform>();
-            image = GetComponent<Image>();
+            graphic = GetComponent<Graphic>();
 
         }
 
@@ -158,7 +158,7 @@ namespace BaseFrame.QUI {
 
             canvasGroup.interactable = true;
             canvasGroup.blocksRaycasts = true;
-
+            
             StopAllCoroutines();
             yield return StartCoroutine(PlayAnimation(showAnimationData));
 
@@ -175,7 +175,7 @@ namespace BaseFrame.QUI {
             rectTransform.DOKill();
 
             //Change graphic if its set.
-            if(_data.defaultGraphic != null) { image.sprite = _data.defaultGraphic; }
+            if(_data.defaultGraphic != null) { graphic.GetComponent<Image>().sprite = _data.defaultGraphic; }
 
             //Set starting values if they're used.
             if (_data.movementData.usesAnimation && _data.movementData.useStartValue)
@@ -185,7 +185,7 @@ namespace BaseFrame.QUI {
             if (_data.rotationData.usesAnimation && _data.rotationData.useStartValue)
                 rectTransform.eulerAngles = _data.rotationData.startRotation;
             if (_data.colorData.usesAnimation && _data.colorData.useStartValue)
-                image.color = _data.colorData.startColorValue;
+                graphic.color = _data.colorData.startColorValue;
             if (_data.scaleData.usesAnimation && _data.scaleData.useStartValue)
                 rectTransform.localScale = new Vector3(_data.scaleData.startScale, _data.scaleData.startScale, _data.scaleData.startScale);
 
@@ -246,7 +246,7 @@ namespace BaseFrame.QUI {
         private IEnumerator Color (QUIColorAnimationData _data) {
 
             yield return new WaitForSeconds(_data.delay);
-            image.DOColor(_data.endColorValue, _data.animationTime).SetEase(_data.easeType).SetUpdate(!usesTimeScale);
+            graphic.DOColor(_data.endColorValue, _data.animationTime).SetEase(_data.easeType).SetUpdate(!usesTimeScale);
 
         }
 

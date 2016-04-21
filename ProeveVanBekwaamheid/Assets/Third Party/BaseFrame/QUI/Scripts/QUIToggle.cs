@@ -9,7 +9,7 @@ namespace BaseFrame.QUI {
     /// <summary>
     /// QUIToggle is a interface based object that can receive player pointer input with a off and on state.
     /// </summary>
-    [RequireComponent(typeof(Toggle), typeof(Image))]
+    [RequireComponent(typeof(Toggle), typeof(Graphic))]
     public class QUIToggle : QUIObject {
 
 		/// <summary>
@@ -45,7 +45,7 @@ namespace BaseFrame.QUI {
             base.Awake();
 
             pointerClickAnimationData.Initialize(transform);
-            normalSprite = image.sprite;
+            normalSprite = graphic.GetComponent<Image>().sprite;
             Toggle = GetComponent<Toggle>();
             Toggle.onValueChanged.AddListener((value) => OnToggleToggled(value));
 
@@ -115,11 +115,11 @@ namespace BaseFrame.QUI {
 
                 if (pointerEnterAnimationData.defaultGraphic != null) {
 
-                    image.sprite = pointerEnterAnimationData.defaultGraphic;
+                    graphic.GetComponent<Image>().sprite = pointerEnterAnimationData.defaultGraphic;
 
                 } else {
 
-                    image.sprite = normalSprite;
+                    graphic.GetComponent<Image>().sprite = normalSprite;
 
                 }
 
@@ -127,11 +127,11 @@ namespace BaseFrame.QUI {
 
                 if (pointerExitAnimationData.defaultGraphic != null) {
 
-                    image.sprite = pointerExitAnimationData.defaultGraphic;
+                    graphic.GetComponent<Image>().sprite = pointerExitAnimationData.defaultGraphic;
 
                 } else {
 
-                    image.sprite = normalSprite;
+                    graphic.GetComponent<Image>().sprite = normalSprite;
 
                 }
 

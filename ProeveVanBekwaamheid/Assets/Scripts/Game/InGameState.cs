@@ -12,11 +12,25 @@ namespace Base.Game {
         public AnimationCurve cameraEase;
         public float cameraTransitionTime;
 
+        private GameManager gameManager;
+
+        void Awake () {
+
+            gameManager = GetComponent<GameManager>();
+
+        }
+
         public override void Enter () {
 
             base.Enter();
             StartCoroutine(WaitForFadeIn());
-            mainCamera.transform.DOMoveY(-8, cameraTransitionTime).SetEase(cameraEase);
+            mainCamera.transform.DOMoveY(-8, cameraTransitionTime).SetEase(cameraEase).OnComplete(OnCameraPanComplete);
+
+        }
+
+        private void OnCameraPanComplete () {
+
+            gameManager.StartGame();
 
         }
 
@@ -29,6 +43,7 @@ namespace Base.Game {
 
         public override IEnumerator Exit () {
 
+            gameManager.StopGame();
             frontWaterLayer.DOColor(new Color(frontWaterLayer.color.r, frontWaterLayer.color.g, frontWaterLayer.color.b, 1), 1);
             return base.Exit();
 
