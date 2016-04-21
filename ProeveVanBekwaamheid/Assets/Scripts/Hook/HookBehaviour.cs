@@ -17,10 +17,11 @@ public class HookBehaviour : MonoBehaviour {
 
 
     public HookColors ownHookColor;
+
     public void hookStart()
     {
         OriginalPos = transform.position;
-        seabottom   = VarsController.Instance.fishField.yBottom;
+        seabottom   = AreaController.Instance.fishField.yBottom;
     }
 
     public void ReleaseHook()

@@ -17,7 +17,7 @@ public class PlayerBehaviour : MonoBehaviour {
     public float ownHookSpeed;
 
 
-    private VarsController varscontroller;
+    private AreaController varscontroller;
     private SeaController seaController;
     private Area fishArea;
 
@@ -26,7 +26,7 @@ public class PlayerBehaviour : MonoBehaviour {
 
     private void Start()
     {
-        varscontroller  = VarsController.Instance;
+        varscontroller  = AreaController.Instance;
         seaController   = SeaController.Instance;
         originalPos     = transform.localPosition;
         fishArea        = varscontroller.fishField;

@@ -6,12 +6,12 @@ public class FishBundle : MonoBehaviour
 {
     public List<FishBehaviour> availableFish = new List<FishBehaviour>();
 
-    private VarsController varsController;
+    private AreaController varsController;
     private Area seaArea;
 
     void Start()
     {
-        varsController = VarsController.Instance;
+        varsController = AreaController.Instance;
         seaArea = varsController.SeaField;
         availableFish.HeavyShuffle();
         StartCoroutine("SpawnFish");

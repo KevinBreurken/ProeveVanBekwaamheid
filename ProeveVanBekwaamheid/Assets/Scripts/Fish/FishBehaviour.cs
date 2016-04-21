@@ -13,10 +13,12 @@ public class FishBehaviour : MonoBehaviour {
 
     private Vector3 originalSize;
     public HookColors requiredHookColor;
+    private VarsController varscontroller;
 
 
     public void ownStart()
     {
+        varscontroller = VarsController.Instance;
         originalSize = transform.localScale;
         gameObject.SetActive(false);
     }
@@ -40,8 +42,9 @@ public class FishBehaviour : MonoBehaviour {
 
     public void GainFish()
     {
-        transform.localPosition = new Vector3(-5,0,0);
+        varscontroller.AddToScore(100);
         gameObject.SetActive(false);
+        transform.localPosition = new Vector3(-5,0,0);
     }
 
     public void SwimDirection(Direction targetDirection)
@@ -79,11 +82,11 @@ public class FishBehaviour : MonoBehaviour {
     }
     private void FlipCharacter()
     {
-        if (ownDirection == Direction.LEFT)
+        if (ownDirection == Direction.RIGHT)
         {
             transform.localScale = originalSize;
         }
-        else if (ownDirection == Direction.RIGHT)
+        else if (ownDirection == Direction.LEFT)
         {
             transform.localScale = new Vector3(-originalSize.x, originalSize.y, originalSize.z);
         }
@@ -96,10 +99,15 @@ public class fishPulls
 {
     public float rightPressure;
     public float wrongPressure;
-    public fishPulls(float right, float wrong)
+
+    public float rightPoints;
+    public float wrongPoints;
+    public fishPulls(float RightPressure, float WrongPressure,float RightPoints,float WrongPoints)
     {
-        this.rightPressure = right;
-        this.wrongPressure = wrong;
+        this.rightPressure  = RightPressure;
+        this.wrongPressure  = WrongPressure;
+        this.rightPoints    = RightPoints;
+        this.wrongPoints    = WrongPoints;
     }
 }
 
