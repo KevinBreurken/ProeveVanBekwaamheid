@@ -21,6 +21,7 @@ public class HookBehaviour : MonoBehaviour {
     public void hookStart()
     {
         OriginalPos = transform.position;
+        SetType();
         seabottom   = AreaController.Instance.fishField.yBottom;
     }
 

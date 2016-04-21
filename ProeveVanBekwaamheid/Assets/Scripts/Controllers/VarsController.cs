@@ -10,9 +10,11 @@ public class VarsController : Singleton<VarsController> {
     {
         StartCoroutine("TimeUpdate");
     }
+
     public void AddToScore(float add)
     {
         score += (int)add;
+        scoreShower.ActivateScoreShow(add);
     }
     
     public IEnumerator TimeUpdate()
