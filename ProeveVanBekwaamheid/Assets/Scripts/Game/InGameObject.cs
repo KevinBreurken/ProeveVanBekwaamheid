@@ -3,13 +3,25 @@ using System.Collections;
 
 public class InGameObject : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
+	/// <summary>
+	/// Load this instance.
+	/// </summary>
+	public virtual void Load () {
+
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+
+	/// <summary>
+	/// Unload this instance.
+	/// </summary>
+	public virtual void Unload () {
+
 	}
+
+	/// <summary>
+	/// Resets the object.
+	/// </summary>
+	public virtual void Reset () {
+
+	}
+
 }

@@ -26,6 +26,12 @@ namespace BaseFrame.QInput {
 		/// </summary>
         public KeyCode downMovementKey = KeyCode.S;
 
+		public KeyCode redHookInputKey = KeyCode.Alpha1;
+
+		public KeyCode yellowHookInputKey = KeyCode.Alpha2;
+
+		public KeyCode greenHookInputKey = KeyCode.Alpha3;
+
 		/// <summary>
 		/// Checks what the horizontal movement input is.
 		/// </summary>
@@ -42,6 +48,24 @@ namespace BaseFrame.QInput {
             return movementInput;
 
         }
+
+		public override bool GetGreenHookInput () {
+			
+			return Input.GetKey(greenHookInputKey);
+
+		}
+
+		public override bool GetYellowHookInput () {
+
+			return Input.GetKey(yellowHookInputKey);
+
+		}
+
+		public override bool GetRedHookInput () {
+
+			return Input.GetKey(redHookInputKey);
+
+		}
 
     }
 

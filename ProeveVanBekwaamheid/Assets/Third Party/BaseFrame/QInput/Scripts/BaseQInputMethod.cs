@@ -27,6 +27,25 @@ namespace BaseFrame.QInput {
 
         }
 
+		public virtual bool GetRedHookInput () {
+
+			return false;
+
+		}
+
+		public virtual bool GetGreenHookInput () {
+
+			return false;
+
+		}
+
+		public virtual bool GetYellowHookInput () {
+
+			return false;
+
+		}
+
+
 		/// <summary>
 		/// Called each frame.
 		/// </summary>

@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Chanisco;
+using BaseFrame.QInput;
 
 public class PlayerBehaviour : MonoBehaviour {
+
+	private BaseQInputMethod inputMethod;
 
     private float speed     = 0.03f;
     private float maxSpeed  = 0.7f;
@@ -12,7 +15,7 @@ public class PlayerBehaviour : MonoBehaviour {
 
     public HookBehaviour redHook;
     public HookBehaviour greenHook;
-    public HookBehaviour blueHook;
+    public HookBehaviour yellowHook;
 
     public float ownHookSpeed;
 
@@ -24,6 +27,20 @@ public class PlayerBehaviour : MonoBehaviour {
     private float Xpos;
     private float borderPos;
 
+	void Awake () {
+		
+		inputMethod = QInputManager.Instance.GetCurrentInputMethod();
+		QInputManager.Instance.onInputChanged += QInputManager_Instance_onInputChanged;
+
+	}
+
+	void QInputManager_Instance_onInputChanged (BaseQInputMethod _changedMethod)
+	{
+		
+		inputMethod = _changedMethod;
+
+	}
+
     private void Start()
     {
         varscontroller  = AreaController.Instance;
@@ -33,7 +50,7 @@ public class PlayerBehaviour : MonoBehaviour {
 
         redHook.releaseSpeed   = ownHookSpeed;
         greenHook.releaseSpeed = ownHookSpeed;
-        blueHook.releaseSpeed  = ownHookSpeed;
+        yellowHook.releaseSpeed  = ownHookSpeed;
     }
 
     public void Update ()
@@ -49,24 +66,28 @@ public class PlayerBehaviour : MonoBehaviour {
         HookControlls();
         BoatMovementControlls();
     }
+
     /// <summary>
     /// the calls to the Hookbehaviours to let the hooks go loose
     /// </summary>
     private void HookControlls()
     {
-        if (Input.GetKey(KeyCode.A))
+		
+		Vector2 movementInput = inputMethod.GetMovementInput();
+		if (inputMethod.GetRedHookInput())
         {
             redHook.ReleaseHook();
         }
-        else if (Input.GetKey(KeyCode.S))
+		else if (inputMethod.GetGreenHookInput())
         {
             greenHook.ReleaseHook();
         }
-        else if (Input.GetKey(KeyCode.D))
+		else if (inputMethod.GetYellowHookInput())
         {
-            blueHook.ReleaseHook();
+            yellowHook.ReleaseHook();
         }
     }
+
     /// <summary>
     /// Movement that the boat uses to move around the sea
     /// </summary>
