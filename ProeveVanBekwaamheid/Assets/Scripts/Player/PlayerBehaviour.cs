@@ -3,14 +3,17 @@ using System.Collections;
 using Chanisco;
 using BaseFrame.QInput;
 
-public class PlayerBehaviour : MonoBehaviour {
+public class PlayerBehaviour : InGameObject {
 
 	private BaseQInputMethod inputMethod;
 
-    private float speed     = 0.03f;
-    private float maxSpeed  = 0.7f;
-    private float minSpeed  = -0.5f;
+    private float speedFactor     = 0.03f;
+    private float maxSpeed  	  = 0.7f;
+    private float minSpeed  	  = -0.5f;
     
+	private float minXDistance = -10;
+	private float maxXDistance = 10;
+
     private Vector2 originalPos;
 
     public HookBehaviour redHook;
@@ -27,6 +30,8 @@ public class PlayerBehaviour : MonoBehaviour {
     private float Xpos;
     private float borderPos;
 
+	public bool recievesPlayerInput;
+
 	void Awake () {
 		
 		inputMethod = QInputManager.Instance.GetCurrentInputMethod();
@@ -34,8 +39,7 @@ public class PlayerBehaviour : MonoBehaviour {
 
 	}
 
-	void QInputManager_Instance_onInputChanged (BaseQInputMethod _changedMethod)
-	{
+	void QInputManager_Instance_onInputChanged (BaseQInputMethod _changedMethod) {
 		
 		inputMethod = _changedMethod;
 
@@ -58,24 +62,45 @@ public class PlayerBehaviour : MonoBehaviour {
         Controlls();
     }
 
+	public override void Load ()
+	{
+		
+		base.Load ();
+		recievesPlayerInput = true;
+
+	}
+
+	public override void Unload ()
+	{
+		
+		base.Unload ();
+		recievesPlayerInput = false;
+
+	}
+
     /// <summary>
     /// All scripts that are called that are referenced to controll
     /// </summary>
     private void Controlls()
     {
+		
+		if(!recievesPlayerInput)
+			return;
+		
         HookControlls();
         BoatMovementControlls();
+
     }
 
     /// <summary>
-    /// the calls to the Hookbehaviours to let the hooks go loose
+    /// Calls to the Hookbehaviours to let the hooks go loose
     /// </summary>
     private void HookControlls()
     {
 		
-		Vector2 movementInput = inputMethod.GetMovementInput();
 		if (inputMethod.GetRedHookInput())
         {
+			Debug.Log("asd");
             redHook.ReleaseHook();
         }
 		else if (inputMethod.GetGreenHookInput())
@@ -93,50 +118,11 @@ public class PlayerBehaviour : MonoBehaviour {
     /// </summary>
     private void BoatMovementControlls()
     {
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            if (transform.localPosition.x > fishArea.xLeft)
-            {
-                Xpos = ChaniscoLib.AddWithMax(Xpos, -speed, maxSpeed, minSpeed);
-                borderPos = Xpos;
-            }
-            else
-            {
-                Xpos = 0;
-                transform.localPosition = new Vector2(fishArea.xLeft, originalPos.y);
-                seaController.MoveSea(-borderPos);
-                borderPos = ChaniscoLib.AddWithMax(borderPos, -speed, maxSpeed, minSpeed);
-            }
-        }
+		
+		float horizontalMovementInput = inputMethod.GetMovementInput().x;
+		transform.Translate(horizontalMovementInput * speedFactor ,0,0);
+		transform.position = new Vector2(Mathf.Clamp(transform.position.x,minXDistance,maxXDistance),transform.position.y);
 
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            if (transform.localPosition.x < fishArea.xRight)
-            {
-                Xpos = ChaniscoLib.AddWithMax(Xpos, speed, maxSpeed, minSpeed);
-                borderPos = Xpos;
-            }
-            else
-            {
-                Xpos = 0;
-                transform.localPosition = new Vector2(fishArea.xRight, originalPos.y);
-                seaController.MoveSea(-borderPos);
-                borderPos = ChaniscoLib.AddWithMax(borderPos, speed, maxSpeed, minSpeed);
-            }
-        }
-        if (transform.localPosition.x >= fishArea.xRight)
-        {
-            transform.localPosition = new Vector2(fishArea.xRight, originalPos.y);
-            seaController.MoveSea(-borderPos);
-        }
-        else if (transform.localPosition.x <= fishArea.xLeft)
-        {
-            transform.localPosition = new Vector2(fishArea.xLeft, originalPos.y);
-            seaController.MoveSea(-borderPos);
-        }
-        Xpos = Mathf.SmoothStep(Xpos, 0, 0.2f);
-        borderPos = Mathf.SmoothStep(borderPos, 0, 0.25f);
-        
-        transform.Translate(Xpos,0,0);
     }
+
 }
