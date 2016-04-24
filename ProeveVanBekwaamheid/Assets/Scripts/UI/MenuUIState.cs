@@ -61,6 +61,7 @@ namespace Base.UI {
         private void OnPlayClicked () {
 
             StartCoroutine(UIStateSelector.Instance.SetState(gameUIState));
+            Audio.AudioManager.Instance.SetUnderwaterMixing(1);
 
         }
 
@@ -148,6 +149,7 @@ namespace Base.UI {
 
             mainCamera.transform.DOKill();
             mainCamera.transform.DOMoveY(0, cameraTransitionTime).SetEase(cameraEase);
+            Audio.AudioManager.Instance.SetAboveWaterMixing(1);
 
             if (GameStateSelector.Instance.currentState != offGameState) {
 
@@ -188,12 +190,6 @@ namespace Base.UI {
 
             yield return new WaitForSeconds(3);
             base.Exit();
-
-        }
-
-        public override void Update () {
-
-            base.Update();
 
         }
 
