@@ -2,6 +2,7 @@
 using System.Collections;
 using BaseFrame.QStates;
 using DG.Tweening;
+using BaseFrame.QAudio;
 
 namespace Base.Game {
 
@@ -11,11 +12,13 @@ namespace Base.Game {
         public Camera mainCamera;
         public AnimationCurve cameraEase;
         public float cameraTransitionTime;
+        public QAudioObjectHolder ingameMusic;
 
         private GameManager gameManager;
 
         void Awake () {
 
+            ingameMusic.CreateAudioObject();
             gameManager = GetComponent<GameManager>();
 
         }
@@ -24,6 +27,11 @@ namespace Base.Game {
 
             base.Enter();
             StartCoroutine(WaitForFadeIn());
+
+            ingameMusic.GetAudioObject().Play();
+            ingameMusic.GetAudioObject().SetVolume(0);
+            ingameMusic.GetAudioObject().FadeVolume(0, 1, 50);
+       
             mainCamera.transform.DOMoveY(-8, cameraTransitionTime).SetEase(cameraEase).OnComplete(OnCameraPanComplete);
 
         }
@@ -45,6 +53,7 @@ namespace Base.Game {
 
             gameManager.StopGame();
             frontWaterLayer.DOColor(new Color(frontWaterLayer.color.r, frontWaterLayer.color.g, frontWaterLayer.color.b, 1), 1);
+            ingameMusic.GetAudioObject().FadeVolume(1, 0, 1);
             return base.Exit();
 
         }

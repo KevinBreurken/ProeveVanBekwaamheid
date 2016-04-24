@@ -146,6 +146,7 @@ namespace BaseFrame.QAudio {
         /// <param name="_duration">The fade duration.</param>
         public void FadeVolume(float _startVolume, float _endVolume,float _duration) {
 
+            source.DOKill();
             source.volume = _startVolume;
             source.DOFade(_endVolume, _duration);
            
