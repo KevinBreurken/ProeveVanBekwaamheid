@@ -3,12 +3,14 @@ using System.Collections;
 using DG.Tweening;
 using BaseFrame.QUI;
 using BaseFrame.QStates;
+using Base.Game;
 
 public class PauseOverlay : MonoBehaviour {
 
     private CanvasGroup canvasGroup;
     public QUIButton resumeButton;
     public QUIButton quitButton;
+    public GameManager gameManager;
 
 	// Use this for initialization
 	void Awake () {
@@ -28,7 +30,7 @@ public class PauseOverlay : MonoBehaviour {
     private void QuitButton_onClicked () {
 
         CloseOverlay();
-        StartCoroutine(UIStateSelector.Instance.SetState("MenuUIState"));
+        gameManager.StopGame();
 
     }
 
