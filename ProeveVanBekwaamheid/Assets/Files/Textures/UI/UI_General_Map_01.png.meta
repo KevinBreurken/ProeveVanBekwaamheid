@@ -1,11 +1,14 @@
 fileFormatVersion: 2
 guid: 209e78a9b97e0594481ef1707fa7d512
-timeCreated: 1461248360
+timeCreated: 1461625303
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: UI_General_Map_01_0
     21300002: UI_General_Map_01_1
+    21300004: UI_General_Map_01_2
+    21300006: UI_General_Map_01_3
+    21300008: UI_General_Map_01_4
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -101,6 +104,66 @@ TextureImporter:
         - {x: 153.5, y: -50}
         - {x: 163.5, y: -50}
         - {x: 182.5, y: -25}
+    - name: UI_General_Map_01_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 623
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 32, y: 27, z: 27, w: 32}
+      outline:
+      - - {x: -48, y: 48}
+        - {x: -48, y: -42}
+        - {x: -46, y: -48}
+        - {x: 46, y: -48}
+        - {x: 48, y: -47}
+        - {x: 48, y: 48}
+    - name: UI_General_Map_01_3
+      rect:
+        serializedVersion: 2
+        x: 558
+        y: 873
+        width: 110
+        height: 110
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 47}
+        - {x: -38, y: 47}
+        - {x: -39, y: 39}
+        - {x: -39, y: -45}
+        - {x: -36, y: -46}
+        - {x: -19, y: -46}
+        - {x: 45, y: -9}
+        - {x: 49, y: -1}
+        - {x: 49, y: 7}
+    - name: UI_General_Map_01_4
+      rect:
+        serializedVersion: 2
+        x: 674
+        y: 873
+        width: 110
+        height: 110
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -47, y: 53}
+        - {x: -47, y: -52}
+        - {x: -11, y: -52}
+        - {x: -3, y: -50}
+        - {x: -3, y: 47}
+        - {x: -10, y: 53}
+      - - {x: 1, y: 53}
+        - {x: 1, y: -52}
+        - {x: 37, y: -52}
+        - {x: 45, y: -50}
+        - {x: 45, y: 47}
+        - {x: 38, y: 53}
     outline: []
   spritePackingTag: 
   userData: 
