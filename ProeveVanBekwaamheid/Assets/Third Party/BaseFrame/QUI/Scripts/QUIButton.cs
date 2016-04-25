@@ -121,6 +121,7 @@ namespace BaseFrame.QUI {
         /// <param name="_state">The interactable state of this QUIButton.</param>
         public override void SetInteractable (bool _state) {
 
+            if(isActiveAndEnabled)
             Button.interactable = _state;
 
         }

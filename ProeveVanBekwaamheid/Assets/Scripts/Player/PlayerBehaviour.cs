@@ -101,7 +101,6 @@ public class PlayerBehaviour : InGameObject {
 		
 		if (inputMethod.GetRedHookInput())
         {
-			Debug.Log("asd");
             redHook.ReleaseHook();
         }
 		else if (inputMethod.GetGreenHookInput())
@@ -112,6 +111,7 @@ public class PlayerBehaviour : InGameObject {
         {
             yellowHook.ReleaseHook();
         }
+
     }
 
     /// <summary>

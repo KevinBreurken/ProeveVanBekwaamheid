@@ -35,9 +35,9 @@ namespace Base.UI {
 
         public override IEnumerator Exit () {
 
-            stateCanvasGroup.DOFade(0, 2);
-
-            return base.Exit();
+            stateCanvasGroup.DOFade(0, 0.5f);
+            yield return new WaitForSeconds(0.5f);
+            base.Exit();
 
         }
 

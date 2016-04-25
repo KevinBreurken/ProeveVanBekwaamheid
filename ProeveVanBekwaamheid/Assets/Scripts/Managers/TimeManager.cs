@@ -2,46 +2,45 @@
 using System.Collections;
 using Base.Game;
 
-public class TimeManager : InGameObject {
+namespace Base.Manager {
 
-    public delegate void TimeEvent ();
+    public class TimeManager : InGameObject {
 
-    public event TimeEvent onTimerEnded;
+        public delegate void TimeEvent ();
 
-    public int levelLenght;
+        public event TimeEvent onTimerEnded;
 
-    public override void Load () {
-        base.Load();
-        //Start the timer
-    }
+        public int levelLenght;
 
-    public void StartTimer () {
+        public void StartTimer () {
 
-        StartCoroutine(WaitTillLevelEnds());
-
-    }
-
-    private IEnumerator WaitTillLevelEnds () {
-
-        Debug.Log("Timer started");
-
-        yield return new WaitForSeconds(levelLenght);
-
-        Debug.Log("Timer ended");
-
-        //Send the message that the game time has ended.
-        if (onTimerEnded != null) {
-            
-            onTimerEnded();
+            StartCoroutine(WaitTillLevelEnds());
 
         }
 
-    }
+        private IEnumerator WaitTillLevelEnds () {
 
-    public override void Unload () {
+            Debug.Log("Timer started");
 
-        StopCoroutine(WaitTillLevelEnds());
-        base.Unload();
+            yield return new WaitForSeconds(levelLenght);
+
+            Debug.Log("Timer ended");
+
+            //Send the message that the game time has ended.
+            if (onTimerEnded != null) {
+
+                onTimerEnded();
+
+            }
+
+        }
+
+        public override void Unload () {
+
+            StopCoroutine(WaitTillLevelEnds());
+            base.Unload();
+
+        }
 
     }
 
