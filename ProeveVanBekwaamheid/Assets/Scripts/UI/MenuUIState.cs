@@ -6,6 +6,8 @@ using BaseFrame.QUI;
 using BaseFrame.QStates;
 using Base.Game;
 using DG.Tweening;
+using UnityEngine.Analytics;
+using System.Collections.Generic;
 
 namespace Base.UI {
 
@@ -35,7 +37,10 @@ namespace Base.UI {
 
         private BaseQInputMethod inputMethod;
         private CanvasGroup stateCanvasGroup;
-       
+
+        //Used for analytics
+        private int amountofTimePlayClicked;
+        private bool hasOpenedInstructionsMenu;
 
         void Awake () {
 
@@ -60,8 +65,18 @@ namespace Base.UI {
 
         private void OnPlayClicked () {
 
-            StartCoroutine(UIStateSelector.Instance.SetState(gameUIState));
+            amountofTimePlayClicked++;
             Audio.AudioManager.Instance.SetUnderwaterMixing(1);
+            Analytics.CustomEvent("Game_BackToMenuQuit", new Dictionary<string, object>
+            {
+
+              { "amountofTimePlayClicked", amountofTimePlayClicked },
+              { "hasOpenedInstructionsMenu", hasOpenedInstructionsMenu },
+              { "timeSinseApplicationStarted", Time.realtimeSinceStartup },
+
+            });
+
+            StartCoroutine(UIStateSelector.Instance.SetState(gameUIState));
 
         }
 
@@ -101,6 +116,7 @@ namespace Base.UI {
 
             if (_toggledObject == instructionsButton) {
 
+                hasOpenedInstructionsMenu = true;
                 instructionsButton.SetToggleStateRough(true);
                 StartCoroutine(OpenLayer(instructionsLayer));
 

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Base.Game;
 
 public class TimeManager : InGameObject {
 

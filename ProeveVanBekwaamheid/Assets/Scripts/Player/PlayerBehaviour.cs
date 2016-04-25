@@ -2,6 +2,7 @@
 using System.Collections;
 using Chanisco;
 using BaseFrame.QInput;
+using Base.Game;
 
 public class PlayerBehaviour : InGameObject {
 

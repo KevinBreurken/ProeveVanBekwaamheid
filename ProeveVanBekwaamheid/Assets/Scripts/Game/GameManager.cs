@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using BaseFrame.QStates;
+using Base.Manager;
 
 namespace Base.Game {
 
@@ -42,6 +44,7 @@ namespace Base.Game {
             scoreManager.Unload();
             waveManager.Unload();
             timeManager.Unload();
+            StartCoroutine(UIStateSelector.Instance.SetState("MenuUIState"));
 
         }
 

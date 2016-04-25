@@ -51,7 +51,6 @@ namespace Base.Game {
 
         public override IEnumerator Exit () {
 
-            gameManager.StopGame();
             frontWaterLayer.DOColor(new Color(frontWaterLayer.color.r, frontWaterLayer.color.g, frontWaterLayer.color.b, 1), 1);
             ingameMusic.GetAudioObject().FadeVolume(1, 0, 1);
             return base.Exit();
