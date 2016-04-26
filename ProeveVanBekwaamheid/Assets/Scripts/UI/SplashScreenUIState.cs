@@ -69,7 +69,6 @@ namespace Base.UI {
             StopAllCoroutines();
             forceNextScreen = true;
 
-            EffectManager.Instance.FadeEffect.StopFade();
             StartCoroutine(UIStateSelector.Instance.SetState("MenuUIState"));
 
         }

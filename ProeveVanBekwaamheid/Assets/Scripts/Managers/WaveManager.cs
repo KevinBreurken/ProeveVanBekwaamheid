@@ -11,13 +11,14 @@ namespace Base.Manager {
         public delegate void WaveEvent ();
 
         public event WaveEvent OnWaveFailed;
+        public event WaveEvent OnWaveSucceeded;
 
         public List<int> targetScoreList = new List<int>();
         public QAudioObjectHolder nextLevelSoundNotification;
 
         private TimeManager timeManager;
         private ScoreManager scoreManager;
-        private int currentLevel;
+        public int currentLevel;
 
         void Awake () {
 
@@ -26,6 +27,13 @@ namespace Base.Manager {
             scoreManager = GetComponent<ScoreManager>();
             timeManager.onTimerEnded += TimeManager_onTimerEnded;
             nextLevelSoundNotification.CreateAudioObject();
+            OnWaveSucceeded += WaveManager_OnWaveSucceeded;
+        }
+
+        private void WaveManager_OnWaveSucceeded () {
+
+            timeManager.StartTimer();
+            nextLevelSoundNotification.GetAudioObject().Play();
 
         }
 
@@ -37,8 +45,15 @@ namespace Base.Manager {
             if (score >= targetScoreList[currentLevel]) {
                 //Player has high enough score to reach the next level.
                 Debug.Log("Player has high enough score, begin next wave.");
-                timeManager.StartTimer();
-                nextLevelSoundNotification.GetAudioObject().Play();
+
+                currentLevel++;
+
+                if (OnWaveSucceeded != null) {
+
+                    OnWaveSucceeded();
+
+                }
+
 
             } else {
                 //Player has insufficient score to reach the next level. lost game.

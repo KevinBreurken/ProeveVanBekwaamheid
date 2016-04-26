@@ -12,10 +12,17 @@ namespace Base.Manager {
 
         public int levelLenght;
 
+        public float totalGameDuration;
+        public bool gameStarted;
+
         public void StartTimer () {
 
             StartCoroutine(WaitTillLevelEnds());
 
+        }
+
+        void Update () {
+            totalGameDuration += Time.deltaTime;
         }
 
         private IEnumerator WaitTillLevelEnds () {
@@ -35,8 +42,17 @@ namespace Base.Manager {
 
         }
 
+        public override void Load () {
+
+            base.Load();
+            gameStarted = true;
+            totalGameDuration = 0;
+
+        }
+
         public override void Unload () {
 
+            gameStarted = false;
             StopCoroutine(WaitTillLevelEnds());
             base.Unload();
 

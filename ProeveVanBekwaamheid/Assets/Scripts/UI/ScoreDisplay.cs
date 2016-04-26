@@ -12,9 +12,13 @@ namespace Base.UI {
         public Text targetScoreText;
         public QUIObject addedScoreQUIObject;
         private Text addedScoreQUIObjectText;
-        public int currentScoreCounterValue;
+       
         public int currentMatchScore;
-        
+        public int currentTargetScore;
+
+        private int tweenedScoreCounterValue;
+        private int tweenedTargetScore;
+
         void Awake () {
 
             addedScoreQUIObjectText = addedScoreQUIObject.GetComponent<Text>();
@@ -26,7 +30,7 @@ namespace Base.UI {
 
             currentMatchScore = _score;
             DOTween.Kill(103);
-            DOTween.To(() => currentScoreCounterValue, x => currentScoreCounterValue = x, currentMatchScore, 1.5f).SetId(103).OnUpdate(UpdateScoreText);
+            DOTween.To(() => tweenedScoreCounterValue, x => tweenedScoreCounterValue = x, currentMatchScore, 1.5f).SetId(103).OnUpdate(UpdateScoreText);
 
             addedScoreQUIObjectText.text = "+" + _addedScore; 
             StartCoroutine(addedScoreQUIObject.Show());
@@ -39,15 +43,27 @@ namespace Base.UI {
             StartCoroutine(addedScoreQUIObject.Hide());
         }
 
-        private void UpdateScoreText () {
-
-            currentScoreText.text = "" + currentScoreCounterValue;
-
-        }
+        
 
         public void UpdateScoreTarget(int _targetScore) {
 
+            currentTargetScore = _targetScore;
             targetScoreText.text = "" + _targetScore;
+            DOTween.Kill(104);
+            DOTween.To(() => tweenedTargetScore, x => tweenedTargetScore = x, currentTargetScore, 0.5f).SetId(104).OnUpdate(UpdateScoreTargetText);
+
+
+        }
+
+        private void UpdateScoreText () {
+
+            currentScoreText.text = "" + tweenedScoreCounterValue;
+
+        }
+
+        private void UpdateScoreTargetText () {
+
+            targetScoreText.text = "" + tweenedTargetScore;
 
         }
 
@@ -55,7 +71,8 @@ namespace Base.UI {
 
             currentScoreText.text = "" + 0;
             targetScoreText.text = "" + 0;
-            currentScoreCounterValue = 0;
+            tweenedScoreCounterValue = 0;
+            tweenedTargetScore = 0;
 
         }
 
