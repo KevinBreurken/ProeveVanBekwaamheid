@@ -20,10 +20,13 @@ namespace Base.Game {
             waveManager = GetComponent<WaveManager>();
             waveManager.OnWaveFailed += StopGame;
             waveManager.OnWaveSucceeded += WaveManager_OnWaveSucceeded;
+
         }
 
         private void WaveManager_OnWaveSucceeded () {
+			
             scoreManager.scoreDisplay.UpdateScoreTarget(waveManager.targetScoreList[waveManager.currentLevel]);
+
         }
 
         public void StartGame () {
