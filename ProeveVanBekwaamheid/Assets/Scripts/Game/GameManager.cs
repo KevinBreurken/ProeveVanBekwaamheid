@@ -40,6 +40,7 @@ namespace Base.Game {
             timeManager.Load();
             waveManager.BeginWaves();
             scoreManager.scoreDisplay.UpdateScoreTarget(waveManager.targetScoreList[waveManager.currentLevel]);
+            scoreManager.scoreDisplay.Show(false);
 
         }
 

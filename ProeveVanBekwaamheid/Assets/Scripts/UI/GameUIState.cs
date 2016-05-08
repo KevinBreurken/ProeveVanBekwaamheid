@@ -10,10 +10,13 @@ namespace Base.UI {
     public class GameUIState : BaseUIState {
 
 		public QUIButton pauseButton;
+        public ScoreDisplay scoreDisplay;
         public PauseOverlay pauseOverlay;
+        private CanvasGroup canvasGroup;
 
 		void Awake () {
 
+            canvasGroup = GetComponent<CanvasGroup>();
 			pauseButton.onClicked += PauseButton_onClicked;
 
 		}
@@ -21,6 +24,9 @@ namespace Base.UI {
         public override void Enter () {
 
             base.Enter();
+            canvasGroup.alpha = 0;
+            canvasGroup.DOFade(1, 0.3f);
+            scoreDisplay.Hide(true);
 
         }
 
@@ -31,8 +37,10 @@ namespace Base.UI {
 
         public override IEnumerator Exit () {
 
+            canvasGroup.DOFade(0, 0.3f);
+            yield return new WaitForSeconds(1);
             StartCoroutine(GameStateSelector.Instance.SetState("MenuGameState"));
-            return base.Exit();
+            yield return base.Exit();
 
         }
 

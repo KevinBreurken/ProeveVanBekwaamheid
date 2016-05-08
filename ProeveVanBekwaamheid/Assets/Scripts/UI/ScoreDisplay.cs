@@ -10,6 +10,7 @@ namespace Base.UI {
 
         public Text currentScoreText;
         public Text targetScoreText;
+
         public QUIObject addedScoreQUIObject;
         private Text addedScoreQUIObjectText;
        
@@ -19,10 +20,13 @@ namespace Base.UI {
         private int tweenedScoreCounterValue;
         private int tweenedTargetScore;
 
+        private CanvasGroup canvasGroup;
+
         void Awake () {
 
             addedScoreQUIObjectText = addedScoreQUIObject.GetComponent<Text>();
             addedScoreQUIObject.GetCanvasGroup().alpha = 0;
+            canvasGroup = GetComponent<CanvasGroup>();
 
         }
 
@@ -34,6 +38,7 @@ namespace Base.UI {
 
             addedScoreQUIObjectText.text = "+" + _addedScore; 
             StartCoroutine(addedScoreQUIObject.Show());
+
             addedScoreQUIObject.GetCanvasGroup().alpha = 0;
             addedScoreQUIObject.GetCanvasGroup().DOFade(1, 0.5f).OnComplete(OnAddedScoreQUIObjectFadeComplete);
 
@@ -73,6 +78,28 @@ namespace Base.UI {
             targetScoreText.text = "" + 0;
             tweenedScoreCounterValue = 0;
             tweenedTargetScore = 0;
+
+        }
+
+        public void Show (bool _instant) {
+
+            if (_instant) {
+                canvasGroup.alpha = 1;
+                return;
+            }
+
+            canvasGroup.DOFade(1, 1);
+
+        }
+
+        public void Hide(bool _instant) {
+
+            if (_instant) {
+                canvasGroup.alpha = 0;
+                return;
+            }
+
+            canvasGroup.DOFade(0, 1);
 
         }
 
