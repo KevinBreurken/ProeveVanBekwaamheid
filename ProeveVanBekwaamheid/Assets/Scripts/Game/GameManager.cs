@@ -3,11 +3,14 @@ using System.Collections;
 using BaseFrame.QStates;
 using Base.Manager;
 
-namespace Base.Game {
+namespace Base.Manager {
 
     public class GameManager : MonoBehaviour {
 
-		public PlayerBehaviour playerBoat;
+        public delegate void GameEvent (int _currentLevel, int _targetscore);
+        public event GameEvent onNextLevelEntered;
+
+        public PlayerBehaviour playerBoat;
         private ScoreManager scoreManager;
         private WaveManager waveManager;
         private TimeManager timeManager;
@@ -19,13 +22,7 @@ namespace Base.Game {
             timeManager = GetComponent<TimeManager>();
             waveManager = GetComponent<WaveManager>();
             waveManager.OnWaveFailed += StopGame;
-            waveManager.OnWaveSucceeded += WaveManager_OnWaveSucceeded;
-
-        }
-
-        private void WaveManager_OnWaveSucceeded () {
-			
-            scoreManager.scoreDisplay.UpdateScoreTarget(waveManager.targetScoreList[waveManager.currentLevel]);
+            waveManager.OnWaveSucceeded += StartNewLevel;
 
         }
 
@@ -54,6 +51,17 @@ namespace Base.Game {
             waveManager.Unload();
             timeManager.Unload();
             StartCoroutine(UIStateSelector.Instance.SetState("MenuUIState"));
+
+        }
+
+        public void StartNewLevel () {
+
+            int currentLevel = waveManager.currentLevel;
+            int targetScore = waveManager.targetScoreList[currentLevel];
+
+            scoreManager.scoreDisplay.UpdateScoreTarget(targetScore);
+
+            onNextLevelEntered(currentLevel, targetScore);
 
         }
 

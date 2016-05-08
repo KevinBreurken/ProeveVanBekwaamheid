@@ -22,7 +22,9 @@ namespace Base.Manager {
         }
 
         void Update () {
+
             totalGameDuration += Time.deltaTime;
+
         }
 
         private IEnumerator WaitTillLevelEnds () {

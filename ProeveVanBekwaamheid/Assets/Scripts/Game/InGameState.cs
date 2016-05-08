@@ -3,6 +3,7 @@ using System.Collections;
 using BaseFrame.QStates;
 using DG.Tweening;
 using BaseFrame.QAudio;
+using Base.Manager;
 
 namespace Base.Game {
 

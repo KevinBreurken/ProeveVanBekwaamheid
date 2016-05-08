@@ -3,7 +3,7 @@ using System.Collections;
 using DG.Tweening;
 using BaseFrame.QUI;
 using BaseFrame.QStates;
-using Base.Game;
+using Base.Manager;
 using System.Collections.Generic;
 
 namespace Base.UI {
