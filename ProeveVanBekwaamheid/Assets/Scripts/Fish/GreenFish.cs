@@ -15,4 +15,9 @@ public class GreenFish : FishBehaviour {
         OutOfBound();
     }
 
+    public override void GetType()
+    {
+        base.GetType();
+        requiredHookColor = HookColors.GREEN;
+    }
 }
