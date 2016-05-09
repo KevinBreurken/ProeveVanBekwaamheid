@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class AreaController : Singleton<AreaController> {
-    public Area fishField;
+    public Area viewField;
     public Area SeaField;
 
     /// <summary>
@@ -11,7 +11,7 @@ public class AreaController : Singleton<AreaController> {
     private void OnDrawGizmos()
     {
         //Square for the FishArea
-        DrawSquare(fishField.xLeft, fishField.yTop, fishField.xRight, fishField.yBottom, Color.green);
+        DrawSquare(viewField.xLeft, viewField.yTop, viewField.xRight, viewField.yBottom, Color.green);
 
         //Square for the FishArea
         DrawSquare(SeaField.xLeft, SeaField.yTop, SeaField.xRight, SeaField.yBottom, Color.blue);
