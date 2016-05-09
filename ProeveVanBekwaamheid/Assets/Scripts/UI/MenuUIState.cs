@@ -158,8 +158,6 @@ namespace Base.UI {
 
             base.Enter();
 
-            Audio.AudioManager.Instance.SetAboveWaterMixing(1);
-
             if (GameStateSelector.Instance.currentState != offGameState) {
 
                 StartCoroutine(GameStateSelector.Instance.SetState(offGameState));

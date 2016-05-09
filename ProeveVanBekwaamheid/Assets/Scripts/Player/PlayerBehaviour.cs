@@ -3,6 +3,7 @@ using System.Collections;
 using Chanisco;
 using BaseFrame.QInput;
 using Base.Game;
+using DG.Tweening;
 
 public class PlayerBehaviour : InGameObject {
 
@@ -78,6 +79,12 @@ public class PlayerBehaviour : InGameObject {
 		recievesPlayerInput = false;
 
 	}
+
+    public void Recenter () {
+
+        transform.DOLocalMove(originalPos, 5);
+
+    }
 
     /// <summary>
     /// All scripts that are called that are referenced to controll

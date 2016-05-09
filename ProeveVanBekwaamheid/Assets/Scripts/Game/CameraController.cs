@@ -58,7 +58,7 @@ namespace Base.Game {
                 float distance = transform.position.x - target.position.x;
                 distance = Mathf.Abs(distance);
                 Debug.Log(distance);
-                Vector3 newPosition = Vector3.SmoothDamp(transform.position, destination, ref velocity, 6 - distance);
+                Vector3 newPosition = Vector3.SmoothDamp(transform.position, destination, ref velocity, 4 - distance);
                 transform.position = new Vector3(newPosition.x, transform.position.y, transform.position.z);
 
                 if (target.transform.position.x != cameraLookPoint.transform.position.x) {
