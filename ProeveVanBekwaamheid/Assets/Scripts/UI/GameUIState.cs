@@ -39,7 +39,6 @@ namespace Base.UI {
 
             canvasGroup.DOFade(0, 0.3f);
             yield return new WaitForSeconds(1);
-            StartCoroutine(GameStateSelector.Instance.SetState("MenuGameState"));
             yield return base.Exit();
 
         }

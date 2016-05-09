@@ -50,7 +50,7 @@ namespace Base.Manager {
             scoreManager.Unload();
             waveManager.Unload();
             timeManager.Unload();
-            StartCoroutine(UIStateSelector.Instance.SetState("MenuUIState"));
+            StartCoroutine(UIStateSelector.Instance.SetState("ResultUIState"));
 
         }
 

@@ -16,11 +16,6 @@ namespace Base.UI {
         public BaseGameState offGameState;
         public BaseUIState gameUIState;
 
-        [Header("Camera")]
-        public Camera mainCamera;
-        public AnimationCurve cameraEase;
-        public float cameraTransitionTime;
-
         [Header("Button")]
         public QUIButton startButton;
         public QUIToggle instructionsButton;
@@ -163,8 +158,6 @@ namespace Base.UI {
 
             base.Enter();
 
-            mainCamera.transform.DOKill();
-            mainCamera.transform.DOMoveY(0, cameraTransitionTime).SetEase(cameraEase);
             Audio.AudioManager.Instance.SetAboveWaterMixing(1);
 
             if (GameStateSelector.Instance.currentState != offGameState) {
