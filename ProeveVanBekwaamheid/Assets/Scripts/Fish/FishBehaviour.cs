@@ -20,6 +20,7 @@ public class FishBehaviour : MonoBehaviour {
     {
         varscontroller = VarsController.Instance;
         originalSize = transform.localScale;
+        GetType();
         gameObject.SetActive(false);
     }
 
@@ -52,11 +53,11 @@ public class FishBehaviour : MonoBehaviour {
         FlipCharacter();
         if (targetDirection == Direction.RIGHT)
         {
-            transform.Translate(0.005f * speed, 0, 0);
+            transform.Translate(0.0005f * speed, 0, 0);
         }
         else if (targetDirection == Direction.LEFT)
         {
-            transform.Translate(-0.005f * speed, 0, 0);
+            transform.Translate(-0.0005f * speed, 0, 0);
         }
     }
 
@@ -90,6 +91,11 @@ public class FishBehaviour : MonoBehaviour {
         {
             transform.localScale = new Vector3(-originalSize.x, originalSize.y, originalSize.z);
         }
+    }
+
+    public virtual void GetType()
+    {
+
     }
 
 }

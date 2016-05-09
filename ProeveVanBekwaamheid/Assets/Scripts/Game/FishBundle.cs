@@ -6,13 +6,13 @@ public class FishBundle : MonoBehaviour
 {
     public List<FishBehaviour> availableFish = new List<FishBehaviour>();
 
-    private AreaController varsController;
+    private AreaController areaController;
     private Area seaArea;
 
     void Start()
     {
-        varsController = AreaController.Instance;
-        seaArea = varsController.SeaField;
+        areaController = AreaController.Instance;
+        seaArea = areaController.SeaField;
         availableFish.HeavyShuffle();
         StartCoroutine("SpawnFish");
     }
@@ -39,7 +39,7 @@ public class FishBundle : MonoBehaviour
     void ActivateFish(FishBehaviour targetFish)
     {
         int randomNumber = Random.Range(0,2);
-        float randomY = Random.Range(seaArea.yTop, seaArea.yBottom + seaArea.yTop);
+        float randomY = Random.Range(seaArea.yTop,seaArea.yBottom);
         switch (randomNumber)
         {
             case 0:

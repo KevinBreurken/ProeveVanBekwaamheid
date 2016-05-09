@@ -9,7 +9,7 @@ public class PlayerBehaviour : InGameObject {
 
 	private BaseQInputMethod inputMethod;
 
-    private float speedFactor     = 0.03f;
+    private float speedFactor     = 0.05f;
     private float maxSpeed  	  = 0.7f;
     private float minSpeed  	  = -0.5f;
     
@@ -25,7 +25,7 @@ public class PlayerBehaviour : InGameObject {
     public float ownHookSpeed;
 
 
-    private AreaController varscontroller;
+    private AreaController areaContorller;
     private SeaController seaController;
     private Area fishArea;
 
@@ -49,10 +49,10 @@ public class PlayerBehaviour : InGameObject {
 
     private void Start()
     {
-        varscontroller  = AreaController.Instance;
+        areaContorller  = AreaController.Instance;
         seaController   = SeaController.Instance;
         originalPos     = transform.localPosition;
-        fishArea        = varscontroller.fishField;
+        fishArea        = areaContorller.viewField;
 
         redHook.releaseSpeed   = ownHookSpeed;
         greenHook.releaseSpeed = ownHookSpeed;
@@ -105,7 +105,6 @@ public class PlayerBehaviour : InGameObject {
     /// </summary>
     private void HookControlls()
     {
-		
 		if (inputMethod.GetRedHookInput())
         {
             redHook.ReleaseHook();
@@ -126,10 +125,14 @@ public class PlayerBehaviour : InGameObject {
     /// </summary>
     private void BoatMovementControlls()
     {
-		
 		float horizontalMovementInput = inputMethod.GetMovementInput().x;
 		transform.Translate(horizontalMovementInput * speedFactor ,0,0);
-		transform.position = new Vector2(Mathf.Clamp(transform.position.x,minXDistance,maxXDistance),transform.position.y);
+        transform.position = new Vector2(Mathf.Clamp(transform.position.x,fishArea.xLeft,fishArea.xRight),transform.position.y);
+
+    }
+
+    private void OutOfBound()
+    {
 
     }
 

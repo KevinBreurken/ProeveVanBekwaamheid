@@ -3,12 +3,17 @@ using System.Collections;
 
 public class ScoreShowerBehaviour : MonoBehaviour {
     private TextMesh ownText;
+    public int SortLayer = 0;
 
     void Start()
     {
+        int SortingLayerID = SortingLayer.GetLayerValueFromName("Main");
         ownText = GetComponent<TextMesh>();
         VarsController.Instance.scoreShower = this;
         gameObject.SetActive(false);
+        Renderer renderer = this.gameObject.GetComponent<Renderer>();
+        renderer.sortingOrder = SortLayer;
+        renderer.sortingLayerID = SortingLayerID;
     }
 
     void Update()

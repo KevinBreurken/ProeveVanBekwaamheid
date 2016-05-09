@@ -26,11 +26,12 @@ namespace BaseFrame.QInput {
 		/// </summary>
         public KeyCode downMovementKey = KeyCode.S;
 
-		public KeyCode redHookInputKey = KeyCode.Alpha1;
+		public KeyCode redHookInputKey = KeyCode.A;
 
-		public KeyCode yellowHookInputKey = KeyCode.Alpha2;
+        public KeyCode greenHookInputKey = KeyCode.S;
 
-		public KeyCode greenHookInputKey = KeyCode.Alpha3;
+        public KeyCode yellowHookInputKey = KeyCode.D;
+
 
 		/// <summary>
 		/// Checks what the horizontal movement input is.

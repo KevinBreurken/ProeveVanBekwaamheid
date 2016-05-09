@@ -22,7 +22,7 @@ public class HookBehaviour : MonoBehaviour {
     {
         OriginalPos = transform.position;
         SetType();
-        seabottom   = AreaController.Instance.fishField.yBottom;
+        seabottom   = AreaController.Instance.viewField.yBottom + 1;
     }
 
     public void ReleaseHook()

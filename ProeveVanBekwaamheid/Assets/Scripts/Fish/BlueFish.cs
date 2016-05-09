@@ -14,4 +14,10 @@ public class BlueFish : FishBehaviour
         SwimDirection(ownDirection);
         OutOfBound();
     }
+
+    public override void GetType()
+    {
+        base.GetType();
+        requiredHookColor = HookColors.BLUE;   
+    }
 }
