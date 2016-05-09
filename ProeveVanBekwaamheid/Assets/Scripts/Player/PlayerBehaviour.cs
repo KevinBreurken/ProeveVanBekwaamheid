@@ -7,14 +7,14 @@ using DG.Tweening;
 
 public class PlayerBehaviour : InGameObject {
 
-	private BaseQInputMethod inputMethod;
+    private BaseQInputMethod inputMethod;
 
-    private float speedFactor     = 0.05f;
-    private float maxSpeed  	  = 0.7f;
-    private float minSpeed  	  = -0.5f;
-    
-	private float minXDistance = -10;
-	private float maxXDistance = 10;
+    private float speedFactor = 0.05f;
+    private float maxSpeed = 0.7f;
+    private float minSpeed = -0.5f;
+
+    private float minXDistance = -10;
+    private float maxXDistance = 10;
 
     private Vector2 originalPos;
 
@@ -32,35 +32,33 @@ public class PlayerBehaviour : InGameObject {
     private float Xpos;
     private float borderPos;
 
-	public bool recievesPlayerInput;
+    public bool recievesPlayerInput;
 
-	void Awake () {
-		
-		inputMethod = QInputManager.Instance.GetCurrentInputMethod();
-		QInputManager.Instance.onInputChanged += QInputManager_Instance_onInputChanged;
+    void Awake () {
 
-	}
+        inputMethod = QInputManager.Instance.GetCurrentInputMethod();
+        QInputManager.Instance.onInputChanged += QInputManager_Instance_onInputChanged;
 
-	void QInputManager_Instance_onInputChanged (BaseQInputMethod _changedMethod) {
-		
-		inputMethod = _changedMethod;
-
-	}
-
-    private void Start()
-    {
-        areaContorller  = AreaController.Instance;
-        seaController   = SeaController.Instance;
-        originalPos     = transform.localPosition;
-        fishArea        = areaContorller.viewField;
-
-        redHook.releaseSpeed   = ownHookSpeed;
-        greenHook.releaseSpeed = ownHookSpeed;
-        yellowHook.releaseSpeed  = ownHookSpeed;
     }
 
-    public void Update ()
-    {
+    void QInputManager_Instance_onInputChanged (BaseQInputMethod _changedMethod) {
+
+        inputMethod = _changedMethod;
+
+    }
+
+    private void Start () {
+        areaContorller = AreaController.Instance;
+        seaController = SeaController.Instance;
+        originalPos = transform.localPosition;
+        fishArea = areaContorller.viewField;
+
+        redHook.releaseSpeed = ownHookSpeed;
+        greenHook.releaseSpeed = ownHookSpeed;
+        yellowHook.releaseSpeed = ownHookSpeed;
+    }
+
+    public void Update () {
         Controlls();
     }
 
@@ -82,7 +80,11 @@ public class PlayerBehaviour : InGameObject {
 
     public void Recenter () {
 
-        transform.DOLocalMove(originalPos, 5);
+        //Get distance from center
+        float distance = transform.position.x - originalPos.x;
+        distance = Mathf.Abs(distance);
+
+        transform.DOLocalMove(originalPos, distance);
 
     }
 
@@ -94,7 +96,8 @@ public class PlayerBehaviour : InGameObject {
 		
 		if(!recievesPlayerInput)
 			return;
-		
+
+        Debug.Log("asd");
         HookControlls();
         BoatMovementControlls();
 
@@ -126,6 +129,7 @@ public class PlayerBehaviour : InGameObject {
     private void BoatMovementControlls()
     {
 		float horizontalMovementInput = inputMethod.GetMovementInput().x;
+        Debug.Log(horizontalMovementInput);
 		transform.Translate(horizontalMovementInput * speedFactor ,0,0);
         transform.position = new Vector2(Mathf.Clamp(transform.position.x,fishArea.xLeft,fishArea.xRight),transform.position.y);
 

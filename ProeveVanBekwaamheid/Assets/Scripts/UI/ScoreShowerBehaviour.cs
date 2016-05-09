@@ -13,7 +13,8 @@ public class ScoreShowerBehaviour : MonoBehaviour {
         gameObject.SetActive(false);
         Renderer renderer = this.gameObject.GetComponent<Renderer>();
         renderer.sortingOrder = SortLayer;
-        renderer.sortingLayerID = SortingLayerID;
+        //Brings error?
+        //renderer.sortingLayerID = SortingLayerID;
     }
 
     void Update()
