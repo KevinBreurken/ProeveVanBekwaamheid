@@ -53,9 +53,9 @@ namespace Base.Manager {
 
         void Update () {
             //Temp code for testing.
-            /*if (Input.GetKeyDown(KeyCode.S)) {
+            if (Input.GetKeyDown(KeyCode.S)) {
                 AddScore(100);
-            }*/
+            }
         }
 
         public int GetScore () {

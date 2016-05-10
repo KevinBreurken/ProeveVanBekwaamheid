@@ -97,7 +97,6 @@ public class PlayerBehaviour : InGameObject {
 		if(!recievesPlayerInput)
 			return;
 
-        Debug.Log("asd");
         HookControlls();
         BoatMovementControlls();
 
