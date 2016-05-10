@@ -13,6 +13,7 @@ namespace Base.UI {
 
     public class MenuUIState : BaseUIState {
 
+        [Header("States")]
         public BaseGameState offGameState;
         public BaseUIState gameUIState;
 
@@ -173,6 +174,8 @@ namespace Base.UI {
             stateCanvasGroup.interactable = true;
             stateCanvasGroup.blocksRaycasts = true;
 
+            currentOpenLayer = null;
+            currentActiveToggle = null;
             StartCoroutine(WaitDelay());
 
         }
