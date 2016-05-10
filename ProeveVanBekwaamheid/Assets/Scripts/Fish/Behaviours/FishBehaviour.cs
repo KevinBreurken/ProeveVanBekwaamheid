@@ -15,6 +15,8 @@ public class FishBehaviour : MonoBehaviour {
     public HookColors requiredHookColor;
     private VarsController varscontroller;
 
+    public FishInstinct ownInstinct;
+    public bool InMotion;
 
     public void ownStart()
     {
@@ -22,6 +24,12 @@ public class FishBehaviour : MonoBehaviour {
         originalSize = transform.localScale;
         GetType();
         gameObject.SetActive(false);
+        if (ownInstinct == null)
+        {
+            ownInstinct = GetComponentInChildren<FishInstinct>();
+        }
+        ownInstinct.Init(this);
+        InMotion = true;
     }
 
     public FishBehaviour GetFish()
@@ -34,6 +42,13 @@ public class FishBehaviour : MonoBehaviour {
         {
             return null;
         }
+    }
+
+    public IEnumerator TemporaryPause(float timeInSeconds)
+    {
+        InMotion = false;
+        yield return new WaitForSeconds(timeInSeconds);
+        InMotion = true;
     }
 
     public void FollowTarget(Transform targetTransform)
@@ -50,14 +65,17 @@ public class FishBehaviour : MonoBehaviour {
 
     public void SwimDirection(Direction targetDirection)
     {
-        FlipCharacter();
-        if (targetDirection == Direction.RIGHT)
+        if (InMotion == true)
         {
-            transform.Translate(0.0005f * speed, 0, 0);
-        }
-        else if (targetDirection == Direction.LEFT)
-        {
-            transform.Translate(-0.0005f * speed, 0, 0);
+            FlipCharacter();
+            if (targetDirection == Direction.RIGHT)
+            {
+                transform.Translate(0.0005f * speed, 0, 0);
+            }
+            else if (targetDirection == Direction.LEFT)
+            {
+                transform.Translate(-0.0005f * speed, 0, 0);
+            }
         }
     }
 
