@@ -18,6 +18,10 @@ public class FishBehaviour : MonoBehaviour {
     public FishInstinct ownInstinct;
     public bool InMotion;
 
+    public void OnEnable()
+    {
+        InMotion = true;
+    }
     public void ownStart()
     {
         originalSize = transform.localScale;
@@ -31,6 +35,7 @@ public class FishBehaviour : MonoBehaviour {
         InMotion = true;
     }
 
+    
     public FishBehaviour GetFish()
     {
         if (caught == false)
@@ -55,9 +60,16 @@ public class FishBehaviour : MonoBehaviour {
         transform.position = ChaniscoLib.SmoothVector2Step(transform.position, targetTransform.position, speed);
     }
 
-    public void GainFish()
+    public void GainFish(bool _rightColor)
     {
-        ScoreManager.Instance.AddScore(100);
+        if (_rightColor == true)
+        {
+            ScoreManager.Instance.AddScore((int)pullInformation.rightPoints);
+        }
+        else
+        {
+            ScoreManager.Instance.AddScore((int)pullInformation.wrongPoints);
+        }
         gameObject.SetActive(false);
         transform.localPosition = new Vector3(-5,0,0);
     }
