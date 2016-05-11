@@ -67,7 +67,7 @@ public class PlayerBehaviour : InGameObject {
 		
 		base.Load ();
 		recievesPlayerInput = true;
-
+		transform.DOKill();
 	}
 
 	public override void Unload ()
@@ -84,7 +84,7 @@ public class PlayerBehaviour : InGameObject {
         float distance = transform.position.x - originalPos.x;
         distance = Mathf.Abs(distance);
 
-        transform.DOLocalMove(originalPos, distance);
+		transform.DOLocalMove(originalPos, distance);
 
     }
 
