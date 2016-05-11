@@ -18,6 +18,10 @@ public class FishBehaviour : MonoBehaviour {
     public FishInstinct ownInstinct;
     public bool InMotion;
 
+    public void OnEnable()
+    {
+        InMotion = true;
+    }
     public void ownStart()
     {
         originalSize = transform.localScale;
@@ -31,6 +35,7 @@ public class FishBehaviour : MonoBehaviour {
         InMotion = true;
     }
 
+    
     public FishBehaviour GetFish()
     {
         if (caught == false)
