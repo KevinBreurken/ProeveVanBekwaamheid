@@ -35,8 +35,8 @@ namespace Base.Effect {
 			}
 
 			float distance = transform.position.y - lineEnd.transform.position.y;
-			Debug.Log(distance);
-			lineRenderer.sharedMaterial.mainTextureScale = new Vector2(distance * 2.15f,1);
+			//TODO Fix error.
+			lineRenderer.material.mainTextureScale = new Vector2(distance * 2.15f,1);
 
 		}
 
