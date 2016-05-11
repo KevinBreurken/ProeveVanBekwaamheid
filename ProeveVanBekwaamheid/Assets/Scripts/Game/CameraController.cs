@@ -47,7 +47,7 @@ namespace Base.Game {
         }
 
         // Movement is done in fixedUpdate to prevent stuttering.
-        void LateUpdate () {
+        void Update () {
 
             if (followTarget) {
 

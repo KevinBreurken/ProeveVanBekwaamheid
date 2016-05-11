@@ -42,6 +42,7 @@ namespace Base.Manager {
             if (onTimerEnded != null) {
 
                 onTimerEnded();
+				totalGameDuration = 0;
 
             }
 
