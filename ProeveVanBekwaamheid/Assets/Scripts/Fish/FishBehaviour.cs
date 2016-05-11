@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Chanisco;
+using Base.Manager;
 
 public class FishBehaviour : MonoBehaviour {
 
@@ -43,7 +44,7 @@ public class FishBehaviour : MonoBehaviour {
 
     public void GainFish()
     {
-        varscontroller.AddToScore(100);
+        ScoreManager.Instance.AddScore(100);
         gameObject.SetActive(false);
         transform.localPosition = new Vector3(-5,0,0);
     }
@@ -79,8 +80,8 @@ public class FishBehaviour : MonoBehaviour {
         transform.localPosition = targetSpawnPosition;
         gameObject.SetActive(true);
 
-
     }
+
     private void FlipCharacter()
     {
         if (ownDirection == Direction.RIGHT)

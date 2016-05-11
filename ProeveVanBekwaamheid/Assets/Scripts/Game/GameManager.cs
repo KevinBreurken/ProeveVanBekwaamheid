@@ -28,7 +28,7 @@ namespace Base.Manager {
 			//add listeners
             waveManager.OnWaveFailed += StopGame;
             waveManager.OnWaveSucceeded += StartNewLevel;
-
+           
         }
 
         public void StartGame () {
@@ -43,6 +43,7 @@ namespace Base.Manager {
             waveManager.BeginWaves();
             scoreManager.scoreDisplay.UpdateScoreTarget(waveManager.targetScoreList[waveManager.currentLevel]);
             scoreManager.scoreDisplay.Show(false);
+            timeManager.timerDisplay.Show(false);
 
         }
 

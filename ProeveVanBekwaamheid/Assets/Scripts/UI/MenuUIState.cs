@@ -176,6 +176,7 @@ namespace Base.UI {
 
             currentOpenLayer = null;
             currentActiveToggle = null;
+
             StartCoroutine(WaitDelay());
 
         }
@@ -184,7 +185,6 @@ namespace Base.UI {
 
             yield return new WaitForSeconds(1.5f);
 
-           
             stateCanvasGroup.DOFade(1, 1.5f);
 
         }

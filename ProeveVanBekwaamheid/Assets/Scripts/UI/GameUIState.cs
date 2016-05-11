@@ -11,6 +11,7 @@ namespace Base.UI {
 
 		public QUIButton pauseButton;
         public ScoreDisplay scoreDisplay;
+        public TimerDisplay timerDisplay;
         public PauseOverlay pauseOverlay;
         private CanvasGroup canvasGroup;
 
@@ -27,6 +28,7 @@ namespace Base.UI {
             canvasGroup.alpha = 0;
             canvasGroup.DOFade(1, 0.3f);
             scoreDisplay.Hide(true);
+            timerDisplay.Hide(true);
 
         }
 

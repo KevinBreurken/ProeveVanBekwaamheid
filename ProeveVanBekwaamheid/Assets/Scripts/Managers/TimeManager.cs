@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Base.Game;
+using Base.UI;
 
 namespace Base.Manager {
 
@@ -14,6 +15,8 @@ namespace Base.Manager {
 
         public float totalGameDuration;
         public bool gameStarted;
+        public TimerDisplay timerDisplay;
+
 
         public void StartTimer () {
 
@@ -57,6 +60,14 @@ namespace Base.Manager {
             gameStarted = false;
             StopCoroutine(WaitTillLevelEnds());
             base.Unload();
+
+        }
+
+        public float GetCurrentLevelDuration () {
+
+            float time = 0;
+            time = levelLenght - totalGameDuration;
+            return time;
 
         }
 
