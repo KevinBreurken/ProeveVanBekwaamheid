@@ -11,6 +11,12 @@ namespace Base.Effect {
 		
 		public string sortingLayer;
 		public int sortingOrder;
+		public GameObject lineEnd;
+		private LineRenderer lineRenderer;
+
+		void Awake () {
+			lineRenderer = GetComponent<LineRenderer>();
+		}
 
 		private Renderer getMeshRenderer() {
 			
@@ -27,6 +33,10 @@ namespace Base.Effect {
 				getMeshRenderer().sortingOrder = sortingOrder;
 
 			}
+
+			float distance = transform.position.y - lineEnd.transform.position.y;
+			Debug.Log(distance);
+			lineRenderer.sharedMaterial.mainTextureScale = new Vector2(distance * 2.15f,1);
 
 		}
 
