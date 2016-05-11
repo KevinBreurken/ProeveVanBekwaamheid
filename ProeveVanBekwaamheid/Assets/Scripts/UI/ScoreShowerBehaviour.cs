@@ -2,17 +2,17 @@
 using System.Collections;
 
 public class ScoreShowerBehaviour : MonoBehaviour {
-    private TextMesh ownText;
+   // private TextMesh ownText;
     public int SortLayer = 0;
 
     void Start()
     {
-        int SortingLayerID = SortingLayer.GetLayerValueFromName("Main");
+        /*int SortingLayerID = SortingLayer.GetLayerValueFromName("Main");
         ownText = GetComponent<TextMesh>();
         VarsController.Instance.scoreShower = this;
         gameObject.SetActive(false);
         Renderer renderer = this.gameObject.GetComponent<Renderer>();
-        renderer.sortingOrder = SortLayer;
+        renderer.sortingOrder = SortLayer;*/
         //Brings error?
         //renderer.sortingLayerID = SortingLayerID;
     }
@@ -30,7 +30,7 @@ public class ScoreShowerBehaviour : MonoBehaviour {
     public void ActivateScoreShow(float Score)
     {
         transform.localPosition = new Vector3(0, 0, 0);
-        ownText.text = Score.ToString();
+      //  ownText.text = Score.ToString();
         gameObject.SetActive(true);
 
     }
