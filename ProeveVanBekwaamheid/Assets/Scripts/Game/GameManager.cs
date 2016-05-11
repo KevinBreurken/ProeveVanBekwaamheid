@@ -5,6 +5,9 @@ using Base.Manager;
 
 namespace Base.Manager {
 
+	/// <summary>
+	/// Manages Game related actions.
+	/// </summary>
     public class GameManager : MonoBehaviour {
 
         public delegate void GameEvent (int _currentLevel, int _targetscore);
@@ -21,9 +24,11 @@ namespace Base.Manager {
             scoreManager = GetComponent<ScoreManager>();
             timeManager = GetComponent<TimeManager>();
             waveManager = GetComponent<WaveManager>();
+
+			//add listeners
             waveManager.OnWaveFailed += StopGame;
             waveManager.OnWaveSucceeded += StartNewLevel;
-
+           
         }
 
         public void StartGame () {
@@ -31,13 +36,14 @@ namespace Base.Manager {
             Debug.Log("Game Manager started.");
 
 			playerBoat.Load();
-
             scoreManager.Load();
             waveManager.Load();
             timeManager.Load();
+
             waveManager.BeginWaves();
             scoreManager.scoreDisplay.UpdateScoreTarget(waveManager.targetScoreList[waveManager.currentLevel]);
             scoreManager.scoreDisplay.Show(false);
+            timeManager.timerDisplay.Show(false);
 
         }
 
@@ -46,10 +52,10 @@ namespace Base.Manager {
             Debug.Log("Game Manager stopped.");
 
 			playerBoat.Unload();
-
             scoreManager.Unload();
             waveManager.Unload();
             timeManager.Unload();
+
             StartCoroutine(UIStateSelector.Instance.SetState("ResultUIState"));
 
         }

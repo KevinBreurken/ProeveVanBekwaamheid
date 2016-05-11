@@ -23,26 +23,36 @@ namespace Base.UI {
             canvasGroup.blocksRaycasts = false;
             canvasGroup.alpha = 0;
 
-            resumeButton.onClicked += ResumeButton_onClicked;
-            quitButton.onClicked += QuitButton_onClicked;
+            resumeButton.onClicked += ReturnToGame;
+            quitButton.onClicked   += ReturnToMenu;
+
             resumeButton.usesTimeScale = false;
             quitButton.usesTimeScale = false;
 
         }
 
-        private void QuitButton_onClicked () {
+		/// <summary>
+		/// Returns back to the menu state.
+		/// </summary>
+        private void ReturnToMenu () {
 
             CloseOverlay();
             gameManager.StopGame();
 
         }
 
-        private void ResumeButton_onClicked () {
+		/// <summary>
+		/// Returns back to the game state.
+		/// </summary>
+        private void ReturnToGame () {
 
             CloseOverlay();
 
         }
 
+		/// <summary>
+		/// Opens the overlay.
+		/// </summary>
         public void OpenOverlay () {
 
             canvasGroup.interactable = true;
@@ -52,6 +62,9 @@ namespace Base.UI {
 
         }
 
+		/// <summary>
+		/// Closes the overlay.
+		/// </summary>
         public void CloseOverlay () {
 
             canvasGroup.interactable = false;

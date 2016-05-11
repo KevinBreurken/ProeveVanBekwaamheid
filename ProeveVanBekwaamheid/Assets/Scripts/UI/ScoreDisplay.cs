@@ -16,7 +16,7 @@ namespace Base.UI {
        
         public int currentMatchScore;
         public int currentTargetScore;
-
+         
         private int tweenedScoreCounterValue;
         private int tweenedTargetScore;
 

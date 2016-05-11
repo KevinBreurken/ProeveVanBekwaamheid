@@ -125,17 +125,15 @@ public class PlayerBehaviour : InGameObject {
     /// <summary>
     /// Movement that the boat uses to move around the sea
     /// </summary>
-    private void BoatMovementControlls()
-    {
+    private void BoatMovementControlls() {
+		
 		float horizontalMovementInput = inputMethod.GetMovementInput().x;
-        Debug.Log(horizontalMovementInput);
 		transform.Translate(horizontalMovementInput * speedFactor ,0,0);
         transform.position = new Vector2(Mathf.Clamp(transform.position.x,fishArea.xLeft,fishArea.xRight),transform.position.y);
 
     }
 
-    private void OutOfBound()
-    {
+    private void OutOfBound() {
 
     }
 

@@ -7,33 +7,74 @@ using UnityEngine.UI;
 
 namespace Base.UI {
 
+	/// <summary>
+	/// UIState that shows the results of the game to the player.
+	/// </summary>
     public class ResultUIState : BaseUIState {
 
-        public WaveManager waveManager;
-        public BaseGameState offGameState;
-
+		/// <summary>
+		/// The QUIButton that returns the player back to the menu.
+		/// </summary>
         [Header("Buttons")]
         public QUIButton returnButton;
+		/// <summary>
+		/// The QUIButton that returns the player back to the game.
+		/// </summary>
         public QUIButton playButton;
 
+		/// <summary>
+		/// QUIObject that contains the score text component.
+		/// </summary>
         [Header("Other UI Components")]
         public QUIObject scoreObject;
         private Text scoreObjectText;
+
+		/// <summary>
+		/// QUIObject that contains the level text component.
+		/// </summary>
         public QUIObject levelObject;
         private Text levelObjectText;
 
+		/// <summary>
+		/// Reference to the WaveManager.
+		/// </summary>
+		[Header("Other")]
+		public WaveManager waveManager;
+
+		/// <summary>
+		/// The GameState that is paired with this UIState.
+		/// </summary>
+		public BaseGameState gameState;
+
         void Awake () {
 
-            returnButton.onClicked += ReturnButton_onClicked;
+			//Add button listeners.
+            returnButton.onClicked += ReturnToMenu;
+			playButton.onClicked += ReturnToGameState;
 
+			//Get component references.
             levelObjectText = levelObject.GetComponent<Text>();
             scoreObjectText = scoreObject.GetComponent<Text>();
 
         }
 
-        private void ReturnButton_onClicked () {
+		/// <summary>
+		/// Returns back to the menu.
+		/// </summary>
+        private void ReturnToMenu () {
 
             StartCoroutine(UIStateSelector.Instance.SetState("MenuUIState"));
+
+        }
+
+		/// <summary>
+		/// Returns back to the game.
+		/// </summary>
+        void ReturnToGameState () {
+			
+			Audio.AudioManager.Instance.SetUnderwaterMixing(1);
+			StartCoroutine(UIStateSelector.Instance.SetState("GameUIState"));
+			StartCoroutine(GameStateSelector.Instance.SetState("InGameState"));
 
         }
 
@@ -45,15 +86,18 @@ namespace Base.UI {
             int score = Manager.ScoreManager.Instance.GetScore();
             int level = waveManager.currentLevel;
 
+			//Apply values to text components.
             scoreObjectText.text = "Score: " + score;
             levelObjectText.text = "Level: " + (level + 1);
 
-            if (GameStateSelector.Instance.currentState != offGameState) {
+			//Change the GameState if it isn't that state.
+            if (GameStateSelector.Instance.currentState != gameState) {
 
-                StartCoroutine(GameStateSelector.Instance.SetState(offGameState));
+                StartCoroutine(GameStateSelector.Instance.SetState(gameState));
 
             }
 
+			//Perform animations.
             StartCoroutine(scoreObject.Show());
             StartCoroutine(levelObject.Show());
 
