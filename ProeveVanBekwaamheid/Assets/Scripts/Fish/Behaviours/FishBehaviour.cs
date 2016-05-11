@@ -14,16 +14,14 @@ public class FishBehaviour : MonoBehaviour {
 
     private Vector3 originalSize;
     public HookColors requiredHookColor;
-    private VarsController varscontroller;
 
     public FishInstinct ownInstinct;
     public bool InMotion;
 
     public void ownStart()
     {
-        varscontroller = VarsController.Instance;
         originalSize = transform.localScale;
-        GetType();
+        SetType();
         gameObject.SetActive(false);
         if (ownInstinct == null)
         {
@@ -112,7 +110,7 @@ public class FishBehaviour : MonoBehaviour {
         }
     }
 
-    public virtual void GetType()
+    public virtual void SetType()
     {
 
     }

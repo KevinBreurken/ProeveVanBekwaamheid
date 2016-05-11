@@ -21,7 +21,6 @@ public class PlayerBehaviour : InGameObject {
 
 
     private AreaController areaContorller;
-    private SeaController seaController;
     private Area fishArea;
     
     public bool recievesPlayerInput;
@@ -41,7 +40,6 @@ public class PlayerBehaviour : InGameObject {
 
     private void Start () {
         areaContorller = AreaController.Instance;
-        seaController = SeaController.Instance;
         originalPos = transform.localPosition;
         fishArea = areaContorller.viewField;
 

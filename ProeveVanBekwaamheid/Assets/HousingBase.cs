@@ -7,8 +7,13 @@ public class HousingBase : MonoBehaviour {
     {
         if (other.gameObject.tag == "Fish")
         {
-
+            InteractWithFish();
         }
+    }
+
+    public virtual void InteractWithFish()
+    {
+
     }
 
     public void ClaimOwnership(FishInstinct target)
