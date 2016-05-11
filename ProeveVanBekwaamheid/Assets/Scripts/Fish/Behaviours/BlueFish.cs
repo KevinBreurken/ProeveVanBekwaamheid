@@ -15,9 +15,9 @@ public class BlueFish : FishBehaviour
         OutOfBound();
     }
 
-    public override void GetType()
+    public override void SetType()
     {
-        base.GetType();
+        base.SetType();
         requiredHookColor = HookColors.BLUE;   
     }
 }
