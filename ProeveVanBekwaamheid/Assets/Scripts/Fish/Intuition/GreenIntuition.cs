@@ -30,6 +30,7 @@ public class GreenIntuition : FishInstinct {
             parent.FollowTarget(housing,0.1f);
             yield return new WaitForEndOfFrame();
             StartCoroutine("HideBehindWeed");
+            parent.InMotion = false;
             yield break;
         }
         else
