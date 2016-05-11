@@ -19,14 +19,19 @@ public class FishInstinct : MonoBehaviour
 
         if (other.gameObject.tag == "Weed")
         {
-
+            ReactOnWeed(other.transform);
         }
 
     }
 
     public virtual void ReactOnFish(FishBehaviour _target)
     {
-        
+
+    }
+
+    public virtual void ReactOnWeed(Transform _target)
+    {
+
     }
 
 }

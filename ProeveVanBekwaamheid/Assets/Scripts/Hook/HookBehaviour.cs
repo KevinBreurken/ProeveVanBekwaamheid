@@ -57,7 +57,7 @@ public class HookBehaviour : MonoBehaviour {
             }
             if(ownFish != null)
             {
-                ownFish.FollowTarget(transform);
+                ownFish.FollowTarget(transform,0.9f);
             }
         }
         else

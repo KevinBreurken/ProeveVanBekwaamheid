@@ -52,9 +52,9 @@ public class FishBehaviour : MonoBehaviour {
         InMotion = true;
     }
 
-    public void FollowTarget(Transform targetTransform)
+    public void FollowTarget(Transform targetTransform,float speed)
     {
-        transform.position = ChaniscoLib.SmoothVector2Step(transform.position, targetTransform.position, 0.9f);
+        transform.position = ChaniscoLib.SmoothVector2Step(transform.position, targetTransform.position, speed);
     }
 
     public void GainFish()
