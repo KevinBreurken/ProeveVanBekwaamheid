@@ -60,9 +60,16 @@ public class FishBehaviour : MonoBehaviour {
         transform.position = ChaniscoLib.SmoothVector2Step(transform.position, targetTransform.position, speed);
     }
 
-    public void GainFish()
+    public void GainFish(bool _rightColor)
     {
-        ScoreManager.Instance.AddScore(100);
+        if (_rightColor == true)
+        {
+            ScoreManager.Instance.AddScore((int)pullInformation.rightPoints);
+        }
+        else
+        {
+            ScoreManager.Instance.AddScore((int)pullInformation.wrongPoints);
+        }
         gameObject.SetActive(false);
         transform.localPosition = new Vector3(-5,0,0);
     }

@@ -14,7 +14,7 @@ public class HookBehaviour : MonoBehaviour {
     public FishBehaviour ownFish;
 
     private Vector2 OriginalPos;
-
+    private bool rightColor;
 
     public HookColors ownHookColor;
 
@@ -67,7 +67,7 @@ public class HookBehaviour : MonoBehaviour {
     {
         if (ownFish != null)
         {
-            ownFish.GainFish();
+            ownFish.GainFish(rightColor);
             ownFish = null;
         }
     }
@@ -115,10 +115,12 @@ public class HookBehaviour : MonoBehaviour {
                     if (isColorIdentical(tempFish.requiredHookColor))
                     {
                         pullSpeed = tempFish.pullInformation.rightPressure;
+                        rightColor = true;
                     }
                     else
                     {
                         pullSpeed = tempFish.pullInformation.wrongPressure;
+                        rightColor = false;
                     }
                     ownFish = tempFish;
                     ownFish.caught = true;
