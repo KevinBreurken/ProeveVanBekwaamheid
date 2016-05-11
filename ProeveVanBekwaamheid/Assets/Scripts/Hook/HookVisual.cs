@@ -17,7 +17,7 @@ public class HookVisual : MonoBehaviour {
     IEnumerator CheckPreviousPosition()
     {
         previousXpos = transform.position.x;
-        yield return new WaitForEndOfFrame();
+        yield return new WaitForFixedUpdate();
         if (previousXpos == transform.position.x)
         {
             transform.eulerAngles = Vector3.zero;
