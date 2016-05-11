@@ -41,8 +41,13 @@ public class HookBehaviour : MonoBehaviour {
         {
             if (hookPull == true)
             {
+                if (ownFish != null)
+                {
+                    ownFish.FollowTarget(transform, 0.9f);
+                }
                 if (PullHook() == false)
                 {
+                    OnHookReturned();
                     hookPull = false;
                     hookReleased = false;
                     hookInteracted = false;
@@ -55,14 +60,6 @@ public class HookBehaviour : MonoBehaviour {
                     hookPull = true;
                 }
             }
-            if(ownFish != null)
-            {
-                ownFish.FollowTarget(transform,0.9f);
-            }
-        }
-        else
-        {
-            OnHookReturned();
         }
     }
 

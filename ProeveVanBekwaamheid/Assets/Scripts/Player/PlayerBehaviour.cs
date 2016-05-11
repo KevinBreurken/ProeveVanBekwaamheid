@@ -10,11 +10,6 @@ public class PlayerBehaviour : InGameObject {
     private BaseQInputMethod inputMethod;
 
     private float speedFactor = 0.05f;
-    private float maxSpeed = 0.7f;
-    private float minSpeed = -0.5f;
-
-    private float minXDistance = -10;
-    private float maxXDistance = 10;
 
     private Vector2 originalPos;
 
@@ -28,10 +23,7 @@ public class PlayerBehaviour : InGameObject {
     private AreaController areaContorller;
     private SeaController seaController;
     private Area fishArea;
-
-    private float Xpos;
-    private float borderPos;
-
+    
     public bool recievesPlayerInput;
 
     void Awake () {
