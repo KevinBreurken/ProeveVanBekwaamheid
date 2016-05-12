@@ -2,8 +2,12 @@
 using System.Collections;
 using Chanisco;
 using Base.Manager;
+using BaseFrame.QAudio;
 
 public class FishBehaviour : MonoBehaviour {
+
+    public QAudioObjectHolder rightSound;
+    public QAudioObjectHolder wrongSound;
 
     public Direction ownDirection;
     public bool caught;
@@ -17,6 +21,14 @@ public class FishBehaviour : MonoBehaviour {
 
     public FishInstinct ownInstinct;
     public bool InMotion;
+
+    private bool isAnimating;
+
+    void Awake () {
+        wrongSound.CreateAudioObject();
+        rightSound.CreateAudioObject();
+        isAnimating = false;
+    }
 
     public void OnEnable()
     {
@@ -65,10 +77,12 @@ public class FishBehaviour : MonoBehaviour {
         if (_rightColor == true)
         {
             ScoreManager.Instance.AddScore((int)pullInformation.rightPoints);
+            rightSound.GetAudioObject().Play();
         }
         else
         {
             ScoreManager.Instance.AddScore((int)pullInformation.wrongPoints);
+            wrongSound.GetAudioObject().Play();
         }
         gameObject.SetActive(false);
         transform.localPosition = new Vector3(-5,0,0);
