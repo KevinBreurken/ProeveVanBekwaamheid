@@ -21,28 +21,20 @@ public class FishBehaviour : MonoBehaviour {
 
     public FishInstinct ownInstinct;
     public bool InMotion;
-
     private bool isAnimating;
+    private const string ownTag = "Fish";
 
     void Awake () {
         wrongSound.CreateAudioObject();
         rightSound.CreateAudioObject();
         isAnimating = false;
-    }
-
-    public void OnEnable()
-    {
-        InMotion = true;
+        gameObject.tag = ownTag;
     }
     public void ownStart()
     {
         originalSize = transform.localScale;
         SetType();
         gameObject.SetActive(false);
-        if (ownInstinct == null)
-        {
-            ownInstinct = GetComponentInChildren<FishInstinct>();
-        }
         ownInstinct.Init(this);
         InMotion = true;
     }

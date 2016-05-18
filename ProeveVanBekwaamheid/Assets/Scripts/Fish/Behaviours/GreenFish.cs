@@ -9,6 +9,12 @@ public class GreenFish : FishBehaviour {
         ownStart();
     }
 
+    public void OnEnable()
+    {
+        speed = Random.Range(1, 20);
+        InMotion = true;
+    }
+
     void Update()
     {
         SwimDirection(ownDirection);

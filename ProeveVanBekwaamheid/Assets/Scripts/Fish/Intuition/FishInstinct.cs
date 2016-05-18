@@ -22,6 +22,11 @@ public class FishInstinct : MonoBehaviour
             ReactOnWeed(other.transform);
         }
 
+        if (other.gameObject.tag == "Hook")
+        {
+            ReactOnHook(other.transform);
+        }
+
     }
 
     public virtual void ReactOnFish(FishBehaviour _target)
@@ -34,4 +39,27 @@ public class FishInstinct : MonoBehaviour
 
     }
 
+    public virtual void ReactOnHook(Transform _target)
+    {
+
+    }
+
+
+
+    public IEnumerator SwimOpositeDirection()
+    {
+        parent.StartCoroutine("TemporaryPause", 0.5f);
+        Direction solutionDirection;
+        if (parent.ownDirection == Direction.LEFT)
+        {
+            solutionDirection = Direction.RIGHT;
+        }
+        else
+        {
+            solutionDirection = Direction.LEFT;
+        }
+        parent.ownDirection = solutionDirection;
+        yield break;
+
+    }
 }

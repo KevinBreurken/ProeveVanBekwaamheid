@@ -8,6 +8,12 @@ public class RedFish : FishBehaviour {
         speed = Random.Range(20, 30);
         ownStart();
     }
+    
+    public void OnEnable()
+    {
+        speed = Random.Range(20, 30);
+        InMotion = true;
+    }
 
     void Update()
     {

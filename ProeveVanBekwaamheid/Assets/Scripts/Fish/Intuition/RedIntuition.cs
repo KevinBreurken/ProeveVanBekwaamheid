@@ -15,22 +15,6 @@ public class RedIntuition : FishInstinct {
         }
     }
 
-    public IEnumerator SwimOpositeDirection()
-    {
-        parent.StartCoroutine("TemporaryPause",0.5f);
-        Direction solutionDirection;
-        if (parent.ownDirection == Direction.LEFT)
-        {
-            solutionDirection = Direction.RIGHT;
-        }
-        else
-        {
-            solutionDirection = Direction.LEFT;
-        }
-        parent.ownDirection = solutionDirection;
-        yield break;
-
-    }
 
 
 }
