@@ -3,6 +3,7 @@ using System.Collections;
 using Chanisco;
 using Base.Manager;
 using BaseFrame.QAudio;
+using DG.Tweening;
 
 public class FishBehaviour : MonoBehaviour {
 
@@ -21,10 +22,17 @@ public class FishBehaviour : MonoBehaviour {
 
     public FishInstinct ownInstinct;
     public bool InMotion;
+
+    [Header("Graphic")]
+    public Ease spawnAnimationEaseType = Ease.OutBack;
+    public float spawnAnimationDuration = 1;
+    private SpriteRenderer spriteComponent;
+    
     private bool isAnimating;
     private const string ownTag = "Fish";
 
     void Awake () {
+        spriteComponent = GetComponent<SpriteRenderer>();
         wrongSound.CreateAudioObject();
         rightSound.CreateAudioObject();
         isAnimating = false;
@@ -113,19 +121,15 @@ public class FishBehaviour : MonoBehaviour {
         caught = false;
         transform.localPosition = targetSpawnPosition;
         gameObject.SetActive(true);
-
+        gameObject.transform.localScale = new Vector3(0,0,0);
+        gameObject.transform.DOScale(1, spawnAnimationDuration).SetEase(spawnAnimationEaseType);
     }
 
     private void FlipCharacter()
     {
-        if (ownDirection == Direction.RIGHT)
-        {
-            transform.localScale = originalSize;
-        }
-        else if (ownDirection == Direction.LEFT)
-        {
-            transform.localScale = new Vector3(-originalSize.x, originalSize.y, originalSize.z);
-        }
+
+        spriteComponent.flipX = (ownDirection == Direction.LEFT) ? true : false ;
+
     }
 
     public virtual void SetType()

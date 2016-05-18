@@ -6,7 +6,6 @@ namespace Base.Effect {
 	using UnityEngine;
 
 	[RequireComponent (typeof (LineRenderer))]
-	[ExecuteInEditMode]
 	public class LineRendererLayer : MonoBehaviour {
 		
 		public string sortingLayer;
@@ -15,8 +14,12 @@ namespace Base.Effect {
 		private LineRenderer lineRenderer;
 
 		void Awake () {
+
 			lineRenderer = GetComponent<LineRenderer>();
-		}
+            //Prevents modifying the material asset itself.
+            lineRenderer.sharedMaterial = new Material(lineRenderer.sharedMaterial);
+            
+        }
 
 		private Renderer getMeshRenderer() {
 			
@@ -35,8 +38,8 @@ namespace Base.Effect {
 			}
 
 			float distance = transform.position.y - lineEnd.transform.position.y;
-			//TODO Fix error.
-			lineRenderer.material.mainTextureScale = new Vector2(distance * 2.15f,1);
+
+			lineRenderer.sharedMaterial.mainTextureScale = new Vector2(distance * 2.15f,1);
 
 		}
 
