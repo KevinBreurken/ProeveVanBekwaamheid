@@ -17,7 +17,7 @@ public class FishBehaviour : MonoBehaviour {
     public Area fishArea;
     public fishPulls pullInformation;
 
-    private Vector3 originalSize;
+    public VisualEmotion emotion;
     public HookColors requiredHookColor;
 
     public FishInstinct ownInstinct;
@@ -40,11 +40,14 @@ public class FishBehaviour : MonoBehaviour {
     }
     public void ownStart()
     {
-        originalSize = transform.localScale;
         SetType();
         gameObject.SetActive(false);
         ownInstinct.Init(this);
         InMotion = true;
+        if (emotion == null)
+        {
+            emotion = GetComponentInChildren<VisualEmotion>();
+        }
     }
 
     
