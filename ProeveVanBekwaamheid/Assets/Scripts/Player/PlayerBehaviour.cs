@@ -24,6 +24,10 @@ public class PlayerBehaviour : InGameObject {
     private Area fishArea;
     
     public bool recievesPlayerInput;
+    private float movementInput;
+
+    void Update () { Controlls(); }
+    void FixedUpdate () { Movement(); }
 
     void Awake () {
 
@@ -47,16 +51,15 @@ public class PlayerBehaviour : InGameObject {
         greenHook.releaseSpeed = ownHookSpeed;
         yellowHook.releaseSpeed = ownHookSpeed;
     }
-
-    public void Update () {
-        Controlls();
-    }
+   
 
 	public override void Load ()
 	{
 		
 		base.Load ();
 		recievesPlayerInput = true;
+
+        //stops the recentering.
 		transform.DOKill();
 	}
 
@@ -88,7 +91,16 @@ public class PlayerBehaviour : InGameObject {
 			return;
 
         HookControlls();
-        BoatMovementControlls();
+
+        //Get the movement controls
+        movementInput = inputMethod.GetMovementInput().x;
+
+    }
+
+    private void Movement () {
+
+        transform.Translate(movementInput * speedFactor, 0, 0);
+        transform.position = new Vector2(Mathf.Clamp(transform.position.x, fishArea.xLeft, fishArea.xRight), transform.position.y);
 
     }
 
@@ -112,16 +124,6 @@ public class PlayerBehaviour : InGameObject {
 
     }
 
-    /// <summary>
-    /// Movement that the boat uses to move around the sea
-    /// </summary>
-    private void BoatMovementControlls() {
-		
-		float horizontalMovementInput = inputMethod.GetMovementInput().x;
-		transform.Translate(horizontalMovementInput * speedFactor ,0,0);
-        transform.position = new Vector2(Mathf.Clamp(transform.position.x,fishArea.xLeft,fishArea.xRight),transform.position.y);
-
-    }
 
     private void OutOfBound() {
 
