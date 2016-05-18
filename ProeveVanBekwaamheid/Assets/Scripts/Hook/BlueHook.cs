@@ -20,7 +20,7 @@ public class BlueHook : HookBehaviour {
 
     public override void SetType()
     {
-        ownHookColor = HookColors.BLUE;
+        ownHookColor = HookColors.YELLOW;
         base.SetType();
     }
 

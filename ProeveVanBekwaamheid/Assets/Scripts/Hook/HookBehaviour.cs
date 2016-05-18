@@ -20,9 +20,11 @@ public class HookBehaviour : MonoBehaviour {
     private bool rightColor;
 
     public HookColors ownHookColor;
+    private const string ownTag = "Hook";
 
     void Awake () {
         chainSound.CreateAudioObject();
+        gameObject.tag = ownTag;
     }
 
     public void hookStart()
@@ -161,6 +163,6 @@ public class HookBehaviour : MonoBehaviour {
 public enum HookColors
 {
     RED,
-    BLUE,
+    YELLOW,
     GREEN
 }
