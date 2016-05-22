@@ -33,7 +33,12 @@ namespace Base.UI {
                 return;
 
             time = (int)System.Math.Round(timeManager.GetCurrentLevelDuration(),0);
-            timeQUIObjectText.text = "" + time;
+
+            int minutes = Mathf.FloorToInt(time / 60F);
+            int seconds = Mathf.FloorToInt(time - minutes * 60);
+            string niceTime = string.Format("{0:0}:{1:00}", minutes, seconds);
+
+            timeQUIObjectText.text = "" + niceTime;
 
             if(time != previousRoundedTimeValue) {
                 previousRoundedTimeValue = time;
