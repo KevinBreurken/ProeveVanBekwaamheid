@@ -10,6 +10,7 @@ public class PlayerBehaviour : InGameObject {
     private BaseQInputMethod inputMethod;
 
     private float speedFactor = 0.05f;
+	private float mouseMovementDistance = 0.3f;
 
     private Vector2 originalPos;
 
@@ -61,6 +62,7 @@ public class PlayerBehaviour : InGameObject {
 
         //stops the recentering.
 		transform.DOKill();
+
 	}
 
 	public override void Unload ()
@@ -93,7 +95,17 @@ public class PlayerBehaviour : InGameObject {
         HookControlls();
 
         //Get the movement controls
-        movementInput = inputMethod.GetMovementInput().x;
+		Vector2 mousePos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+
+		mousePos.x -= 0.5f;
+
+		Debug.Log(mousePos);
+
+		if(mousePos.x < -mouseMovementDistance || mousePos.x > mouseMovementDistance) {
+			movementInput = mousePos.x;
+		}else{
+			movementInput = Mathf.MoveTowards(movementInput,0,0.05f);
+		}
 
     }
 
