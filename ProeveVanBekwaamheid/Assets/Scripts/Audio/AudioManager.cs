@@ -9,6 +9,9 @@ namespace Base.Audio {
         public AudioMixerSnapshot defaultSnapshot;
         public AudioMixerSnapshot underwaterSnapshot;
 
+		public AudioMixerGroup musicGroup;
+		public AudioMixerGroup effectsGroup;
+	
         public void SetUnderwaterMixing (float _time) {
 
             underwaterSnapshot.TransitionTo(_time);
@@ -21,6 +24,13 @@ namespace Base.Audio {
 
         }
 
+		public void SetMusic (bool _muted) {
+			
+		}
+
+		public void SetEffect (bool _muted) {
+
+		}
     }
 
 }

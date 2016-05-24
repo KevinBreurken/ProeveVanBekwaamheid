@@ -40,6 +40,7 @@ namespace Base.Effect {
 			float distance = transform.position.y - lineEnd.transform.position.y;
 
 			lineRenderer.sharedMaterial.mainTextureScale = new Vector2(distance * 2.15f,1);
+			lineRenderer.sharedMaterial.mainTextureOffset = new Vector2(distance * -2.15f,1);
 
 		}
 
