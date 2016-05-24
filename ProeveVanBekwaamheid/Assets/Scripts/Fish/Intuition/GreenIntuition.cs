@@ -12,6 +12,7 @@ public class GreenIntuition : FishInstinct {
     public override void ReactOnWeed(Transform _target)
     {
         HousingBase tempHouse = _target.GetComponent<HousingBase>();
+        parent.emotion.Emote(Emotions.SHOCK);
         if (tempHouse.occupied == false)
         {
             tempHouse.ClaimOwnership(this);

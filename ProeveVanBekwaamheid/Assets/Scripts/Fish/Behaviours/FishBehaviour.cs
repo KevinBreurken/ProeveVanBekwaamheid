@@ -2,8 +2,13 @@
 using System.Collections;
 using Chanisco;
 using Base.Manager;
+using BaseFrame.QAudio;
+using DG.Tweening;
 
 public class FishBehaviour : MonoBehaviour {
+
+    public QAudioObjectHolder rightSound;
+    public QAudioObjectHolder wrongSound;
 
     public Direction ownDirection;
     public bool caught;
@@ -12,27 +17,37 @@ public class FishBehaviour : MonoBehaviour {
     public Area fishArea;
     public fishPulls pullInformation;
 
-    private Vector3 originalSize;
+    public VisualEmotion emotion;
     public HookColors requiredHookColor;
 
     public FishInstinct ownInstinct;
     public bool InMotion;
 
-    public void OnEnable()
-    {
-        InMotion = true;
+    [Header("Graphic")]
+    public Ease spawnAnimationEaseType = Ease.OutBack;
+    public float spawnAnimationDuration = 1;
+    private SpriteRenderer spriteComponent;
+    
+    private bool isAnimating;
+    private const string ownTag = "Fish";
+
+    void Awake () {
+        spriteComponent = GetComponent<SpriteRenderer>();
+        wrongSound.CreateAudioObject();
+        rightSound.CreateAudioObject();
+        isAnimating = false;
+        gameObject.tag = ownTag;
     }
     public void ownStart()
     {
-        originalSize = transform.localScale;
         SetType();
         gameObject.SetActive(false);
-        if (ownInstinct == null)
-        {
-            ownInstinct = GetComponentInChildren<FishInstinct>();
-        }
         ownInstinct.Init(this);
         InMotion = true;
+        if (emotion == null)
+        {
+            emotion = GetComponentInChildren<VisualEmotion>();
+        }
     }
 
     
@@ -65,10 +80,12 @@ public class FishBehaviour : MonoBehaviour {
         if (_rightColor == true)
         {
             ScoreManager.Instance.AddScore((int)pullInformation.rightPoints);
+            rightSound.GetAudioObject().Play();
         }
         else
         {
             ScoreManager.Instance.AddScore((int)pullInformation.wrongPoints);
+            wrongSound.GetAudioObject().Play();
         }
         gameObject.SetActive(false);
         transform.localPosition = new Vector3(-5,0,0);
@@ -107,19 +124,15 @@ public class FishBehaviour : MonoBehaviour {
         caught = false;
         transform.localPosition = targetSpawnPosition;
         gameObject.SetActive(true);
-
+        gameObject.transform.localScale = new Vector3(0,0,0);
+        gameObject.transform.DOScale(1, spawnAnimationDuration).SetEase(spawnAnimationEaseType);
     }
 
     private void FlipCharacter()
     {
-        if (ownDirection == Direction.RIGHT)
-        {
-            transform.localScale = originalSize;
-        }
-        else if (ownDirection == Direction.LEFT)
-        {
-            transform.localScale = new Vector3(-originalSize.x, originalSize.y, originalSize.z);
-        }
+
+        spriteComponent.flipX = (ownDirection == Direction.LEFT) ? true : false ;
+
     }
 
     public virtual void SetType()

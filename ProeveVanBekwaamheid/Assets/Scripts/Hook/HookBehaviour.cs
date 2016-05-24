@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using BaseFrame.QAudio;
 
 public class HookBehaviour : MonoBehaviour {
 
@@ -13,10 +14,18 @@ public class HookBehaviour : MonoBehaviour {
     private float seabottom;
     public FishBehaviour ownFish;
 
+    public QAudioObjectHolder chainSound;
+
     private Vector2 OriginalPos;
     private bool rightColor;
 
     public HookColors ownHookColor;
+    private const string ownTag = "Hook";
+
+    void Awake () {
+        chainSound.CreateAudioObject();
+        gameObject.tag = ownTag;
+    }
 
     public void hookStart()
     {
@@ -31,6 +40,7 @@ public class HookBehaviour : MonoBehaviour {
         {
             return;
         }
+        chainSound.GetAudioObject().Play();
         hookReleased = true;
     }
 
@@ -58,6 +68,7 @@ public class HookBehaviour : MonoBehaviour {
                 if (LooseHook() == false | hookInteracted == true)
                 {
                     hookPull = true;
+                    chainSound.GetAudioObject().Stop();
                 }
             }
         }
@@ -88,6 +99,7 @@ public class HookBehaviour : MonoBehaviour {
 
     public bool PullHook()
     {
+        
         if (transform.position.y < OriginalPos.y)
         {
             transform.Translate(0, pullSpeed, 0);
@@ -151,6 +163,6 @@ public class HookBehaviour : MonoBehaviour {
 public enum HookColors
 {
     RED,
-    BLUE,
+    YELLOW,
     GREEN
 }

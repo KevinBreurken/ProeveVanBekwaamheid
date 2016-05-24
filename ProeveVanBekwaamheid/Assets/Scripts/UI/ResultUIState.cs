@@ -4,6 +4,7 @@ using BaseFrame.QStates;
 using BaseFrame.QUI;
 using Base.Manager;
 using UnityEngine.UI;
+using DG.Tweening;
 
 namespace Base.UI {
 
@@ -46,6 +47,8 @@ namespace Base.UI {
 		/// </summary>
 		public BaseGameState gameState;
 
+		private CanvasGroup canvasGroup;
+
         void Awake () {
 
 			//Add button listeners.
@@ -55,6 +58,8 @@ namespace Base.UI {
 			//Get component references.
             levelObjectText = levelObject.GetComponent<Text>();
             scoreObjectText = scoreObject.GetComponent<Text>();
+
+			canvasGroup = GetComponent<CanvasGroup>();
 
         }
 
@@ -98,6 +103,8 @@ namespace Base.UI {
             }
 
 			//Perform animations.
+			canvasGroup.alpha = 0;
+			canvasGroup.DOFade(1,1);
             StartCoroutine(scoreObject.Show());
             StartCoroutine(levelObject.Show());
 
@@ -105,7 +112,10 @@ namespace Base.UI {
 
         public override IEnumerator Exit () {
 
-            return base.Exit();
+			canvasGroup.alpha = 1;
+			canvasGroup.DOFade(0,1);
+			yield return new WaitForSeconds(1);
+            base.Exit();
 
         }
 

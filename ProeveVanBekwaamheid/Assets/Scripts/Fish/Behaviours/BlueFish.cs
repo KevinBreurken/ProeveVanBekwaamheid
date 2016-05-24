@@ -18,6 +18,6 @@ public class BlueFish : FishBehaviour
     public override void SetType()
     {
         base.SetType();
-        requiredHookColor = HookColors.BLUE;   
+        requiredHookColor = HookColors.YELLOW;   
     }
 }

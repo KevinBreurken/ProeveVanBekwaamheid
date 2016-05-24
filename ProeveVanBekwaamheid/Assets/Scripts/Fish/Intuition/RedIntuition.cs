@@ -6,6 +6,7 @@ public class RedIntuition : FishInstinct {
   
     public override void ReactOnFish(FishBehaviour _target)
     {
+        parent.emotion.Emote(Emotions.QUESTION);
         if(_target.requiredHookColor == HookColors.RED)
         {
             if (_target.ownDirection != parent.ownDirection)
@@ -15,22 +16,6 @@ public class RedIntuition : FishInstinct {
         }
     }
 
-    public IEnumerator SwimOpositeDirection()
-    {
-        parent.StartCoroutine("TemporaryPause",0.5f);
-        Direction solutionDirection;
-        if (parent.ownDirection == Direction.LEFT)
-        {
-            solutionDirection = Direction.RIGHT;
-        }
-        else
-        {
-            solutionDirection = Direction.LEFT;
-        }
-        parent.ownDirection = solutionDirection;
-        yield break;
-
-    }
 
 
 }

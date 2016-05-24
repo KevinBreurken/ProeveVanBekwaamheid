@@ -128,6 +128,17 @@ namespace BaseFrame.QAudio {
 
         }
 
+        public void Stop () {
+
+            if (source == null) {
+
+                source = GetComponent<AudioSource>();
+
+            }
+
+            source.Stop();
+
+        }
         /// <summary>
         /// Adjusts the volume of this AudioObject.
         /// </summary>
