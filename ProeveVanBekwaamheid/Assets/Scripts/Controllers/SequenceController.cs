@@ -26,11 +26,7 @@ public class SequenceController : Singleton<SequenceController> {
             }
         }
     }
-
-    public void CreatePredeterminedSequence(int AmountOfFish)
-    {
-
-    }
+    
 
 }
 
