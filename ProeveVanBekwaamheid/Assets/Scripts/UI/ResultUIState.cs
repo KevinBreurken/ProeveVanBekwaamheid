@@ -18,6 +18,7 @@ namespace Base.UI {
 		/// </summary>
         [Header("Buttons")]
         public QUIButton returnButton;
+
 		/// <summary>
 		/// The QUIButton that returns the player back to the game.
 		/// </summary>
@@ -89,7 +90,7 @@ namespace Base.UI {
 
             //Get score and reached level.
             int score = Manager.ScoreManager.Instance.GetScore();
-            int level = waveManager.currentLevel;
+            int level = waveManager.currentLevelIndex;
 
 			//Apply values to text components.
             scoreObjectText.text = "Score: " + score;

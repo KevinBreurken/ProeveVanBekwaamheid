@@ -6,28 +6,62 @@ using Base.Game;
 
 namespace Base.Manager {
 
-    public class WaveManager : InGameObject {
+    /// <summary>
+    /// Handles wave related actions when a level is won or lost.
+    /// </summary>
+    public class WaveManager : ManagerObject {
 
         public delegate void WaveEvent ();
 
+        /// <summary>
+        /// Called when the score requirement isn't met.
+        /// </summary>
         public event WaveEvent OnWaveFailed;
+
+        /// <summary>
+        /// Called when the score requirement is met.
+        /// </summary>
         public event WaveEvent OnWaveSucceeded;
 
+        /// <summary>
+        /// The score requirement for each wave.
+        /// </summary>
         public List<int> targetScoreList = new List<int>();
+
+        /// <summary>
+        /// Audio that plays when a new level is entered.
+        /// </summary>
         public QAudioObjectHolder nextLevelSoundNotification;
 
+        /// <summary>
+        /// the index of the level the game is currently on.
+        /// for the current level increase it's value by one.
+        /// </summary>
+        public int currentLevelIndex;
+
+        /// <summary>
+        /// Reference to the TimeManager.
+        /// </summary>
         private TimeManager timeManager;
+
+        /// <summary>
+        /// Reference to the ScoreManager.
+        /// </summary>
         private ScoreManager scoreManager;
-        public int currentLevel;
 
         void Awake () {
 
             //Get script references
             timeManager = GetComponent<TimeManager>();
             scoreManager = GetComponent<ScoreManager>();
+
+            //Add listeners.
             timeManager.onTimerEnded += TimeManager_onTimerEnded;
-            nextLevelSoundNotification.CreateAudioObject();
             OnWaveSucceeded += WaveManager_OnWaveSucceeded;
+
+            //Create audio.
+            nextLevelSoundNotification.CreateAudioObject();
+
         }
 
         private void WaveManager_OnWaveSucceeded () {
@@ -42,11 +76,11 @@ namespace Base.Manager {
             //Check if the player has reached its goal.
             int score = scoreManager.GetScore();
 
-            if (score >= targetScoreList[currentLevel]) {
+            if (score >= targetScoreList[currentLevelIndex]) {
                 //Player has high enough score to reach the next level.
                 Debug.Log("Player has high enough score, begin next wave.");
 
-                currentLevel++;
+                currentLevelIndex++;
 
                 if (OnWaveSucceeded != null) {
 
@@ -56,6 +90,7 @@ namespace Base.Manager {
 
 
             } else {
+
                 //Player has insufficient score to reach the next level. lost game.
                 Debug.Log("Player has low score, stop game.");
 
@@ -69,7 +104,11 @@ namespace Base.Manager {
 
         }
 
-        public void BeginWaves () {
+        /// <summary>
+        /// Starts the TimeManager. 
+        /// the time manager calls back to this Class when the level is ended.
+        /// </summary>
+        public void StartWaveSequence () {
 
             timeManager.StartTimer();
 
@@ -78,7 +117,7 @@ namespace Base.Manager {
         public override void Load () {
 
             base.Load();
-            currentLevel = 0;
+            currentLevelIndex = 0;
 
         }
 

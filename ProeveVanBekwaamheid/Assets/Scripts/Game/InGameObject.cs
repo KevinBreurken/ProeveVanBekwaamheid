@@ -1,26 +1,29 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace Base.Game {
+namespace Base.Manager {
 
-    public class InGameObject : MonoBehaviour {
+    /// <summary>
+    /// BaseClass for managers that want to be Loaded,Unloaded and Reset.
+    /// </summary>
+    public class ManagerObject : MonoBehaviour {
 
         /// <summary>
-        /// Load this instance.
+        /// Load this manager.
         /// </summary>
         public virtual void Load () {
 
         }
 
         /// <summary>
-        /// Unload this instance.
+        /// Unload this manager.
         /// </summary>
         public virtual void Unload () {
 
         }
 
         /// <summary>
-        /// Resets the object.
+        /// Resets the manager.
         /// </summary>
         public virtual void Reset () {
 

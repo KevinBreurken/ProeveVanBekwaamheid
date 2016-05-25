@@ -3,43 +3,34 @@ using System.Collections;
 
 namespace Base.Effect {
 
-	using UnityEngine;
-
+    /// <summary>
+    /// Updates the graphic so it won't stretch.
+    /// </summary>
 	[RequireComponent (typeof (LineRenderer))]
 	public class LineRendererLayer : MonoBehaviour {
 		
-		public string sortingLayer;
-		public int sortingOrder;
+        /// <summary>
+        /// The other end of the line.
+        /// </summary>
 		public GameObject lineEnd;
-		private LineRenderer lineRenderer;
+        private LineRenderer lineRenderer;
 
 		void Awake () {
 
 			lineRenderer = GetComponent<LineRenderer>();
+
             //Prevents modifying the material asset itself.
             lineRenderer.sharedMaterial = new Material(lineRenderer.sharedMaterial);
-            
+            lineRenderer.sharedMaterial.name = "HookLine";
+
         }
 
-		private Renderer getMeshRenderer() {
-			
-			return gameObject.GetComponent<Renderer>();
-
-		}
-
 		void Update() {
-			
-			if(getMeshRenderer().sortingLayerName != sortingLayer && sortingLayer != ""){
-				
-				Debug.Log("Forcing sorting layer: "+ sortingLayer );
-				getMeshRenderer().sortingLayerName = sortingLayer;
-				getMeshRenderer().sortingOrder = sortingOrder;
 
-			}
-
-			float distance = transform.position.y - lineEnd.transform.position.y;
-
+            //modifies the material of the line so the texture won't stretch.
+            float distance = transform.position.y - lineEnd.transform.position.y;
 			lineRenderer.sharedMaterial.mainTextureScale = new Vector2(distance * 2.15f,1);
+			lineRenderer.sharedMaterial.mainTextureOffset = new Vector2(distance * -2.15f,1);
 
 		}
 

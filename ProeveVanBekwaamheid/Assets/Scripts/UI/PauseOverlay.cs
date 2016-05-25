@@ -8,12 +8,27 @@ using System.Collections.Generic;
 
 namespace Base.UI {
 
+    /// <summary>
+    /// Appears when the game is paused.
+    /// </summary>
     public class PauseOverlay : MonoBehaviour {
 
-        private CanvasGroup canvasGroup;
+        /// <summary>
+        /// Reference to the resume button.
+        /// </summary>
         public QUIButton resumeButton;
+
+        /// <summary>
+        /// Reference to the quit button.
+        /// </summary>
         public QUIButton quitButton;
+
+        /// <summary>
+        /// Reference to the GameManager.
+        /// </summary>
         public GameManager gameManager;
+
+        private CanvasGroup canvasGroup;
 
         // Use this for initialization
         void Awake () {

@@ -11,9 +11,17 @@ namespace Base.Manager {
     public class GameManager : MonoBehaviour {
 
         public delegate void GameEvent (int _currentLevel, int _targetscore);
+
+        /// <summary>
+        /// Called when a new level is entered.
+        /// </summary>
         public event GameEvent onNextLevelEntered;
 
+        /// <summary>
+        /// reference to the boat (player behaviour)
+        /// </summary>
         public PlayerBehaviour playerBoat;
+
         private ScoreManager scoreManager;
         private WaveManager waveManager;
         private TimeManager timeManager;
@@ -31,6 +39,9 @@ namespace Base.Manager {
            
         }
 
+        /// <summary>
+        /// Starts the game.
+        /// </summary>
         public void StartGame () {
 
             Debug.Log("Game Manager started.");
@@ -40,13 +51,16 @@ namespace Base.Manager {
             waveManager.Load();
             timeManager.Load();
 
-            waveManager.BeginWaves();
-            scoreManager.scoreDisplay.UpdateScoreTarget(waveManager.targetScoreList[waveManager.currentLevel]);
+            waveManager.StartWaveSequence();
+            scoreManager.scoreDisplay.UpdateTargetScoreDisplay(waveManager.targetScoreList[waveManager.currentLevelIndex]);
             scoreManager.scoreDisplay.Show(false);
             timeManager.timerDisplay.Show(false);
 
         }
 
+        /// <summary>
+        /// Stops the game.
+        /// </summary>
         public void StopGame () {
 
             Debug.Log("Game Manager stopped.");
@@ -60,12 +74,15 @@ namespace Base.Manager {
 
         }
 
+        /// <summary>
+        /// Starts a new level.
+        /// </summary>
         public void StartNewLevel () {
 
-            int currentLevel = waveManager.currentLevel;
+            int currentLevel = waveManager.currentLevelIndex;
             int targetScore = waveManager.targetScoreList[currentLevel];
 
-            scoreManager.scoreDisplay.UpdateScoreTarget(targetScore);
+            scoreManager.scoreDisplay.UpdateTargetScoreDisplay(targetScore);
 
             onNextLevelEntered(currentLevel, targetScore);
 

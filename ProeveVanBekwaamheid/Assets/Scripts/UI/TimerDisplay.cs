@@ -7,10 +7,19 @@ using DG.Tweening;
 
 namespace Base.UI {
 
+    /// <summary>
+    /// Displays the time left in the level.
+    /// </summary>
     public class TimerDisplay : MonoBehaviour {
 
+        /// <summary>
+        /// Reference to the time manager.
+        /// </summary>
         public TimeManager timeManager;
 
+        /// <summary>
+        /// Displays the time.
+        /// </summary>
         public QUIObject timeQUIObject;
         private Text timeQUIObjectText;
 
@@ -26,7 +35,6 @@ namespace Base.UI {
 
         }
 
-        // Update is called once per frame
         void Update () {
 
             if (!isActive)
@@ -47,6 +55,10 @@ namespace Base.UI {
 
         }
 
+        /// <summary>
+        /// Shows the time display.
+        /// </summary>
+        /// <param name="_instant">If it's shown immediately. </param>
         public void Show (bool _instant) {
 
             if (_instant) {
@@ -59,6 +71,10 @@ namespace Base.UI {
 
         }
 
+        /// <summary>
+        /// Hides the time display.
+        /// </summary>
+        /// <param name="_instant">If it's hidden immediately. </param>
         public void Hide (bool _instant) {
 
             if (_instant) {

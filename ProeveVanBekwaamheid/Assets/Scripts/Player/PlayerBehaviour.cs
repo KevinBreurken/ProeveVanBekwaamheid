@@ -5,11 +5,12 @@ using BaseFrame.QInput;
 using Base.Game;
 using DG.Tweening;
 
-public class PlayerBehaviour : InGameObject {
+public class PlayerBehaviour : MonoBehaviour {
 
     private BaseQInputMethod inputMethod;
 
     private float speedFactor = 0.05f;
+	private float mouseMovementDistance = 0.3f;
 
     private Vector2 originalPos;
 
@@ -52,21 +53,19 @@ public class PlayerBehaviour : InGameObject {
         yellowHook.releaseSpeed = ownHookSpeed;
     }
    
-
-	public override void Load ()
+	public void Load ()
 	{
 		
-		base.Load ();
 		recievesPlayerInput = true;
 
         //stops the recentering.
 		transform.DOKill();
+
 	}
 
-	public override void Unload ()
+	public void Unload ()
 	{
 		
-		base.Unload ();
 		recievesPlayerInput = false;
 
 	}
@@ -93,7 +92,17 @@ public class PlayerBehaviour : InGameObject {
         HookControlls();
 
         //Get the movement controls
-        movementInput = inputMethod.GetMovementInput().x;
+		Vector2 mousePos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+
+		mousePos.x -= 0.5f;
+
+		Debug.Log(mousePos);
+
+		if(mousePos.x < -mouseMovementDistance || mousePos.x > mouseMovementDistance) {
+			movementInput = mousePos.x;
+		}else{
+			movementInput = Mathf.MoveTowards(movementInput,0,0.05f);
+		}
 
     }
 

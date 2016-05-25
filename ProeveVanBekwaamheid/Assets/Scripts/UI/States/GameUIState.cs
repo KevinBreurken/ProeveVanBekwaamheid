@@ -7,12 +7,31 @@ using DG.Tweening;
 
 namespace Base.UI {
 
+    /// <summary>
+    /// UI State that is used in=game.
+    /// </summary>
     public class GameUIState : BaseUIState {
 
+        /// <summary>
+        /// Reference of the pause button.
+        /// </summary>
 		public QUIButton pauseButton;
+        
+        /// <summary>
+        /// Reference to the score display.
+        /// </summary>
         public ScoreDisplay scoreDisplay;
+
+        /// <summary>
+        /// Reference to the timer display.
+        /// </summary>
         public TimerDisplay timerDisplay;
+
+        /// <summary>
+        /// Reference to the pause overlay.
+        /// </summary>
         public PauseOverlay pauseOverlay;
+
         private CanvasGroup canvasGroup;
 
 		void Awake () {
@@ -32,6 +51,9 @@ namespace Base.UI {
 
         }
 
+        /// <summary>
+        /// Called when the pause button is clicked.
+        /// </summary>
         void PauseButton_onClicked ()
         {
             pauseOverlay.OpenOverlay();
@@ -43,10 +65,6 @@ namespace Base.UI {
             yield return new WaitForSeconds(1);
             yield return base.Exit();
 
-        }
-
-        public override void Update () {
-            base.Update();
         }
 
     }
