@@ -29,7 +29,8 @@ namespace Base.UI {
          
         private int tweenedScoreCounterValue;
         private int tweenedTargetScore;
-    
+        private int targetScoreSetValue;
+
         private CanvasGroup canvasGroup;
 
         void Awake () {
@@ -71,9 +72,17 @@ namespace Base.UI {
         /// <param name="_targetScore"></param>
         public void UpdateTargetScoreDisplay(int _targetScore) {
 
-            targetScoreText.text = "" + _targetScore;
+            targetScoreSetValue = _targetScore;
+            targetScoreText.rectTransform.DOLocalMoveX(targetScoreText.rectTransform.localPosition.x - 400, 2).OnComplete(ShowTargetScoreDisplay);
+
+        }
+
+        private void ShowTargetScoreDisplay () {
+
             DOTween.Kill(104);
-            DOTween.To(() => tweenedTargetScore, x => tweenedTargetScore = x, _targetScore, 0.5f).SetId(104).OnUpdate(UpdateScoreTargetText);
+            DOTween.To(() => tweenedTargetScore, x => tweenedTargetScore = x, targetScoreSetValue, 0.5f).SetId(104).OnUpdate(UpdateScoreTargetText);
+            targetScoreText.text = "" + targetScoreSetValue;
+            targetScoreText.rectTransform.DOLocalMoveX(targetScoreText.rectTransform.localPosition.x + 400, 1f);
 
         }
 
@@ -104,9 +113,11 @@ namespace Base.UI {
             targetScoreText.text = "" + 0;
             tweenedScoreCounterValue = 0;
             tweenedTargetScore = 0;
-
+            targetScoreText.GetComponent<CanvasGroup>().alpha = 0;
+            targetScoreText.GetComponent<CanvasGroup>().DOFade(1, 2);
         }
 
+       
         /// <summary>
         /// Shows the score counter.
         /// </summary>

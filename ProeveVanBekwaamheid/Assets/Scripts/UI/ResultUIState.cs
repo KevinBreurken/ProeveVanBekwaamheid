@@ -116,11 +116,15 @@ namespace Base.UI {
 
             int highscore = PlayerPrefs.GetInt("HighScore", 0);
             if(highscore < score) {
+
                 PlayerPrefs.SetInt("HighScore", score);
                 StartCoroutine(highscoreDisplay.Show());
                 highscoreText.text = "New Highscore!";
+
             } else {
+
                 highscoreText.text = "Highscore:";
+
             }
 
             highscoreDisplayText.text = "" + highscore;
