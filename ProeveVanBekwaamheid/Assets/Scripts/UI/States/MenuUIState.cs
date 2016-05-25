@@ -11,10 +11,20 @@ using System.Collections.Generic;
 
 namespace Base.UI {
 
+    /// <summary>
+    /// UI State that is used in the menu.
+    /// </summary>
     public class MenuUIState : BaseUIState {
 
+        /// <summary>
+        /// Reference to the game state outside of the game.
+        /// </summary>
         [Header("States")]
         public BaseGameState offGameState;
+
+        /// <summary>
+        /// Reference to the game UI state.
+        /// </summary>
         public BaseUIState gameUIState;
 
         [Header("Button")]
@@ -31,18 +41,12 @@ namespace Base.UI {
         public QUIObject creditsLayer;
         private QUIObject currentOpenLayer;
 
-        private BaseQInputMethod inputMethod;
-        private CanvasGroup stateCanvasGroup;
-
-        //Used for analytics
-        private int amountofTimePlayClicked;
-        private bool hasOpenedInstructionsMenu;
+        private CanvasGroup canvasGroup;
 
         void Awake () {
 
             //Get references
-            stateCanvasGroup = GetComponent<CanvasGroup>();
-            inputMethod = QInputManager.Instance.GetCurrentInputMethod();
+            canvasGroup = GetComponent<CanvasGroup>();
 
             //Removes the quit button if its a WebGL game (may need a android/IOS check as well.
             #if UNITY_WEBGL
@@ -55,32 +59,32 @@ namespace Base.UI {
             instructionsButton.onToggleClicked += OnToggleButtonClicked;
             quitButton.onClicked += OnQuitClicked;
             startButton.onClicked += OnPlayClicked;
-            QInputManager.Instance.onInputChanged += Instance_onInputChanged;
 
         }
 
+        /// <summary>
+        /// Called when the play button is clicked.
+        /// </summary>
         private void OnPlayClicked () {
 
-            amountofTimePlayClicked++;
             Audio.AudioManager.Instance.SetUnderwaterMixing(1);
-            Analytics.CustomEvent("Game_BackToMenuQuit", new Dictionary<string, object>
-            {
-
-              { "amountofTimePlayClicked", amountofTimePlayClicked },
-              { "hasOpenedInstructionsMenu", hasOpenedInstructionsMenu },
-              { "timeSinseApplicationStarted", Time.realtimeSinceStartup },
-
-            });
-
+          
             StartCoroutine(UIStateSelector.Instance.SetState(gameUIState));
 
         }
 
+        /// <summary>
+        /// Called when a toggle button is clicked.
+        /// </summary>
+        /// <param name="_state">Which state the toggle is in.</param>
+        /// <param name="_toggledObject">The toggle that is called.</param>
         private void OnToggleButtonClicked (bool _state,QUIToggle _toggledObject) {
 
-            SetButtonState(false);
+            SetRowInteractableState(false);
 
             StopAllCoroutines();
+
+            //If a already toggled layer is toggled.
             if (currentActiveToggle == _toggledObject) {
 
                 if (_toggledObject == creditsButton     ) { StartCoroutine(CloseLayer(creditsLayer));      }
@@ -92,6 +96,7 @@ namespace Base.UI {
 
             }
             
+            //Sets the toggle back to its normal value.
             creditsButton.SetToggleStateRough(false);
             optionsButton.SetToggleStateRough(false);
             instructionsButton.SetToggleStateRough(false);
@@ -112,7 +117,6 @@ namespace Base.UI {
 
             if (_toggledObject == instructionsButton) {
 
-                hasOpenedInstructionsMenu = true;
                 instructionsButton.SetToggleStateRough(true);
                 StartCoroutine(OpenLayer(instructionsLayer));
 
@@ -122,7 +126,11 @@ namespace Base.UI {
 
         }
 
-        private void SetButtonState (bool _state) {
+        /// <summary>
+        /// Sets the row of button to a set state.
+        /// </summary>
+        /// <param name="_state">The state it's set to.</param>
+        private void SetRowInteractableState (bool _state) {
 
             creditsButton.SetInteractable(_state);
             optionsButton.SetInteractable(_state);
@@ -132,6 +140,10 @@ namespace Base.UI {
 
         }
 
+        /// <summary>
+        /// Opens a layer.
+        /// </summary>
+        /// <param name="_layer">The layer that's opened.</param>
         private IEnumerator OpenLayer (QUIObject _layer) {
 
             if(currentOpenLayer != null) {
@@ -141,16 +153,23 @@ namespace Base.UI {
             }
 
             currentOpenLayer = _layer;
+
             yield return StartCoroutine(_layer.Show());
-            SetButtonState(true);
+
+            SetRowInteractableState(true);
 
         }
 
+        /// <summary>
+        /// Closes a layer.
+        /// </summary>
+        /// <param name="_layer">The layer that's closed.</param>
         private IEnumerator CloseLayer (QUIObject _layer) {
 
             yield return StartCoroutine(_layer.Hide());
+
             currentOpenLayer = null;
-            SetButtonState(true);
+            SetRowInteractableState(true);
 
         }
 
@@ -170,31 +189,34 @@ namespace Base.UI {
             instructionsLayer.GetComponent<CanvasGroup>().alpha = 0;
 
 
-            stateCanvasGroup.alpha = 0;
-            stateCanvasGroup.interactable = true;
-            stateCanvasGroup.blocksRaycasts = true;
+            canvasGroup.alpha = 0;
+            canvasGroup.interactable = true;
+            canvasGroup.blocksRaycasts = true;
 
             currentOpenLayer = null;
             currentActiveToggle = null;
 
-            StartCoroutine(WaitDelay());
+            StartCoroutine(FadeCanvasGroup());
 
         }
 
-        private IEnumerator WaitDelay () {
+        /// <summary>
+        /// Fades the canvasGroup of this state.
+        /// </summary>
+        private IEnumerator FadeCanvasGroup () {
 
             yield return new WaitForSeconds(1.5f);
 
-            stateCanvasGroup.DOFade(1, 1.5f);
+            canvasGroup.DOFade(1, 1.5f);
 
         }
 
         public override IEnumerator Exit () {
 
-            stateCanvasGroup.alpha = 1;
-            stateCanvasGroup.interactable = false;
-            stateCanvasGroup.blocksRaycasts = false;
-            stateCanvasGroup.DOFade(0, 1.5f);
+            canvasGroup.alpha = 1;
+            canvasGroup.interactable = false;
+            canvasGroup.blocksRaycasts = false;
+            canvasGroup.DOFade(0, 1.5f);
 
             StartCoroutine(GameStateSelector.Instance.SetState("InGameState"));
 
@@ -203,18 +225,12 @@ namespace Base.UI {
 
         }
 
-        private void Instance_onInputChanged (BaseQInputMethod _changedMethod) {
-
-            inputMethod = _changedMethod;
-
-        }
-
         /// <summary>
         /// Called when the quit button is clicked.
         /// </summary>
         private void OnQuitClicked () {
 
-            SetButtonState(false);
+            SetRowInteractableState(false);
             EffectManager.Instance.FadeEffect.onFadeFinished += QuitGame;
             StartCoroutine(EffectManager.Instance.FadeEffect.Fade(0, -1, 1));
 
@@ -228,6 +244,7 @@ namespace Base.UI {
             Application.Quit();
 
         }
+
     }
 
 }

@@ -5,7 +5,7 @@ using BaseFrame.QInput;
 using Base.Game;
 using DG.Tweening;
 
-public class PlayerBehaviour : InGameObject {
+public class PlayerBehaviour : MonoBehaviour {
 
     private BaseQInputMethod inputMethod;
 
@@ -52,21 +52,18 @@ public class PlayerBehaviour : InGameObject {
         yellowHook.releaseSpeed = ownHookSpeed;
     }
    
-
-	public override void Load ()
+	public void Load ()
 	{
 		
-		base.Load ();
 		recievesPlayerInput = true;
 
         //stops the recentering.
 		transform.DOKill();
 	}
 
-	public override void Unload ()
+	public void Unload ()
 	{
 		
-		base.Unload ();
 		recievesPlayerInput = false;
 
 	}

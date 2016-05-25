@@ -5,7 +5,10 @@ using Base.Game;
 
 namespace Base.Manager {
 
-    public class ScoreManager : InGameObject {
+    /// <summary>
+    /// Manages the players score.
+    /// </summary>
+    public class ScoreManager : ManagerObject {
 
         private static ScoreManager instance = null;
 
@@ -22,22 +25,26 @@ namespace Base.Manager {
 
                 }
 
-                if (instance == null) {
-
-                    //GameObject go = new GameObject("GameStateSelector");
-                    //instance = go.AddComponent(typeof(GameStateSelector)) as GameStateSelector;
-
-                }
-
                 return instance;
 
             }
 
         }
 
-        public int currentScore;
+        /// <summary>
+        /// The score the player currently has.
+        /// </summary>
+        private int currentScore;
+        
+        /// <summary>
+        /// Reference to the Score Display.
+        /// </summary>
         public ScoreDisplay scoreDisplay;
 
+        /// <summary>
+        /// Adds score to the player score.
+        /// </summary>
+        /// <param name="_value">The value thats added to the score.</param>
         public void AddScore (int _value) {
 
             currentScore += _value;
@@ -45,19 +52,19 @@ namespace Base.Manager {
 
         }
 
+        /// <summary>
+        /// Resets the score back to zero.
+        /// </summary>
         public void ResetScore () {
 
             currentScore = 0;
 
         }
 
-        void Update () {
-            //Temp code for testing.
-           /* if (Input.GetKeyDown(KeyCode.S)) {
-                AddScore(100);
-            }*/
-        }
-
+        /// <summary>
+        /// Gets the score that the player made during this game.
+        /// </summary>
+        /// <returns>Player score.</returns>
         public int GetScore () {
 
             return currentScore;

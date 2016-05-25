@@ -6,20 +6,30 @@ using BaseFrame.QUI;
 
 namespace Base.UI {
 
+    /// <summary>
+    /// Shows the player score and it's target score.
+    /// </summary>
     public class ScoreDisplay : MonoBehaviour {
 
+        /// <summary>
+        /// Displays the current score.
+        /// </summary>
         public Text currentScoreText;
+
+        /// <summary>
+        /// Displays the target score.
+        /// </summary>
         public Text targetScoreText;
 
+        /// <summary>
+        /// Displays the added score.
+        /// </summary>
         public QUIObject addedScoreQUIObject;
         private Text addedScoreQUIObjectText;
-       
-        public int currentMatchScore;
-        public int currentTargetScore;
          
         private int tweenedScoreCounterValue;
         private int tweenedTargetScore;
-
+    
         private CanvasGroup canvasGroup;
 
         void Awake () {
@@ -30,11 +40,15 @@ namespace Base.UI {
 
         }
 
+        /// <summary>
+        /// Updates the score counter.
+        /// </summary>
+        /// <param name="_score">The score the player currently has.</param>
+        /// <param name="_addedScore">The score that is added to the player score.</param>
         public void UpdateScoreCounter (int _score,int _addedScore) {
 
-            currentMatchScore = _score;
             DOTween.Kill(103);
-            DOTween.To(() => tweenedScoreCounterValue, x => tweenedScoreCounterValue = x, currentMatchScore, 1.5f).SetId(103).OnUpdate(UpdateScoreText);
+            DOTween.To(() => tweenedScoreCounterValue, x => tweenedScoreCounterValue = x, _score, 1.5f).SetId(103).OnUpdate(UpdateScoreText);
 
             addedScoreQUIObjectText.text = "+" + _addedScore; 
             StartCoroutine(addedScoreQUIObject.Show());
@@ -44,34 +58,46 @@ namespace Base.UI {
 
         }
 
+        /// <summary>
+        /// Called when the added-score display is faded in.
+        /// </summary>
         private void OnAddedScoreQUIObjectFadeComplete () {
             StartCoroutine(addedScoreQUIObject.Hide());
         }
 
-        
+        /// <summary>
+        /// Updates the target score display.
+        /// </summary>
+        /// <param name="_targetScore"></param>
+        public void UpdateTargetScoreDisplay(int _targetScore) {
 
-        public void UpdateScoreTarget(int _targetScore) {
-
-            currentTargetScore = _targetScore;
             targetScoreText.text = "" + _targetScore;
             DOTween.Kill(104);
-            DOTween.To(() => tweenedTargetScore, x => tweenedTargetScore = x, currentTargetScore, 0.5f).SetId(104).OnUpdate(UpdateScoreTargetText);
-
+            DOTween.To(() => tweenedTargetScore, x => tweenedTargetScore = x, _targetScore, 0.5f).SetId(104).OnUpdate(UpdateScoreTargetText);
 
         }
 
+        /// <summary>
+        /// Updates the score text. (called by the tween animation)
+        /// </summary>
         private void UpdateScoreText () {
 
             currentScoreText.text = "" + tweenedScoreCounterValue;
 
         }
 
+        /// <summary>
+        /// Updates the score target text. (called by the tween animation)
+        /// </summary>
         private void UpdateScoreTargetText () {
 
             targetScoreText.text = "" + tweenedTargetScore;
 
         }
 
+        /// <summary>
+        /// Resets the score counter.
+        /// </summary>
         public void ResetCounter () {
 
             currentScoreText.text = "" + 0;
@@ -81,6 +107,10 @@ namespace Base.UI {
 
         }
 
+        /// <summary>
+        /// Shows the score counter.
+        /// </summary>
+        /// <param name="_instant">If it's shown immediately. </param>
         public void Show (bool _instant) {
 
             if (_instant) {
@@ -92,6 +122,10 @@ namespace Base.UI {
 
         }
 
+        /// <summary>
+        /// Hides the score counter.
+        /// </summary>
+        /// <param name="_instant">If it's hidden immediately. </param>
         public void Hide(bool _instant) {
 
             if (_instant) {

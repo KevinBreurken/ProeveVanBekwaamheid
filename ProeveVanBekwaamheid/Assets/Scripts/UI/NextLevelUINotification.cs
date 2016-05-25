@@ -7,32 +7,50 @@ using Base.Manager;
 
 namespace Base.UI {
 
+    /// <summary>
+    /// Appears when a level is completed.
+    /// </summary>
     public class NextLevelUINotification : MonoBehaviour {
 
+        /// <summary>
+        /// Reference to the GameManager.
+        /// </summary>
         [Header("Required references")]
         public GameManager gameManager;
 
+        /// <summary>
+        /// The QUIObject that show which level currently is played.
+        /// </summary>
         [Header("Components")]
-
-        [Tooltip("The QUIObject that shows which level is entered.")]
         public QUIObject levelQUIObject;
 
-        [Tooltip("The QUIObject that shows the required target score for the entered level.")]
+        /// <summary>
+        /// The QUIObject that displays the target score.
+        /// </summary>
         public QUIObject targetscoreQUIObject;
 
-
+        /// <summary>
+        /// How long the notification stays open.
+        /// </summary>
         [Header("Time values")]
-        
-        [Tooltip("How long the notification will stay open.")]
         public float openLength;
         
-        [Tooltip("How long it takes for this UI layer to fade to its alpha value.")]
+        /// <summary>
+        /// How fast it fades in/out.
+        /// </summary>
         public float fadeSpeed;
 
+        /// <summary>
+        /// Reference of the Text component in the levelQUIObject.
+        /// </summary>
         private Text levelText;
-        private Text targetscoreText;
-        private CanvasGroup canvasGroup;
 
+        /// <summary>
+        /// Reference of the Text component in the targetscoreQuiObject.
+        /// </summary>
+        private Text targetscoreText;
+
+        private CanvasGroup canvasGroup;
         private const string LEVELTEXT = "Level ";
         private const string TARGETSCORETEXT = "Target score: ";
 
@@ -51,10 +69,15 @@ namespace Base.UI {
 
         }
 
-        public void ShowNotification (int _currentLevel, int _targetScore) {
+        /// <summary>
+        /// Shows the next level notification.
+        /// </summary>
+        /// <param name="_enteredLevel">The level that's currently entered.</param>
+        /// <param name="_targetScore">The target score that's required for the next level.</param>
+        public void ShowNotification (int _enteredLevel, int _targetScore) {
 
             //Set the values of the text component
-            levelText.text = LEVELTEXT + (_currentLevel + 1).ToString();
+            levelText.text = LEVELTEXT + (_enteredLevel + 1).ToString();
             targetscoreText.text = TARGETSCORETEXT + _targetScore.ToString();
 
             //Start the opening animation
@@ -72,13 +95,7 @@ namespace Base.UI {
 
             yield return new WaitForSeconds(openLength);
 
-            HideNotification();
-
-        }
-
-        public void HideNotification () {
-
-            //Start the opening animation
+            //Start the close animation
             StartCoroutine(levelQUIObject.Hide());
             StartCoroutine(targetscoreQUIObject.Hide());
             canvasGroup.DOFade(0, fadeSpeed);

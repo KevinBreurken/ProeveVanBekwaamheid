@@ -6,11 +6,30 @@ using DG.Tweening;
 
 namespace Base.UI {
 
+    /// <summary>
+    /// UI State that is used for the splash-screen.
+    /// </summary>
     public class SplashScreenUIState : BaseUIState {
 
+        /// <summary>
+        /// Reference to the main camera.
+        /// </summary>
+        [Header("Camera")]
         public Camera mainCamera;
+
+        /// <summary>
+        /// The starting (y) position of the camera.
+        /// </summary>
         public float cameraStartingPosition;
+
+        /// <summary>
+        /// The fade-speed of this state.
+        /// </summary>
         public float fadeSpeed;
+
+        /// <summary>
+        /// How long it takes until this state will fade out.
+        /// </summary>
         public float timeTillFadeOut;
 
         private bool forceNextScreen;
@@ -64,6 +83,9 @@ namespace Base.UI {
 
         }
 
+        /// <summary>
+        /// Forces the splash-screen to fade out.
+        /// </summary>
         private void ForceToNextScreen () {
 
             StopAllCoroutines();

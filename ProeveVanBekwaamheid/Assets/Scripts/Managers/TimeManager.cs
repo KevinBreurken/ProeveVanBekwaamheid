@@ -5,19 +5,41 @@ using Base.UI;
 
 namespace Base.Manager {
 
-    public class TimeManager : InGameObject {
+    /// <summary>
+    /// Handles counting and time related game events.
+    /// </summary>
+    public class TimeManager : ManagerObject {
 
         public delegate void TimeEvent ();
 
+        /// <summary>
+        /// Is called when the timer has reached the level duration.
+        /// </summary>
         public event TimeEvent onTimerEnded;
 
-        public int levelLenght;
+        /// <summary>
+        /// How long the level takes. (in seconds)
+        /// </summary>
+        public int levelDuration;
 
-        public float totalGameDuration;
-        public bool gameStarted;
+        /// <summary>
+        /// how long the level currently is playing. (in seconds)
+        /// </summary>
+        public float currentLevelDuration;
+
+        /// <summary>
+        /// Reference to the Timer Display.
+        /// </summary>
         public TimerDisplay timerDisplay;
 
+        /// <summary>
+        /// Check to see if the game is started.
+        /// </summary>
+        private bool gameStarted;
 
+        /// <summary>
+        /// Starts the countdown timer.
+        /// </summary>
         public void StartTimer () {
 
             StartCoroutine(WaitTillLevelEnds());
@@ -26,7 +48,8 @@ namespace Base.Manager {
 
         void Update () {
 
-            totalGameDuration += Time.deltaTime;
+            if(gameStarted)
+            currentLevelDuration += Time.deltaTime;
 
         }
 
@@ -34,7 +57,7 @@ namespace Base.Manager {
 
             Debug.Log("Timer started");
 
-            yield return new WaitForSeconds(levelLenght);
+            yield return new WaitForSeconds(levelDuration);
 
             Debug.Log("Timer ended");
 
@@ -42,7 +65,7 @@ namespace Base.Manager {
             if (onTimerEnded != null) {
 
                 onTimerEnded();
-				totalGameDuration = 0;
+				currentLevelDuration = 0;
 
             }
 
@@ -52,7 +75,7 @@ namespace Base.Manager {
 
             base.Load();
             gameStarted = true;
-            totalGameDuration = 0;
+            currentLevelDuration = 0;
 
         }
 
@@ -64,10 +87,13 @@ namespace Base.Manager {
 
         }
 
+        /// <summary>
+        /// Receives when this level will end.
+        /// </summary>
+        /// <returns>Time until the level ends. (in seconds)</returns>
         public float GetCurrentLevelDuration () {
 
-            float time = 0;
-            time = levelLenght - totalGameDuration;
+            float time = levelDuration - currentLevelDuration;
             return time;
 
         }

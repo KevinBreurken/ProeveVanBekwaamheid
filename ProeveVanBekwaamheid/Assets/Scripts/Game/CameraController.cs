@@ -3,6 +3,9 @@ using System.Collections;
 
 namespace Base.Game {
 
+    /// <summary>
+    /// Controls the camera.
+    /// </summary>
     public class CameraController : MonoBehaviour {
 
         public delegate void CameraEvent ();
@@ -12,51 +15,50 @@ namespace Base.Game {
         /// </summary>
         public event CameraEvent onCameraScrolled;
 
+        /// <summary>
+        /// If the camera is currently following it's target.
+        /// </summary>
         [Header("Target")]
         public bool followTarget;
+
+        /// <summary>
+        /// The target the camera is following.
+        /// </summary>
         public Transform target;
 
-        [Header("Positioning")]
-        public Vector3 offset;
-        public float cameraFollowDistance;
-
+        /// <summary>
+        /// Reference to the game view camera.
+        /// </summary>
         [HideInInspector]
         public Camera gameViewCamera;
 
         private GameObject cameraLookPoint;
-        private float verticalPostion;
         private Vector3 velocity = Vector3.zero;
 
-        // Use this for initialization
+
         void Awake () {
 
             gameViewCamera = GetComponent<Camera>();
+
             cameraLookPoint = new GameObject();
             cameraLookPoint.hideFlags = HideFlags.HideInHierarchy;
-            verticalPostion = transform.position.y;
 
         }
 
-        /// <summary>
-        /// Refocuses the target.
-        /// </summary>
-        public void RefocusTarget () {
-
-            followTarget = true;
-
-        }
-
-        // Movement is done in fixedUpdate to prevent stuttering.
+       
         void Update () {
 
             if (followTarget) {
 
                 Vector3 point = gameViewCamera.WorldToViewportPoint(cameraLookPoint.transform.position);
                 Vector3 delta = cameraLookPoint.transform.position - gameViewCamera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, point.z)); //(new Vector3(0.5, 0.5, point.z));
-                Vector3 destination = transform.position + delta + offset;
+                Vector3 destination = transform.position + delta;
 
+                //Get the distance between the camera's position and it's target.
                 float distance = transform.position.x - target.position.x;
                 distance = Mathf.Abs(distance);
+
+                //Dampen the movement
                 Vector3 newPosition = Vector3.SmoothDamp(transform.position, destination, ref velocity, 4 - distance);
                 transform.position = new Vector3(newPosition.x, transform.position.y, transform.position.z);
 

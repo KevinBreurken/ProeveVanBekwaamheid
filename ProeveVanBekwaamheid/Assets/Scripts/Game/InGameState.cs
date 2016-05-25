@@ -5,16 +5,54 @@ using DG.Tweening;
 using BaseFrame.QAudio;
 using Base.Manager;
 
+/// <summary>
+/// So it's selectable in Visual Studio.
+/// </summary>
+namespace Base {
+
+    public class Dummy {
+
+    }
+
+}
+
+
 namespace Base.Game {
 
+    /// <summary>
+    /// The game state that handles the core game.
+    /// </summary>
     public class InGameState : BaseGameState {
 
+        /// <summary>
+        /// The water layer that's faded in/out on state enter/exit.
+        /// </summary>
         public SpriteRenderer frontWaterLayer;
+
+        /// <summary>
+        /// Reference to the main camera.
+        /// </summary>
+        [Header("Camera")]
         public Camera mainCamera;
+
+        /// <summary>
+        /// Easing for the camera animation.
+        /// </summary>
         public AnimationCurve cameraEase;
+
+        /// <summary>
+        /// How long the camera transition is.
+        /// </summary>
         public float cameraTransitionTime;
+
+        /// <summary>
+        /// The in-game music.
+        /// </summary>
         public QAudioObjectHolder ingameMusic;
 
+        /// <summary>
+        /// Reference to the game manager.
+        /// </summary>
         private GameManager gameManager;
 
         void Awake () {
@@ -27,7 +65,7 @@ namespace Base.Game {
         public override void Enter () {
 
             base.Enter();
-            StartCoroutine(WaitForFadeIn());
+            StartCoroutine(FadeInWaterLayer());
 
             ingameMusic.GetAudioObject().Play();
             ingameMusic.GetAudioObject().SetVolume(0);
@@ -37,13 +75,16 @@ namespace Base.Game {
 
         }
 
+        /// <summary>
+        /// Called when the camera animation is finished.
+        /// </summary>
         private void OnCameraPanComplete () {
 
             gameManager.StartGame();
 
         }
 
-        private IEnumerator WaitForFadeIn () {
+        private IEnumerator FadeInWaterLayer () {
 
             yield return new WaitForSeconds(1);
             frontWaterLayer.DOColor(new Color(frontWaterLayer.color.r, frontWaterLayer.color.g, frontWaterLayer.color.b, 0), 1);
@@ -55,12 +96,6 @@ namespace Base.Game {
             frontWaterLayer.DOColor(new Color(frontWaterLayer.color.r, frontWaterLayer.color.g, frontWaterLayer.color.b, 1), 1);
             ingameMusic.GetAudioObject().FadeVolume(1, 0, 1);
             return base.Exit();
-
-        }
-
-        public override void Update () {
-
-            base.Update();
 
         }
 
