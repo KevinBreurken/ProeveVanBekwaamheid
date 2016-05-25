@@ -21,6 +21,5 @@ public class FishBundleController : Singleton<FishBundleController> {
     void Start()
     {
         Init();
-        _fishSpawnSequence.StartLevel();
     }
 }

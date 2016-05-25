@@ -21,23 +21,25 @@ public class FishSpawnSequence : MonoBehaviour {
 
     public void Init(FishBundleController _parent)
     {
-        _parent = this._parent;
+        this._parent = _parent;
         _sequenceController = SequenceController.Instance;
+
         this._fishBundle = _parent._fishBundle;
         this._fishCreator = _parent._fishCreation;
+        StartLevel();
     }
 
     public void StartLevel()
     {
         ResetScores();
-        SetSequence(_waveManager.currentLevel);
+        SetSequence(_waveManager.currentLevelIndex);
     }
 
     private void SetSequence(int targetLevel)
     {
         if (targetLevel > _sequenceController.StartGameSequence.Count)
         {
-            //TODO Create own LevelSequence
+            //TODO Create own Algorithm
         }
         else
         {

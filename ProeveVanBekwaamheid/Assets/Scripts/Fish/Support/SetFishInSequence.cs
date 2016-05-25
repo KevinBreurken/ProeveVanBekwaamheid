@@ -13,11 +13,14 @@ public class SetFishInSequence : MonoBehaviour {
 	    if(routine == true)
         {
             routine = false;
+            ResetArrays();
             SetFunctionality();   
         }
-	}
 
-    void SetFunctionality()
+        DestoryInPlayMode();
+    }
+
+    private void SetFunctionality()
     {
         FishBehaviour[] tempFish = GetComponentsInChildren<FishBehaviour>();
         for (int i = 0;i < transform.childCount;i++)
@@ -35,5 +38,21 @@ public class SetFishInSequence : MonoBehaviour {
                 target.yellowFishes.Add(tempFish[i]);
             }
         }
+
+    }
+
+    private void DestoryInPlayMode()
+    {
+        if (Application.isPlaying)
+        {
+            DestroyImmediate(this);
+        }
+    }
+
+    private void ResetArrays()
+    {
+        target.greenFishes.Clear();
+        target.redFishes.Clear();
+        target.yellowFishes.Clear();
     }
 }
