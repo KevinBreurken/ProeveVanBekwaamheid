@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Chanisco;
+
 public class FishBundle : MonoBehaviour
 {
     public List<FishBehaviour> availableFish = new List<FishBehaviour>();
@@ -9,12 +10,24 @@ public class FishBundle : MonoBehaviour
     private AreaController areaController;
     private Area seaArea;
 
-    void Start()
+
+    private FishBundleController _parent;
+    public void Init(FishBundleController _parent)
     {
+        _parent = this._parent;
         areaController = AreaController.Instance;
         seaArea = areaController.SeaField;
+    }
+
+    void LevelStart()
+    {
         availableFish.HeavyShuffle();
         StartCoroutine("SpawnFish");
+    }
+
+    public void LevelEnd()
+    {
+        StopCoroutine("SpawnFish");
     }
 
     IEnumerator SpawnFish()
