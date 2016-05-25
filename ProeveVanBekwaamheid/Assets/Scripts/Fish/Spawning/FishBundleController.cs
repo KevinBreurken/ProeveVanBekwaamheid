@@ -22,4 +22,13 @@ public class FishBundleController : Singleton<FishBundleController> {
     {
         Init();
     }
+
+    void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.O))
+        {
+            SequenceController.Instance.CreateNewRandomSequence();
+        }
+
+    }
 }
