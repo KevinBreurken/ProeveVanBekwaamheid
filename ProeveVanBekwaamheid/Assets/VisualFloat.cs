@@ -11,7 +11,7 @@ public class VisualFloat : MonoBehaviour {
     public FloatState currentFloatState;
     void Start()
     {
-        if (magnitude < 0.5f)
+        if (magnitude < 0)
         {
             magnitude = 0.5f;
         }
@@ -21,33 +21,33 @@ public class VisualFloat : MonoBehaviour {
 
     }
 	void Update () {
-        Float();
+        StartCoroutine(Float());
 	}
 
-    void Float()
+    IEnumerator Float()
     {
         if (currentFloatState == FloatState.DOWN)
         {
-            Debug.Log("Bite me " + transform.localPosition.y + ", " + minY);
             if (transform.localPosition.y <= minY )
             {
+                yield return new WaitForSeconds(0.3f);
                 currentFloatState = FloatState.UP;
             }
             else
             {
-                transform.DOLocalMoveY(minY - 0.1f, 1);
+                transform.DOLocalMoveY(minY - 0.1f, 5);
             }
         }
         else if (currentFloatState == FloatState.UP)
         {
-
-            if (transform.localPosition.y < maxY)
+            if (transform.localPosition.y >= maxY)
             {
-                transform.DOMoveY(maxY - 0.1f, 1);
+                yield return new WaitForSeconds(0.5f);
+                currentFloatState = FloatState.DOWN;
             }
             else
             {
-                currentFloatState = FloatState.DOWN;
+                transform.DOLocalMoveY(maxY + 0.1f, 5);
             }
 
         }

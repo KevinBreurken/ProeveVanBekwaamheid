@@ -30,6 +30,7 @@ namespace Base.Effect {
             //modifies the material of the line so the texture won't stretch.
             float distance = transform.position.y - lineEnd.transform.position.y;
 			lineRenderer.sharedMaterial.mainTextureScale = new Vector2(distance * 2.15f,1);
+			lineRenderer.sharedMaterial.mainTextureOffset = new Vector2(distance * -2.15f,1);
 
 		}
 
