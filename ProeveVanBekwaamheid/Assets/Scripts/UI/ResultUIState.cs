@@ -50,6 +50,10 @@ namespace Base.UI {
 
 		private CanvasGroup canvasGroup;
 
+        public QUIObject highscoreDisplay;
+        public Text highscoreText;
+        private Text highscoreDisplayText;
+
         void Awake () {
 
 			//Add button listeners.
@@ -61,6 +65,7 @@ namespace Base.UI {
             scoreObjectText = scoreObject.GetComponent<Text>();
 
 			canvasGroup = GetComponent<CanvasGroup>();
+            highscoreDisplayText = highscoreDisplay.GetComponent<Text>();
 
         }
 
@@ -108,6 +113,17 @@ namespace Base.UI {
 			canvasGroup.DOFade(1,1);
             StartCoroutine(scoreObject.Show());
             StartCoroutine(levelObject.Show());
+
+            int highscore = PlayerPrefs.GetInt("HighScore", 0);
+            if(highscore < score) {
+                PlayerPrefs.SetInt("HighScore", score);
+                StartCoroutine(highscoreDisplay.Show());
+                highscoreText.text = "New Highscore!";
+            } else {
+                highscoreText.text = "Highscore:";
+            }
+
+            highscoreDisplayText.text = "" + highscore;
 
         }
 
