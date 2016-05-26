@@ -1,101 +1,105 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SpriteAnimator : MonoBehaviour {
+namespace Base.Effect {
 
-    public float FPS;
-    public bool isLooping;
-    public Sprite[] frames;
-    public bool playOnStartup = false;
+    public class SpriteAnimator : MonoBehaviour {
 
-    [SerializeField]
-    private SpriteRenderer[] outputRenderers;
-    private float secondsToWait;
+        public float FPS;
+        public bool isLooping;
+        public Sprite[] frames;
+        public bool playOnStartup = false;
 
-    private int currentFrame;
-    private bool stopped = false;
+        [SerializeField]
+        private SpriteRenderer[] outputRenderers;
+        private float secondsToWait;
 
-    // Use this for initialization
-    public void Awake () {
+        private int currentFrame;
+        private bool stopped = false;
 
-        currentFrame = 0;
-        if (FPS > 0)
-            secondsToWait = 1 / FPS;
-        else
-            secondsToWait = 0f;
-
-        if (playOnStartup) {
-            Play(true);
-        }
-
-    }
-
-    public void Play (bool reset = false) {
-
-        if (reset) {
+        // Use this for initialization
+        public void Awake () {
 
             currentFrame = 0;
+            if (FPS > 0)
+                secondsToWait = 1 / FPS;
+            else
+                secondsToWait = 0f;
 
-        }
-
-        stopped = false;
-
-        for (int i = 0; i < outputRenderers.Length; i++) {
-
-            outputRenderers[i].enabled = true;
-
-        }
-
-        if (frames.Length > 1) {
-
-            Animate();
-
-        } else if (frames.Length > 0) {
-
-            for (int i = 0; i < outputRenderers.Length; i++) {
-
-                outputRenderers[i].sprite = frames[0];
-
+            if (playOnStartup) {
+                Play(true);
             }
 
         }
 
-    }
+        public void Play (bool reset = false) {
 
-    public virtual void Animate () {
-
-        CancelInvoke("Animate");
-
-        if (currentFrame >= frames.Length) {
-
-            if (!isLooping) {
-
-                stopped = true;
-
-            } else {
+            if (reset) {
 
                 currentFrame = 0;
 
             }
 
+            stopped = false;
+
+            for (int i = 0; i < outputRenderers.Length; i++) {
+
+                outputRenderers[i].enabled = true;
+
+            }
+
+            if (frames.Length > 1) {
+
+                Animate();
+
+            } else if (frames.Length > 0) {
+
+                for (int i = 0; i < outputRenderers.Length; i++) {
+
+                    outputRenderers[i].sprite = frames[0];
+
+                }
+
+            }
+
         }
 
-        for (int i = 0; i < outputRenderers.Length; i++) {
+        public virtual void Animate () {
 
-            outputRenderers[i].sprite = frames[currentFrame];
+            CancelInvoke("Animate");
 
-        }
-        
+            if (currentFrame >= frames.Length) {
 
-        if (!stopped) {
+                if (!isLooping) {
 
-            currentFrame++;
+                    stopped = true;
 
-        }
+                } else {
 
-        if (!stopped && secondsToWait > 0) {
+                    currentFrame = 0;
 
-            Invoke("Animate", secondsToWait);
+                }
+
+            }
+
+            for (int i = 0; i < outputRenderers.Length; i++) {
+
+                outputRenderers[i].sprite = frames[currentFrame];
+
+            }
+
+
+            if (!stopped) {
+
+                currentFrame++;
+
+            }
+
+            if (!stopped && secondsToWait > 0) {
+
+                Invoke("Animate", secondsToWait);
+
+            }
 
         }
 
