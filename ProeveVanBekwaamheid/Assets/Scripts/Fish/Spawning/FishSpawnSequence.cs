@@ -63,45 +63,45 @@ namespace Base.Game.Fish{
 
 	    }
 
-		private void AddFishToBundle(HookColors _targetColor) {
+		private void AddFishToBundle(ColorEnum _targetColor) {
 			
 	        switch (_targetColor) {
 
-	            case HookColors.GREEN:
+	            case ColorEnum.GREEN:
 	            if (greenInUse >= greenFishes.Count) {
-					
-	                fishCreator.CreateFish(_targetColor,true);
+
+                    fishCreator.CreateFish(_targetColor,true);
 
 	            } else {
-					
-	                fishBundle.availableFish.Add(greenFishes[greenInUse]);
-	                greenInUse++;
+
+                    fishBundle.availableFish.Add(greenFishes[greenInUse]);
+                    greenInUse++;
 
 	            }
 	            break;
 
-	            case HookColors.RED:
+	            case ColorEnum.RED:
 	            if (redInUse >= redFishes.Count) {
-					
-	                fishCreator.CreateFish(_targetColor,true);
+
+                    fishCreator.CreateFish(_targetColor,true);
 
 	            } else {
-					
-	                fishBundle.availableFish.Add(redFishes[redInUse]);
-	                redInUse++;
+
+                    fishBundle.availableFish.Add(redFishes[redInUse]);
+                    redInUse++;
 
 	            }
 				break;
 
-	            case HookColors.YELLOW:
+	            case ColorEnum.YELLOW:
 	            if (yellowInUse >= yellowFishes.Count) {
-					
-	                fishCreator.CreateFish(_targetColor,true);
+
+                    fishCreator.CreateFish(_targetColor,true);
 
 	            } else {
-					
-	                fishBundle.availableFish.Add(yellowFishes[yellowInUse]);
-	                yellowInUse++;
+
+                    fishBundle.availableFish.Add(yellowFishes[yellowInUse]);
+                    yellowInUse++;
 
 	            }
 

@@ -10,11 +10,11 @@ namespace Base.Game.Fish {
 			
 	        parent.emotion.Emote(Emotions.QUESTION);
 
-	        if(_target.requiredHookColor == HookColors.RED) {
+	        if(_target.requiredHookColor == ColorEnum.RED) {
 				
 	            if (_target.ownDirection != parent.ownDirection) {
-					
-	                StartCoroutine("SwimOpositeDirection");
+
+                    StartCoroutine("SwimOpositeDirection");
 
 	            }
 

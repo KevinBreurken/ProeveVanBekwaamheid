@@ -33,7 +33,7 @@ namespace Base.Game.Fish {
 	    public override void SetType() {
 			
 	        base.SetType();
-	        requiredHookColor = HookColors.YELLOW;
+            requiredHookColor = ColorEnum.YELLOW;
 
 	    }
 

@@ -33,14 +33,14 @@ namespace Base.Game.Fish {
 	        FishBehaviour[] tempFish = GetComponentsInChildren<FishBehaviour>();
 	        for (int i = 0;i < transform.childCount;i++) {
 				
-	            if (tempFish[i].requiredHookColor == HookColors.GREEN) {
-	                target.greenFishes.Add(tempFish[i]);
-	            } else if (tempFish[i].requiredHookColor == HookColors.RED) {
-					
-	                target.redFishes.Add(tempFish[i]);
+	            if (tempFish[i].requiredHookColor == ColorEnum.GREEN) {
+                    target.greenFishes.Add(tempFish[i]);
+	            } else if (tempFish[i].requiredHookColor == ColorEnum.RED) {
 
-	            } else if (tempFish[i].requiredHookColor == HookColors.YELLOW) {
-	                target.yellowFishes.Add(tempFish[i]);
+                    target.redFishes.Add(tempFish[i]);
+
+	            } else if (tempFish[i].requiredHookColor == ColorEnum.YELLOW) {
+                    target.yellowFishes.Add(tempFish[i]);
 
 	            }
 
