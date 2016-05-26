@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Base.Game.Hooks;
+
 namespace Base.Game.Fish {
 
     public class FishCreation: MonoBehaviour {

@@ -247,15 +247,16 @@ namespace Base.Game.Hooks {
 	    }
 
 	}
-}
 
-/// <summary>
-/// enum of all the colors of the available hooks
-/// </summary>
-public enum HookColors {
+	/// <summary>
+	/// enum of all the colors of the available hooks
+	/// </summary>
+	public enum HookColors {
 
-    RED,
-    YELLOW,
-    GREEN
+	    RED,
+	    YELLOW,
+	    GREEN
+
+	}
 
 }

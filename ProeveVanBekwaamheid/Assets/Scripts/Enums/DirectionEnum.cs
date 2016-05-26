@@ -1,5 +1,10 @@
-﻿public enum Direction
-{
-    LEFT,
-    RIGHT
+﻿namespace Base {
+
+	public enum Direction {
+			
+	    LEFT,
+	    RIGHT
+
+	}
+
 }
