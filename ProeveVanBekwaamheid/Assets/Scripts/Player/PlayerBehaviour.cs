@@ -80,6 +80,7 @@ namespace Base.Game {
 
             //Reset movement input
             movementInput = 0;
+
             //Get distance from center
             float distance = transform.position.x - originalPos.x;
 	        distance = Mathf.Abs(distance);
