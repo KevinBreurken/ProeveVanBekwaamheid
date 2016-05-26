@@ -1,29 +1,41 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class RedFish : FishBehaviour {
+namespace Base.Game.Fish {
+	
+	public class RedFish : FishBehaviour {
 
-    public void Start()
-    {
-        speed = Random.Range(20, 30);
-        ownStart();
-    }
-    
-    public void OnEnable()
-    {
-        speed = Random.Range(20, 30);
-        InMotion = true;
-    }
+	    public void Start() {
+			
+	        speed = Random.Range(20, 30);
+	        ownStart();
 
-    void Update()
-    {
-        SwimDirection(ownDirection);
-        OutOfBound();
-    }
+	    }
+	    
+	    public void OnEnable() {
+			
+	        speed = Random.Range(20, 30);
+	        InMotion = true;
 
-    public override void SetType()
-    {
-        base.SetType();
-        requiredHookColor = HookColors.RED;
-    }
+	    }
+
+	    void Update() {
+			
+	        SwimDirection(ownDirection);
+	        OutOfBound();
+
+	    }
+
+		/// <summary>
+		/// See BaseClass function.
+		/// </summary>
+	    public override void SetType() {
+			
+	        base.SetType();
+	        requiredHookColor = HookColors.RED;
+
+	    }
+
+	}
+
 }

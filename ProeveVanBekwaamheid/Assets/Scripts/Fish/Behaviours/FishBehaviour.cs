@@ -5,158 +5,175 @@ using Base.Manager;
 using BaseFrame.QAudio;
 using DG.Tweening;
 
-public class FishBehaviour : MonoBehaviour {
+namespace Base.Game.Fish {
 
-    public QAudioObjectHolder rightSound;
-    public QAudioObjectHolder wrongSound;
+	public class FishBehaviour : MonoBehaviour {
 
-    public Direction ownDirection;
-    public bool caught;
-    public float speed = 5;
-    public float pullPressure;
-    public Area fishArea;
-    public fishPulls pullInformation;
+	    public QAudioObjectHolder rightSound;
+	    public QAudioObjectHolder wrongSound;
 
-    public VisualEmotion emotion;
-    public HookColors requiredHookColor;
+	    public Direction ownDirection;
+	    public bool caught;
+	    public float speed = 5;
+	    public float pullPressure;
+	    public Area fishArea;
+	    public FishPulls pullInformation;
 
-    public FishInstinct ownInstinct;
-    public bool InMotion;
+	    public VisualEmotion emotion;
+	    public HookColors requiredHookColor;
 
-    [Header("Graphic")]
-    public Ease spawnAnimationEaseType = Ease.OutBack;
-    public float spawnAnimationDuration = 1;
-    private SpriteRenderer spriteComponent;
-    
-    private bool isAnimating;
-    private const string ownTag = "Fish";
+	    public FishInstinct ownInstinct;
+	    public bool InMotion;
 
-    void Awake () {
-        spriteComponent = GetComponent<SpriteRenderer>();
-        wrongSound.CreateAudioObject();
-        rightSound.CreateAudioObject();
-        isAnimating = false;
-        gameObject.tag = ownTag;
-    }
-    public void ownStart()
-    {
-        SetType();
-        gameObject.SetActive(false);
-        ownInstinct.Init(this);
-        InMotion = true;
-        if (emotion == null)
-        {
-            emotion = GetComponentInChildren<VisualEmotion>();
-        }
-    }
+	    [Header("Graphic")]
+	    public Ease spawnAnimationEaseType = Ease.OutBack;
+	    public float spawnAnimationDuration = 1;
+	    private SpriteRenderer spriteComponent;
+	    
+	    private bool isAnimating;
+	    private const string ownTag = "Fish";
 
-    
-    public FishBehaviour GetFish()
-    {
-        if (caught == false)
-        {
-            return this;
-        }
-        else
-        {
-            return null;
-        }
-    }
+	    void Awake () {
+			
+			wrongSound.CreateAudioObject();
+			rightSound.CreateAudioObject();
 
-    public IEnumerator TemporaryPause(float timeInSeconds)
-    {
-        InMotion = false;
-        yield return new WaitForSeconds(timeInSeconds);
-        InMotion = true;
-    }
+	        spriteComponent = GetComponent<SpriteRenderer>();
+	        isAnimating = false;
+	        gameObject.tag = ownTag;
 
-    public void FollowTarget(Transform targetTransform,float speed)
-    {
-        transform.position = ChaniscoLib.SmoothVector2Step(transform.position, targetTransform.position, speed);
-    }
+	    }
 
-    public void GainFish(bool _rightColor)
-    {
-        if (_rightColor == true)
-        {
-            ScoreManager.Instance.AddScore((int)pullInformation.rightPoints);
-            rightSound.GetAudioObject().Play();
-        }
-        else
-        {
-            ScoreManager.Instance.AddScore((int)pullInformation.wrongPoints);
-            wrongSound.GetAudioObject().Play();
-        }
-        gameObject.SetActive(false);
-        transform.localPosition = new Vector3(-5,0,0);
-    }
+	    public void ownStart() {
+			
+	        SetType();
+	        gameObject.SetActive(false);
+	        ownInstinct.Init(this);
+	        InMotion = true;
 
-    public void SwimDirection(Direction targetDirection)
-    {
-        if (InMotion == true)
-        {
-            FlipCharacter();
-            if (targetDirection == Direction.RIGHT)
-            {
-                transform.Translate(0.0005f * speed, 0, 0);
-            }
-            else if (targetDirection == Direction.LEFT)
-            {
-                transform.Translate(-0.0005f * speed, 0, 0);
-            }
-        }
-    }
+	        if (emotion == null)
+	            emotion = GetComponentInChildren<VisualEmotion>();
+	        
+	    }
 
-    public void OutOfBound()
-    {
-        if(transform.localPosition.x > fishArea.xRight)
-        {
-            gameObject.SetActive(false);
-        }
-        else if(transform.localPosition.x < fishArea.xLeft)
-        {
-            gameObject.SetActive(false);
-        }
-    }
+	    
+	    public FishBehaviour GetFish() {
+			
+	        if (caught == false)
+	            return this;
+	        
+	        return null;
 
-    public void ActivateFish(Vector2 targetSpawnPosition)
-    {
-        caught = false;
-        transform.localPosition = targetSpawnPosition;
-        gameObject.SetActive(true);
-        gameObject.transform.localScale = new Vector3(0,0,0);
-        gameObject.transform.DOScale(1, spawnAnimationDuration).SetEase(spawnAnimationEaseType);
-    }
+	    }
 
-    private void FlipCharacter()
-    {
+	    public IEnumerator TemporaryPause(float _timeInSeconds) {
+			
+	        InMotion = false;
 
-        spriteComponent.flipX = (ownDirection == Direction.LEFT) ? true : false ;
+	        yield return new WaitForSeconds(_timeInSeconds);
 
-    }
+	        InMotion = true;
 
-    public virtual void SetType()
-    {
+	    }
 
-    }
+	    public void FollowTarget(Transform _targetTransform,float _speed) {
+			
+	        transform.position = ChaniscoLib.SmoothVector2Step(transform.position, _targetTransform.position, _speed);
 
-}
+	    }
 
-[System.Serializable]
-public class fishPulls
-{
-    public float rightPressure;
-    public float wrongPressure;
+	    public void GainFish(bool _rightColor) {
+			
+	        if (_rightColor == true) {
+				
+	            ScoreManager.Instance.AddScore((int)pullInformation.rightPoints);
+	            rightSound.GetAudioObject().Play();
 
-    public float rightPoints;
-    public float wrongPoints;
-    public fishPulls(float RightPressure, float WrongPressure,float RightPoints,float WrongPoints)
-    {
-        this.rightPressure  = RightPressure;
-        this.wrongPressure  = WrongPressure;
-        this.rightPoints    = RightPoints;
-        this.wrongPoints    = WrongPoints;
-    }
+	        } else {
+				
+	            ScoreManager.Instance.AddScore((int)pullInformation.wrongPoints);
+	            wrongSound.GetAudioObject().Play();
+
+	        }
+
+	        gameObject.SetActive(false);
+	        transform.localPosition = new Vector3(-5,0,0);
+
+	    }
+
+	    public void SwimDirection(Direction _targetDirection) {
+			
+	        if (InMotion == true) {
+				
+	            FlipCharacter();
+	            if (_targetDirection == Direction.RIGHT) {
+					
+	                transform.Translate(0.0005f * speed, 0, 0);
+
+	            } else if (_targetDirection == Direction.LEFT) {
+					
+	                transform.Translate(-0.0005f * speed, 0, 0);
+
+	            }
+
+	        }
+
+	    }
+
+	    public void OutOfBound() {
+			
+	        if(transform.localPosition.x > fishArea.xRight) {
+				
+	            gameObject.SetActive(false);
+
+	        } else if(transform.localPosition.x < fishArea.xLeft) {
+				
+	            gameObject.SetActive(false);
+
+	        }
+
+	    }
+
+	    public void ActivateFish(Vector2 _targetSpawnPosition) {
+			
+	        caught = false;
+	        transform.localPosition = _targetSpawnPosition;
+	        gameObject.SetActive(true);
+	        gameObject.transform.localScale = new Vector3(0,0,0);
+	        gameObject.transform.DOScale(1, spawnAnimationDuration).SetEase(spawnAnimationEaseType);
+
+	    }
+
+	    private void FlipCharacter() {
+
+	        spriteComponent.flipX = (ownDirection == Direction.LEFT) ? true : false ;
+
+	    }
+
+	    public virtual void SetType() { }
+
+	}
+
+	[System.Serializable]
+	public class FishPulls {
+		
+	    public float rightPressure;
+	    public float wrongPressure;
+
+	    public float rightPoints;
+	    public float wrongPoints;
+
+	    public FishPulls(float _rightPressure, float _wrongPressure,float _rightPoints,float _wrongPoints) {
+			
+	        this.rightPressure  = _rightPressure;
+	        this.wrongPressure  = _wrongPressure;
+	        this.rightPoints    = _rightPoints;
+	        this.wrongPoints    = _wrongPoints;
+
+	    }
+
+	}
+
 }
 
 
