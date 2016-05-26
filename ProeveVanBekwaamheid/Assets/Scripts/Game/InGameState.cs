@@ -5,18 +5,6 @@ using DG.Tweening;
 using BaseFrame.QAudio;
 using Base.Manager;
 
-/// <summary>
-/// So it's selectable in Visual Studio.
-/// </summary>
-namespace Base {
-
-    public class Dummy {
-
-    }
-
-}
-
-
 namespace Base.Game {
 
     /// <summary>

@@ -78,8 +78,11 @@ namespace Base.Game {
 
 	    public void Recenter () {
 
-	        //Get distance from center
-	        float distance = transform.position.x - originalPos.x;
+            //Reset movement input
+            movementInput = 0;
+
+            //Get distance from center
+            float distance = transform.position.x - originalPos.x;
 	        distance = Mathf.Abs(distance);
 
 			transform.DOLocalMove(originalPos, distance);
@@ -100,8 +103,6 @@ namespace Base.Game {
 			Vector2 mousePos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
 
 			mousePos.x -= 0.5f;
-
-			Debug.Log(mousePos);
 
 			if(mousePos.x < -mouseMovementDistance || mousePos.x > mouseMovementDistance) {
 				
