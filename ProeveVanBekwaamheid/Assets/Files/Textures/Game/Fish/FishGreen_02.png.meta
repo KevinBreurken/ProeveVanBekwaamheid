@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 2d8f7954349df5e4fa9c321b72b97c97
-timeCreated: 1461069293
+guid: a3befa3d570db4448b07b585c23ec19c
+timeCreated: 1462984322
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName: {}
@@ -27,7 +27,7 @@ TextureImporter:
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
-  maxTextureSize: 1024
+  maxTextureSize: 2048
   textureSettings:
     filterMode: -1
     aniso: 16
@@ -51,7 +51,7 @@ TextureImporter:
   spriteSheet:
     sprites: []
     outline: []
-  spritePackingTag: UI
+  spritePackingTag: Fish
   userData: 
   assetBundleName: 
   assetBundleVariant: 
