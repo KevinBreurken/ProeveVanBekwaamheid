@@ -2,8 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using Base.Manager;
+using Base.Game.FishSpawning;
 
-public class FishSpawnSequence : MonoBehaviour {
+public class FishSpawnSequence: MonoBehaviour {
 
     public WaveManager _waveManager;
     public FishBundle _fishBundle;
@@ -19,8 +20,7 @@ public class FishSpawnSequence : MonoBehaviour {
 
     private FishBundleController _parent;
 
-    public void Init(FishBundleController _parent)
-    {
+    public void Init(FishBundleController _parent) {
         this._parent = _parent;
         _sequenceController = SequenceController.Instance;
 
@@ -29,82 +29,67 @@ public class FishSpawnSequence : MonoBehaviour {
         StartLevel();
     }
 
-    public void StartLevel()
-    {
+    public void StartLevel() {
         ResetScores();
         SetSequence(_waveManager.currentLevelIndex);
     }
 
-    private void SetSequence(int targetLevel)
-    {
-        if (targetLevel > _sequenceController.StartGameSequence.Count)
-        {
+    private void SetSequence(int targetLevel) {
+        if (targetLevel > _sequenceController.StartGameSequence.Count) {
             _sequenceController.CreateNewRandomSequence();
             SetSequence(targetLevel);
         }
-        else
-        {
+        else {
             FishSequence tempColors = _sequenceController.StartGameSequence[targetLevel];
             StartSequence(tempColors);
         }
     }
 
-    private void StartSequence(FishSequence targetSequence)
-    {
-        for(int i = 0; i < targetSequence.availableFishColors.Count; i++)
-        {
+    private void StartSequence(FishSequence targetSequence) {
+        for (int i = 0;i < targetSequence.availableFishColors.Count;i++) {
             AddFishToBundle(targetSequence.availableFishColors[i]);
 
         }
     }
 
-    private void AddFishToBundle(HookColors targetColor)
-    {
-        switch (targetColor)
-        {
+    private void AddFishToBundle(HookColors targetColor) {
+        switch (targetColor) {
             case HookColors.GREEN:
-                if (greenInUse >= greenFishes.Count)
-                {
-                    _fishCreator.CreateFish(targetColor,true);
-                }
-                else
-                {
-                    _fishBundle.availableFish.Add(greenFishes[greenInUse]);
-                    greenInUse++;
-                }
+            if (greenInUse >= greenFishes.Count) {
+                _fishCreator.CreateFish(targetColor,true);
+            }
+            else {
+                _fishBundle.availableFish.Add(greenFishes[greenInUse]);
+                greenInUse++;
+            }
 
             break;
             case HookColors.RED:
-                if (redInUse >= redFishes.Count)
-                {
-                    _fishCreator.CreateFish(targetColor, true);
-                }
-                else
-                {
-                    _fishBundle.availableFish.Add(redFishes[redInUse]);
-                    redInUse++;
-                }
+            if (redInUse >= redFishes.Count) {
+                _fishCreator.CreateFish(targetColor,true);
+            }
+            else {
+                _fishBundle.availableFish.Add(redFishes[redInUse]);
+                redInUse++;
+            }
 
-                break;
+            break;
             case HookColors.YELLOW:
-                if (yellowInUse >= yellowFishes.Count)
-                {
-                    _fishCreator.CreateFish(targetColor, true);
-                }
-                else
-                {
-                    _fishBundle.availableFish.Add(yellowFishes[yellowInUse]);
-                    yellowInUse++;
-                }
+            if (yellowInUse >= yellowFishes.Count) {
+                _fishCreator.CreateFish(targetColor,true);
+            }
+            else {
+                _fishBundle.availableFish.Add(yellowFishes[yellowInUse]);
+                yellowInUse++;
+            }
 
-                break;
+            break;
         }
     }
 
-    private void ResetScores()
-    {
-        redInUse    = 0;
-        greenInUse  = 0;
+    private void ResetScores() {
+        redInUse = 0;
+        greenInUse = 0;
         yellowInUse = 0;
     }
 }

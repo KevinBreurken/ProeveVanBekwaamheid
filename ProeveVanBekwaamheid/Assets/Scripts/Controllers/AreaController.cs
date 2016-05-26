@@ -40,7 +40,9 @@ public class AreaController : Singleton<AreaController> {
 }
 
 
-
+/// <summary>
+/// Object that determines a area with left,right,top and bottom position
+/// </summary>
 [System.Serializable]
 public class Area
 {
