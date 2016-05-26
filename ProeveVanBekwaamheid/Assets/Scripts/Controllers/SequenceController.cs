@@ -12,12 +12,12 @@ namespace Base.Game {
 
 	    public void CreateNewRandomSequence() {
 			
-	        int AmountOfColors = Enum.GetValues(typeof(HookColors)).Length;
-	        FishSequence targetSequence = new FishSequence(new List<HookColors>(),false);
+	        int AmountOfColors = Enum.GetValues(typeof(ColorEnum)).Length;
+            FishSequence targetSequence = new FishSequence(new List<ColorEnum>(),false);
 
 	        for (int i = 0; i < AmountOfColors;i++) {
-				
-	            HookColors targetColor = (HookColors)Enum.ToObject(typeof(HookColors), i);
+
+                ColorEnum targetColor = (ColorEnum)Enum.ToObject(typeof(ColorEnum), i);
 	            int AmountofFishes = UnityEngine.Random.Range(2,5);
 
 	            for(int j = 0; j < AmountofFishes; j++)
@@ -37,10 +37,10 @@ namespace Base.Game {
 	[System.Serializable]
 	public class FishSequence {
 		
-	    public List<HookColors> availableFishColors;
+	    public List<ColorEnum> availableFishColors;
 	    public bool bonusFish;
 
-	    public FishSequence(List<HookColors> _availableFishColors,bool _bonusFish) {
+	    public FishSequence(List<ColorEnum> _availableFishColors,bool _bonusFish) {
 			
 	        this.availableFishColors = _availableFishColors;
 	        this.bonusFish = _bonusFish;

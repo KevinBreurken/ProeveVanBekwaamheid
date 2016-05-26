@@ -22,7 +22,7 @@ namespace Base.Game.Hooks {
         }
 
         public override void SetType() {
-            ownHookColor = HookColors.GREEN;
+            ownHookColor = ColorEnum.GREEN;
             base.SetType();
         }
     }

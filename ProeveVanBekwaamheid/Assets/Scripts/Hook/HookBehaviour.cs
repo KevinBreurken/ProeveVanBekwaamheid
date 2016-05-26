@@ -18,7 +18,7 @@ namespace Base.Game.Hooks {
         /// <summary>
         /// Color of this hook
         /// </summary>
-		public HookColors ownHookColor;
+		public ColorEnum ownHookColor;
 
         /// <summary>
         /// Check if the hook is being released
@@ -230,7 +230,7 @@ namespace Base.Game.Hooks {
         /// </summary>
         /// <param name="_targetColor">the targetColor</param>
         /// <returns>return true if the color is identical</returns>
-		private bool isColorIdentical(HookColors _targetColor) {
+		private bool isColorIdentical(ColorEnum _targetColor) {
 			
 	        if(ownHookColor == _targetColor)
 	            return true;
@@ -245,17 +245,6 @@ namespace Base.Game.Hooks {
 	    public virtual void SetType() {
 
 	    }
-
-	}
-
-	/// <summary>
-	/// enum of all the colors of the available hooks
-	/// </summary>
-	public enum HookColors {
-
-	    RED,
-	    YELLOW,
-	    GREEN
 
 	}
 
