@@ -104,8 +104,6 @@ namespace Base.Game {
 
 			mousePos.x -= 0.5f;
 
-			Debug.Log(mousePos);
-
 			if(mousePos.x < -mouseMovementDistance || mousePos.x > mouseMovementDistance) {
 				
 				movementInput = mousePos.x;
