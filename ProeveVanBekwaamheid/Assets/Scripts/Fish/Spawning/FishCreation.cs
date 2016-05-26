@@ -1,51 +1,43 @@
 ﻿using UnityEngine;
 using System.Collections;
-using Base.Game.Hooks;
-namespace Base.Game.Fish {
-		
-	public class FishCreation : MonoBehaviour {
+using Base.Game.FishSpawning;
+public class FishCreation : MonoBehaviour {
 
-	    public GameObject redFishObject;
-	    public GameObject greenFishObject;
-	    public GameObject yellowFishObject;
+    public GameObject redFishObject;
+    public GameObject greenFishObject;
+    public GameObject yellowFishObject;
 
-	    public FishSpawnSequence fishSpawnSequenceHolder;
-	    public FishBundle fishBundle;
-	    
+    public FishSpawnSequence _fishSpawnSequenceHolder;
+    public FishBundle _fishBundle;
+    
 
-	    public void CreateFish(HookColors _targetColor, bool _addToBundle) {
-			
-	        switch (_targetColor) {
+    public void CreateFish(HookColors targetColor, bool addToBundle)
+    {
+        switch (targetColor)
+        {
+            case HookColors.RED:
+                InstansiateFish(redFishObject, addToBundle);
+                break;
+            case HookColors.GREEN:
+                InstansiateFish(greenFishObject, addToBundle);
+                break;
+            case HookColors.YELLOW:
+                InstansiateFish(yellowFishObject, addToBundle);
+                break;
+        }
+    }
 
-	            case HookColors.RED:
-	                InstantiateFish(redFishObject, _addToBundle);
-	                break;
+    public void InstansiateFish(GameObject targetObject, bool addToBundle)
+    {
+        GameObject target = Instantiate(targetObject, Vector3.zero, Quaternion.identity) as GameObject;
+        FishBehaviour tempTargetBehaviour = target.GetComponent<FishBehaviour>();
+        target.transform.parent = transform;
+        target.name = targetObject.name;
+        _fishSpawnSequenceHolder.yellowFishes.Add(target.GetComponent<FishBehaviour>());
+        if (addToBundle == true)
+        {
+            _fishBundle.availableFish.Add(tempTargetBehaviour);
 
-	            case HookColors.GREEN:
-	                InstantiateFish(greenFishObject, _addToBundle);
-	                break;
-
-	            case HookColors.YELLOW:
-	                InstantiateFish(yellowFishObject, _addToBundle);
-	                break;
-
-	        }
-
-	    }
-
-	    public void InstantiateFish(GameObject _targetObject, bool _addToBundle) {
-			
-	        GameObject target = Instantiate(_targetObject, Vector3.zero, Quaternion.identity) as GameObject;
-	        FishBehaviour tempTargetBehaviour = target.GetComponent<FishBehaviour>();
-	        target.transform.parent = transform;
-	        target.name = _targetObject.name;
-	        fishSpawnSequenceHolder.yellowFishes.Add(target.GetComponent<FishBehaviour>());
-
-	        if (_addToBundle == true)
-	            fishBundle.availableFish.Add(tempTargetBehaviour);
-
-	    }
-
-	}   
-
-}
+        }
+    }
+}   

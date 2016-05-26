@@ -3,6 +3,7 @@ using System.Collections;
 using Chanisco;
 using BaseFrame.QInput;
 using Base.Game;
+using Base.Game.Hooks;
 using DG.Tweening;
 using Base.Game.Hooks;
 using Base.Game.Fish;

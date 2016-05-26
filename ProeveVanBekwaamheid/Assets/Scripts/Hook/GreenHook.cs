@@ -1,38 +1,29 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
 namespace Base.Game.Hooks {
-		
-	public class GreenHook : HookBehaviour {
-		
-	    public LineRenderer Chain;
-	    private Transform ChainHolder;
+    /// <summary>
+    /// Behaviour for the Green hook
+    /// </summary>
+    public class GreenHook: HookBehaviour {
+        public LineRenderer Chain;
+        private Transform ChainHolder;
 
-	    void Start() {
-			
-	        ChainHolder = Chain.transform;
-	        hookStart();
+        void Start() {
+            ChainHolder = Chain.transform;
+            Init();
+        }
 
-	    }
+        void Update() {
+            Chain.SetPosition(0,new Vector3(ChainHolder.position.x,ChainHolder.position.y,-0.1f));
+            Chain.SetPosition(1,new Vector3(transform.position.x,transform.position.y + 0.2f,-0.1f));
+            hookUpdate();
+        }
 
-	    void Update() {
-			
-	        Chain.SetPosition(0, new Vector3(ChainHolder.position.x, ChainHolder.position.y, -0.1f));
-	        Chain.SetPosition(1, new Vector3(transform.position.x,transform.position.y + 0.2f, -0.1f));
-	        hookUpdate();
-
-	    }
-
-		/// <summary>
-		/// See BaseClass function.
-		/// </summary>
-	    public override void SetType() {
-			
-	        ownHookColor = HookColors.GREEN;
-	        base.SetType();
-
-	    }
-
-	}
-
+        public override void SetType() {
+            ownHookColor = HookColors.GREEN;
+            base.SetType();
+        }
+    }
 }
