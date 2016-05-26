@@ -4,6 +4,7 @@ using Chanisco;
 using Base.Manager;
 using BaseFrame.QAudio;
 using DG.Tweening;
+using Base.Game.Hooks;
 
 namespace Base.Game.Fish {
 

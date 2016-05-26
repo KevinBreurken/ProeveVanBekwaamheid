@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace Base.Game.Fish.Emotion {
+namespace Base.Game.Fish {
 	
 	public class VisualEmotion : MonoBehaviour {
 

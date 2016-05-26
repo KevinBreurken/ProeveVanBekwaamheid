@@ -4,6 +4,8 @@ using Chanisco;
 using BaseFrame.QInput;
 using Base.Game;
 using DG.Tweening;
+using Base.Game.Hooks;
+using Base.Game.Fish;
 
 namespace Base.Game {
 	
@@ -47,6 +49,7 @@ namespace Base.Game {
 	    }
 
 	    private void Start () {
+			
 	        areaContorller = AreaController.Instance;
 	        originalPos = transform.localPosition;
 	        fishArea = areaContorller.viewField;
@@ -54,6 +57,7 @@ namespace Base.Game {
 	        redHook.releaseSpeed = ownHookSpeed;
 	        greenHook.releaseSpeed = ownHookSpeed;
 	        yellowHook.releaseSpeed = ownHookSpeed;
+
 	    }
 	   
 		public void Load () {
@@ -99,9 +103,13 @@ namespace Base.Game {
 			Debug.Log(mousePos);
 
 			if(mousePos.x < -mouseMovementDistance || mousePos.x > mouseMovementDistance) {
+				
 				movementInput = mousePos.x;
-			}else{
+
+			} else {
+				
 				movementInput = Mathf.MoveTowards(movementInput,0,0.05f);
+
 			}
 
 	    }

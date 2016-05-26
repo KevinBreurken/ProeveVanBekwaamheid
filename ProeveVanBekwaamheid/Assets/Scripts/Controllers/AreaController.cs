@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace Base.Game.FishSpawning {
+namespace Base.Game.Fish {
 	
 	public class AreaController : Singleton<AreaController> {
 		

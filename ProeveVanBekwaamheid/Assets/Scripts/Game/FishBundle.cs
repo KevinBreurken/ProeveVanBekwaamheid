@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Chanisco;
 //TODO Summary toevoegen reset bracket positions
-namespace Base.Game.FishSpawning
+namespace Base.Game.Fish
 {
     public class FishBundle : MonoBehaviour {
         /// <summary>
