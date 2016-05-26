@@ -39,7 +39,8 @@ public class FishSpawnSequence : MonoBehaviour {
     {
         if (targetLevel > _sequenceController.StartGameSequence.Count)
         {
-            //TODO Create own Algorithm
+            _sequenceController.CreateNewRandomSequence();
+            SetSequence(targetLevel);
         }
         else
         {
