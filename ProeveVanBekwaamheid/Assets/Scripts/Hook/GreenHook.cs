@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Base.Game.Hooks;
 
 public class GreenHook : HookBehaviour {
     public LineRenderer Chain;
@@ -8,7 +9,7 @@ public class GreenHook : HookBehaviour {
     void Start()
     {
         ChainHolder = Chain.transform;
-        hookStart();
+        Init();
     }
 
     void Update()

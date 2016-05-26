@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using Base.Game.Hooks;
 public class BlueHook : HookBehaviour {
     public LineRenderer Chain;
     private Transform ChainHolder;
@@ -8,7 +8,7 @@ public class BlueHook : HookBehaviour {
     void Start()
     {
         ChainHolder = Chain.transform;
-        hookStart();
+        Init();
     }
 
     void Update()

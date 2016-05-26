@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Base.Manager;
+using Base.Game.Fish;
 using Base.Game.FishSpawning;
 
 public class FishSpawnSequence: MonoBehaviour {

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using Base.Game.FishSpawning;
 public class FishCreation : MonoBehaviour {
 
     public GameObject redFishObject;
