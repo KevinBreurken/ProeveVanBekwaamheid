@@ -5,6 +5,7 @@ using BaseFrame.QUI;
 using Base.Manager;
 using UnityEngine.UI;
 using DG.Tweening;
+using BaseFrame.QAudio;
 
 namespace Base.UI {
 
@@ -37,22 +38,31 @@ namespace Base.UI {
         public QUIObject levelObject;
         private Text levelObjectText;
 
-		/// <summary>
-		/// Reference to the WaveManager.
-		/// </summary>
-		[Header("Other")]
-		public WaveManager waveManager;
-
-		/// <summary>
-		/// The GameState that is paired with this UIState.
-		/// </summary>
-		public BaseGameState gameState;
-
-		private CanvasGroup canvasGroup;
-
+        [Header("HighScore")]
         public QUIObject highscoreDisplay;
         public Text highscoreText;
         private Text highscoreDisplayText;
+
+
+        /// <summary>
+        /// A secret melody that's played when the player waits for a long time on this state.
+        /// </summary>
+        [Header("Secret Melody")]
+        public QAudioObjectHolder secretMelody;
+        public float secretMelodyWaitTime;
+
+        /// <summary>
+		/// Reference to the WaveManager.
+		/// </summary>
+		[Header("Other")]
+        public WaveManager waveManager;
+
+        /// <summary>
+        /// The GameState that is paired with this UIState.
+        /// </summary>
+        public BaseGameState gameState;
+
+        private CanvasGroup canvasGroup;
 
         void Awake () {
 
@@ -63,6 +73,8 @@ namespace Base.UI {
 			//Get component references.
             levelObjectText = levelObject.GetComponent<Text>();
             scoreObjectText = scoreObject.GetComponent<Text>();
+
+            secretMelody.CreateAudioObject();
 
 			canvasGroup = GetComponent<CanvasGroup>();
             highscoreDisplayText = highscoreDisplay.GetComponent<Text>();
@@ -128,11 +140,33 @@ namespace Base.UI {
             }
 
             highscoreDisplayText.text = "" + highscore;
+            StartCoroutine(PlaySecretMelody());
+
+        }
+
+        /// <summary>
+        /// Plays the secret melody.
+        /// </summary>
+        /// <returns></returns>
+        private IEnumerator PlaySecretMelody () {
+
+            yield return new WaitForSeconds(secretMelodyWaitTime);
+
+            QAudioObject secretMelodyObject = secretMelody.GetAudioObject();
+            secretMelodyObject.FadeVolume(0.4f, 0.4f, 0.1f);
+            secretMelodyObject.Play();
 
         }
 
         public override IEnumerator Exit () {
 
+            QAudioObject secretMelodyObject = secretMelody.GetAudioObject();
+
+            if (secretMelodyObject.GetSource().isPlaying) 
+                secretMelodyObject.FadeVolume(0.4f, 0, 2);
+            
+
+            StopCoroutine(PlaySecretMelody());
 			canvasGroup.alpha = 1;
 			canvasGroup.DOFade(0,1);
 			yield return new WaitForSeconds(1);
