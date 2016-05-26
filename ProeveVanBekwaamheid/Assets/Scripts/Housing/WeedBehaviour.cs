@@ -1,7 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class WeedBehaviour : HousingBase {
-    
+namespace Base.Game.Fish {
+	
+	public class WeedBehaviour : HousingBase {
+	    
+
+	}
 
 }

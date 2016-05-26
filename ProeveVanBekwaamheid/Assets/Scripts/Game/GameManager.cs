@@ -2,6 +2,7 @@
 using System.Collections;
 using BaseFrame.QStates;
 using Base.Manager;
+using Base.Game;
 
 namespace Base.Manager {
 

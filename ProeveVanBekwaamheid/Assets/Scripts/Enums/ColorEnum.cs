@@ -1,6 +1,11 @@
-﻿public enum ColorEnum
-{
-    RED,
-    BLUE,
-    GREEN,
+﻿
+namespace Base {
+	
+	public enum ColorEnum {
+	    RED,
+	    BLUE,
+	    GREEN,
+
+	}
+
 }

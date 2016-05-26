@@ -1,28 +1,36 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class HousingBase : MonoBehaviour {
-    public bool occupied;
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.tag == "Fish")
-        {
-            InteractWithFish();
-        }
-    }
+namespace Base.Game.Fish {
+	
+	public class HousingBase : MonoBehaviour {
+		
+	    public bool occupied;
 
-    public virtual void InteractWithFish()
-    {
+		void OnTriggerEnter2D(Collider2D _other) {
+			
+	        if (_other.gameObject.tag == "Fish")
+	            InteractWithFish();
+	        
+	    }
 
-    }
+	    public virtual void InteractWithFish() {
 
-    public void ClaimOwnership(FishInstinct target)
-    {
-        occupied = true;
-    }
+	    }
 
-    public void LoseOwnership()
-    {
-        occupied = false;
-    }
+	    public void ClaimOwnership(FishInstinct _target) {
+			
+	        occupied = true;
+
+	    }
+
+	    public void LoseOwnership() {
+			
+	        occupied = false;
+
+	    }
+
+	}
+
 }
+

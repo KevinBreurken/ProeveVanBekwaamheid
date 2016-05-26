@@ -1,31 +1,41 @@
 ﻿using UnityEngine;
 using System.Collections;
-using Base.Game.FishSpawning;
+using Base.Game.Fish;
 
-public class FishBundleController: Singleton<FishBundleController> {
+namespace Base.Game.Fish{
+	
+	public class FishBundleController: Singleton<FishBundleController> {
 
-    public FishCreation _fishCreation;
-    public FishBundle _fishBundle;
-    public FishSpawnSequence _fishSpawnSequence;
+	    public FishCreation _fishCreation;
+	    public FishBundle _fishBundle;
+	    public FishSpawnSequence _fishSpawnSequence;
 
-    void Init() {
-        _fishCreation = GetComponent<FishCreation>();
-        _fishBundle = GetComponent<FishBundle>();
-        _fishSpawnSequence = GetComponent<FishSpawnSequence>();
+	    void Init() {
+			
+	        _fishCreation = GetComponent<FishCreation>();
+	        _fishBundle = GetComponent<FishBundle>();
+	        _fishSpawnSequence = GetComponent<FishSpawnSequence>();
 
-        _fishBundle.Init(this);
-        _fishSpawnSequence.Init(this);
+	        _fishBundle.Init(this);
+	        _fishSpawnSequence.Init(this);
 
-    }
+	    }
 
-    void Start() {
-        Init();
-    }
+	    void Start() {
+			
+	        Init();
 
-    void Update() {
-        if (Input.GetKeyUp(KeyCode.O)) {
-            SequenceController.Instance.CreateNewRandomSequence();
-        }
+	    }
 
-    }
+	    void Update() {
+			
+	        if (Input.GetKeyUp(KeyCode.O)) {
+				
+	            SequenceController.Instance.CreateNewRandomSequence();
+
+	        }
+
+	    }
+
+	}
 }
