@@ -2,13 +2,15 @@
 using System.Collections;
 
 namespace Base.Game.Fish {
-	
+	/// <summary>
+    /// Behaviour of the Bluefish
+    /// </summary>
 	public class BlueFish : FishBehaviour {
 		
 	    public void Start() {
 			
 	        speed = Random.Range(1, 10);
-	        ownStart();
+	        Init();
 
 	    }
 

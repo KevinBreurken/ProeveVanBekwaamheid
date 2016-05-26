@@ -8,7 +8,7 @@ namespace Base.Game.Fish {
 	    public void Start() {
 			
 	        speed = Random.Range(20, 30);
-	        ownStart();
+	        Init();
 
 	    }
 
