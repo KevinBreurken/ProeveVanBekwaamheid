@@ -45,7 +45,10 @@ namespace Base.Game.Fish {
 
 	    }
 
-	    public void ownStart() {
+        /// <summary>
+        /// Init that sets the variables on start
+        /// </summary>
+        public void Init() {
 			
 	        SetType();
 	        gameObject.SetActive(false);
@@ -57,7 +60,10 @@ namespace Base.Game.Fish {
 	        
 	    }
 
-	    
+	    /// <summary>
+        /// Public function that returns the fish if the fish isn't caught yet
+        /// </summary>
+        /// <returns></returns>
 	    public FishBehaviour GetFish() {
 			
 	        if (caught == false)
@@ -67,6 +73,11 @@ namespace Base.Game.Fish {
 
 	    }
 
+        /// <summary>
+        /// A temporary pause that waits a target amount of time
+        /// </summary>
+        /// <param name="_timeInSeconds">target amount of time to wait</param>
+        /// <returns></returns>
 	    public IEnumerator TemporaryPause(float _timeInSeconds) {
 			
 	        InMotion = false;
@@ -76,13 +87,21 @@ namespace Base.Game.Fish {
 	        InMotion = true;
 
 	    }
-
+        /// <summary>
+        /// Follows a target object in the world
+        /// </summary>
+        /// <param name="_targetTransform">Target transform you follow</param>
+        /// <param name="_speed">Amount of speed you work toward your goal</param>
 	    public void FollowTarget(Transform _targetTransform,float _speed) {
 			
 	        transform.position = ChaniscoLib.SmoothVector2Step(transform.position, _targetTransform.position, _speed);
 
 	    }
 
+        /// <summary>
+        ///If the fish gets heeled you gain the fish
+        /// </summary>
+        /// <param name="_rightColor">is true if your color is the same as the color of the hook</param>
 	    public void GainFish(bool _rightColor) {
 			
 	        if (_rightColor == true) {
@@ -102,6 +121,10 @@ namespace Base.Game.Fish {
 
 	    }
 
+        /// <summary>
+        /// Fish swims toward the targetdirection
+        /// </summary>
+        /// <param name="_targetDirection">Direction the fish needs to swim to</param>
 	    public void SwimDirection(Direction _targetDirection) {
 			
 	        if (InMotion == true) {
@@ -120,7 +143,9 @@ namespace Base.Game.Fish {
 	        }
 
 	    }
-
+        /// <summary>
+        /// If the fish swims out of bounds
+        /// </summary>
 	    public void OutOfBound() {
 			
 	        if(transform.localPosition.x > fishArea.xRight) {
@@ -135,6 +160,10 @@ namespace Base.Game.Fish {
 
 	    }
 
+        /// <summary>
+        /// The fish becomes active at the targetspawnposition 
+        /// </summary>
+        /// <param name="_targetSpawnPosition">Position where fish spawns</param>
 	    public void ActivateFish(Vector2 _targetSpawnPosition) {
 			
 	        caught = false;
@@ -145,16 +174,25 @@ namespace Base.Game.Fish {
 
 	    }
 
+        /// <summary>
+        /// Flips the character to their assigned direction 
+        /// </summary>
 	    private void FlipCharacter() {
 
 	        spriteComponent.flipX = (ownDirection == Direction.LEFT) ? true : false ;
 
 	    }
 
-	    public virtual void SetType() { }
+        /// <summary>
+        /// Sets the type of the fish according to the FishEnum
+        /// </summary>
+        public virtual void SetType() { }
 
 	}
 
+    /// <summary>
+    /// The stats that determine the speed and the score for the wrong and right color identity
+    /// </summary>
 	[System.Serializable]
 	public class FishPulls {
 		
