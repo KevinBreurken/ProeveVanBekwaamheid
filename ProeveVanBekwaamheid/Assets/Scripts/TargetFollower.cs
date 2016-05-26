@@ -10,6 +10,8 @@ public class TargetFollower : MonoBehaviour {
 	public Vector3 originalPosition;
 	void Awake(){
 
+		Debug.Log(gameObject.name);
+
 		if(useOriginalPosition)
 			originalPosition = transform.position;
 		

@@ -2,26 +2,30 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class IngameUI : MonoBehaviour {
+namespace Deprecated {
+	
+	public class IngameUI : MonoBehaviour {
+		/*
+	    public Text scoreText;
+	    public Text timeText;
 
-    public Text scoreText;
-    public Text timeText;
+	    private VarsController varsController;
 
-    private VarsController varsController;
+	    void Start()
+	    {
+	        varsController = VarsController.Instance;
+	    }
+	    void Update()
+	    {
+	        UIElements();
+	    }
 
-    void Start()
-    {
-        varsController = VarsController.Instance;
-    }
-    void Update()
-    {
-        UIElements();
-    }
+	    void UIElements()
+	    {
+	        scoreText.text = varsController.GetScoreInString();
+	        timeText.text = varsController.GetTimeInString();
+	    }
+	    */
+	}	
 
-    void UIElements()
-    {
-        scoreText.text = varsController.GetScoreInString();
-        timeText.text = varsController.GetTimeInString();
-    }
-    
 }
