@@ -373,5 +373,5 @@ namespace ThirdParty {
 		    }
 	    }
     }
-#endif
 }
+#endif
