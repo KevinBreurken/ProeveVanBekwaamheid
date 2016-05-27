@@ -182,11 +182,16 @@ namespace Base.Game.Fish {
 	        spriteComponent.flipX = (ownDirection == Direction.LEFT) ? true : false ;
 
 	    }
+        /// <summary>
+        /// Responce toward the hook
+        /// </summary>
+        public virtual void RespondToHook(HookBehaviour _target) { }
 
         /// <summary>
         /// Sets the type of the fish according to the FishEnum
         /// </summary>
         public virtual void SetType() { }
+
 
 	}
 
