@@ -21,7 +21,7 @@ namespace Base.Game.Fish {
 	    public FishPulls pullInformation;
 
 	    public VisualEmotion emotion;
-	    public HookColors requiredHookColor;
+	    public ColorEnum requiredHookColor;
 
 	    public FishInstinct ownInstinct;
 	    public bool InMotion;

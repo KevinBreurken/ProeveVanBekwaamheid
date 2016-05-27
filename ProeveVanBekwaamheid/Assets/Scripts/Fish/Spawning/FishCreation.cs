@@ -14,15 +14,15 @@ namespace Base.Game.Fish {
         public FishBundle _fishBundle;
 
 
-        public void CreateFish(HookColors targetColor,bool addToBundle) {
+        public void CreateFish(ColorEnum targetColor,bool addToBundle) {
             switch (targetColor) {
-                case HookColors.RED:
+                case ColorEnum.RED:
                 InstansiateFish(redFishObject,addToBundle);
                 break;
-                case HookColors.GREEN:
+                case ColorEnum.GREEN:
                 InstansiateFish(greenFishObject,addToBundle);
                 break;
-                case HookColors.YELLOW:
+                case ColorEnum.YELLOW:
                 InstansiateFish(yellowFishObject,addToBundle);
                 break;
             }

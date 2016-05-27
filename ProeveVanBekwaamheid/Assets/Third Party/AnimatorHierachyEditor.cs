@@ -5,7 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-namespace Base.Game.ThirdParty {
+namespace ThirdParty {
 
     public class AnimationHierarchyEditor : EditorWindow {
 	    private static int columnWidth = 300;

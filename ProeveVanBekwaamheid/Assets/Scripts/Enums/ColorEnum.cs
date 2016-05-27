@@ -1,9 +1,12 @@
 ﻿
 namespace Base {
-	
-	public enum ColorEnum {
+
+    /// <summary>
+    /// enum of all the colors
+    /// </summary>
+    public enum ColorEnum {
 	    RED,
-	    BLUE,
+	    YELLOW,
 	    GREEN,
 
 	}

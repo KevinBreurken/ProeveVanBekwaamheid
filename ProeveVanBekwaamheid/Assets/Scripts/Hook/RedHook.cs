@@ -26,7 +26,7 @@ namespace Base.Game.Hooks {
 
         public override void SetType() {
 
-            ownHookColor = HookColors.RED;
+            ownHookColor = ColorEnum.RED;
             base.SetType();
         }
 
