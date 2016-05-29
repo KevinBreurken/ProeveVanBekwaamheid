@@ -32,6 +32,8 @@ namespace Base.Manager {
         /// </summary>
         public TimerDisplay timerDisplay;
 
+        public bool isTicking = true;
+
         /// <summary>
         /// Check to see if the game is started.
         /// </summary>
@@ -42,39 +44,32 @@ namespace Base.Manager {
         /// </summary>
         public void StartTimer () {
 
-            StartCoroutine(WaitTillLevelEnds());
-
         }
 
         void Update () {
 
-            if(gameStarted)
-            currentLevelDuration += Time.deltaTime;
+            if (gameStarted && isTicking) {
+                currentLevelDuration += Time.deltaTime;
+                
+                if(GetCurrentLevelDuration() < 0) {
+                    //Send the message that the game time has ended.
+                    if (onTimerEnded != null) {
 
-        }
+                        onTimerEnded();
+                        currentLevelDuration = 0;
 
-        private IEnumerator WaitTillLevelEnds () {
-
-            Debug.Log("Timer started");
-
-            yield return new WaitForSeconds(levelDuration);
-
-            Debug.Log("Timer ended");
-
-            //Send the message that the game time has ended.
-            if (onTimerEnded != null) {
-
-                onTimerEnded();
-				currentLevelDuration = 0;
-
+                    }
+                }
             }
 
         }
 
+      
         public override void Load () {
 
             base.Load();
             gameStarted = true;
+            isTicking = true;
             currentLevelDuration = 0;
 
         }
@@ -82,7 +77,7 @@ namespace Base.Manager {
         public override void Unload () {
 
             gameStarted = false;
-            StopCoroutine(WaitTillLevelEnds());
+            isTicking = false;
             base.Unload();
 
         }

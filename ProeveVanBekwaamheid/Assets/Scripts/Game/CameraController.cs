@@ -32,6 +32,8 @@ namespace Base.Game {
         [HideInInspector]
         public Camera gameViewCamera;
 
+        public float movementSpeed = 2;
+
         private GameObject cameraLookPoint;
         private Vector3 velocity = Vector3.zero;
 
@@ -59,7 +61,7 @@ namespace Base.Game {
                 distance = Mathf.Abs(distance);
 
                 //Dampen the movement
-                Vector3 newPosition = Vector3.SmoothDamp(transform.position, destination, ref velocity, 4 - distance);
+                Vector3 newPosition = Vector3.SmoothDamp(transform.position, destination, ref velocity, movementSpeed);
                 transform.position = new Vector3(newPosition.x, transform.position.y, transform.position.z);
 
                 if (target.transform.position.x != cameraLookPoint.transform.position.x) {

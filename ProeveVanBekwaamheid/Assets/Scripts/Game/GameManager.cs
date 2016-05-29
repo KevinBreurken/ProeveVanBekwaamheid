@@ -12,16 +12,22 @@ namespace Base.Manager {
     public class GameManager : MonoBehaviour {
 
         public delegate void GameEvent (int _currentLevel, int _targetscore);
+        public delegate void GameEnterEvent ();
 
         /// <summary>
         /// Called when a new level is entered.
         /// </summary>
         public event GameEvent onNextLevelEntered;
 
+        public event GameEnterEvent onGameEntered;
+        public event GameEnterEvent onGameExited;
+
         /// <summary>
         /// reference to the boat (player behaviour)
         /// </summary>
         public PlayerBehaviour playerBoat;
+
+        public BonusEvent bonusEvent;
 
         private ScoreManager scoreManager;
         private WaveManager waveManager;
@@ -37,7 +43,19 @@ namespace Base.Manager {
 			//add listeners
             waveManager.OnWaveFailed += StopGame;
             waveManager.OnWaveSucceeded += StartNewLevel;
-           
+            bonusEvent.OnBonusEventFinished += BonusEvent_OnBonusEventFinished;
+        }
+
+        private void BonusEvent_OnBonusEventFinished () {
+
+            int currentLevel = waveManager.currentLevelIndex;
+            int targetScore = waveManager.targetScoreList[currentLevel];
+
+            scoreManager.scoreDisplay.UpdateTargetScoreDisplay(targetScore);
+
+            if(onNextLevelEntered != null)
+            onNextLevelEntered(currentLevel, targetScore);
+
         }
 
         /// <summary>
@@ -57,6 +75,9 @@ namespace Base.Manager {
             scoreManager.scoreDisplay.Show(false);
             timeManager.timerDisplay.Show(false);
 
+            if (onGameEntered != null)
+                onGameEntered();
+
         }
 
         /// <summary>
@@ -70,6 +91,9 @@ namespace Base.Manager {
             scoreManager.Unload();
             waveManager.Unload();
             timeManager.Unload();
+
+            if (onGameExited != null)
+                onGameExited();
 
             StartCoroutine(UIStateSelector.Instance.SetState("ResultUIState"));
 
@@ -85,7 +109,9 @@ namespace Base.Manager {
 
             scoreManager.scoreDisplay.UpdateTargetScoreDisplay(targetScore);
 
-            onNextLevelEntered(currentLevel, targetScore);
+            if ((currentLevel + 1) % bonusEvent.amountUntilEventHapens != 0)
+                if (onNextLevelEntered != null)
+                    onNextLevelEntered(currentLevel, targetScore);
 
         }
 

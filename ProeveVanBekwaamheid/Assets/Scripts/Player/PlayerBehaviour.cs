@@ -14,7 +14,7 @@ namespace Base.Game {
 
 	    private BaseQInputMethod inputMethod;
 
-	    private float speedFactor = 0.05f;
+	    public float speedFactor = 0.05f;
 		private float mouseMovementDistance = 0.3f;
 
 	    private Vector2 originalPos;
@@ -65,7 +65,7 @@ namespace Base.Game {
 			
 			recievesPlayerInput = true;
 
-	        //stops the recentering.
+	        //stops the re=centering.
 			transform.DOKill();
 
 		}

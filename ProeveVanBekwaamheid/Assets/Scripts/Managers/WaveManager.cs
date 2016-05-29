@@ -11,7 +11,13 @@ namespace Base.Manager {
     /// </summary>
     public class WaveManager : ManagerObject {
 
+        public delegate void LevelEvent (int _enteredLevel);
         public delegate void WaveEvent ();
+
+        /// <summary>
+        /// Called when a level is entered.
+        /// </summary>
+        public event LevelEvent OnLevelEntered;
 
         /// <summary>
         /// Called when the score requirement isn't met.
@@ -68,6 +74,10 @@ namespace Base.Manager {
 
             timeManager.StartTimer();
             nextLevelSoundNotification.GetAudioObject().Play();
+
+            if(OnLevelEntered != null) {
+                OnLevelEntered(currentLevelIndex + 1);
+            }
 
         }
 
