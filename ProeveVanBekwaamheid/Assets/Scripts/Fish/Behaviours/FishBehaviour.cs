@@ -49,13 +49,13 @@ namespace Base.Game.Fish {
         /// Init that sets the variables on start
         /// </summary>
         public void Init() {
-			
-	        SetType();
-	        gameObject.SetActive(false);
-	        ownInstinct.Init(this);
-	        InMotion = true;
 
-	        if (emotion == null)
+            gameObject.SetActive(false);
+            ownInstinct.Init(this);
+	        InMotion = true;
+            SetType();
+
+            if (emotion == null)
 	            emotion = GetComponentInChildren<VisualEmotion>();
 	        
 	    }
