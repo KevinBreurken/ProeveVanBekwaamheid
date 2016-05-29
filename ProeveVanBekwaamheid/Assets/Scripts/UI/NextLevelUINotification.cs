@@ -50,6 +50,9 @@ namespace Base.UI {
         /// </summary>
         private Text targetscoreText;
 
+        private int enteredLevel;
+        private int targetScore;
+
         private CanvasGroup canvasGroup;
         private const string LEVELTEXT = "Level ";
         private const string TARGETSCORETEXT = "Target score: ";
@@ -62,23 +65,29 @@ namespace Base.UI {
             canvasGroup = GetComponent<CanvasGroup>();
 
             //Add listener to game manager.
-            gameManager.onNextLevelEntered += ShowNotification;
+            gameManager.onNextLevelEntered += GameManager_onNextLevelEntered;
 
             //Hide the layer
             canvasGroup.alpha = 0;
 
         }
 
+        private void GameManager_onNextLevelEntered (int _currentLevel, int _targetscore) {
+
+            enteredLevel = _currentLevel;
+            targetScore = _targetscore;
+            ShowNotification();
+
+        }
+
         /// <summary>
         /// Shows the next level notification.
         /// </summary>
-        /// <param name="_enteredLevel">The level that's currently entered.</param>
-        /// <param name="_targetScore">The target score that's required for the next level.</param>
-        public void ShowNotification (int _enteredLevel, int _targetScore) {
+        public void ShowNotification () {
 
             //Set the values of the text component
-            levelText.text = LEVELTEXT + (_enteredLevel + 1).ToString();
-            targetscoreText.text = TARGETSCORETEXT + _targetScore.ToString();
+            levelText.text = LEVELTEXT + (enteredLevel + 1).ToString();
+            targetscoreText.text = TARGETSCORETEXT + targetScore.ToString();
 
             //Start the opening animation
             StartCoroutine(levelQUIObject.Show());
