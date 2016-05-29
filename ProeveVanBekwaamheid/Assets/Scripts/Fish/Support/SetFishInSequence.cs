@@ -39,7 +39,7 @@ namespace Base.Game.Fish {
 	            }
 
 	        }
-
+            Debug.Log("<color=blue>[SEQUENCE COMPLETE]</color>");
 	    }
 
 	    private void DestroyInPlayMode() {

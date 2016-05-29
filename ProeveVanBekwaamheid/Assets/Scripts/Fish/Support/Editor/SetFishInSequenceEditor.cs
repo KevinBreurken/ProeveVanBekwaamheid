@@ -11,7 +11,7 @@ public class SetFishInSequenceEditor: Editor {
 
         SetFishInSequence myTarget = (SetFishInSequence)target;
         if (GUILayout.Button("Set Sequence")) {
-            Debug.Log("[Sequence Set]");
+            Debug.Log("<color=blue>[REVEIVING DATA]</color>");
             myTarget.SetFunctionality();
 
         }
