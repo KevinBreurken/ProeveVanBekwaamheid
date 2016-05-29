@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using Base.Game.Fish;
 
 namespace Base.Game.Fish {
 
@@ -24,16 +23,7 @@ namespace Base.Game.Fish {
             Init();
 
         }
-
-        void Update() {
-
-            if (Input.GetKeyUp(KeyCode.O)) {
-
-                SequenceController.Instance.CreateNewRandomSequence();
-
-            }
-
-        }
+        
 
         /// <summary>
         /// Init that sets the variables on start
@@ -44,8 +34,16 @@ namespace Base.Game.Fish {
             _fishBundle = GetComponent<FishBundle>();
             _fishSpawnSequence = GetComponent<FishSpawnSequence>();
 
-            _fishBundle.Init(this);
+            _fishBundle.Init();
             _fishSpawnSequence.Init(this);
+            OnWaveStart(0);
+
+        }
+
+        public void OnWaveStart(int _targetLevel) {  
+
+            if(_fishSpawnSequence.WaveStart(_targetLevel) == true) 
+                _fishBundle.WaveStart();
 
         }
 

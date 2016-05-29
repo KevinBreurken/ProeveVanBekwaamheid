@@ -31,7 +31,6 @@ namespace Base.Game.Fish {
 	    public float spawnAnimationDuration = 1;
 	    private SpriteRenderer spriteComponent;
 	    
-	    private bool isAnimating;
 	    private const string ownTag = "Fish";
 
 	    void Awake () {
@@ -39,8 +38,7 @@ namespace Base.Game.Fish {
 			wrongSound.CreateAudioObject();
 			rightSound.CreateAudioObject();
 
-	        spriteComponent = GetComponent<SpriteRenderer>();
-	        isAnimating = false;
+	        spriteComponent = GetComponentInChildren<SpriteRenderer>();
 	        gameObject.tag = ownTag;
 
 	    }
@@ -49,13 +47,13 @@ namespace Base.Game.Fish {
         /// Init that sets the variables on start
         /// </summary>
         public void Init() {
-			
-	        SetType();
-	        gameObject.SetActive(false);
-	        ownInstinct.Init(this);
-	        InMotion = true;
 
-	        if (emotion == null)
+            gameObject.SetActive(false);
+            ownInstinct.Init(this);
+	        InMotion = true;
+            SetType();
+
+            if (emotion == null)
 	            emotion = GetComponentInChildren<VisualEmotion>();
 	        
 	    }
@@ -64,10 +62,13 @@ namespace Base.Game.Fish {
         /// Public function that returns the fish if the fish isn't caught yet
         /// </summary>
         /// <returns></returns>
-	    public FishBehaviour GetFish() {
-			
-	        if (caught == false)
-	            return this;
+	    public FishBehaviour GetFish(HookBehaviour _target) {
+
+            if (RespondToHook(_target) == false) {
+                if (caught == false)
+                    return this;
+            }
+
 	        
 	        return null;
 
@@ -182,11 +183,18 @@ namespace Base.Game.Fish {
 	        spriteComponent.flipX = (ownDirection == Direction.LEFT) ? true : false ;
 
 	    }
+        /// <summary>
+        /// Responce toward the hook
+        /// </summary>
+        public virtual bool RespondToHook(HookBehaviour _target) {
+            return false;
+        }
 
         /// <summary>
         /// Sets the type of the fish according to the FishEnum
         /// </summary>
         public virtual void SetType() { }
+
 
 	}
 

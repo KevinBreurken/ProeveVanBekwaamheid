@@ -10,27 +10,21 @@ namespace Base.Game.Fish {
 	/// </summary>
 	[ExecuteInEditMode]
 	public class SetFishInSequence : MonoBehaviour {
-		
-	    public bool routine;
+
 	    public FishSpawnSequence target;
 
 		void Update () {
-			
-		    if(routine == true) {
-				
-	            routine = false;
-	            ResetArrays();
-	            SetFunctionality();  
-
-	        }
-
+            if(target == null) {
+                target = GetComponentInParent<FishSpawnSequence>();
+            }
 	        DestroyInPlayMode();
 
 	    }
 
-	    private void SetFunctionality() {
-			
-	        FishBehaviour[] tempFish = GetComponentsInChildren<FishBehaviour>();
+	    public void SetFunctionality() {
+
+            ResetArrays();
+            FishBehaviour[] tempFish = GetComponentsInChildren<FishBehaviour>();
 	        for (int i = 0;i < transform.childCount;i++) {
 				
 	            if (tempFish[i].requiredHookColor == ColorEnum.GREEN) {

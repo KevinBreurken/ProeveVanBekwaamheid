@@ -5,7 +5,6 @@ using BaseFrame.QInput;
 using Base.Game;
 using Base.Game.Hooks;
 using DG.Tweening;
-using Base.Game.Hooks;
 using Base.Game.Fish;
 
 namespace Base.Game {

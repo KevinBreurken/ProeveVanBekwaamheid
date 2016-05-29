@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using BaseFrame.QAudio;
 using Base.Game;
+using Base.Game.Fish;
 
 namespace Base.Manager {
 
@@ -55,8 +56,9 @@ namespace Base.Manager {
         /// </summary>
         private ScoreManager scoreManager;
 
-        void Awake () {
+        private FishBundleController fishBundleController;
 
+        void Awake () {
             //Get script references
             timeManager = GetComponent<TimeManager>();
             scoreManager = GetComponent<ScoreManager>();
@@ -64,6 +66,9 @@ namespace Base.Manager {
             //Add listeners.
             timeManager.onTimerEnded += TimeManager_onTimerEnded;
             OnWaveSucceeded += WaveManager_OnWaveSucceeded;
+
+            //Get Bundle Instance
+            fishBundleController = FishBundleController.Instance;
 
             //Create audio.
             nextLevelSoundNotification.CreateAudioObject();
@@ -119,7 +124,7 @@ namespace Base.Manager {
         /// the time manager calls back to this Class when the level is ended.
         /// </summary>
         public void StartWaveSequence () {
-
+            fishBundleController.OnWaveStart(currentLevelIndex);
             timeManager.StartTimer();
 
         }

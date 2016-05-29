@@ -8,6 +8,7 @@ namespace Base {
 	    RED,
 	    YELLOW,
 	    GREEN,
+        NONE
 
 	}
 

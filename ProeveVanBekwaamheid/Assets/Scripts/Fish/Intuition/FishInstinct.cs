@@ -14,7 +14,10 @@ namespace Base.Game.Fish {
 	    }
 
 	    void OnTriggerEnter2D(Collider2D other) {
-			
+
+            if (parent == null)
+                return;
+
 	        if (other.gameObject.tag == "Fish") {
 				
 	            FishBehaviour tempFishBehaviour = other.gameObject.GetComponent<FishBehaviour>();
