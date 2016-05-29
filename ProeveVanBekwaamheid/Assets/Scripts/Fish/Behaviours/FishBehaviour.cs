@@ -39,7 +39,7 @@ namespace Base.Game.Fish {
 			wrongSound.CreateAudioObject();
 			rightSound.CreateAudioObject();
 
-	        spriteComponent = GetComponent<SpriteRenderer>();
+	        spriteComponent = GetComponentInChildren<SpriteRenderer>();
 	        isAnimating = false;
 	        gameObject.tag = ownTag;
 
@@ -64,10 +64,13 @@ namespace Base.Game.Fish {
         /// Public function that returns the fish if the fish isn't caught yet
         /// </summary>
         /// <returns></returns>
-	    public FishBehaviour GetFish() {
-			
-	        if (caught == false)
-	            return this;
+	    public FishBehaviour GetFish(HookBehaviour _target) {
+
+            if (RespondToHook(_target) == false) {
+                if (caught == false)
+                    return this;
+            }
+
 	        
 	        return null;
 
@@ -185,7 +188,9 @@ namespace Base.Game.Fish {
         /// <summary>
         /// Responce toward the hook
         /// </summary>
-        public virtual void RespondToHook(HookBehaviour _target) { }
+        public virtual bool RespondToHook(HookBehaviour _target) {
+            return false;
+        }
 
         /// <summary>
         /// Sets the type of the fish according to the FishEnum
