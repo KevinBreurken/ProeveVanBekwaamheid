@@ -7,8 +7,7 @@ using Base.Game.Hooks;
 namespace Base.Game.Fish{
 
 	public class FishSpawnSequence: MonoBehaviour {
-
-	    public WaveManager waveManager;
+        
 		public FishBundle fishBundle;
 	    public FishCreation fishCreator;
 		private SequenceController sequenceController;
@@ -29,14 +28,14 @@ namespace Base.Game.Fish{
 
 	        this.fishBundle = _parent._fishBundle;
 	        this.fishCreator = _parent._fishCreation;
-	        StartLevel();
 
 	    }
 
-	    public void StartLevel() {
+	    public bool WaveStart(int _targetLevel) {
 			
 	        ResetScores();
-	        SetSequence(waveManager.currentLevelIndex);
+	        SetSequence(_targetLevel);
+            return true;
 
 	    }
 

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using BaseFrame.QAudio;
 using Base.Game;
+using Base.Game.Fish;
 
 namespace Base.Manager {
 
@@ -48,6 +49,8 @@ namespace Base.Manager {
         /// Reference to the ScoreManager.
         /// </summary>
         private ScoreManager scoreManager;
+
+        private FishBundleController fishBundleController;
 
         void Awake () {
 
@@ -109,7 +112,7 @@ namespace Base.Manager {
         /// the time manager calls back to this Class when the level is ended.
         /// </summary>
         public void StartWaveSequence () {
-
+            fishBundleController.OnWaveStart(currentLevelIndex);
             timeManager.StartTimer();
 
         }

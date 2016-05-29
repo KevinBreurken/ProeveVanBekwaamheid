@@ -40,7 +40,7 @@ namespace Base.Game.Fish
         /// <summary>
         /// Starts the Routine that spawns fish also shuffles the list so the active fish will be random
         /// </summary>
-        void LevelStart()
+        public void WaveStart()
         {
             availableFish.HeavyShuffle();
             StartCoroutine("SpawnFishWithDelay");
