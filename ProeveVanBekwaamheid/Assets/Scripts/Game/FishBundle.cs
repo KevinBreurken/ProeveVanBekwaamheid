@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Chanisco;
-//TODO Summary toevoegen reset bracket positions
+
 namespace Base.Game.Fish
 {
     public class FishBundle : MonoBehaviour {
@@ -22,17 +22,11 @@ namespace Base.Game.Fish
         private Area seaArea;
 
         /// <summary>
-        /// The Controller that keeps track of all the Fishspawning variables
-        /// </summary>
-        private FishBundleController parent;
-
-        /// <summary>
         /// designates the required variables that needs to be called on start
         /// </summary>
         /// <param name="_parent"></param>
-        public void Init(FishBundleController _parent)
+        public void Init()
         {
-            _parent = this.parent;
             areaController = AreaController.Instance;
             seaArea = areaController.SeaField;
         }

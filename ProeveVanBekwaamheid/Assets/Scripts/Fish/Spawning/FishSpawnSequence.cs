@@ -18,12 +18,10 @@ namespace Base.Game.Fish{
 	    private int greenInUse;
 	    public List<FishBehaviour> yellowFishes;
 	    private int yellowInUse;
-
-	    private FishBundleController _parent;
+        
 
 	    public void Init(FishBundleController _parent) {
 			
-	        this._parent = _parent;
 	        sequenceController = SequenceController.Instance;
 
 	        this.fishBundle = _parent._fishBundle;

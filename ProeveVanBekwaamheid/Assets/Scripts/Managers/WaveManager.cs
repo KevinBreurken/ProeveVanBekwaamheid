@@ -53,7 +53,6 @@ namespace Base.Manager {
         private FishBundleController fishBundleController;
 
         void Awake () {
-
             //Get script references
             timeManager = GetComponent<TimeManager>();
             scoreManager = GetComponent<ScoreManager>();
@@ -61,6 +60,9 @@ namespace Base.Manager {
             //Add listeners.
             timeManager.onTimerEnded += TimeManager_onTimerEnded;
             OnWaveSucceeded += WaveManager_OnWaveSucceeded;
+
+            //Get Bundle Instance
+            fishBundleController = FishBundleController.Instance;
 
             //Create audio.
             nextLevelSoundNotification.CreateAudioObject();

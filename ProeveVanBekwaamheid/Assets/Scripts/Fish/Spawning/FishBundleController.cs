@@ -34,7 +34,7 @@ namespace Base.Game.Fish {
             _fishBundle = GetComponent<FishBundle>();
             _fishSpawnSequence = GetComponent<FishSpawnSequence>();
 
-            _fishBundle.Init(this);
+            _fishBundle.Init();
             _fishSpawnSequence.Init(this);
             OnWaveStart(0);
 

@@ -31,7 +31,6 @@ namespace Base.Game.Fish {
 	    public float spawnAnimationDuration = 1;
 	    private SpriteRenderer spriteComponent;
 	    
-	    private bool isAnimating;
 	    private const string ownTag = "Fish";
 
 	    void Awake () {
@@ -40,7 +39,6 @@ namespace Base.Game.Fish {
 			rightSound.CreateAudioObject();
 
 	        spriteComponent = GetComponentInChildren<SpriteRenderer>();
-	        isAnimating = false;
 	        gameObject.tag = ownTag;
 
 	    }
