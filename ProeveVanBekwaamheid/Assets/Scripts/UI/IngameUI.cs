@@ -3,9 +3,9 @@ using System.Collections;
 using UnityEngine.UI;
 
 namespace Deprecated {
-	
+    /*
 	public class IngameUI : MonoBehaviour {
-		/*
+		
 	    public Text scoreText;
 	    public Text timeText;
 
@@ -25,7 +25,7 @@ namespace Deprecated {
 	        scoreText.text = varsController.GetScoreInString();
 	        timeText.text = varsController.GetTimeInString();
 	    }
-	    */
-	}	
-
+	    
+    }	
+*/
 }

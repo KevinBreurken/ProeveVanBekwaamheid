@@ -3,8 +3,11 @@ using System.Collections;
 using Base.Game.Hooks;
 
 namespace Base.Game.Fish {
-	
-	public class RedIntuition : FishInstinct {
+
+    /// <summary>
+    /// Defines how the green fish behaves.
+    /// </summary>
+    public class RedIntuition : FishInstinct {
 
 	    public override void ReactOnFish(FishBehaviour _target) {
 			

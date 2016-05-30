@@ -2,6 +2,14 @@
 using System.Collections;
 
 /// <summary>
+/// BaseFrame: A Unity3D Framework made by Kevin Breurken.
+/// https://github.com/KevinBreurken/BaseFrame
+/// </summary>
+namespace BaseFrame {
+
+}
+
+/// <summary>
 /// QStates: Part of BaseFrame that handles state switching for UI and Game states.
 /// </summary>
 namespace BaseFrame.QStates {

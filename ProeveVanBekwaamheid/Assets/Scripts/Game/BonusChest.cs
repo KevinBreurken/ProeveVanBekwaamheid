@@ -16,12 +16,12 @@ namespace Base.Game {
         /// <summary>
         /// Called when the chest is opened.
         /// </summary>
-        public event ChestEvent OnChestOpened;
+        public event ChestEvent onChestOpened;
 
         /// <summary>
         /// Called when the opening animation is finished.
         /// </summary>
-        public event ChestEvent OnChestOpenAnimationEnded;
+        public event ChestEvent onChestOpenAnimationEnded;
 
         /// <summary>
         /// Reference to the chest graphic.
@@ -189,8 +189,8 @@ namespace Base.Game {
             textPopup.DOFade(0, 0.5f);
 
             yield return new WaitForSeconds(1.5f);
-            if (OnChestOpenAnimationEnded != null)
-                OnChestOpenAnimationEnded(this);
+            if (onChestOpenAnimationEnded != null)
+                onChestOpenAnimationEnded(this);
 
         }
 
@@ -201,8 +201,8 @@ namespace Base.Game {
 
             if (!isInteractable)
                 return;
-            if (OnChestOpened != null)
-                OnChestOpened(this);
+            if (onChestOpened != null)
+                onChestOpened(this);
 
             isInteractable = false;
             StartCoroutine("PlayOpeningAnimation");

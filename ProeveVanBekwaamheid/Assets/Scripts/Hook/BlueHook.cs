@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace Base.Game.Hooks {
+namespace Deprecated{
+ 
     /// <summary>
     /// The behaviour of the blue hook
     /// </summary>
+    /*
     public class BlueHook : HookBehaviour {
         public LineRenderer Chain;
         private Transform ChainHolder;
@@ -29,4 +31,5 @@ namespace Base.Game.Hooks {
         }
 
     }
+    */
 }

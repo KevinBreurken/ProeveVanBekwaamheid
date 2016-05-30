@@ -3,6 +3,9 @@ using System.Collections;
 
 namespace Base.Game.Fish {
 	
+    /// <summary>
+    /// Displays what kind of emotion the fish has.
+    /// </summary>
 	public class VisualEmotion : MonoBehaviour {
 
         /// <summary>
@@ -62,11 +65,17 @@ namespace Base.Game.Fish {
 	}
 
     /// <summary>
-    /// The emtions a fish can show using bubbles
+    /// The emotions a fish can show using bubbles
     /// </summary>
 	public enum Emotions {
 		
+        /// <summary>
+        /// If the object is in a questioning state.
+        /// </summary>
 	    QUESTION,
+        /// <summary>
+        /// If the object is in a shock state.
+        /// </summary>
 	    SHOCK
 
 

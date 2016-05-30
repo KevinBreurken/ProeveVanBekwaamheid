@@ -36,7 +36,7 @@ namespace Base.Game.Hooks {
 
             Chain.SetPosition(0,new Vector3(ChainHolder.position.x,ChainHolder.position.y,-0.1f));
             Chain.SetPosition(1,new Vector3(transform.position.x,transform.position.y + 0.2f,-0.1f));
-            hookUpdate();
+            HookUpdate();
         }
 
         public override bool LooseHook() {

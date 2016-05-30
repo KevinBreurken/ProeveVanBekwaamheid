@@ -2,8 +2,11 @@
 using System.Collections;
 using Base.Game.Hooks;
 namespace Base.Game.Fish {
-	
-	public class GreenFish : FishBehaviour {
+
+    /// <summary>
+    /// Behaviour of the green fish.
+    /// </summary>
+    public class GreenFish : FishBehaviour {
 
 	    public void Start() {
 			

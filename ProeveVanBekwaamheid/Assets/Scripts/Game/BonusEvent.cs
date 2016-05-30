@@ -17,7 +17,7 @@ namespace Base.Game {
         /// <summary>
         /// Called when the bonus event is finished.
         /// </summary>
-        public event BonusEventEvent OnBonusEventFinished;
+        public event BonusEventEvent onBonusEventFinished;
         /// <summary>
         /// The Chests used in the event.
         /// </summary>
@@ -72,13 +72,13 @@ namespace Base.Game {
         void Awake () {
 
             //Add listeners
-            waveManager.OnLevelEntered += WaveManager_OnLevelEntered;
+            waveManager.onLevelEntered += WaveManager_OnLevelEntered;
             gameManager.onGameExited += GameManager_onGameExited;
 
             for (int i = 0; i < chests.Length; i++) {
 
-                chests[i].OnChestOpened += BonusEvent_OnChestOpened;
-                chests[i].OnChestOpenAnimationEnded += BonusEvent_OnChestAnimationEnded;
+                chests[i].onChestOpened += BonusEvent_OnChestOpened;
+                chests[i].onChestOpenAnimationEnded += BonusEvent_OnChestAnimationEnded;
                 chests[i].textPopup = textPopup;
             }
 
@@ -182,8 +182,8 @@ namespace Base.Game {
                 chests[i].Deactivate(0);
             }
             //nextLevelNotification.
-            if (OnBonusEventFinished != null)
-                OnBonusEventFinished();
+            if (onBonusEventFinished != null)
+                onBonusEventFinished();
 
         }
 

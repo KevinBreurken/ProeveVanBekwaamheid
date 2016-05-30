@@ -6,6 +6,9 @@ using Base.Game.Hooks;
 
 namespace Base.Game {
 	
+    /// <summary>
+    /// Creates a sequence of fishes that's activated by the wave manager.
+    /// </summary>
 	public class SequenceController : Singleton<SequenceController> {
 		/// <summary>
         /// The list that the player has to play through to learn the basics

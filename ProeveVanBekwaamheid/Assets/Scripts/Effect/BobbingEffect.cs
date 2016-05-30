@@ -2,6 +2,9 @@
 using System.Collections;
 using DG.Tweening;
 
+/// <summary>
+/// Contains effect related classes.
+/// </summary>
 namespace Base.Effect {
 
     /// <summary>

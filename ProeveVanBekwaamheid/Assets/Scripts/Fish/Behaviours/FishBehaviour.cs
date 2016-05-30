@@ -6,8 +6,14 @@ using BaseFrame.QAudio;
 using DG.Tweening;
 using Base.Game.Hooks;
 
+/// <summary>
+/// Contains fish related classes.
+/// </summary>
 namespace Base.Game.Fish {
 
+    /// <summary>
+    /// Behaviour of a fish type object.
+    /// </summary>
 	public class FishBehaviour : MonoBehaviour {
         /// <summary>
         /// The sounds that indicates that the player pulled the right color

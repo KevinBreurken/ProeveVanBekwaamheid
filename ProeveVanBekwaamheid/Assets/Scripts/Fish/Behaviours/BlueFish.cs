@@ -2,7 +2,8 @@
 using System.Collections;
 using Base.Game.Hooks;
 
-namespace Base.Game.Fish {
+namespace Deprecated {
+    /*
 	/// <summary>
     /// Behaviour of the Bluefish
     /// </summary>
@@ -33,5 +34,5 @@ namespace Base.Game.Fish {
 	    }
 
 	}
-
+    */
 }

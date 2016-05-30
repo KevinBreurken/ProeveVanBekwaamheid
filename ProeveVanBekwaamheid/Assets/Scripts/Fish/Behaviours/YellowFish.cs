@@ -3,8 +3,11 @@ using System.Collections;
 using Base.Game.Hooks;
 
 namespace Base.Game.Fish {
-	
-	public class YellowFish : FishBehaviour {
+
+    /// <summary>
+    /// Behaviour of the yellow fish.
+    /// </summary>
+    public class YellowFish : FishBehaviour {
 
 	    public void Start() {
 			

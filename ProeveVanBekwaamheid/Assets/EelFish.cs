@@ -4,6 +4,9 @@ using Base.Game.Hooks;
 
 namespace Base.Game.Fish {
 
+    /// <summary>
+    /// Behaviour of the EelFish.
+    /// </summary>
     public class EelFish:  FishBehaviour{
         public void Start() {
 

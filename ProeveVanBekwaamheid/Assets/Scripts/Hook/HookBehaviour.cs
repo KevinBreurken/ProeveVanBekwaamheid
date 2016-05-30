@@ -3,70 +3,73 @@ using System.Collections;
 using Base.Game.Fish;
 using BaseFrame.QAudio;
 
+/// <summary>
+/// Contains hook related classes.
+/// </summary>
 namespace Base.Game.Hooks {
 
 	/// <summary>
-    /// The behaviour for the hook
+    /// The behaviour for the hook.
     /// </summary>
 	public class HookBehaviour : MonoBehaviour {
 		
         /// <summary>
-        /// The fish you're holding in the hook
+        /// The fish you're holding in the hook.
         /// </summary>
 		public FishBehaviour ownFish;
 
         /// <summary>
-        /// Color of this hook
+        /// Color of this hook.
         /// </summary>
 		public ColorEnum ownHookColor;
 
         /// <summary>
-        /// Check if the hook is being released
+        /// Check if the hook is being released.
         /// </summary>
 	    public bool hookReleased;
 
         /// <summary>
-        /// Check if the hook is being pulled
+        /// Check if the hook is being pulled.
         /// </summary>
 	    public bool hookPull;
 
         /// <summary>
-        /// Check if the hook interacted with an object
+        /// Check if the hook interacted with an object.
         /// </summary>
 	    public bool hookInteracted;
 
         /// <summary>
-        /// Speed that the hook goes down the sea
+        /// Speed that the hook goes down the sea.
         /// </summary>
 	    public float releaseSpeed;
 
         /// <summary>
-        /// Speed that the hook returns back to its position
+        /// Speed that the hook returns back to its position.
         /// </summary>
 		public float pullSpeed;
 
         /// <summary>
-        /// Sounds of the chains loosing from the boat
+        /// Sounds of the chains loosing from the boat.
         /// </summary>
 	    public QAudioObjectHolder chainSound;
 
         /// <summary>
-        /// Original position of the hook
+        /// Original position of the hook.
         /// </summary>
 	    private Vector2 originalPos;
 
         /// <summary>
-        /// Check if the hook was the right color
+        /// Check if the hook was the right color.
         /// </summary>
 	    private bool isRightColor;
 
         /// <summary>
-        /// Lowest Y-position of the sea
+        /// Lowest Y-position of the sea.
         /// </summary>
 		private float seabottom;
 
         /// <summary>
-        /// The tag that the hook will be isntansiated with
+        /// The tag that the hook will be instantiated with.
         /// </summary>
 	    private const string ownTag = "Hook";
 
@@ -103,7 +106,7 @@ namespace Base.Game.Hooks {
         /// <summary>
         /// Update that keeps track of the position and state of the hook
         /// </summary>
-	    public void hookUpdate() {
+	    public void HookUpdate() {
 	        if (hookReleased == true) {
 				
 	            if (hookPull == true) {

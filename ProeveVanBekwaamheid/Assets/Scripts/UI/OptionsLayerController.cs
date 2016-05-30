@@ -5,6 +5,9 @@ using Base.Audio;
 
 namespace Base.UI {
 	
+    /// <summary>
+    /// Controls the UI elements visible in the options layer.
+    /// </summary>
 	public class OptionsLayerController : MonoBehaviour {
 
         /// <summary>
@@ -24,13 +27,13 @@ namespace Base.UI {
 
 		}
 
-		void MuteMusicToggle_onToggleClicked (bool _state, QUIToggle _toggledObject) {
+		private void MuteMusicToggle_onToggleClicked (bool _state, QUIToggle _toggledObject) {
 
             AudioListener.pause = _state;
 
 		}
 
-		void ClearDataButton_onClicked (){
+        private void ClearDataButton_onClicked (){
 
             PlayerPrefs.SetInt("HighScore", 0);
 

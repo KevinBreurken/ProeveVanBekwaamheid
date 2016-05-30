@@ -3,6 +3,9 @@ using System.Collections;
 
 namespace Base.Game.Fish {
 
+    /// <summary>
+    /// A housing is a location that can be used by a fish to hide in.
+    /// </summary>
     public class HousingBase: MonoBehaviour {
 
         /// <summary>

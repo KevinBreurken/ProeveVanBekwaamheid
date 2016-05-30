@@ -98,6 +98,9 @@ namespace Base.Game {
 
         }
 
+        /// <summary>
+        /// Recenters the boat back to it's original position.
+        /// </summary>
         public void Recenter () {
 
             //Reset movement input
@@ -154,12 +157,17 @@ namespace Base.Game {
         private void HookControlls () {
 
             if (Input.GetMouseButtonDown(0)) {
+
                 wheelHook.ReleaseHook();
 
             }
 
         }
 
+        /// <summary>
+        /// Called when the game is focused or unfocused.
+        /// </summary>
+        /// <param name="_focus">the focus state.</param>
         public void OnApplicationFocus (bool _focus) {
             if (_focus == false)
                 movementInput = 0;

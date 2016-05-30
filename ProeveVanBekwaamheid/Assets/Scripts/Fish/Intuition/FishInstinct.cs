@@ -3,6 +3,9 @@ using System.Collections;
 
 namespace Base.Game.Fish {
 	
+    /// <summary>
+    /// Controls the fish it's decisions.
+    /// </summary>
 	public class FishInstinct : MonoBehaviour {
 		
         /// <summary>
