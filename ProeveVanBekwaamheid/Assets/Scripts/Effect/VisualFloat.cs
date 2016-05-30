@@ -3,9 +3,9 @@ using System.Collections;
 using DG.Tweening;
 
 namespace Deprecated {
-	
-	public class VisualFloat : MonoBehaviour {
-		/*
+
+    public class VisualFloat: MonoBehaviour {
+        /*
 		public FloatState currentFloatState;
 
 	    public float magnitude;
@@ -61,7 +61,6 @@ namespace Deprecated {
 	        }
 
 	    }
-		*/
 	}
 
 	public enum FloatState {
@@ -70,5 +69,6 @@ namespace Deprecated {
 	    DOWN
 
 	}
-
-}
+		*/
+    }
+ }
