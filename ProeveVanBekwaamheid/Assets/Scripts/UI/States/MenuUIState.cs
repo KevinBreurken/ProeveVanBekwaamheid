@@ -8,6 +8,7 @@ using Base.Game;
 using DG.Tweening;
 using UnityEngine.Analytics;
 using System.Collections.Generic;
+using BaseFrame.QAudio;
 
 namespace Base.UI {
 
@@ -41,6 +42,11 @@ namespace Base.UI {
         public QUIObject creditsLayer;
         private QUIObject currentOpenLayer;
 
+        [Header("Music")]
+        public QAudioObjectHolder menuMelody;
+        public float menuMelodyWaitTime;
+
+
         private CanvasGroup canvasGroup;
 
         void Awake () {
@@ -60,6 +66,8 @@ namespace Base.UI {
             quitButton.onClicked += OnQuitClicked;
             startButton.onClicked += OnPlayClicked;
 
+            //create audio
+            menuMelody.CreateAudioObject();
         }
 
         /// <summary>
@@ -123,6 +131,20 @@ namespace Base.UI {
             }
 
             currentActiveToggle = _toggledObject;
+
+        }
+
+        /// <summary>
+        /// Plays the secret melody.
+        /// </summary>
+        /// <returns></returns>
+        private IEnumerator PlaySecretMelody () {
+
+            yield return new WaitForSeconds(menuMelodyWaitTime);
+
+            QAudioObject secretMelodyObject = menuMelody.GetAudioObject();
+            secretMelodyObject.FadeVolume(0.4f, 0.4f, 0.1f);
+            secretMelodyObject.Play();
 
         }
 
@@ -196,6 +218,7 @@ namespace Base.UI {
             currentOpenLayer = null;
             currentActiveToggle = null;
 
+            StartCoroutine(PlaySecretMelody());
             StartCoroutine(FadeCanvasGroup());
 
         }
@@ -217,6 +240,13 @@ namespace Base.UI {
             canvasGroup.interactable = false;
             canvasGroup.blocksRaycasts = false;
             canvasGroup.DOFade(0, 1.5f);
+
+            QAudioObject melodyObject = menuMelody.GetAudioObject();
+            if (melodyObject.GetSource().isPlaying)
+                melodyObject.FadeVolume(0.4f, 0, 2);
+
+
+            StopCoroutine(PlaySecretMelody());
 
             StartCoroutine(GameStateSelector.Instance.SetState("InGameState"));
 
