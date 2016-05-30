@@ -4,20 +4,36 @@ using System;
 
 namespace Base.Game.Hooks {
     public class WheelHook: HookBehaviour {
+        /// <summary>
+        /// The chain that follows the target hook
+        /// </summary>
         public LineRenderer Chain;
         private Transform ChainHolder;
 
+        /// <summary>
+        /// The color the current hook holds
+        /// </summary>
         public ColorEnum currentColor;
+
+        /// <summary>
+        /// The visual of the hook
+        /// </summary>
         public WheelHookVisual wheelHookVisual;
+
+        /// <summary>
+        /// The visual of the color wheel
+        /// </summary>
         public ColorWheelVisual colorWheelVisual;
 
         void Start() {
+
             ChainHolder = Chain.transform;
             wheelHookVisual = GetComponentInChildren<WheelHookVisual>();
             Init();
         }
 
         void Update() {
+
             Chain.SetPosition(0,new Vector3(ChainHolder.position.x,ChainHolder.position.y,-0.1f));
             Chain.SetPosition(1,new Vector3(transform.position.x,transform.position.y + 0.2f,-0.1f));
             hookUpdate();
@@ -48,6 +64,9 @@ namespace Base.Game.Hooks {
             base.SetType();
         }
 
+        /// <summary>
+        /// Sets the current Color into the next color in line
+        /// </summary>
         public void SetNextColor() {
             int AmountOfColors = Enum.GetValues(typeof(ColorEnum)).Length - 1;
             for (int i = 0;i < AmountOfColors;i++) {
