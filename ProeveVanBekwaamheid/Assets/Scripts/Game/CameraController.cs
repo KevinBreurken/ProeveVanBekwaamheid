@@ -32,6 +32,9 @@ namespace Base.Game {
         [HideInInspector]
         public Camera gameViewCamera;
 
+        /// <summary>
+        /// How fast the camera moves.
+        /// </summary>
         public float movementSpeed = 2;
 
         private GameObject cameraLookPoint;

@@ -72,6 +72,9 @@ namespace Base.Game {
 
         }
 
+        /// <summary>
+        /// Fades in the front layer of the water.
+        /// </summary>
         private IEnumerator FadeInWaterLayer () {
 
             yield return new WaitForSeconds(1);

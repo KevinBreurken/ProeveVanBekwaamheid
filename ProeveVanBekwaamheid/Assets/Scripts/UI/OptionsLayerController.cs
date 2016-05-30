@@ -7,11 +7,17 @@ namespace Base.UI {
 	
 	public class OptionsLayerController : MonoBehaviour {
 
-		public QUIToggle muteMusicToggle;
-		public QUIButton clearDataButton;
+        /// <summary>
+        /// Reference to the mute music toggle.
+        /// </summary>
+        public QUIToggle muteMusicToggle;
+        /// <summary>
+        /// Reference to the clear date Button.
+        /// </summary>
+        public QUIButton clearDataButton;
 
-		// Use this for initialization
-		void Awake () {
+        // Use this for initialization
+        void Awake () {
 
 			muteMusicToggle.onToggleClicked += MuteMusicToggle_onToggleClicked;
 			clearDataButton.onClicked += ClearDataButton_onClicked;

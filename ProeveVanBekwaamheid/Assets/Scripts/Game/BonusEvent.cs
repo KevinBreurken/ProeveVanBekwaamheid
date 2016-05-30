@@ -14,20 +14,59 @@ namespace Base.Game {
 
         public delegate void BonusEventEvent();
 
+        /// <summary>
+        /// Called when the bonus event is finished.
+        /// </summary>
         public event BonusEventEvent OnBonusEventFinished;
+        /// <summary>
+        /// The Chests used in the event.
+        /// </summary>
         public BonusChest[] chests;
+        /// <summary>
+        /// Which amount of points the chests contain.
+        /// </summary>
         public List<int> pointAmount = new List<int>();
 
+        /// <summary>
+        /// Reference to the GameManager.
+        /// </summary>
         public GameManager gameManager;
+        /// <summary>
+        /// Reference to the PlayerBehaviour
+        /// </summary>
         public PlayerBehaviour playerController;
+        /// <summary>
+        /// Reference to the TimeManager.
+        /// </summary>
         public TimeManager timeManager;
+        /// <summary>
+        /// Reference to the WaveManager.
+        /// </summary>
         public WaveManager waveManager;
+        /// <summary>
+        /// Reference to the CameraController.
+        /// </summary>
         public CameraController cameraController;
+        /// <summary>
+        /// Reference to the NextLevelUINotification.
+        /// </summary>
         public NextLevelUINotification nextLevelNotification;
+        /// <summary>
+        /// The Text component that displays the score amount.
+        /// </summary>
         public Text textPopup;
+        /// <summary>
+        /// the starting position of the textPopup.
+        /// </summary>
         private Vector3 textPopupStartingPosition;
 
+        /// <summary>
+        /// after what amount the bonus event happens (every x amount)
+        /// </summary>
         public int amountUntilEventHapens = 1;
+        /// <summary>
+        /// If the event is in progress.
+        /// </summary>
         private bool isInProgress;
 
         void Awake () {
@@ -58,6 +97,9 @@ namespace Base.Game {
 
         }
 
+        /// <summary>
+        /// Called when the chest is opened.
+        /// </summary>
         private void BonusEvent_OnChestOpened (BonusChest _chest) {
 
             for (int i = 0; i < chests.Length; i++) {
@@ -73,12 +115,15 @@ namespace Base.Game {
 
         }
 
+        /// <summary>
+        /// Called When the game is exited.
+        /// </summary>
         private void GameManager_onGameExited () {
             //Disable chests.
             for (int i = 0; i < chests.Length; i++) {
 
                 chests[i].Deactivate(3);
-             
+
             }
 
             cameraController.target = playerController.transform;
@@ -86,14 +131,20 @@ namespace Base.Game {
 
         }
 
+        /// <summary>
+        /// Called when a level is entered.
+        /// </summary>
         private void WaveManager_OnLevelEntered (int _enteredLevel) {
-        
+
             if (_enteredLevel % amountUntilEventHapens == 0) {
                 ActivateBonusEvent();
             }
 
         }
 
+        /// <summary>
+        /// Activates the bonus event.
+        /// </summary>
         private void ActivateBonusEvent () {
 
             isInProgress = true;
@@ -113,9 +164,12 @@ namespace Base.Game {
 
         }
 
+        /// <summary>
+        /// Deactivates the bonus event.
+        /// </summary>
         public void DeactivateBonusEvent () {
 
-            isInProgress = false; 
+            isInProgress = false;
             //Stop player movement.
             playerController.recievesPlayerInput = true;
             //Un-pause the timer.
@@ -128,8 +182,8 @@ namespace Base.Game {
                 chests[i].Deactivate(0);
             }
             //nextLevelNotification.
-            if(OnBonusEventFinished != null)
-            OnBonusEventFinished();
+            if (OnBonusEventFinished != null)
+                OnBonusEventFinished();
 
         }
 
