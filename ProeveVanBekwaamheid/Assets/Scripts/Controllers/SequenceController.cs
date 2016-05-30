@@ -7,9 +7,14 @@ using Base.Game.Hooks;
 namespace Base.Game {
 	
 	public class SequenceController : Singleton<SequenceController> {
-		
+		/// <summary>
+        /// The list that the player has to play through to learn the basics
+        /// </summary>
 	    public List<FishSequence> StartGameSequence = new List<FishSequence>();
-
+        
+        /// <summary>
+        /// Make a new list of fish themes
+        /// </summary>
 	    public void CreateNewRandomSequence() {
 			
 	        int AmountOfColors = Enum.GetValues(typeof(ColorEnum)).Length;
@@ -33,7 +38,9 @@ namespace Base.Game {
 	    
 	}
 
-
+    /// <summary>
+    /// The object that shows the Fishes in the wave
+    /// </summary>
 	[System.Serializable]
 	public class FishSequence {
 		

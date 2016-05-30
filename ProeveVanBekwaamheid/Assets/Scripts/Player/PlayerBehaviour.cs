@@ -11,6 +11,9 @@ namespace Base.Game {
 	
 	public class PlayerBehaviour : MonoBehaviour {
 
+        /// <summary>
+        /// The input required to do actions
+        /// </summary>
 	    private BaseQInputMethod inputMethod;
 
 	    public float speedFactor = 0.05f;
