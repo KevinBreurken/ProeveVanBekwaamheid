@@ -6,21 +6,61 @@ using Base.Game.Fish;
 using Base.Game.Hooks;
 namespace Base.Game.Fish{
 
-	public class FishSpawnSequence: MonoBehaviour {
-        
-		public FishBundle fishBundle;
+    /// <summary>
+    /// The sequence that has the information for all the predetermined waves
+    /// </summary>
+    public class FishSpawnSequence: MonoBehaviour {
+
+        /// <summary>
+        /// Bundle holding the available fish
+        /// </summary>
+        public FishBundle fishBundle;
+
+        /// <summary>
+        /// The class that creates the fishes if there isn't enough in the scene
+        /// </summary>
 	    public FishCreation fishCreator;
+
+        /// <summary>
+        /// The Sequence of the fishes in the waves
+        /// </summary>
 		private SequenceController sequenceController;
 
+        /// <summary>
+        /// The TargetAmount of redFishes in the scene
+        /// </summary>
 	    public List<FishBehaviour> redFishes;
-	    private int redInUse;
-	    public List<FishBehaviour> greenFishes;
-	    private int greenInUse;
-	    public List<FishBehaviour> yellowFishes;
-	    private int yellowInUse;
-        
 
-	    public void Init(FishBundleController _parent) {
+        /// <summary>
+        /// The amount of red fishes in use
+        /// </summary>
+	    private int redInUse;
+
+        /// <summary>
+        /// The TargetAmounf ot greenFishes in the scene
+        /// </summary>
+	    public List<FishBehaviour> greenFishes;
+
+        /// <summary>
+        /// The amount of green fishes in use
+        /// </summary>
+	    private int greenInUse;
+
+        /// <summary>
+        /// The TargetAmount of yellowFishes in the scene
+        /// </summary>
+	    public List<FishBehaviour> yellowFishes;
+
+        /// <summary>
+        /// The amount of yellow fishes in use
+        /// </summary>
+	    private int yellowInUse;
+
+
+        /// <summary>
+        /// Init that sets the variables on start
+        /// </summary>
+        public void Init(FishBundleController _parent) {
 			
 	        sequenceController = SequenceController.Instance;
 
@@ -29,6 +69,11 @@ namespace Base.Game.Fish{
 
 	    }
 
+        /// <summary>
+        /// The functionality that calls upon the sequence for the target wave
+        /// </summary>
+        /// <param name="_targetLevel">The target wave</param>
+        /// <returns></returns>
 	    public bool WaveStart(int _targetLevel) {
 			
 	        ResetScores();
@@ -37,6 +82,10 @@ namespace Base.Game.Fish{
 
 	    }
 
+        /// <summary>
+        /// Sets the Sequence ready for the target wave
+        /// </summary>
+        /// <param name="targetLevel">The target wave</param>
 	    private void SetSequence(int targetLevel) {
 			
 	        if (targetLevel > sequenceController.StartGameSequence.Count) {
@@ -53,6 +102,10 @@ namespace Base.Game.Fish{
 
 	    }
 
+        /// <summary>
+        /// Starts theh sequence for the target wave
+        /// </summary>
+        /// <param name="_targetSequence">The target Sequence</param>
 		private void StartSequence(FishSequence _targetSequence) {
 			
 	        for (int i = 0;i < _targetSequence.availableFishColors.Count;i++)
@@ -60,6 +113,10 @@ namespace Base.Game.Fish{
 
 	    }
 
+        /// <summary>
+        /// Adds the target fish into the required bundle
+        /// </summary>
+        /// <param name="_targetColor">Target fish color</param>
 		private void AddFishToBundle(ColorEnum _targetColor) {
 			
 	        switch (_targetColor) {
@@ -108,6 +165,9 @@ namespace Base.Game.Fish{
 
 	    }
 
+        /// <summary>
+        /// Resets the scores for the amount of fishes in use
+        /// </summary>
 	    private void ResetScores() {
 			
 	        redInUse = 0;

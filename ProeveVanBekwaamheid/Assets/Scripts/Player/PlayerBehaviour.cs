@@ -16,19 +16,51 @@ namespace Base.Game {
         /// </summary>
 	    private BaseQInputMethod inputMethod;
 
+        /// <summary>
+        /// The speed that the player uses to move around the field
+        /// </summary>
 	    public float speedFactor = 0.05f;
+
+        /// <summary>
+        /// Distance required between mouse and player
+        /// </summary>
 		private float mouseMovementDistance = 0.3f;
 
+        /// <summary>
+        /// Original Vector2 position of the player
+        /// </summary>
 	    private Vector2 originalPos;
 
+        /// <summary>
+        /// The red hook behaviour
+        /// </summary>
 	    public HookBehaviour redHook;
-	    public HookBehaviour greenHook;
-	    public HookBehaviour yellowHook;
 
-	    public float ownHookSpeed;
+        /// <summary>
+        /// The green hook behaviour
+        /// </summary>
+        public HookBehaviour greenHook;
 
 
+        /// <summary>
+        /// The yellow hook behaviour
+        /// </summary>
+        public HookBehaviour yellowHook;
+
+
+        /// <summary>
+        /// The speed the hook uses to return back to the field if nothing is grabbed
+        /// </summary>
+        public float ownHookSpeed;
+
+        /// <summary>
+        /// The area the player can swim in
+        /// </summary>
 	    private AreaController areaContorller;
+
+        /// <summary>
+        /// The area where the fishes spawn
+        /// </summary>
 	    private Area fishArea;
 	    
 		//Input

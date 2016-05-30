@@ -5,9 +5,21 @@ using DG.Tweening;
 namespace Base.Game.Hooks {
     public class ColorWheelVisual: MonoBehaviour {
 
+        /// <summary>
+        /// Checks if the wheel is turning
+        /// </summary>
         public bool turning = false;
+
+        /// <summary>
+        /// The float that keeps track of the targets Z rotation
+        /// </summary>
         private float Zpos;
+
+        /// <summary>
+        /// The speed the wheel turns with
+        /// </summary>
         public float turnSpeed;
+
 
         void Start() {
             if (turnSpeed == 0) 
@@ -20,31 +32,50 @@ namespace Base.Game.Hooks {
                 TurnWheel();
         }
 
+        /// <summary>
+        /// The function that lets the wheel turn
+        /// </summary>
         public void TurnWheel() {
-
-            Zpos += turnSpeed;
+            
+            Zpos -= turnSpeed;
             transform.localEulerAngles = new Vector3(0,0,Zpos);
         }
 
+        /// <summary>
+        /// Sets the wheel to its target color
+        /// </summary>
+        /// <param name="_targetColor">The target color</param>
         public void SetWheelToColor(ColorEnum _targetColor) {
             float randomValue;
             switch (_targetColor) {
                 case ColorEnum.GREEN:
                     randomValue = Random.Range(180,230);
-                    transform.DOLocalRotate(new Vector3(0,0,randomValue),0.5f,RotateMode.Fast);
+                    StartCoroutine("RotationDelay",randomValue);
                     turning = false;
                 break;
                 case ColorEnum.YELLOW:
                     randomValue = Random.Range(60,120);
-                    transform.DOLocalRotate(new Vector3(0,0,randomValue),0.5f,RotateMode.Fast);
+                    StartCoroutine("RotationDelay",randomValue);
                     turning = false;
                 break;
                 case ColorEnum.RED:
                     randomValue = Random.Range(120,180);
-                    transform.DOLocalRotate(new Vector3(0,0,randomValue),0.5f,RotateMode.Fast);
+                    StartCoroutine("RotationDelay",randomValue);
                     turning = false;
                 break;
             }
+        }
+
+        /// <summary>
+        /// A minor delay for the wheel to turn
+        /// </summary>
+        /// <param name="targetZPos">Target Z position the wheel needs to end</param>
+        /// <returns></returns>
+        private IEnumerator RotationDelay(float targetZPos) {
+            
+            yield return new WaitForEndOfFrame();
+            transform.DORotate(new Vector3(0,0,targetZPos),0.9f,RotateMode.FastBeyond360);
+
         }
     }
 }

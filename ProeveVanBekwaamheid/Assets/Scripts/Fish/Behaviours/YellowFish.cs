@@ -27,9 +27,7 @@ namespace Base.Game.Fish {
 
 	    }
 
-		/// <summary>
-		/// See BaseClass function.
-		/// </summary>
+
 	    public override void SetType() {
 			
 	        base.SetType();

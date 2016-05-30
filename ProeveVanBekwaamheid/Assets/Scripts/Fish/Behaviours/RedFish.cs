@@ -26,10 +26,7 @@ namespace Base.Game.Fish {
 	        OutOfBound();
 
 	    }
-
-		/// <summary>
-		/// See BaseClass function.
-		/// </summary>
+        
 	    public override void SetType() {
 			
 	        base.SetType();
