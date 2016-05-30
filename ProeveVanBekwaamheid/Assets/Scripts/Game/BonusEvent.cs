@@ -34,7 +34,7 @@ namespace Base.Game {
         /// <summary>
         /// Reference to the PlayerBehaviour
         /// </summary>
-        public PlayerBehaviour playerController;
+        public PlayerWheelBehaviour playerController;
         /// <summary>
         /// Reference to the TimeManager.
         /// </summary>
