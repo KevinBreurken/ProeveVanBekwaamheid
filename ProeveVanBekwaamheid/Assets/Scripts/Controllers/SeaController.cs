@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace Deprecated {
-	/*
+namespace Base.Game.Fish {
+	
 	public class SeaController : Singleton<SeaController> {
 	
 	    public SeaPositioning seaPositioning;
@@ -26,5 +26,5 @@ namespace Deprecated {
 	    }
 		
 	}
-*/
+
 }

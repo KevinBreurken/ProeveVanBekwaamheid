@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace Deprecated {
-    /*	
+namespace Base.Game.Fish {
+    
 	public class SeaPositioning : MonoBehaviour {
 	
 	    private AreaController varsController;
@@ -11,7 +11,7 @@ namespace Deprecated {
 	    void Start() {
 			
 	        varsController = AreaController.Instance;
-	        seaArea = varsController.SeaField;
+	        seaArea = varsController.seaField;
 
 	    }
 
@@ -41,5 +41,5 @@ namespace Deprecated {
 	    }
 	
     }
-    */
+    
 }
