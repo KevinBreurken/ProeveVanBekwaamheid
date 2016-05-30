@@ -19,14 +19,23 @@ namespace Base.Manager {
         /// </summary>
         public event GameEvent onNextLevelEntered;
 
+        /// <summary>
+        /// Called when the game is entered.
+        /// </summary>
         public event GameEnterEvent onGameEntered;
+        /// <summary>
+        /// Called when the game is left.
+        /// </summary>
         public event GameEnterEvent onGameExited;
 
         /// <summary>
-        /// reference to the boat (player behaviour)
+        /// Reference to the Player Behaviour.
         /// </summary>
         public PlayerWheelBehaviour playerBoat;
 
+        /// <summary>
+        /// Reference to the Bonus Event.
+        /// </summary>
         public BonusEvent bonusEvent;
 
         private ScoreManager scoreManager;

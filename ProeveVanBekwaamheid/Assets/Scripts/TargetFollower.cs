@@ -8,12 +8,24 @@ namespace Base.Effect {
 	/// </summary>
 	public class TargetFollower : MonoBehaviour {
 
-		public GameObject target;
-		public float factor = 1;
-		public bool useOriginalPosition = false;
-		public Vector3 originalPosition;
+        /// <summary>
+        /// The target this camera follows
+        /// </summary>
+        public GameObject target;
+        /// <summary>
+        /// How fast it moves
+        /// </summary>
+        public float factor = 1;
+        /// <summary>
+        /// If it uses it's original postion.
+        /// </summary>
+        public bool useOriginalPosition = false;
+        /// <summary>
+        /// It's original position
+        /// </summary>
+        public Vector3 originalPosition;
 
-		void Awake(){
+        void Awake (){
 
 			if(useOriginalPosition)
 				originalPosition = transform.position;

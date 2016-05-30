@@ -78,8 +78,14 @@ namespace Base.Game {
         /// </summary>
         public Sprite openSprite;
 
+        /// <summary>
+        /// the score popup that shows how much this chest contained.
+        /// </summary>
         public Text textPopup;
 
+        /// <summary>
+        /// The score value this chest gives to the player
+        /// </summary>
         public int score;
 
         void Awake () {

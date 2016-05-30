@@ -3,21 +3,43 @@ using System.Collections;
 
 namespace Base.Effect {
 
+    /// <summary>
+    /// Animates a Sprite object.
+    /// </summary>
     public class SpriteAnimator : MonoBehaviour {
 
+        /// <summary>
+        /// How fast the animation plays (Frames Per Second)
+        /// </summary>
         public float FPS;
+
+        /// <summary>
+        /// If the animation loops.
+        /// </summary>
         public bool isLooping;
+        
+        /// <summary>
+        /// The frames this animation has.
+        /// </summary>
         public Sprite[] frames;
+
+        /// <summary>
+        /// If the animation starts immediately
+        /// </summary>
         public bool playOnStartup = false;
 
+        /// <summary>
+        /// which renderer(s) will get the output sprite.
+        /// </summary>
         [SerializeField]
         private SpriteRenderer[] outputRenderers;
+
         private float secondsToWait;
 
         private int currentFrame;
         private bool stopped = false;
 
-        // Use this for initialization
+
         public void Awake () {
 
             currentFrame = 0;
@@ -32,6 +54,10 @@ namespace Base.Effect {
 
         }
 
+        /// <summary>
+        /// Plays the sprite animation.
+        /// </summary>
+        /// <param name="reset"></param>
         public void Play (bool reset = false) {
 
             if (reset) {
@@ -64,6 +90,9 @@ namespace Base.Effect {
 
         }
 
+        /// <summary>
+        /// Animates the outputRenderers.
+        /// </summary>
         public virtual void Animate () {
 
             CancelInvoke("Animate");

@@ -18,6 +18,7 @@ namespace ThirdParty {
         public HoverState hover_state = HoverState.NONE;
 
         void Update () {
+
             RaycastHit hitInfo = new RaycastHit();
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -44,6 +45,7 @@ namespace ThirdParty {
                 }
 
             }
+
         }
     }
 
