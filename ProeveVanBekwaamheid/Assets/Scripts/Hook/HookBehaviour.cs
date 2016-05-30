@@ -81,23 +81,22 @@ namespace Base.Game.Hooks {
         /// Init that sets the variables on start
         /// </summary>
 	    public void Init() {
-			
 	        originalPos = transform.position;
 	        SetType();
-	        seabottom   = AreaController.Instance.viewField.yBottom + 1;
+	        seabottom   = AreaController.Instance.viewField.yBottom;
+            hookReleased = false;
 
-	    }
+        }
 
         /// <summary>
         /// Releases the hook away from the boat
         /// </summary>
 	    public void ReleaseHook() {
-			
 	        if(hookReleased == true)
 	            return;
-	        
-	        chainSound.GetAudioObject().Play();
-	        hookReleased = true;
+            
+            chainSound.GetAudioObject().Play();
+            hookReleased = true;
 
 	    }
 
@@ -105,7 +104,6 @@ namespace Base.Game.Hooks {
         /// Update that keeps track of the position and state of the hook
         /// </summary>
 	    public void hookUpdate() {
-			
 	        if (hookReleased == true) {
 				
 	            if (hookPull == true) {
@@ -126,8 +124,8 @@ namespace Base.Game.Hooks {
 	            } else {
 					
 	                if (LooseHook() == false | hookInteracted == true) {
-						
-	                    hookPull = true;
+                        
+                        hookPull = true;
 	                    chainSound.GetAudioObject().Stop();
 	                }
 
@@ -155,7 +153,7 @@ namespace Base.Game.Hooks {
         /// </summary>
         /// <returns>returns true until you hit the seabottom</returns>
 	    public bool LooseHook() {
-			
+
 	        if (transform.position.y > seabottom) {
 	            transform.Translate(0, -releaseSpeed, 0);
 	            return true;

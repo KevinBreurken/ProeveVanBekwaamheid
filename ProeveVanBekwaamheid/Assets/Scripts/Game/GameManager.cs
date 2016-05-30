@@ -25,7 +25,7 @@ namespace Base.Manager {
         /// <summary>
         /// reference to the boat (player behaviour)
         /// </summary>
-        public PlayerBehaviour playerBoat;
+        public PlayerWheelBehaviour playerBoat;
 
         public BonusEvent bonusEvent;
 

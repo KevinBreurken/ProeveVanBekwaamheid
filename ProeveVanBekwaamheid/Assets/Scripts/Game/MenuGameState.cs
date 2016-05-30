@@ -13,7 +13,7 @@ namespace Base.Game {
         /// <summary>
         /// Reference to the boat.
         /// </summary>
-        public PlayerBehaviour boat;
+        public PlayerWheelBehaviour boat;
 
         /// <summary>
         /// Reference to the main camera.

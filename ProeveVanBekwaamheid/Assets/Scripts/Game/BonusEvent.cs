@@ -19,7 +19,7 @@ namespace Base.Game {
         public List<int> pointAmount = new List<int>();
 
         public GameManager gameManager;
-        public PlayerBehaviour playerController;
+        public PlayerWheelBehaviour playerController;
         public TimeManager timeManager;
         public WaveManager waveManager;
         public CameraController cameraController;
@@ -55,7 +55,6 @@ namespace Base.Game {
 
             _chest.Deactivate(0);
             DeactivateBonusEvent();
-
         }
 
         private void BonusEvent_OnChestOpened (BonusChest _chest) {
