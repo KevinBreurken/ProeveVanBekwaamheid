@@ -43,6 +43,7 @@ namespace Base.UI {
         private QUIObject currentOpenLayer;
 
         [Header("Music")]
+        public bool usesMelody = false;
         public QAudioObjectHolder menuMelody;
         public float menuMelodyWaitTime;
 
@@ -143,7 +144,7 @@ namespace Base.UI {
             yield return new WaitForSeconds(menuMelodyWaitTime);
 
             QAudioObject secretMelodyObject = menuMelody.GetAudioObject();
-            secretMelodyObject.FadeVolume(0.4f, 0.4f, 0.1f);
+            secretMelodyObject.FadeVolume(0.2f, 0.2f, 0.1f);
             secretMelodyObject.Play();
 
         }
@@ -218,7 +219,9 @@ namespace Base.UI {
             currentOpenLayer = null;
             currentActiveToggle = null;
 
+            if(usesMelody)
             StartCoroutine(PlaySecretMelody());
+
             StartCoroutine(FadeCanvasGroup());
 
         }
@@ -243,7 +246,7 @@ namespace Base.UI {
 
             QAudioObject melodyObject = menuMelody.GetAudioObject();
             if (melodyObject.GetSource().isPlaying)
-                melodyObject.FadeVolume(0.4f, 0, 2);
+                melodyObject.FadeVolume(0.2f, 0, 2);
 
 
             StopCoroutine(PlaySecretMelody());

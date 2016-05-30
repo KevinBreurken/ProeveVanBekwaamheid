@@ -138,6 +138,7 @@ namespace Base.UI {
                 highscoreText.text = "Highscore:";
 
             }
+            highscore = PlayerPrefs.GetInt("HighScore", 0);
 
             highscoreDisplayText.text = "" + highscore;
             StartCoroutine(PlaySecretMelody());
