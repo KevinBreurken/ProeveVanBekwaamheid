@@ -23,8 +23,14 @@ namespace Base.Game.Hooks {
             hookUpdate();
         }
 
+        public override bool LooseHook() {
+
+            wheelHookVisual.OpenHook();
+            return base.LooseHook();
+        }
         public override bool PullHook() {
             colorWheelVisual.turning = true;
+            wheelHookVisual.CloseHook();
             return base.PullHook();
         }
 

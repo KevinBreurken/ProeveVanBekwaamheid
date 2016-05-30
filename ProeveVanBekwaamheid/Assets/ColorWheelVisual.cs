@@ -21,8 +21,8 @@ namespace Base.Game.Hooks {
         }
 
         public void TurnWheel() {
-
-            Zpos += turnSpeed;
+            
+            Zpos -= turnSpeed;
             transform.localEulerAngles = new Vector3(0,0,Zpos);
         }
 
@@ -31,20 +31,27 @@ namespace Base.Game.Hooks {
             switch (_targetColor) {
                 case ColorEnum.GREEN:
                     randomValue = Random.Range(180,230);
-                    transform.DOLocalRotate(new Vector3(0,0,randomValue),0.5f,RotateMode.Fast);
+                    StartCoroutine("RotationDelay",randomValue);
                     turning = false;
                 break;
                 case ColorEnum.YELLOW:
                     randomValue = Random.Range(60,120);
-                    transform.DOLocalRotate(new Vector3(0,0,randomValue),0.5f,RotateMode.Fast);
+                    StartCoroutine("RotationDelay",randomValue);
                     turning = false;
                 break;
                 case ColorEnum.RED:
                     randomValue = Random.Range(120,180);
-                    transform.DOLocalRotate(new Vector3(0,0,randomValue),0.5f,RotateMode.Fast);
+                    StartCoroutine("RotationDelay",randomValue);
                     turning = false;
                 break;
             }
+        }
+
+        private IEnumerator RotationDelay(float targetZPos) {
+            
+            yield return new WaitForEndOfFrame();
+            transform.DORotate(new Vector3(0,0,targetZPos),0.9f,RotateMode.FastBeyond360);
+
         }
     }
 }

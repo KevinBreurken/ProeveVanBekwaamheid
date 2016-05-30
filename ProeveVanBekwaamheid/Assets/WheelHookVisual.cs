@@ -47,6 +47,17 @@ namespace Base.Game.Hooks {
 
         private void SetColor() {
             HookVisual.sprite = closedHookSprite;
+
+        }
+
+        public void OpenHook() {
+            HookVisual.sprite = openHookSprite;
+
+        }
+
+        public void CloseHook() {
+            HookVisual.sprite = closedHookSprite;
+
         }
     }
 }
