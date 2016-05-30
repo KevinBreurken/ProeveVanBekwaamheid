@@ -38,7 +38,7 @@ namespace Base.Game.Fish {
 			wrongSound.CreateAudioObject();
 			rightSound.CreateAudioObject();
 
-	        spriteComponent = GetComponentInChildren<SpriteRenderer>();
+	        spriteComponent = transform.FindChild("Visual").GetComponentInChildren<SpriteRenderer>();
 	        gameObject.tag = ownTag;
 
 	    }
@@ -183,8 +183,9 @@ namespace Base.Game.Fish {
 	        spriteComponent.flipX = (ownDirection == Direction.LEFT) ? true : false ;
 
 	    }
+
         /// <summary>
-        /// Responce toward the hook
+        /// Response toward the hook
         /// </summary>
         public virtual bool RespondToHook(HookBehaviour _target) {
             return false;
