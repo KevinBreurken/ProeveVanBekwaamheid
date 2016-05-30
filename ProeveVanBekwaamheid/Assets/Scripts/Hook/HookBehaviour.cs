@@ -113,13 +113,13 @@ namespace Base.Game.Hooks {
 				
 	                
 	                if (PullHook() == false) {
-						
-	                    OnHookReturned();
-	                    hookPull = false;
+
+                        hookPull = false;
 	                    hookReleased = false;
 	                    hookInteracted = false;
+                        OnHookReturned();
 
-	                }
+                    }
 
 	            } else {
 					
@@ -138,7 +138,7 @@ namespace Base.Game.Hooks {
         /// <summary>
         /// On returning of the hook back to the boat
         /// </summary>
-	    private void OnHookReturned() {
+	    public virtual void OnHookReturned() {
 			
 	        if (ownFish != null) {
 				
@@ -152,7 +152,7 @@ namespace Base.Game.Hooks {
         /// Loose the hook away from the boat
         /// </summary>
         /// <returns>returns true until you hit the seabottom</returns>
-	    public bool LooseHook() {
+	    public virtual bool LooseHook() {
 
 	        if (transform.position.y > seabottom) {
 	            transform.Translate(0, -releaseSpeed, 0);
@@ -171,7 +171,7 @@ namespace Base.Game.Hooks {
         /// Pull the hook back to the boat
         /// </summary>
         /// <returns></returns>
-	    public bool PullHook() {
+	    public virtual bool PullHook() {
 	        
 	        if (transform.position.y < originalPos.y) {
 				
