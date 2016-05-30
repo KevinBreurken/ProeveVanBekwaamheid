@@ -7,22 +7,25 @@ using Base.Game.Hooks;
 using DG.Tweening;
 using Base.Game.Fish;
 
-namespace Base.Game {
-	
+/// <summary>
+/// Contains classes that are not used anymore.
+/// </summary>
+namespace Deprecated {
+	/*
 	public class PlayerBehaviour : MonoBehaviour {
 
         /// <summary>
-        /// The input required to do actions
+        /// The input required to do actions.
         /// </summary>
 	    private BaseQInputMethod inputMethod;
 
         /// <summary>
-        /// The speed that the player uses to move around the field
+        /// The speed that the player uses to move around the field.
         /// </summary>
 	    public float speedFactor = 0.05f;
 
         /// <summary>
-        /// Distance required between mouse and player
+        /// Distance required between mouse and player.
         /// </summary>
 		private float mouseMovementDistance = 0.3f;
 
@@ -32,34 +35,34 @@ namespace Base.Game {
 	    private Vector2 originalPos;
 
         /// <summary>
-        /// The red hook behaviour
+        /// The red hook behaviour.
         /// </summary>
 	    public HookBehaviour redHook;
 
         /// <summary>
-        /// The green hook behaviour
+        /// The green hook behaviour.
         /// </summary>
         public HookBehaviour greenHook;
 
 
         /// <summary>
-        /// The yellow hook behaviour
+        /// The yellow hook behaviour.
         /// </summary>
         public HookBehaviour yellowHook;
 
 
         /// <summary>
-        /// The speed the hook uses to return back to the field if nothing is grabbed
+        /// The speed the hook uses to return back to the field if nothing is grabbed.
         /// </summary>
         public float ownHookSpeed;
 
         /// <summary>
-        /// The area the player can swim in
+        /// The area the player can swim in.
         /// </summary>
 	    private AreaController areaContorller;
 
         /// <summary>
-        /// The area where the fishes spawn
+        /// The area where the fishes spawn.
         /// </summary>
 	    private Area fishArea;
 	    
@@ -179,5 +182,5 @@ namespace Base.Game {
 	    }
 			
 	}
-
+    */
 }

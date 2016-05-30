@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Contains manager related classes.
+/// </summary>
 namespace Base.Manager {
 
     /// <summary>

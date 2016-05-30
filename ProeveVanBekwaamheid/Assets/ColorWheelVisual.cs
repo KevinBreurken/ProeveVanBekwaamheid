@@ -3,6 +3,10 @@ using System.Collections;
 using DG.Tweening;
 
 namespace Base.Game.Hooks {
+
+    /// <summary>
+    /// Controls the color wheel that's located on the boat.
+    /// </summary>
     public class ColorWheelVisual: MonoBehaviour {
 
         /// <summary>

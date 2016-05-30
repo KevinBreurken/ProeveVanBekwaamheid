@@ -2,9 +2,9 @@
 using System.Collections;
 
 namespace Deprecated {
-	
+    /*
 	public class VarsController : Singleton<VarsController> {
-		/*
+		
 	    public int score;
 	    public int timeInSeconds;
 
@@ -50,8 +50,8 @@ namespace Deprecated {
 	            return minutes + " : " + seconds;
 	        }
 	    }
-		*/
+		
 
-	}
-
+    }
+*/
 }

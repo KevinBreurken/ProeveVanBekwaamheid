@@ -50,9 +50,9 @@ namespace Base.Manager {
             waveManager = GetComponent<WaveManager>();
 
 			//add listeners
-            waveManager.OnWaveFailed += StopGame;
-            waveManager.OnWaveSucceeded += StartNewLevel;
-            bonusEvent.OnBonusEventFinished += BonusEvent_OnBonusEventFinished;
+            waveManager.onWaveFailed += StopGame;
+            waveManager.onWaveSucceeded += StartNewLevel;
+            bonusEvent.onBonusEventFinished += BonusEvent_OnBonusEventFinished;
         }
 
         private void BonusEvent_OnBonusEventFinished () {

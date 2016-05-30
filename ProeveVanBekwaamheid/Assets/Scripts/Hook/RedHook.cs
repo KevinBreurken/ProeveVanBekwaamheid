@@ -2,8 +2,8 @@
 using System.Collections;
 
 
-namespace Base.Game.Hooks {
-
+namespace Deprecated {
+    /*
     /// <summary>
     /// The behaviour for the red hook
     /// </summary>
@@ -31,4 +31,5 @@ namespace Base.Game.Hooks {
         }
 
     }
+    */
 }

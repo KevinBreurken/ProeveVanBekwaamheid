@@ -2,9 +2,9 @@
 using System.Collections;
 
 namespace Deprecated {
-	
+    /*	
 	public class SeaPositioning : MonoBehaviour {
-	/*	
+	
 	    private AreaController varsController;
 	    private Area seaArea;
 
@@ -39,7 +39,7 @@ namespace Deprecated {
 	        }
 
 	    }
-	*/
-	}
-
+	
+    }
+    */
 }

@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace Base.Game.Hooks {
-	
+namespace Deprecated {
+	/*
 	public class HookVisual : MonoBehaviour {
 		
 	    private float previousXpos;
@@ -42,5 +42,5 @@ namespace Base.Game.Hooks {
 	    }
 
 	}
-
+    */
 }

@@ -3,10 +3,19 @@ using System.Collections;
 
 namespace Base.Game.Fish {
 	
+    /// <summary>
+    /// Contains the view field and the sea field.
+    /// </summary>
 	public class AreaController : Singleton<AreaController> {
 		
+        /// <summary>
+        /// Reference to the view field.
+        /// </summary>
 	    public Area viewField;
-	    public Area SeaField;
+        /// <summary>
+        /// Reference to the sea field.
+        /// </summary>
+	    public Area seaField;
 
 	    /// <summary>
 	    /// DrawGizmo that shows the fields for the VarsController
@@ -17,7 +26,7 @@ namespace Base.Game.Fish {
 	        DrawSquare(viewField.xLeft, viewField.yTop, viewField.xRight, viewField.yBottom, Color.green);
 
 	        //Square for the FishArea
-	        DrawSquare(SeaField.xLeft, SeaField.yTop, SeaField.xRight, SeaField.yBottom, Color.blue);
+	        DrawSquare(seaField.xLeft, seaField.yTop, seaField.xRight, seaField.yBottom, Color.blue);
 
 	    }
 

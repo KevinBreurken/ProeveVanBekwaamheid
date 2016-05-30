@@ -18,17 +18,17 @@ namespace Base.Manager {
         /// <summary>
         /// Called when a level is entered.
         /// </summary>
-        public event LevelEvent OnLevelEntered;
+        public event LevelEvent onLevelEntered;
 
         /// <summary>
         /// Called when the score requirement isn't met.
         /// </summary>
-        public event WaveEvent OnWaveFailed;
+        public event WaveEvent onWaveFailed;
 
         /// <summary>
         /// Called when the score requirement is met.
         /// </summary>
-        public event WaveEvent OnWaveSucceeded;
+        public event WaveEvent onWaveSucceeded;
 
         /// <summary>
         /// The score requirement for each wave.
@@ -65,7 +65,7 @@ namespace Base.Manager {
 
             //Add listeners.
             timeManager.onTimerEnded += TimeManager_onTimerEnded;
-            OnWaveSucceeded += WaveManager_OnWaveSucceeded;
+            onWaveSucceeded += WaveManager_OnWaveSucceeded;
 
             //Get Bundle Instance
             fishBundleController = FishBundleController.Instance;
@@ -80,8 +80,8 @@ namespace Base.Manager {
             timeManager.StartTimer();
             nextLevelSoundNotification.GetAudioObject().Play();
 
-            if(OnLevelEntered != null) {
-                OnLevelEntered(currentLevelIndex + 1);
+            if(onLevelEntered != null) {
+                onLevelEntered(currentLevelIndex + 1);
             }
 
         }
@@ -97,9 +97,9 @@ namespace Base.Manager {
 
                 currentLevelIndex++;
 
-                if (OnWaveSucceeded != null) {
+                if (onWaveSucceeded != null) {
 
-                    OnWaveSucceeded();
+                    onWaveSucceeded();
 
                 }
 
@@ -109,9 +109,9 @@ namespace Base.Manager {
                 //Player has insufficient score to reach the next level. lost game.
                 Debug.Log("Player has low score, stop game.");
 
-                if (OnWaveFailed != null) {
+                if (onWaveFailed != null) {
 
-                    OnWaveFailed();
+                    onWaveFailed();
 
                 }
 

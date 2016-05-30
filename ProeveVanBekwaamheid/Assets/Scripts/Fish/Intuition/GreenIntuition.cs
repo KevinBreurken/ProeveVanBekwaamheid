@@ -3,6 +3,9 @@ using System.Collections;
 
 namespace Base.Game.Fish {
 	
+    /// <summary>
+    /// Defines how the green fish behaves.
+    /// </summary>
 	public class GreenIntuition : FishInstinct {
 
         /// <summary>

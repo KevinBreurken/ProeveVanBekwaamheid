@@ -3,20 +3,23 @@ using System.Collections;
 
 namespace Base.Game.Fish {
 
+    /// <summary>
+    /// Spawns and controls FishBundles.
+    /// </summary>
     public class FishBundleController: Singleton<FishBundleController> {
 
         /// <summary>
         /// Functions to create new fishes into the game
         /// </summary>
-        public FishCreation _fishCreation;
+        public FishCreation fishCreation;
         /// <summary>
         /// Bundle holding the available fish
         /// </summary>
-        public FishBundle _fishBundle;
+        public FishBundle fishBundle;
         /// <summary>
         /// Sequence for the spawning of the fishes in the current wave
         /// </summary>
-        public FishSpawnSequence _fishSpawnSequence;
+        public FishSpawnSequence fishSpawnSequence;
 
         void Start() {
 
@@ -30,12 +33,12 @@ namespace Base.Game.Fish {
         /// </summary>
         void Init() {
 
-            _fishCreation = GetComponent<FishCreation>();
-            _fishBundle = GetComponent<FishBundle>();
-            _fishSpawnSequence = GetComponent<FishSpawnSequence>();
+            fishCreation = GetComponent<FishCreation>();
+            fishBundle = GetComponent<FishBundle>();
+            fishSpawnSequence = GetComponent<FishSpawnSequence>();
 
-            _fishBundle.Init();
-            _fishSpawnSequence.Init(this);
+            fishBundle.Init();
+            fishSpawnSequence.Init(this);
             OnWaveStart(0);
 
         }
@@ -46,8 +49,8 @@ namespace Base.Game.Fish {
         /// <param name="_targetLevel">the target wave that is now active</param>
         public void OnWaveStart(int _targetLevel) {  
 
-            if(_fishSpawnSequence.WaveStart(_targetLevel) == true) 
-                _fishBundle.WaveStart();
+            if(fishSpawnSequence.WaveStart(_targetLevel) == true) 
+                fishBundle.WaveStart();
 
         }
 

@@ -2,10 +2,10 @@
 using System.Collections;
 
 namespace Deprecated {
-	
+    /*
 	public class ScoreShowerBehaviour : MonoBehaviour {
 
-		/*
+		
 	    // private TextMesh ownText;
 	    public int SortLayer = 0;
 
@@ -48,7 +48,7 @@ namespace Deprecated {
 	        gameObject.SetActive(false);
 
 	    }
-		*/
-	}
-
+		
+    }
+*/
 }

@@ -5,6 +5,9 @@ using BaseFrame.QUI;
 using BaseFrame.QEffect;
 using DG.Tweening;
 
+/// <summary>
+/// Contains UI related classes.
+/// </summary>
 namespace Base.UI {
 
     /// <summary>

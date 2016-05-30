@@ -2,7 +2,8 @@
 using System.Collections;
 
 
-namespace Base.Game.Hooks {
+namespace Deprecated {
+    /*
     /// <summary>
     /// Behaviour for the Green hook
     /// </summary>
@@ -29,4 +30,5 @@ namespace Base.Game.Hooks {
             base.SetType();
         }
     }
+    */
 }

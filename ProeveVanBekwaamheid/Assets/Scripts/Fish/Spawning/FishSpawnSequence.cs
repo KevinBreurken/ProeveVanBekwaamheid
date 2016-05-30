@@ -64,8 +64,8 @@ namespace Base.Game.Fish{
 			
 	        sequenceController = SequenceController.Instance;
 
-	        this.fishBundle = _parent._fishBundle;
-	        this.fishCreator = _parent._fishCreation;
+	        this.fishBundle = _parent.fishBundle;
+	        this.fishCreator = _parent.fishCreation;
 
 	    }
 

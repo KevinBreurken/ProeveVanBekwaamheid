@@ -5,6 +5,9 @@ using Chanisco;
 
 namespace Base.Game.Fish
 {
+    /// <summary>
+    /// A collection of fish used by the FishBundleController.
+    /// </summary>
     public class FishBundle : MonoBehaviour {
         /// <summary>
         /// A list that holds the fish that you can spawn in this wave
@@ -28,7 +31,7 @@ namespace Base.Game.Fish
         public void Init()
         {
             areaController = AreaController.Instance;
-            seaArea = areaController.SeaField;
+            seaArea = areaController.seaField;
         }
 
         /// <summary>

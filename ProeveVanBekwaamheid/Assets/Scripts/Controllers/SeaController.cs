@@ -2,9 +2,9 @@
 using System.Collections;
 
 namespace Deprecated {
-	
+	/*
 	public class SeaController : Singleton<SeaController> {
-	/*	
+	
 	    public SeaPositioning seaPositioning;
 
 	    void Start() {
@@ -24,7 +24,7 @@ namespace Deprecated {
 	        seaPositioning.MovePosition(_xPos);
 
 	    }
-		*/
+		
 	}
-
+*/
 }

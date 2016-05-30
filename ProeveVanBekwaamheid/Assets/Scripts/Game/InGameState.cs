@@ -5,6 +5,9 @@ using DG.Tweening;
 using BaseFrame.QAudio;
 using Base.Manager;
 
+/// <summary>
+/// Contains game related classes.
+/// </summary>
 namespace Base.Game {
 
     /// <summary>

@@ -9,7 +9,7 @@ using Base.Game.Fish;
 
 namespace Base.Game {
 
-    public class PlayerWheelBehaviour: MonoBehaviour {
+    public class PlayerWheelBehaviour : MonoBehaviour {
 
         /// <summary>
         /// The input required to do actions
@@ -35,7 +35,7 @@ namespace Base.Game {
         /// The wheel hook behaviour
         /// </summary>
 	    public HookBehaviour wheelHook;
-        
+
 
         /// <summary>
         /// The speed the hook uses to return back to the field if nothing is grabbed
@@ -55,25 +55,25 @@ namespace Base.Game {
         //Input
         public bool recievesPlayerInput;
         private float movementInput;
-        
 
-        void Update() { Controlls(); }
-        void FixedUpdate() { Movement(); }
 
-        void Awake() {
+        void Update () { Controlls(); }
+        void FixedUpdate () { Movement(); }
+
+        void Awake () {
 
             inputMethod = QInputManager.Instance.GetCurrentInputMethod();
             QInputManager.Instance.onInputChanged += QInputManager_Instance_onInputChanged;
 
         }
 
-        void QInputManager_Instance_onInputChanged(BaseQInputMethod _changedMethod) {
+        void QInputManager_Instance_onInputChanged (BaseQInputMethod _changedMethod) {
 
             inputMethod = _changedMethod;
 
         }
 
-        private void Start() {
+        private void Start () {
 
             areaContorller = AreaController.Instance;
             originalPos = transform.localPosition;
@@ -83,7 +83,7 @@ namespace Base.Game {
 
         }
 
-        public void Load() {
+        public void Load () {
 
             recievesPlayerInput = true;
 
@@ -92,13 +92,16 @@ namespace Base.Game {
 
         }
 
-        public void Unload() {
+        public void Unload () {
 
             recievesPlayerInput = false;
 
         }
 
-        public void Recenter() {
+        /// <summary>
+        /// Recenters the boat back to it's original position.
+        /// </summary>
+        public void Recenter () {
 
             //Reset movement input
             movementInput = 0;
@@ -107,14 +110,14 @@ namespace Base.Game {
             float distance = transform.position.x - originalPos.x;
             distance = Mathf.Abs(distance);
 
-            transform.DOLocalMove(originalPos,distance);
+            transform.DOLocalMove(originalPos, distance);
 
         }
 
         /// <summary>
         /// All scripts that are called that are referenced to controll
         /// </summary>
-        private void Controlls() {
+        private void Controlls () {
 
             if (!recievesPlayerInput)
                 return;
@@ -130,10 +133,9 @@ namespace Base.Game {
 
                 movementInput = mousePos.x;
 
-            }
-            else {
+            } else {
 
-                movementInput = Mathf.MoveTowards(movementInput,0,0.05f);
+                movementInput = Mathf.MoveTowards(movementInput, 0, 0.05f);
 
             }
 
@@ -142,24 +144,35 @@ namespace Base.Game {
         /// <summary>
         /// The function that makes the player move
         /// </summary>
-        private void Movement() {
+        private void Movement () {
 
-            transform.Translate(movementInput * speedFactor,0,0);
-            transform.position = new Vector2(Mathf.Clamp(transform.position.x,fishArea.xLeft,fishArea.xRight),transform.position.y);
+            transform.Translate(movementInput * speedFactor, 0, 0);
+            transform.position = new Vector2(Mathf.Clamp(transform.position.x, fishArea.xLeft, fishArea.xRight), transform.position.y);
 
         }
 
         /// <summary>
         /// Calls to the Hookbehaviours to let the hooks go loose
         /// </summary>
-        private void HookControlls() {
+        private void HookControlls () {
 
             if (Input.GetMouseButtonDown(0)) {
+
                 wheelHook.ReleaseHook();
 
             }
 
         }
+
+        /// <summary>
+        /// Called when the game is focused or unfocused.
+        /// </summary>
+        /// <param name="_focus">the focus state.</param>
+        public void OnApplicationFocus (bool _focus) {
+            if (_focus == false)
+                movementInput = 0;
+        }
+
 
     }
 

@@ -4,6 +4,9 @@ using System.Collections;
 using Base.Game.Fish;
 
 
+/// <summary>
+/// Custom editor that sets the fish back in a sequence.
+/// </summary>
 [CustomEditor(typeof(SetFishInSequence))]
 public class SetFishInSequenceEditor: Editor {
 

@@ -4,38 +4,41 @@ using Base.Game.Hooks;
 
 namespace Base.Game.Fish {
 
+    /// <summary>
+    /// Creates new Fish.
+    /// </summary>
     public class FishCreation: MonoBehaviour {
 
         /// <summary>
-        /// The Gameobject of the red fish
+        /// The Gameobject of the red fish.
         /// </summary>
         public GameObject redFishObject;
 
         /// <summary>
-        /// The Gameobject of the green fish
+        /// The Gameobject of the green fish.
         /// </summary>
         public GameObject greenFishObject;
 
         /// <summary>
-        /// The Gameobject of the yellow fish
+        /// The Gameobject of the yellow fish.
         /// </summary>
         public GameObject yellowFishObject;
 
         /// <summary>
-        /// The sequence that has the information for all the predetermined waves
+        /// The sequence that has the information for all the predetermined waves.
         /// </summary>
-        public FishSpawnSequence _fishSpawnSequenceHolder;
+        public FishSpawnSequence fishSpawnSequenceHolder;
 
         /// <summary>
-        /// The bundle that keeps track of the fishes in the wave
+        /// The bundle that keeps track of the fishes in the wave.
         /// </summary>
-        public FishBundle _fishBundle;
+        public FishBundle fishBundle;
 
         /// <summary>
-        /// Creates a fish and inserts it in the required fields
+        /// Creates a fish and inserts it in the required fields.
         /// </summary>
-        /// <param name="targetColor">The color that the fish needs to be</param>
-        /// <param name="addToBundle">Should the fish be added to the bundle or should it just be made</param>
+        /// <param name="targetColor">The color that the fish needs to be.</param>
+        /// <param name="addToBundle">Should the fish be added to the bundle or should it just be made.</param>
         public void CreateFish(ColorEnum targetColor,bool addToBundle) {
             switch (targetColor) {
                 case ColorEnum.RED:
@@ -60,9 +63,9 @@ namespace Base.Game.Fish {
             FishBehaviour tempTargetBehaviour = target.GetComponent<FishBehaviour>();
             target.transform.parent = transform;
             target.name = targetObject.name;
-            _fishSpawnSequenceHolder.yellowFishes.Add(target.GetComponent<FishBehaviour>());
+            fishSpawnSequenceHolder.yellowFishes.Add(target.GetComponent<FishBehaviour>());
             if (addToBundle == true) {
-                _fishBundle.availableFish.Add(tempTargetBehaviour);
+                fishBundle.availableFish.Add(tempTargetBehaviour);
 
             }
         }

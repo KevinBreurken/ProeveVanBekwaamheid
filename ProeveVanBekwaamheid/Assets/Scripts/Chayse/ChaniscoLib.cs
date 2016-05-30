@@ -2,6 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
+
+/// <summary>
+/// Contains classes that Chanisco uses regularly.
+/// </summary>
 namespace Chanisco
 {
     public static class ChaniscoLib

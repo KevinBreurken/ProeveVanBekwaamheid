@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 648e835dbc24e8148a85ceb75000bb28
+timeCreated: 1459715910
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - targetCamera: {instanceID: 0}
+  - curShader: {fileID: 4800000, guid: 8f99cf766be15d642a0fc5b2ff83bd55, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

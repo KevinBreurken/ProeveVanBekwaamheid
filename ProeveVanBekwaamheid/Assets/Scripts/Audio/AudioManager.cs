@@ -3,6 +3,9 @@ using System.Collections;
 using UnityEngine.Audio;
 using DG.Tweening;
 
+/// <summary>
+/// Contains audio related classes.
+/// </summary>
 namespace Base.Audio {
 
     /// <summary>
