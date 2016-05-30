@@ -5,7 +5,11 @@ namespace Base.Game.Fish {
 	
 	public class GreenIntuition : FishInstinct {
 
+        /// <summary>
+        /// Target house the fish live in
+        /// </summary>
 	    public Transform housing;
+
 	    public override void ReactOnFish(FishBehaviour _target) {
 
 	    }
@@ -27,6 +31,10 @@ namespace Base.Game.Fish {
 
 	    }
 
+        /// <summary>
+        /// The function that lets the fish hide behind the weed
+        /// </summary>
+        /// <returns></returns>
 	    public IEnumerator HideBehindWeed() {
 			
 	        Transform parentTransform = parent.gameObject.transform;

@@ -26,9 +26,11 @@ namespace Base.Game.Fish {
 
         }
 
+
         public override void SetType() {
             requiredHookColor = ColorEnum.NONE;
         }
+
         public override bool RespondToHook(HookBehaviour _target) {
             base.RespondToHook(_target);
             return true;

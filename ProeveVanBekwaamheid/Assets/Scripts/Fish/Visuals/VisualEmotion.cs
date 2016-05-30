@@ -5,8 +5,19 @@ namespace Base.Game.Fish {
 	
 	public class VisualEmotion : MonoBehaviour {
 
+        /// <summary>
+        /// Spriterenderer that will hold the bubbles
+        /// </summary>
 	    private SpriteRenderer ownSpriteRenderer;
+
+        /// <summary>
+        /// The Sprite that shows a Question emotion
+        /// </summary>
 	    public Sprite QuestionSprite;
+
+        /// <summary>
+        /// The sprite that shows a Shocking emotion
+        /// </summary>
 	    public Sprite ShockSprite;
 
 	    void Start() {
@@ -15,6 +26,10 @@ namespace Base.Game.Fish {
 
 	    }
 
+        /// <summary>
+        /// The function that calls the emotion for the fish
+        /// </summary>
+        /// <param name="_targetEmotion">Emotion that will pop up for the fish</param>
 	    public void Emote(Emotions _targetEmotion) {
 			
 	        switch (_targetEmotion) {
@@ -33,6 +48,10 @@ namespace Base.Game.Fish {
 
 	    }
 
+        /// <summary>
+        /// hiding the sprite that shows the emotions
+        /// </summary>
+        /// <returns></returns>
 	    IEnumerator TurnSpriteOff() {
 			
 	        yield return new WaitForSeconds(0.5f);
@@ -42,6 +61,9 @@ namespace Base.Game.Fish {
 
 	}
 
+    /// <summary>
+    /// The emtions a fish can show using bubbles
+    /// </summary>
 	public enum Emotions {
 		
 	    QUESTION,

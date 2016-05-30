@@ -9,28 +9,78 @@ using Base.Game.Hooks;
 namespace Base.Game.Fish {
 
 	public class FishBehaviour : MonoBehaviour {
-
+        /// <summary>
+        /// The sounds that indicates that the player pulled the right color
+        /// </summary>
 	    public QAudioObjectHolder rightSound;
-	    public QAudioObjectHolder wrongSound;
 
+        /// <summary>
+        /// The sounds that indicates that the player pulled the wrong color
+        /// </summary>
+        public QAudioObjectHolder wrongSound;
+
+        /// <summary>
+        /// The direction the fish is swimming to
+        /// </summary>
 	    public Direction ownDirection;
+
+        /// <summary>
+        /// The boolean that shows if the fish is caught
+        /// </summary>
 	    public bool caught;
+
+        /// <summary>
+        /// The amount of speed that the fish is swimming with
+        /// </summary>
 	    public float speed = 5;
+
+        /// <summary>
+        /// The force that the fish will brake for the pulling of the hook
+        /// </summary>
 	    public float pullPressure;
+
+        /// <summary>
+        /// The area the fish can swim in
+        /// </summary>
 	    public Area fishArea;
+
+        /// <summary>
+        /// The Information that shows the points and pressure the fish has according to stats
+        /// </summary>
 	    public FishPulls pullInformation;
 
+        /// <summary>
+        /// The visual emotion the fish has
+        /// </summary>
 	    public VisualEmotion emotion;
+
+        /// <summary>
+        /// The fish has that required the reaction of the hook
+        /// </summary>
 	    public ColorEnum requiredHookColor;
 
+        /// <summary>
+        /// The instinct that supports its surroundings
+        /// </summary>
 	    public FishInstinct ownInstinct;
+
+        /// <summary>
+        /// The boolean that shows if the fish is swimming of moveless
+        /// </summary>
 	    public bool InMotion;
 
 	    [Header("Graphic")]
 	    public Ease spawnAnimationEaseType = Ease.OutBack;
 	    public float spawnAnimationDuration = 1;
+
+        /// <summary>
+        /// Visual sprite of the fish
+        /// </summary>
 	    private SpriteRenderer spriteComponent;
 	    
+        /// <summary>
+        /// The tag that will be assigned to the fish
+        /// </summary>
 	    private const string ownTag = "Fish";
 
 	    void Awake () {

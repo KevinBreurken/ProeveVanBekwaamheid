@@ -40,6 +40,10 @@ namespace Base.Game.Fish {
 
         }
 
+        /// <summary>
+        /// The function that calls the fishes in the according level
+        /// </summary>
+        /// <param name="_targetLevel">the target wave that is now active</param>
         public void OnWaveStart(int _targetLevel) {  
 
             if(_fishSpawnSequence.WaveStart(_targetLevel) == true) 
