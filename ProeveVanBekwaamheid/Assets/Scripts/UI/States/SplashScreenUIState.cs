@@ -3,6 +3,7 @@ using System.Collections;
 using BaseFrame.QStates;
 using BaseFrame.QEffect;
 using DG.Tweening;
+using UnityEngine.UI;
 
 namespace Base.UI {
 
@@ -27,6 +28,8 @@ namespace Base.UI {
         /// </summary>
         public float fadeSpeed;
 
+        public Image logo;
+
         /// <summary>
         /// How long it takes until this state will fade out.
         /// </summary>
@@ -49,7 +52,8 @@ namespace Base.UI {
             mainCamera.transform.DOMoveY(mainCamera.transform.position.y + 2, 10);
             StartCoroutine(EffectManager.Instance.FadeEffect.Fade(0, fadeSpeed, 1));
             StartCoroutine(WaitToFadeOut());
-
+            logo.color = new Color(1, 1, 1, 0);
+            logo.DOFade(1, 3);
         }
 
         public override IEnumerator Exit () {
