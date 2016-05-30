@@ -29,7 +29,7 @@ namespace Base.Game.Hooks {
                 case ColorEnum.RED:
                     closedHookSprite = redhookSprite;
                     openHookSprite = redhookOpenSprite;
-
+                    
                 break;
                 case ColorEnum.GREEN:
                     closedHookSprite = greenhookSprite;
@@ -42,10 +42,11 @@ namespace Base.Game.Hooks {
 
                 break;
             }
+            SetColor();
         }
 
         private void SetColor() {
-            HookVisual.sprite = yellowhookSprite;
+            HookVisual.sprite = closedHookSprite;
         }
     }
 }
