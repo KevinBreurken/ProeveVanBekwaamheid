@@ -284,7 +284,7 @@ namespace BaseFrame.QUI {
         /// Plays a sound effect.
         /// </summary>
 		private IEnumerator Sound (QUIAudioAnimationData _data) {
-
+      
             yield return new WaitForSeconds(_data.soundEffectDelay);
 			_data.soundEffect.GetAudioObject().Play();
 
