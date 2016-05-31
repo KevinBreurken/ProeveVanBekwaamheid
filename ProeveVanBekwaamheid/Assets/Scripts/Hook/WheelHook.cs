@@ -32,7 +32,7 @@ namespace Base.Game.Hooks {
             Init();
         }
 
-        void Update() {
+        void FixedUpdate() {
 
             Chain.SetPosition(0,new Vector3(ChainHolder.position.x,ChainHolder.position.y,-0.1f));
             Chain.SetPosition(1,new Vector3(transform.position.x,transform.position.y + 0.2f,-0.1f));
