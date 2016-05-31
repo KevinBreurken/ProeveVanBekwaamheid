@@ -1,0 +1,674 @@
+fileFormatVersion: 2
+guid: 367fb43b8afef1c4085e63c3102f2d2c
+timeCreated: 1464099755
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: skeleton-animation_0
+    21300002: skeleton-animation_1
+    21300004: skeleton-animation_2
+    21300006: skeleton-animation_3
+    21300008: skeleton-animation_4
+    21300010: skeleton-animation_5
+    21300012: skeleton-animation_6
+    21300014: skeleton-animation_7
+    21300016: skeleton-animation_8
+    21300018: skeleton-animation_9
+    21300020: skeleton-animation_10
+    21300022: skeleton-animation_11
+    21300024: skeleton-animation_12
+    21300026: skeleton-animation_13
+    21300028: skeleton-animation_14
+    21300030: skeleton-animation_15
+    21300032: skeleton-animation_16
+    21300034: skeleton-animation_17
+    21300036: skeleton-animation_18
+    21300038: skeleton-animation_19
+    21300040: skeleton-animation_20
+    21300042: skeleton-animation_21
+    21300044: skeleton-animation_22
+    21300046: skeleton-animation_23
+    21300048: skeleton-animation_24
+    21300050: skeleton-animation_25
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: skeleton-animation_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 423
+        width: 130
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -63, y: 9.5}
+        - {x: -62, y: 9.5}
+        - {x: -56, y: 10.5}
+        - {x: -63, y: -5.5}
+        - {x: -63, y: -16.5}
+        - {x: -52, y: -41.5}
+        - {x: 62, y: -41.5}
+        - {x: 62, y: 6.5}
+        - {x: 51, y: 34.5}
+        - {x: 23, y: 42.5}
+        - {x: -41, y: 42.5}
+        - {x: -63, y: 27.5}
+    - name: skeleton-animation_1
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 423
+        width: 130
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -51, y: 42.5}
+        - {x: -64, y: 39.5}
+        - {x: -64, y: -35.5}
+        - {x: -39, y: -44.5}
+        - {x: 39, y: -44.5}
+        - {x: 62, y: -20.5}
+        - {x: 62, y: 12.5}
+        - {x: 31, y: 42.5}
+    - name: skeleton-animation_2
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 423
+        width: 130
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 19, y: 42.5}
+        - {x: -50, y: 42.5}
+        - {x: -65, y: 24.5}
+        - {x: -65, y: -29.5}
+        - {x: -64, y: -34.5}
+        - {x: -25, y: -43.5}
+        - {x: 30, y: -43.5}
+        - {x: 58, y: -23.5}
+        - {x: 60, y: -17.5}
+        - {x: 60, y: -0.5}
+    - name: skeleton-animation_3
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 423
+        width: 130
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 25, y: 34.5}
+        - {x: -4, y: 42.5}
+        - {x: -29, y: 42.5}
+        - {x: -45, y: 38.5}
+        - {x: -63, y: 26.5}
+        - {x: -65, y: 23.5}
+        - {x: -65, y: -41.5}
+        - {x: 49, y: -41.5}
+        - {x: 58, y: -20.5}
+        - {x: 58, y: -6.5}
+        - {x: 57, y: -1.5}
+    - name: skeleton-animation_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 334
+        width: 130
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -39, y: 42.5}
+        - {x: -63, y: 37.5}
+        - {x: -63, y: 10.5}
+        - {x: -56, y: 9.5}
+        - {x: -61, y: 4.5}
+        - {x: -62, y: -31.5}
+        - {x: -40, y: -42.5}
+        - {x: 21, y: -42.5}
+        - {x: 62, y: -29.5}
+        - {x: 62, y: 1.5}
+        - {x: 27, y: 42.5}
+    - name: skeleton-animation_5
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 334
+        width: 130
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -64, y: 42.5}
+        - {x: -64, y: -36.5}
+        - {x: -36, y: -42.5}
+        - {x: 35, y: -42.5}
+        - {x: 61, y: -19.5}
+        - {x: 61, y: 4.5}
+        - {x: 26, y: 42.5}
+    - name: skeleton-animation_6
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 334
+        width: 130
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 27, y: 31.5}
+        - {x: 15, y: 42.5}
+        - {x: -45, y: 42.5}
+        - {x: -65, y: 24.5}
+        - {x: -65, y: 10.5}
+        - {x: -64, y: 7.5}
+        - {x: -57, y: 7.5}
+        - {x: -59, y: 2.5}
+        - {x: -62, y: -29.5}
+        - {x: -32, y: -42.5}
+        - {x: -4, y: -44.5}
+        - {x: 17, y: -44.5}
+        - {x: 59, y: -24.5}
+        - {x: 61, y: -16.5}
+        - {x: 61, y: -2.5}
+    - name: skeleton-animation_7
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 334
+        width: 130
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 30, y: 24.5}
+        - {x: 16, y: 37.5}
+        - {x: 0, y: 42.5}
+        - {x: -37, y: 42.5}
+        - {x: -59, y: 36.5}
+        - {x: -65, y: 21.5}
+        - {x: -65, y: 11.5}
+        - {x: -63, y: 10.5}
+        - {x: -57, y: 10.5}
+        - {x: -65, y: -20.5}
+        - {x: -65, y: -34.5}
+        - {x: -31, y: -43.5}
+        - {x: 32, y: -43.5}
+        - {x: 59, y: -19.5}
+        - {x: 59, y: -4.5}
+        - {x: 58, y: -0.5}
+    - name: skeleton-animation_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 245
+        width: 130
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 20, y: 42.5}
+        - {x: -45, y: 42.5}
+        - {x: -63, y: 31.5}
+        - {x: -63, y: 10.5}
+        - {x: -54, y: 7.5}
+        - {x: -58, y: -4.5}
+        - {x: -63, y: -21.5}
+        - {x: -63, y: -34.5}
+        - {x: -24, y: -43.5}
+        - {x: 36, y: -43.5}
+        - {x: 62, y: -28.5}
+        - {x: 62, y: 1.5}
+        - {x: 55, y: 23.5}
+    - name: skeleton-animation_9
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 245
+        width: 130
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -52, y: -41.5}
+        - {x: 38, y: -41.5}
+        - {x: 61, y: -17.5}
+        - {x: 61, y: 14.5}
+        - {x: 19, y: 42.5}
+        - {x: -47, y: 42.5}
+        - {x: -64, y: 22.5}
+        - {x: -64, y: -36.5}
+    - name: skeleton-animation_10
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 245
+        width: 130
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -57, y: 33.5}
+        - {x: -65, y: 17.5}
+        - {x: -65, y: 11.5}
+        - {x: -62, y: 10.5}
+        - {x: -56, y: 10.5}
+        - {x: -60, y: -3.5}
+        - {x: -58, y: -33.5}
+        - {x: -37, y: -42.5}
+        - {x: 27, y: -42.5}
+        - {x: 60, y: -27.5}
+        - {x: 60, y: -1.5}
+        - {x: 39, y: 33.5}
+        - {x: 12, y: 42.5}
+        - {x: -37, y: 42.5}
+        - {x: -40, y: 41.5}
+    - name: skeleton-animation_11
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 245
+        width: 130
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -47, y: 42.5}
+        - {x: -65, y: 24.5}
+        - {x: -65, y: -19.5}
+        - {x: -51, y: -44.5}
+        - {x: 39, y: -44.5}
+        - {x: 60, y: -34.5}
+        - {x: 60, y: -4.5}
+        - {x: 18, y: 42.5}
+    - name: skeleton-animation_12
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 245
+        width: 130
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -65, y: -33.5}
+        - {x: -35, y: -42.5}
+        - {x: 27, y: -42.5}
+        - {x: 58, y: -25.5}
+        - {x: 58, y: -0.5}
+        - {x: 30, y: 42.5}
+        - {x: -48, y: 42.5}
+        - {x: -65, y: 21.5}
+    - name: skeleton-animation_13
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 156
+        width: 130
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -62, y: 42.5}
+        - {x: -63, y: 35.5}
+        - {x: -63, y: 12.5}
+        - {x: -62, y: 6.5}
+        - {x: -53, y: 9.5}
+        - {x: -30, y: 22.5}
+        - {x: -24, y: 22.5}
+        - {x: -32, y: 20.5}
+        - {x: -51, y: 6.5}
+        - {x: -55, y: 1.5}
+        - {x: -55, y: -2.5}
+        - {x: -54, y: -27.5}
+        - {x: -51, y: -30.5}
+        - {x: -26, y: -44.5}
+        - {x: 28, y: -44.5}
+        - {x: 63, y: -20.5}
+        - {x: 63, y: 4.5}
+        - {x: 40, y: 42.5}
+    - name: skeleton-animation_14
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 156
+        width: 130
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 24, y: 35.5}
+        - {x: 1, y: 42.5}
+        - {x: -34, y: 42.5}
+        - {x: -39, y: 40.5}
+        - {x: -56, y: 35.5}
+        - {x: -64, y: 19.5}
+        - {x: -64, y: -39.5}
+        - {x: -42, y: -43.5}
+        - {x: 34, y: -43.5}
+        - {x: 60, y: -19.5}
+        - {x: 61, y: -17.5}
+        - {x: 61, y: -1.5}
+    - name: skeleton-animation_15
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 156
+        width: 130
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -48, y: 42.5}
+        - {x: -55, y: 36.5}
+        - {x: -65, y: 26.5}
+        - {x: -65, y: -35.5}
+        - {x: -62, y: -41.5}
+        - {x: 59, y: -41.5}
+        - {x: 59, y: 15.5}
+        - {x: 10, y: 42.5}
+    - name: skeleton-animation_16
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 156
+        width: 130
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -65, y: 42.5}
+        - {x: -65, y: -40.5}
+        - {x: -23, y: -43.5}
+        - {x: 17, y: -43.5}
+        - {x: 59, y: -19.5}
+        - {x: 59, y: 36.5}
+        - {x: 38, y: 42.5}
+    - name: skeleton-animation_17
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 156
+        width: 130
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -45, y: 42.5}
+        - {x: -65, y: 27.5}
+        - {x: -65, y: 7.5}
+        - {x: -55, y: 9.5}
+        - {x: -65, y: 4.5}
+        - {x: -65, y: -7.5}
+        - {x: -64, y: -31.5}
+        - {x: -53, y: -44.5}
+        - {x: 47, y: -44.5}
+        - {x: 59, y: -41.5}
+        - {x: 59, y: 10.5}
+        - {x: 15, y: 42.5}
+      - - {x: 62, y: 12.5}
+        - {x: 64, y: 10.5}
+        - {x: 65, y: 10.5}
+        - {x: 65, y: 17.5}
+        - {x: 62, y: 16.5}
+    - name: skeleton-animation_18
+      rect:
+        serializedVersion: 2
+        x: 650
+        y: 156
+        width: 130
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 21, y: 35.5}
+        - {x: 2, y: 42.5}
+        - {x: -40, y: 42.5}
+        - {x: -65, y: 33.5}
+        - {x: -65, y: -33.5}
+        - {x: -26, y: -42.5}
+        - {x: 24, y: -42.5}
+        - {x: 56, y: -19.5}
+        - {x: 57, y: -17.5}
+        - {x: 57, y: -4.5}
+    - name: skeleton-animation_19
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 67
+        width: 130
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -41, y: 42.5}
+        - {x: -63, y: 26.5}
+        - {x: -63, y: 12.5}
+        - {x: -60, y: 9.5}
+        - {x: -54, y: 8.5}
+        - {x: -30, y: 22.5}
+        - {x: -24, y: 22.5}
+        - {x: -25, y: 22.5}
+        - {x: -30, y: 20.5}
+        - {x: -36, y: 14.5}
+        - {x: -56, y: 6.5}
+        - {x: -56, y: -0.5}
+        - {x: -55, y: -35.5}
+        - {x: -21, y: -44.5}
+        - {x: 27, y: -44.5}
+        - {x: 60, y: -25.5}
+        - {x: 63, y: -19.5}
+        - {x: 63, y: 0.5}
+        - {x: 14, y: 42.5}
+    - name: skeleton-animation_20
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 67
+        width: 130
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -45, y: 42.5}
+        - {x: -61, y: 26.5}
+        - {x: -64, y: 17.5}
+        - {x: -64, y: 10.5}
+        - {x: -62, y: 8.5}
+        - {x: -52, y: 9.5}
+        - {x: -60, y: -3.5}
+        - {x: -64, y: -33.5}
+        - {x: -29, y: -44.5}
+        - {x: 32, y: -44.5}
+        - {x: 56, y: -29.5}
+        - {x: 62, y: -17.5}
+        - {x: 62, y: 2.5}
+        - {x: 19, y: 42.5}
+    - name: skeleton-animation_21
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 67
+        width: 130
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -62, y: 10.5}
+        - {x: -56, y: 10.5}
+        - {x: -64, y: 4.5}
+        - {x: -62, y: -28.5}
+        - {x: -51, y: -42.5}
+        - {x: 27, y: -42.5}
+        - {x: 60, y: -31.5}
+        - {x: 60, y: 11.5}
+        - {x: 38, y: 42.5}
+        - {x: -65, y: 42.5}
+        - {x: -65, y: 11.5}
+    - name: skeleton-animation_22
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 67
+        width: 130
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -49, y: 42.5}
+        - {x: -65, y: 38.5}
+        - {x: -65, y: -33.5}
+        - {x: -32, y: -41.5}
+        - {x: 30, y: -41.5}
+        - {x: 59, y: -19.5}
+        - {x: 59, y: 7.5}
+        - {x: 29, y: 42.5}
+    - name: skeleton-animation_23
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 67
+        width: 130
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 41, y: 31.5}
+        - {x: 5, y: 42.5}
+        - {x: -52, y: 42.5}
+        - {x: -62, y: 33.5}
+        - {x: -65, y: 28.5}
+        - {x: -65, y: -36.5}
+        - {x: -34, y: -43.5}
+        - {x: 31, y: -43.5}
+        - {x: 55, y: -22.5}
+        - {x: 59, y: -14.5}
+        - {x: 59, y: 1.5}
+      - - {x: 62, y: 12.5}
+        - {x: 64, y: 10.5}
+        - {x: 65, y: 10.5}
+        - {x: 65, y: 17.5}
+        - {x: 62, y: 16.5}
+    - name: skeleton-animation_24
+      rect:
+        serializedVersion: 2
+        x: 650
+        y: 67
+        width: 130
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -54, y: 42.5}
+        - {x: -65, y: 25.5}
+        - {x: -65, y: -37.5}
+        - {x: -37, y: -44.5}
+        - {x: 25, y: -44.5}
+        - {x: 58, y: -20.5}
+        - {x: 58, y: -7.5}
+        - {x: 57, y: -1.5}
+        - {x: 18, y: 42.5}
+      - - {x: 61, y: 18.5}
+        - {x: 61, y: 12.5}
+        - {x: 62, y: 10.5}
+        - {x: 65, y: 10.5}
+        - {x: 65, y: 20.5}
+        - {x: 64, y: 20.5}
+    - name: skeleton-animation_25
+      rect:
+        serializedVersion: 2
+        x: 780
+        y: 67
+        width: 130
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -44, y: 42.5}
+        - {x: -65, y: 31.5}
+        - {x: -65, y: -34.5}
+        - {x: -54, y: -41.5}
+        - {x: 47, y: -41.5}
+        - {x: 56, y: -28.5}
+        - {x: 56, y: -1.5}
+        - {x: 7, y: 42.5}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
