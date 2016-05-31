@@ -36,6 +36,8 @@ namespace Base.Game {
         /// </summary>
         public float cameraTransitionTime;
 
+		public float cameraTransitionDistance = -8;
+
         /// <summary>
         /// The in-game music.
         /// </summary>
@@ -62,7 +64,7 @@ namespace Base.Game {
             ingameMusic.GetAudioObject().SetVolume(0);
             ingameMusic.GetAudioObject().FadeVolume(0, 1, 50);
        
-            mainCamera.transform.DOMoveY(-8, cameraTransitionTime).SetEase(cameraEase).OnComplete(OnCameraPanComplete);
+			mainCamera.transform.DOMoveY(cameraTransitionDistance, cameraTransitionTime).SetEase(cameraEase).OnComplete(OnCameraPanComplete);
 
         }
 
