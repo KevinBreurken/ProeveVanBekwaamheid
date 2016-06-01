@@ -84,5 +84,16 @@ namespace Base.Game.Hooks {
                 }
             }
         }
+
+        public override void ShockHook() {
+            StartCoroutine("ShockEvent");
+            base.ShockHook();
+        }
+        
+        private IEnumerator ShockEvent() {
+            Debug.Log("Bite me");
+            yield return new WaitForSeconds(1);
+            hookPull = true;
+        }
     }
 }

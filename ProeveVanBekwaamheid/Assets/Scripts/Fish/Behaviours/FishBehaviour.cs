@@ -120,12 +120,12 @@ namespace Base.Game.Fish {
         /// <returns></returns>
 	    public FishBehaviour GetFish(HookBehaviour _target) {
 
-            if (RespondToHook(_target) == false) {
-                if (caught == false)
+            if (caught == false) {
+                if (RespondToHook(_target) == false) {
                     return this;
+                }
             }
 
-	        
 	        return null;
 
 	    }

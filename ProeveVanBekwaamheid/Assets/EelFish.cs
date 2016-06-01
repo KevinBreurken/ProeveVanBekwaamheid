@@ -35,7 +35,8 @@ namespace Base.Game.Fish {
         }
 
         public override bool RespondToHook(HookBehaviour _target) {
-            base.RespondToHook(_target);
+            _target.hookInteracted = true;
+            _target.ShockHook();
             return true;
 
         }
