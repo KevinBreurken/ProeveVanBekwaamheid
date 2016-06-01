@@ -56,7 +56,9 @@ namespace Base.Game.Fish{
         /// </summary>
 	    private int yellowInUse;
 
+        public List<FishBehaviour> bonusFishes;
 
+        public int bonusInUse;
         /// <summary>
         /// Init that sets the variables on start
         /// </summary>
@@ -111,6 +113,10 @@ namespace Base.Game.Fish{
 	        for (int i = 0;i < _targetSequence.availableFishColors.Count;i++)
 	            AddFishToBundle(_targetSequence.availableFishColors[i]);
 
+            if (_targetSequence.bonusFish == true) {
+                AddBonusFishToBundle();
+            }
+
 	    }
 
         /// <summary>
@@ -140,7 +146,7 @@ namespace Base.Game.Fish{
                     fishCreator.CreateFish(_targetColor,true);
 
 	            } else {
-                    Debug.Log("Bite me " + redInUse + " " + redFishes.Count);
+
                     fishBundle.availableFish.Add(redFishes[redInUse]);
 
 	            }
@@ -165,15 +171,29 @@ namespace Base.Game.Fish{
 
 	    }
 
+        public void AddBonusFishToBundle() {
+            if (bonusInUse >= bonusFishes.Count) {
+
+                fishCreator.CreateBonusFish(true);
+
+            }
+            else {
+
+                fishBundle.availableFish.Add(bonusFishes[bonusInUse]);
+
+            }
+            bonusInUse++;
+        }
+
         /// <summary>
         /// Resets the scores for the amount of fishes in use
         /// </summary>
-	    private void ResetScores() {
+        private void ResetScores() {
 			
 	        redInUse = 0;
 	        greenInUse = 0;
 	        yellowInUse = 0;
-
+            bonusInUse = 0;
 	    }
 
 	}
