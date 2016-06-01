@@ -88,7 +88,7 @@ namespace Base.Game {
             recievesPlayerInput = true;
 
             //stops the re=centering.
-            transform.DOKill();
+			DOTween.Kill(4848);
 
         }
 
@@ -110,7 +110,7 @@ namespace Base.Game {
             float distance = transform.position.x - originalPos.x;
             distance = Mathf.Abs(distance);
 
-            transform.DOLocalMove(originalPos, distance);
+			transform.DOLocalMoveX(originalPos.x, distance).SetId(4848);
 
         }
 

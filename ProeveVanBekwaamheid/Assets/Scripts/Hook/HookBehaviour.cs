@@ -18,6 +18,8 @@ namespace Base.Game.Hooks {
         /// </summary>
 		public FishBehaviour ownFish;
 
+		public GameObject hookAnchor;
+
         /// <summary>
         /// Color of this hook.
         /// </summary>
@@ -107,6 +109,9 @@ namespace Base.Game.Hooks {
         /// Update that keeps track of the position and state of the hook
         /// </summary>
 	    public void HookUpdate() {
+
+			originalPos = hookAnchor.transform.position;
+
 	        if (hookReleased == true) {
 				
 	            if (hookPull == true) {
