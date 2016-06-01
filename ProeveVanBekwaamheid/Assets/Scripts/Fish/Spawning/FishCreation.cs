@@ -24,6 +24,7 @@ namespace Base.Game.Fish {
         /// </summary>
         public GameObject yellowFishObject;
 
+        public GameObject bonusFishObject;
         /// <summary>
         /// The sequence that has the information for all the predetermined waves.
         /// </summary>
@@ -54,6 +55,10 @@ namespace Base.Game.Fish {
             }
         }
 
+        public void CreateBonusFish(bool addToBundle) {
+
+                fishSpawnSequenceHolder.bonusFishes.Add(InstansiateFish(bonusFishObject,addToBundle));
+        }
         /// <summary>
         /// The Instansiating function that creates the fishes
         /// </summary>
