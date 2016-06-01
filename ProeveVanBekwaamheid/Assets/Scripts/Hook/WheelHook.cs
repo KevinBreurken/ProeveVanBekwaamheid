@@ -9,6 +9,7 @@ namespace Base.Game.Hooks {
         /// The chain that follows the target hook
         /// </summary>
         public LineRenderer Chain;
+        public Texture[] chainTextures;
         private Transform ChainHolder;
 
         /// <summary>
@@ -96,7 +97,15 @@ namespace Base.Game.Hooks {
         private IEnumerator ShockEvent() {
             pullSpeed = 0;
             Chain.material = chainMethods.electricMaterials;
-            yield return new WaitForSeconds(1);
+            for (int i = 0; i < 8; i++) {
+                Chain.material.mainTexture = chainTextures[0];
+                yield return new WaitForSeconds(0.05f);
+                Chain.material.mainTexture = chainTextures[1];
+                yield return new WaitForSeconds(0.05f);
+                Chain.material.mainTexture = chainTextures[2];
+                yield return new WaitForSeconds(0.05f);
+            }
+            
             Chain.material = chainMethods.originalChain;
             pullSpeed = releaseSpeed;
         }
