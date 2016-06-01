@@ -11,14 +11,14 @@ namespace Base.Game.Fish {
 
 	    public void Start() {
 			
-	        speed = Random.Range(20, 30);
+			currentSpeed = speed + Random.Range(-speedRandom, speedRandom);
 	        Init();
 
 	    }
 	    
 	    public void OnEnable() {
 			
-	        speed = Random.Range(20, 30);
+			currentSpeed = speed + Random.Range(-speedRandom, speedRandom);
 	        InMotion = true;
 
 	    }

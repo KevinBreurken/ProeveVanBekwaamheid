@@ -39,6 +39,8 @@ namespace Base.Game.Fish {
         /// The amount of speed that the fish is swimming with
         /// </summary>
 	    public float speed = 5;
+		public float speedRandom;
+		protected float currentSpeed;
 
         /// <summary>
         /// The force that the fish will brake for the pulling of the hook
@@ -189,11 +191,11 @@ namespace Base.Game.Fish {
 	            FlipCharacter();
 	            if (_targetDirection == Direction.RIGHT) {
 					
-	                transform.Translate(0.0005f * speed, 0, 0);
+					transform.Translate(0.0005f * currentSpeed, 0, 0);
 
 	            } else if (_targetDirection == Direction.LEFT) {
 					
-	                transform.Translate(-0.0005f * speed, 0, 0);
+					transform.Translate(-0.0005f * currentSpeed, 0, 0);
 
 	            }
 

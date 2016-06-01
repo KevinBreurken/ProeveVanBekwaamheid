@@ -173,6 +173,7 @@ namespace Base.Game {
             isInProgress = false;
             //Stop player movement.
             playerController.recievesPlayerInput = true;
+			playerController.StopRecenter();
             //Un-pause the timer.
             timeManager.isTicking = true;
             //Focus Camera to event.
@@ -185,6 +186,7 @@ namespace Base.Game {
             //nextLevelNotification.
             if (onBonusEventFinished != null)
                 onBonusEventFinished();
+
 
         }
 
