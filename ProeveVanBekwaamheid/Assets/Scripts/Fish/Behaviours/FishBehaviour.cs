@@ -40,7 +40,8 @@ namespace Base.Game.Fish {
         /// </summary>
 	    public float speed = 5;
 		public float speedRandom;
-		protected float currentSpeed;
+        [HideInInspector]
+		public float currentSpeed;
 
         /// <summary>
         /// The force that the fish will brake for the pulling of the hook
@@ -131,6 +132,15 @@ namespace Base.Game.Fish {
 	        return null;
 
 	    }
+
+        /// <summary>
+        /// Sets the triggers of this FishBehaviour.
+        /// </summary>
+        /// <param name="_state"></param>
+        public void SetTriggers(bool _state) {
+            GetComponent<Collider2D>().enabled = _state;
+            ownInstinct.GetComponent<Collider2D>().enabled = _state;
+        }
 
         /// <summary>
         /// A temporary pause that waits a target amount of time
