@@ -152,10 +152,13 @@ namespace Base.Game {
             //Stop player movement.
             playerController.recievesPlayerInput = false;
 			playerController.Recenter();
+
             //Pause the timer.
             timeManager.isTicking = false;
+
             //Focus Camera to event.
             cameraController.target = transform;
+
             //Enable chests.
             Chanisco.ChaniscoLib.Shuffle(pointAmount);
             for (int i = 0; i < chests.Length; i++) {
@@ -171,22 +174,26 @@ namespace Base.Game {
         public void DeactivateBonusEvent () {
 
             isInProgress = false;
+
             //Stop player movement.
             playerController.recievesPlayerInput = true;
 			playerController.StopRecenter();
+
             //Un-pause the timer.
             timeManager.isTicking = true;
+
             //Focus Camera to event.
             cameraController.target = playerController.transform;
             cameraController.movementSpeed = 2;
+
             //Disable chests.
             for (int i = 0; i < chests.Length; i++) {
                 chests[i].Deactivate(0);
             }
+
             //nextLevelNotification.
             if (onBonusEventFinished != null)
                 onBonusEventFinished();
-
 
         }
 
