@@ -42,13 +42,14 @@ namespace Base.Game.Fish {
         public void CreateFish(ColorEnum targetColor,bool addToBundle) {
             switch (targetColor) {
                 case ColorEnum.RED:
-                InstansiateFish(redFishObject,addToBundle);
+
+                fishSpawnSequenceHolder.redFishes.Add(InstansiateFish(redFishObject,addToBundle));
                 break;
                 case ColorEnum.GREEN:
-                InstansiateFish(greenFishObject,addToBundle);
+                fishSpawnSequenceHolder.greenFishes.Add(InstansiateFish(greenFishObject,addToBundle));
                 break;
                 case ColorEnum.YELLOW:
-                InstansiateFish(yellowFishObject,addToBundle);
+                fishSpawnSequenceHolder.yellowFishes.Add(InstansiateFish(yellowFishObject,addToBundle));
                 break;
             }
         }
@@ -58,16 +59,18 @@ namespace Base.Game.Fish {
         /// </summary>
         /// <param name="targetObject">The object that needs to be created</param>
         /// <param name="addToBundle">Does it has to be added to the bundle</param>
-        public void InstansiateFish(GameObject targetObject,bool addToBundle) {
+        public FishBehaviour InstansiateFish(GameObject targetObject,bool addToBundle) {
             GameObject target = Instantiate(targetObject,Vector3.zero,Quaternion.identity) as GameObject;
             FishBehaviour tempTargetBehaviour = target.GetComponent<FishBehaviour>();
             target.transform.parent = transform;
             target.name = targetObject.name;
-            fishSpawnSequenceHolder.yellowFishes.Add(target.GetComponent<FishBehaviour>());
             if (addToBundle == true) {
                 fishBundle.availableFish.Add(tempTargetBehaviour);
 
             }
+            return tempTargetBehaviour;
         }
+
+        
     }
 }

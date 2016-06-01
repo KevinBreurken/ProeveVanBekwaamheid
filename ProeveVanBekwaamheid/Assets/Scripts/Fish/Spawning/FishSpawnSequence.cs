@@ -122,7 +122,7 @@ namespace Base.Game.Fish{
 	        switch (_targetColor) {
 
 	            case ColorEnum.GREEN:
-	            if (greenInUse == greenFishes.Count) {
+	            if (greenInUse >= greenFishes.Count) {
 
                     fishCreator.CreateFish(_targetColor,true);
 
@@ -135,12 +135,12 @@ namespace Base.Game.Fish{
                 break;
 
 	            case ColorEnum.RED:
-	            if (redInUse == redFishes.Count) {
+                if (redInUse >= redFishes.Count) {
 
                     fishCreator.CreateFish(_targetColor,true);
 
 	            } else {
-
+                    Debug.Log("Bite me " + redInUse + " " + redFishes.Count);
                     fishBundle.availableFish.Add(redFishes[redInUse]);
 
 	            }
@@ -148,8 +148,7 @@ namespace Base.Game.Fish{
                 break;
 
 	            case ColorEnum.YELLOW:
-                Debug.Log("Bite me " + yellowInUse);
-                if (yellowInUse == yellowFishes.Count) {
+                if (yellowInUse >= yellowFishes.Count) {
 
                     fishCreator.CreateFish(_targetColor,true);
 
