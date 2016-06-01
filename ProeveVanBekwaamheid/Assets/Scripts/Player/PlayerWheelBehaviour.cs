@@ -4,6 +4,7 @@ using Chanisco;
 using BaseFrame.QInput;
 using Base.Game;
 using Base.Game.Hooks;
+using BaseFrame.QUI;
 using DG.Tweening;
 using Base.Game.Fish;
 
@@ -15,6 +16,8 @@ namespace Base.Game {
         /// The input required to do actions
         /// </summary>
         private BaseQInputMethod inputMethod;
+
+		public QUIButton inputLayer;
 
         /// <summary>
         /// The speed that the player uses to move around the field
@@ -64,7 +67,14 @@ namespace Base.Game {
 
             inputMethod = QInputManager.Instance.GetCurrentInputMethod();
             QInputManager.Instance.onInputChanged += QInputManager_Instance_onInputChanged;
+			inputLayer.onClicked += InputLayer_onClicked;
+        }
 
+        void InputLayer_onClicked ()
+        {
+			if (!recievesPlayerInput)
+				return;
+			wheelHook.ReleaseHook();
         }
 
         void QInputManager_Instance_onInputChanged (BaseQInputMethod _changedMethod) {
@@ -88,7 +98,7 @@ namespace Base.Game {
             recievesPlayerInput = true;
 
             //stops the re=centering.
-            transform.DOKill();
+			DOTween.Kill(4848);
 
         }
 
@@ -110,9 +120,13 @@ namespace Base.Game {
             float distance = transform.position.x - originalPos.x;
             distance = Mathf.Abs(distance);
 
-            transform.DOLocalMove(originalPos, distance);
+			transform.DOLocalMoveX(originalPos.x, distance).SetId(4848);
 
         }
+
+		public void StopRecenter(){
+			DOTween.Kill(4848);
+		}
 
         /// <summary>
         /// All scripts that are called that are referenced to controll
@@ -122,7 +136,6 @@ namespace Base.Game {
             if (!recievesPlayerInput)
                 return;
 
-            HookControlls();
 
             //Get the movement controls
             Vector2 mousePos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
@@ -148,19 +161,6 @@ namespace Base.Game {
 
             transform.Translate(movementInput * speedFactor, 0, 0);
             transform.position = new Vector2(Mathf.Clamp(transform.position.x, fishArea.xLeft, fishArea.xRight), transform.position.y);
-
-        }
-
-        /// <summary>
-        /// Calls to the Hookbehaviours to let the hooks go loose
-        /// </summary>
-        private void HookControlls () {
-
-            if (Input.GetMouseButtonDown(0)) {
-
-                wheelHook.ReleaseHook();
-
-            }
 
         }
 
