@@ -55,17 +55,14 @@ namespace Base.Game.Hooks {
                 case ColorEnum.GREEN:
                     randomValue = Random.Range(180,230);
                     StartCoroutine("RotationDelay",randomValue);
-                    turning = false;
-                break;
+                  break;
                 case ColorEnum.YELLOW:
                     randomValue = Random.Range(60,120);
                     StartCoroutine("RotationDelay",randomValue);
-                    turning = false;
-                break;
+                 break;
                 case ColorEnum.RED:
                     randomValue = Random.Range(120,180);
                     StartCoroutine("RotationDelay",randomValue);
-                    turning = false;
                 break;
             }
         }

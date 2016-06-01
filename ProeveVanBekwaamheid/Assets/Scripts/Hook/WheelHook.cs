@@ -48,14 +48,14 @@ namespace Base.Game.Hooks {
             return base.LooseHook();
         }
         public override bool PullHook() {
-            colorWheelVisual.turning = true;
+           // colorWheelVisual.turning = true;
             wheelHookVisual.CloseHook();
             return base.PullHook();
         }
 
         public override void OnHookReturned() {
             base.OnHookReturned();
-            colorWheelVisual.turning = false;
+         //   colorWheelVisual.turning = false;
             SetNextColor();
             SetType();
         }
