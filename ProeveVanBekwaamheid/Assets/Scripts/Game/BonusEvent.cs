@@ -128,7 +128,7 @@ namespace Base.Game {
             }
 
             cameraController.target = playerController.transform;
-            cameraController.movementSpeed = 2;
+            cameraController.movementSpeed = 0.5f;
 
         }
 
