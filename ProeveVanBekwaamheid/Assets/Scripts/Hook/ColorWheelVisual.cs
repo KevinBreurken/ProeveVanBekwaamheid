@@ -24,7 +24,10 @@ namespace Base.Game.Hooks {
         /// </summary>
         public float turnSpeed;
 
+        private bool turnwheel = false;
+        void Awake () {
 
+        }
         void Start() {
             if (turnSpeed == 0) 
                 turnSpeed = 1;
@@ -42,7 +45,8 @@ namespace Base.Game.Hooks {
         public void TurnWheel() {
             
             Zpos -= turnSpeed;
-            transform.localEulerAngles = new Vector3(0,0,Zpos);
+            //transform.localEulerAngles = new Vector3(0,0,Zpos);
+            //transform.DORotate(new Vector3(0, 0, 150), 0.9f, RotateMode.FastBeyond360);
         }
 
         /// <summary>
@@ -50,7 +54,7 @@ namespace Base.Game.Hooks {
         /// </summary>
         /// <param name="_targetColor">The target color</param>
         public void SetWheelToColor(ColorEnum _targetColor) {
-            float randomValue;
+            /*float randomValue;
             switch (_targetColor) {
                 case ColorEnum.GREEN:
                     randomValue = Random.Range(180,230);
@@ -64,7 +68,12 @@ namespace Base.Game.Hooks {
                     randomValue = Random.Range(120,180);
                     StartCoroutine("RotationDelay",randomValue);
                 break;
-            }
+            }*/
+
+            if(turnwheel)
+            transform.DOLocalRotate(new Vector3(0, 0, transform.eulerAngles.z - 60), 0.9f, RotateMode.FastBeyond360);
+
+            turnwheel = true;
         }
 
         /// <summary>
@@ -75,7 +84,7 @@ namespace Base.Game.Hooks {
         private IEnumerator RotationDelay(float targetZPos) {
             
             yield return new WaitForEndOfFrame();
-            transform.DORotate(new Vector3(0,0,targetZPos),0.9f,RotateMode.FastBeyond360);
+            //transform.DORotate(new Vector3(0,0,targetZPos),0.9f,RotateMode.FastBeyond360);
 
         }
     }
