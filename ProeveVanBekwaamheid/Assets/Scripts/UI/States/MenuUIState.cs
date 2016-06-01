@@ -47,6 +47,10 @@ namespace Base.UI {
         public QAudioObjectHolder menuMelody;
         public float menuMelodyWaitTime;
 
+        [Header("Button")]
+        public RectTransform gameLogo;
+        public AnimationCurve logoCurve;
+        private Vector3 logoStartPosition;
 
         private CanvasGroup canvasGroup;
 
@@ -69,6 +73,10 @@ namespace Base.UI {
 
             //create audio
             menuMelody.CreateAudioObject();
+
+            logoStartPosition = gameLogo.localPosition;
+            gameLogo.DOLocalMoveY(2, 10).SetLoops(-1).SetEase(logoCurve);
+
         }
 
         /// <summary>
@@ -144,7 +152,7 @@ namespace Base.UI {
             yield return new WaitForSeconds(menuMelodyWaitTime);
 
             QAudioObject secretMelodyObject = menuMelody.GetAudioObject();
-            secretMelodyObject.FadeVolume(0.2f, 0.2f, 0.1f);
+            secretMelodyObject.FadeVolume(0.3f, 0.3f, 0.1f);
             secretMelodyObject.Play();
 
         }
@@ -246,7 +254,7 @@ namespace Base.UI {
 
             QAudioObject melodyObject = menuMelody.GetAudioObject();
             if (melodyObject.GetSource().isPlaying)
-                melodyObject.FadeVolume(0.2f, 0, 2);
+                melodyObject.FadeVolume(0.3f, 0, 2);
 
 
             StopCoroutine(PlaySecretMelody());

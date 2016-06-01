@@ -151,6 +151,7 @@ namespace Base.Game {
 
             //Stop player movement.
             playerController.recievesPlayerInput = false;
+			playerController.Recenter();
             //Pause the timer.
             timeManager.isTicking = false;
             //Focus Camera to event.
