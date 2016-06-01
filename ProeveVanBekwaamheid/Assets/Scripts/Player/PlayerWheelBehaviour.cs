@@ -124,6 +124,10 @@ namespace Base.Game {
 
         }
 
+		public void StopRecenter(){
+			DOTween.Kill(4848);
+		}
+
         /// <summary>
         /// All scripts that are called that are referenced to controll
         /// </summary>
