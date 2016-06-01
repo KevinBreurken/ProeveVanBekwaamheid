@@ -2,6 +2,7 @@
 using System.Collections;
 using Base.Manager;
 using Base.UI;
+using Base.Game.Fish;
 using System.Collections.Generic;
 using UnityEngine.UI;
 
@@ -166,6 +167,11 @@ namespace Base.Game {
                 chests[i].SetScore(pointAmount[i]);
             }
 
+            GameObject[] fishes = GameObject.FindGameObjectsWithTag("Fish");
+            for (int i = 0; i < fishes.Length; i++) {
+                fishes[i].GetComponent<FishBehaviour>().SetTriggers(false);
+            }
+
         }
 
         /// <summary>
@@ -184,12 +190,19 @@ namespace Base.Game {
 
             //Focus Camera to event.
             cameraController.target = playerController.transform;
-            cameraController.movementSpeed = 2;
+            cameraController.movementSpeed = 0.5f;
 
             //Disable chests.
             for (int i = 0; i < chests.Length; i++) {
                 chests[i].Deactivate(0);
             }
+
+            //Enable Fish.
+            GameObject[] fishes = GameObject.FindGameObjectsWithTag("Fish");
+            for (int i = 0; i < fishes.Length; i++) {
+                fishes[i].GetComponent<FishBehaviour>().SetTriggers(true);
+            }
+
 
             //nextLevelNotification.
             if (onBonusEventFinished != null)

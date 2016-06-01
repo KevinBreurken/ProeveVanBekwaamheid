@@ -43,8 +43,6 @@ namespace Base.Audio {
             isWebGL = true;
             #endif
 
-
-            isWebGL = true;
         }
 
         /// <summary>

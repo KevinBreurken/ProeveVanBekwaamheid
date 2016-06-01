@@ -10,7 +10,8 @@ namespace Base.Game.Fish {
 
 	    public override void ReactOnHook(Transform _target)
 	    {
-	        parent.speed += 10;
+            if(parent.currentSpeed < 20)
+            parent.currentSpeed += 10;
 	        parent.emotion.Emote(Emotions.SHOCK);
 	        StartCoroutine("SwimOpositeDirection");
 	    }

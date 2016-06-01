@@ -3,6 +3,7 @@ using System.Collections;
 using BaseFrame.QStates;
 using Base.Manager;
 using Base.Game;
+using Base.Game.Fish;
 
 namespace Base.Manager {
 
@@ -83,6 +84,12 @@ namespace Base.Manager {
             scoreManager.scoreDisplay.UpdateTargetScoreDisplay(waveManager.targetScoreList[waveManager.currentLevelIndex]);
             scoreManager.scoreDisplay.Show(false);
             timeManager.timerDisplay.Show(false);
+
+            //Enable Fish.
+            GameObject[] fishes = GameObject.FindGameObjectsWithTag("Fish");
+            for (int i = 0; i < fishes.Length; i++) {
+                fishes[i].GetComponent<FishBehaviour>().SetTriggers(true);
+            }
 
             if (onGameEntered != null)
                 onGameEntered();
