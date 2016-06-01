@@ -108,7 +108,9 @@ namespace Base.Game.Fish {
         public void Init() {
 
             gameObject.SetActive(false);
-            ownInstinct.Init(this);
+            if(ownInstinct != null)  
+                ownInstinct.Init(this);
+
 	        InMotion = true;
             SetType();
 
