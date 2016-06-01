@@ -95,15 +95,17 @@ namespace Base.Game.Hooks {
 
         private IEnumerator ShockEvent() {
             pullSpeed = 0;
-            //TODO Electric chain visual
+            Chain.material = chainMethods.electricMaterials;
             yield return new WaitForSeconds(1);
+            Chain.material = chainMethods.originalChain;
             pullSpeed = releaseSpeed;
         }
 
+        [System.Serializable]
         public class ChainMethods {
             public Material originalChain;
-            public List<Material> electricMaterials;
-            public ChainMethods(Material _orignalChain,List<Material> _electricMaterials) {
+            public Material electricMaterials;
+            public ChainMethods(Material _orignalChain,Material _electricMaterials) {
                 this.originalChain      = _orignalChain;
                 this.electricMaterials  = _electricMaterials;
             }
