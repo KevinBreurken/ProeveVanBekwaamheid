@@ -227,6 +227,8 @@ namespace Base.UI {
             currentOpenLayer = null;
             currentActiveToggle = null;
 
+            SetRowInteractableState(false);
+
             if(usesMelody)
             StartCoroutine(PlaySecretMelody());
 
@@ -243,6 +245,8 @@ namespace Base.UI {
 
             canvasGroup.DOFade(1, 1.5f);
 
+            yield return new WaitForSeconds(1f);
+            SetRowInteractableState(true);
         }
 
         public override IEnumerator Exit () {
