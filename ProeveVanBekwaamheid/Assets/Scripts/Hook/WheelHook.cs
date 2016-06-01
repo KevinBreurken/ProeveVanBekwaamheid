@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using System;
 
 namespace Base.Game.Hooks {
@@ -25,6 +26,8 @@ namespace Base.Game.Hooks {
         /// </summary>
         public ColorWheelVisual colorWheelVisual;
 
+
+        public ChainMethods chainMethods;
         void Start() {
 
             ChainHolder = Chain.transform;
@@ -89,11 +92,21 @@ namespace Base.Game.Hooks {
             StartCoroutine("ShockEvent");
             base.ShockHook();
         }
-        
+
         private IEnumerator ShockEvent() {
-            Debug.Log("Bite me");
+            pullSpeed = 0;
+            //TODO Electric chain visual
             yield return new WaitForSeconds(1);
-            hookPull = true;
+            pullSpeed = releaseSpeed;
+        }
+
+        public class ChainMethods {
+            public Material originalChain;
+            public List<Material> electricMaterials;
+            public ChainMethods(Material _orignalChain,List<Material> _electricMaterials) {
+                this.originalChain      = _orignalChain;
+                this.electricMaterials  = _electricMaterials;
+            }
         }
     }
 }

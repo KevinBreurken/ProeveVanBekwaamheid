@@ -1,13 +1,29 @@
 fileFormatVersion: 2
 guid: 25ef2f2be03f8fd4bb7630e658ebd54d
-timeCreated: 1464603838
+timeCreated: 1464807987
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: game_eel_spritesheet_0
+    21300002: game_eel_spritesheet_1
+    21300004: game_eel_spritesheet_2
+    21300006: game_eel_spritesheet_3
+    21300008: game_eel_spritesheet_4
+    21300010: game_eel_spritesheet_5
+    21300012: game_eel_spritesheet_6
+    21300014: game_eel_spritesheet_7
+    21300016: game_eel_spritesheet_8
+    21300018: game_eel_spritesheet_9
+    21300020: game_eel_spritesheet_10
+    21300022: game_eel_spritesheet_11
+    21300024: game_eel_spritesheet_12
+    21300026: game_eel_spritesheet_13
+    21300028: game_eel_spritesheet_14
+    21300030: game_eel_spritesheet_15
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     linearTexture: 0
     correctGamma: 0
     fadeOut: 0
@@ -29,27 +45,353 @@ TextureImporter:
   textureFormat: -1
   maxTextureSize: 2048
   textureSettings:
-    filterMode: -1
-    aniso: -1
+    filterMode: 0
+    aniso: 16
     mipBias: -1
-    wrapMode: -1
-  nPOTScale: 1
+    wrapMode: 1
+  nPOTScale: 0
   lightmap: 0
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 0
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteBorder: {x: 0, y: 309, z: 781, w: 0}
   spritePixelsToUnits: 100
-  alphaIsTransparency: 0
-  textureType: -1
+  alphaIsTransparency: 1
+  textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: game_eel_spritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 317
+        width: 195
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -62.5, y: 28}
+        - {x: -97.5, y: 20}
+        - {x: -97.5, y: -28}
+        - {x: 97.5, y: -28}
+        - {x: 97.5, y: 23}
+        - {x: 93.5, y: 28}
+    - name: game_eel_spritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 317
+        width: 194
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 96, y: 11}
+        - {x: 71, y: 28}
+        - {x: -63, y: 28}
+        - {x: -77, y: 26}
+        - {x: -97, y: 6}
+        - {x: -97, y: -4}
+        - {x: -79, y: -18}
+        - {x: -66, y: -28}
+        - {x: 70, y: -28}
+        - {x: 93, y: -15}
+        - {x: 97, y: -13}
+        - {x: 97, y: 7}
+    - name: game_eel_spritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 572
+        y: 317
+        width: 188
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 73, y: 28}
+        - {x: -90, y: 28}
+        - {x: -94, y: 20}
+        - {x: -94, y: -18}
+        - {x: -74, y: -28}
+        - {x: 63, y: -28}
+        - {x: 94, y: -16}
+        - {x: 94, y: 7}
+        - {x: 93, y: 11}
+    - name: game_eel_spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 816
+        y: 317
+        width: 206
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 79, y: 28}
+        - {x: -52, y: 28}
+        - {x: -71, y: 23}
+        - {x: -100, y: 7}
+        - {x: -103, y: 5}
+        - {x: -103, y: -9}
+        - {x: -77, y: -28}
+        - {x: 72, y: -28}
+        - {x: 103, y: -14}
+        - {x: 103, y: 3}
+        - {x: 101, y: 10}
+    - name: game_eel_spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 219
+        width: 211
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 77.5, y: 28}
+        - {x: -74.5, y: 28}
+        - {x: -105.5, y: 17}
+        - {x: -105.5, y: -28}
+        - {x: 102.5, y: -28}
+        - {x: 105.5, y: -22}
+        - {x: 105.5, y: 4}
+        - {x: 103.5, y: 10}
+    - name: game_eel_spritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 221
+        width: 209
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -83.5, y: 27}
+        - {x: -104.5, y: 25}
+        - {x: -104.5, y: -9}
+        - {x: -70.5, y: -23}
+        - {x: -48.5, y: -27}
+        - {x: 77.5, y: -27}
+        - {x: 104.5, y: -23}
+        - {x: 104.5, y: 7}
+        - {x: 89.5, y: 27}
+    - name: game_eel_spritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 549
+        y: 219
+        width: 211
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -86.5, y: 28}
+        - {x: -105.5, y: 11}
+        - {x: -105.5, y: -16}
+        - {x: -82.5, y: -28}
+        - {x: 105.5, y: -28}
+        - {x: 105.5, y: 28}
+    - name: game_eel_spritesheet_7
+      rect:
+        serializedVersion: 2
+        x: 827
+        y: 219
+        width: 195
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -87.5, y: 28}
+        - {x: -97.5, y: 10}
+        - {x: -97.5, y: -13}
+        - {x: -80.5, y: -28}
+        - {x: 93.5, y: -28}
+        - {x: 97.5, y: -27}
+        - {x: 97.5, y: 28}
+    - name: game_eel_spritesheet_8
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 99
+        width: 246
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -83, y: 49}
+        - {x: -121, y: 39}
+        - {x: -123, y: 30}
+        - {x: -123, y: -49}
+        - {x: 123, y: -49}
+        - {x: 123, y: 37}
+        - {x: 100, y: 49}
+    - name: game_eel_spritesheet_9
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 103
+        width: 229
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -77.5, y: 47}
+        - {x: -107.5, y: 33}
+        - {x: -114.5, y: 11}
+        - {x: -114.5, y: -27}
+        - {x: -87.5, y: -41}
+        - {x: -79.5, y: -37}
+        - {x: -74.5, y: -34}
+        - {x: -73.5, y: -31}
+        - {x: -73.5, y: -19}
+        - {x: -73.5, y: -39}
+        - {x: -77.5, y: -47}
+        - {x: 114.5, y: -47}
+        - {x: 114.5, y: 23}
+        - {x: 87.5, y: 47}
+    - name: game_eel_spritesheet_10
+      rect:
+        serializedVersion: 2
+        x: 545
+        y: 99
+        width: 241
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -97.5, y: 49}
+        - {x: -120.5, y: 32}
+        - {x: -120.5, y: -34}
+        - {x: -105.5, y: -49}
+        - {x: 113.5, y: -49}
+        - {x: 120.5, y: -40}
+        - {x: 120.5, y: 37}
+        - {x: 98.5, y: 49}
+    - name: game_eel_spritesheet_11
+      rect:
+        serializedVersion: 2
+        x: 801
+        y: 103
+        width: 239
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -100.5, y: 46}
+        - {x: -119.5, y: 14}
+        - {x: -119.5, y: -27}
+        - {x: -89.5, y: -46}
+        - {x: 119.5, y: -46}
+        - {x: 119.5, y: 46}
+    - name: game_eel_spritesheet_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 262
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -97, y: 49}
+        - {x: -126, y: 36}
+        - {x: -131, y: 31}
+        - {x: -131, y: -29}
+        - {x: -96, y: -49}
+        - {x: 97, y: -49}
+        - {x: 131, y: -37}
+        - {x: 131, y: 32}
+        - {x: 105, y: 49}
+    - name: game_eel_spritesheet_13
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 4
+        width: 229
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -79.5, y: 47}
+        - {x: -114.5, y: 39}
+        - {x: -114.5, y: -27}
+        - {x: -87.5, y: -41}
+        - {x: -79.5, y: -37}
+        - {x: -74.5, y: -34}
+        - {x: -73.5, y: -31}
+        - {x: -73.5, y: -17}
+        - {x: -64.5, y: -19}
+        - {x: -70.5, y: -24}
+        - {x: -73.5, y: -29}
+        - {x: -73.5, y: -39}
+        - {x: -77.5, y: -47}
+        - {x: 114.5, y: -47}
+        - {x: 114.5, y: 25}
+        - {x: 93.5, y: 47}
+    - name: game_eel_spritesheet_14
+      rect:
+        serializedVersion: 2
+        x: 524
+        y: 0
+        width: 262
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -129, y: 49}
+        - {x: -131, y: 36}
+        - {x: -131, y: -29}
+        - {x: -115, y: -37}
+        - {x: -69, y: -49}
+        - {x: 97, y: -49}
+        - {x: 131, y: -37}
+        - {x: 131, y: 33}
+        - {x: 117, y: 49}
+    - name: game_eel_spritesheet_15
+      rect:
+        serializedVersion: 2
+        x: 801
+        y: 4
+        width: 239
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -100.5, y: 46}
+        - {x: -119.5, y: 23}
+        - {x: -119.5, y: -39}
+        - {x: -94.5, y: -46}
+        - {x: -41.5, y: -46}
+        - {x: -26.5, y: -33}
+        - {x: -16.5, y: -23}
+        - {x: -12.5, y: -22}
+        - {x: -16.5, y: -24}
+        - {x: -32.5, y: -41}
+        - {x: -19.5, y: -46}
+        - {x: 119.5, y: -46}
+        - {x: 119.5, y: 46}
     outline: []
   spritePackingTag: 
   userData: 

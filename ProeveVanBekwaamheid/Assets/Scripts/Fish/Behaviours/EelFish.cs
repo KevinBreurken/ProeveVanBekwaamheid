@@ -10,14 +10,14 @@ namespace Base.Game.Fish {
     public class EelFish:  FishBehaviour{
         public void Start() {
 
-            speed = Random.Range(20,30);
+            currentSpeed = speed + Random.Range(-speedRandom,speedRandom);
             Init();
 
         }
 
         public void OnEnable() {
 
-            speed = Random.Range(20,30);
+            currentSpeed = speed + Random.Range(-speedRandom,speedRandom);
             InMotion = true;
 
         }
@@ -35,6 +35,8 @@ namespace Base.Game.Fish {
         }
 
         public override bool RespondToHook(HookBehaviour _target) {
+
+            currentSpeed += 20;
             _target.hookInteracted = true;
             _target.ShockHook();
             return true;
