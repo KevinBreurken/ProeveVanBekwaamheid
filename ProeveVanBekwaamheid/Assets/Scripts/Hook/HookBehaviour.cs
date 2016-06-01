@@ -18,6 +18,8 @@ namespace Base.Game.Hooks {
         /// </summary>
 		public FishBehaviour ownFish;
 
+		public GameObject hookAnchor;
+
         /// <summary>
         /// Color of this hook.
         /// </summary>
@@ -107,6 +109,9 @@ namespace Base.Game.Hooks {
         /// Update that keeps track of the position and state of the hook
         /// </summary>
 	    public void HookUpdate() {
+
+			originalPos = hookAnchor.transform.position;
+
 	        if (hookReleased == true) {
 				
 	            if (hookPull == true) {
@@ -200,9 +205,9 @@ namespace Base.Game.Hooks {
 	            if(ownFish == null) {
 					
 	                FishBehaviour tempFish = other.GetComponent<FishBehaviour>();
-					if (tempFish.caught == false){
-						
-	                    if (isColorIdentical(tempFish.requiredHookColor)) {
+					if (tempFish.caught == false && tempFish.GetFish(this) != null) {
+                        ownFish = tempFish.GetFish(this);
+                        if (isColorIdentical(tempFish.requiredHookColor)) {
 							
 	                        pullSpeed = tempFish.pullInformation.rightPressure;
 	                        isRightColor = true;
@@ -214,7 +219,6 @@ namespace Base.Game.Hooks {
 
 	                    }
 
-	                    ownFish = tempFish;
 	                    ownFish.caught = true;
 	                    hookInteracted = true;
 
@@ -239,6 +243,10 @@ namespace Base.Game.Hooks {
 	        return false;
 	        
 	    }
+
+        public virtual void ShockHook() {
+
+        }
 
         /// <summary>
         /// Sets the type of the fish according to the FishEnum

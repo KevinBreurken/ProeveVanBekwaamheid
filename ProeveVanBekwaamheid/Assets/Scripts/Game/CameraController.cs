@@ -51,7 +51,7 @@ namespace Base.Game {
         }
 
        
-        void Update () {
+        void FixedUpdate () {
 
             if (followTarget) {
 
