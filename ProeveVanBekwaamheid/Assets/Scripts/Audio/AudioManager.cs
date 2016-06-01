@@ -28,6 +28,8 @@ namespace Base.Audio {
         /// </summary>
         private AudioSource outsideSound;
 
+        public AudioSource outsideSoundWebGL;
+
         /// <summary>
         /// If the game is player in WebGL
         /// </summary>
@@ -41,6 +43,8 @@ namespace Base.Audio {
             isWebGL = true;
             #endif
 
+
+            isWebGL = true;
         }
 
         /// <summary>
@@ -49,10 +53,16 @@ namespace Base.Audio {
         /// <param name="_time">How long it takes to fade to this snapshot.</param>
         public void SetUnderwaterMixing (float _time) {
 
-            if (!isWebGL)
+            if (!isWebGL) {
+
                 underwaterSnapshot.TransitionTo(_time);
-            else
+
+            } else {
+
                 outsideSound.DOFade(0, 1);
+                outsideSoundWebGL.DOFade(1, 1);
+
+            }
 
         }
 
@@ -62,11 +72,17 @@ namespace Base.Audio {
         /// <param name="_time">How long it takes to fade to this snapshot.</param>
         public void SetAboveWaterMixing (float _time) {
 
-            if (!isWebGL)
-                defaultSnapshot.TransitionTo(_time);
-            else
-                outsideSound.DOFade(1, 1);
+            if (!isWebGL) {
 
+                defaultSnapshot.TransitionTo(_time);
+
+            } else {
+
+                outsideSound.DOFade(1, 1);
+                outsideSoundWebGL.DOFade(0, 1);
+
+            }
+           
         }
 			
     }
