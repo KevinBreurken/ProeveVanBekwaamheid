@@ -9,7 +9,7 @@ TextureImporter:
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     linearTexture: 0
     correctGamma: 0
     fadeOut: 0
@@ -96,7 +96,7 @@ TextureImporter:
         - {x: 79, y: -90.5}
         - {x: 104, y: -27.5}
     outline: []
-  spritePackingTag: 
+  spritePackingTag: Prop
   userData: 
   assetBundleName: 
   assetBundleVariant: 
