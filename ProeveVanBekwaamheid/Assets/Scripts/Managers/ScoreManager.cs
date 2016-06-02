@@ -71,12 +71,6 @@ namespace Base.Manager {
 
         }
 
-        void Update () {
-            if (Input.GetKey(KeyCode.B)) {
-                AddScore(100);
-            }
-        }
-
         public override void Load () {
 
             base.Load();

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using DG.Tweening;
 
 namespace Base.Game.Fish {
 	
@@ -34,7 +35,8 @@ namespace Base.Game.Fish {
         /// </summary>
         /// <param name="_targetEmotion">Emotion that will pop up for the fish</param>
 	    public void Emote(Emotions _targetEmotion) {
-			
+
+            ownSpriteRenderer.transform.DOScale(1, 1).SetEase(Ease.OutBounce);
 	        switch (_targetEmotion) {
 
 	            case Emotions.QUESTION:
@@ -58,7 +60,8 @@ namespace Base.Game.Fish {
 	    IEnumerator TurnSpriteOff() {
 			
 	        yield return new WaitForSeconds(0.5f);
-	        ownSpriteRenderer.sprite = null;
+            ownSpriteRenderer.transform.DOScale(0, 1).SetEase(Ease.InBounce);
+
 
 	    }
 

@@ -23,7 +23,7 @@ namespace Base.Game.Fish {
 
 	    }
 
-	    void Update() {
+	    void FixedUpdate () {
 			
 	        SwimDirection(ownDirection);
 	        OutOfBound();

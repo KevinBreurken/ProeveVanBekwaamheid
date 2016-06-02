@@ -35,7 +35,7 @@ namespace Base.Game {
         /// <summary>
         /// How fast the camera moves.
         /// </summary>
-        public float movementSpeed = 2;
+        public float movementSpeed = 0.5f;
 
         private GameObject cameraLookPoint;
         private Vector3 velocity = Vector3.zero;

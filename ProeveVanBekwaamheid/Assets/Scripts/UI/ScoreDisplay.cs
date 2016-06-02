@@ -51,6 +51,12 @@ namespace Base.UI {
             DOTween.Kill(103);
             DOTween.To(() => tweenedScoreCounterValue, x => tweenedScoreCounterValue = x, _score, 1.5f).SetId(103).OnUpdate(UpdateScoreText);
 
+            if (addedScoreQUIObjectText == null)
+                return;
+
+            if (!addedScoreQUIObjectText.IsActive())
+                return;
+
             addedScoreQUIObjectText.text = "+" + _addedScore; 
             StartCoroutine(addedScoreQUIObject.Show());
 
@@ -63,6 +69,12 @@ namespace Base.UI {
         /// Called when the added-score display is faded in.
         /// </summary>
         private void OnAddedScoreQUIObjectFadeComplete () {
+            if (addedScoreQUIObjectText == null)
+                return;
+
+            if (!addedScoreQUIObjectText.IsActive())
+                return;
+
             StartCoroutine(addedScoreQUIObject.Hide());
         }
 
